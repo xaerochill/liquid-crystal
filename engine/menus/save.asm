@@ -283,15 +283,15 @@ _SaveGameData:
 	farcall BackupPartyMonMail
 	farcall BackupMobileEventIndex
 	farcall SaveRTC
-	ld a, BANK(sBattleTowerChallengeState)
-	call OpenSRAM
-	ld a, [sBattleTowerChallengeState]
-	cp BATTLETOWER_RECEIVED_REWARD
-	jr nz, .ok
-	xor a
-	ld [sBattleTowerChallengeState], a
-.ok
-	call CloseSRAM
+;	ld a, BANK(sBattleTowerChallengeState)
+;	call OpenSRAM
+;	ld a, [sBattleTowerChallengeState]
+;	cp BATTLETOWER_RECEIVED_REWARD
+;	jr nz, .ok
+;	xor a
+;	ld [sBattleTowerChallengeState], a
+;.ok
+;	call CloseSRAM
 	ret
 
 UpdateStackTop:
@@ -362,8 +362,14 @@ ErasePreviousSave:
 	call EraseHallOfFame
 	call EraseLinkBattleStats
 	call EraseMysteryGift
-	call SaveData
+	call Unreferenced_Function14d18
 	call EraseBattleTowerStatus
+	call SaveData
+	call Unreferenced_Function14d6c
+	call Unreferenced_Function14d83
+	call Unreferenced_Function14d93
+	; the stack stuff here doesn't happen in the japanese version
+	; doesn't have anything to do with mobile though so that should probably stay here
 	ld a, BANK(sStackTop)
 	call OpenSRAM
 	xor a
@@ -416,12 +422,34 @@ Function14d18: ; unreferenced
 	db $39, $07, $07, $04, $00, $05, $04, $07, $01, $05, $00, $00
 	db $0f, $05, $14, $07, $05, $05, $11, $0c, $0c, $06, $06, $04
 
-EraseBattleTowerStatus:
-	ld a, BANK(sBattleTowerChallengeState)
+EraseBattleTowerStatus: ; Call_005_4d09 in crystal jp
+;	ld a, BANK(sBattleTowerChallengeState)
+;	call GetSRAMBank
+;	xor a
+;	ld [sBattleTowerChallengeState], a
+	
+	ld a, BANK(s5_a800)
 	call OpenSRAM
 	xor a
-	ld [sBattleTowerChallengeState], a
+	ld [s5_a800], a
+	ld hl, sBattleTowerChallengeState;$aa3e
+    ld bc, $05e5
+    call ByteFill;$300d
+	; clear/init honor roll data
+    ld hl, .HonorRollLevelRoomPlaceholder;$4d34
+    ld de, s5_a89c
+    ld bc, $0016
+    call CopyBytes;$2ff2
+    xor a
+    ld hl, s5_a8b2
+    ld bc, HONOR_ROLL_DATA_LENGTH;$0096
+    call ByteFill;$300d
+	
 	jp CloseSRAM
+
+.HonorRollLevelRoomPlaceholder
+	;db "------@    ---@       "
+	db "------@            ---"
 
 SaveData:
 	call _SaveData
@@ -836,13 +864,26 @@ _SaveData:
 	; garbage from wd479. This isn't an issue, since ErasePreviousSave is followed by a regular
 	; save that unwrites the garbage.
 
-	ld hl, wd479
-	ld a, [hli]
-	ld [s4_a60e + 0], a
-	ld a, [hli]
-	ld [s4_a60e + 1], a
+;	ld hl, wd479
+;	ld a, [hli]
+;	ld [s4_a60e + 0], a
+;	ld a, [hli]
+;	ld [s4_a60e + 1], a
 
-	jp CloseSRAM
+;	jp CloseSRAM
+	
+	ld a, $04
+    call GetSRAMBank
+    ld hl, wCrystalData
+    ld de, sCrystalData
+    ld bc, wCrystalDataEnd - wCrystalData
+    call CopyBytes
+    ld hl, wd479
+	ld a, [hli]
+    ld [$a60e + 0], a
+    ld a, [hli]
+    ld [$a60e + 1], a
+    jp CloseSRAM
 
 _LoadData:
 	ld a, BANK(sCrystalData)
@@ -855,13 +896,26 @@ _LoadData:
 	; This block originally had some mobile functionality to mirror _SaveData above, but instead it
 	; (harmlessly) writes the aforementioned wEventFlags to the unused wd479.
 
-	ld hl, wd479
-	ld a, [s4_a60e + 0]
-	ld [hli], a
-	ld a, [s4_a60e + 1]
-	ld [hli], a
+;	ld hl, wd479
+;	ld a, [s4_a60e + 0]
+;	ld [hli], a
+;	ld a, [s4_a60e + 1]
+;	ld [hli], a
 
-	jp CloseSRAM
+;	jp CloseSRAM
+	
+	ld a, $04
+    call GetSRAMBank
+    ld hl, sCrystalData
+    ld de, wCrystalData
+    ld bc, wCrystalDataEnd - wCrystalData
+    call CopyBytes
+    ld hl, wd479
+    ld a, [$a60e + 0]
+    ld [hli], a
+    ld a, [$a60e + 1]
+    ld [hli], a
+    jp CloseSRAM
 
 GetBoxAddress:
 	ld a, [wCurBox]

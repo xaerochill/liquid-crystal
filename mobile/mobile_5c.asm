@@ -196,7 +196,7 @@ Function170c06: ; unreferenced
 	ret
 
 Function170c8b:
-	ld hl, wLastEnemyCounterMove
+	ld hl, $d820 + $f1 + 17;$c608 + $f1 + 17
 	ld b, $5
 .asm_170c90
 	ld a, [hl]
@@ -399,9 +399,9 @@ Function171a95:
 	jp Function171c66
 
 String_171aa7:
-	db   "モバイルアダプタに"
-	next "せつぞく　しています"
-	next "しばらく　おまちください"
+	db   "Connecting to";"モバイルアダプタに"
+	next "MOBILE ADAPTER…";"せつぞく　しています"
+	;next "しばらく　おまちください"
 	db   "@"
 
 Function171ac9:
@@ -645,8 +645,8 @@ MenuHeader_171c6b:
 	db 0 ; default option
 
 String_171c73:
-	db   "モバイルセンターを　けってい"
-	next "しました@"
+	db   "MOBILE CENTER";"モバイルセンターを　けってい"
+	next "set.@";"しました@"
 
 Function171c87:
 	call DisableLCD
@@ -669,7 +669,7 @@ Function171c87:
 	hlcoord 3, 2
 	ld de, String_172e31
 	call PlaceString
-	hlcoord 3, 16
+	hlcoord 2, 16;3, 16
 	ld de, String_172e3f
 	call PlaceString
 	ret
@@ -707,7 +707,7 @@ Function171cf0:
 	decoord 0, 7
 	ld bc, $8c
 	call CopyBytes
-	hlcoord 3, 16
+	hlcoord 2, 16;3, 16
 	ld de, String_172e3f
 	jp PlaceString
 
@@ -716,7 +716,7 @@ Function171cf0:
 	decoord 0, 7
 	ld bc, $8c
 	call CopyBytes
-	hlcoord 3, 16
+	hlcoord 2, 16;3, 16
 	ld de, String_172e4e
 	jp PlaceString
 
@@ -771,19 +771,19 @@ ChooseMobileCenterAttrmap:
 INCBIN "gfx/mobile/mobile_center.attrmap"
 
 PasswordSlowpokeLZ:
-INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
+INCBIN "gfx/pokedex/slowpoke_mobile.2bpp.lz"
 
 String_172e31:
-	db "パスワード<WO>いれてください@"
+	db "Enter PASSWORD@";"パスワード<WO>いれてください@"
 String_172e3f:
-	db "きりかえ　やめる　　けってい@"
+	db "SWITCH CANCEL OK@";"きりかえ　やめる　　けってい@"
 String_172e4e:
-	db "きりかえ　やめる　　"
+	db "SWITCH CANCEL";"きりかえ　やめる　　"
 String_172e58:
-	db "けってい@"
+	db "OK@";"けってい@"
 String_172e5d:
-	db "せつぞくする　モバイルセンターを"
-	next "えらんで　ください@"
+	db   "Select CENTER";"せつぞくする　モバイルセンターを"
+	next "to connect to@";"えらんで　ください@"
 
 Function172e78:
 	ld a, $7f
@@ -866,13 +866,13 @@ Stadium2N64GFX:
 INCBIN "gfx/mobile/stadium2_n64.2bpp"
 
 Stadium2N64Tilemap:
-if DEF(_CRYSTAL11)
+;if DEF(_CRYSTAL11)
 ; Crystal 1.1 corrupted this tilemap by treating $0a bytes as Unix newlines,
 ; and converting them to $0d $0a Windows newlines.
-INCBIN "gfx/mobile/stadium2_n64_corrupt.tilemap"
-else
+;INCBIN "gfx/mobile/stadium2_n64_corrupt.tilemap"
+;else
 INCBIN "gfx/mobile/stadium2_n64.tilemap"
-endc
+;endc
 
 Stadium2N64Attrmap:
 INCBIN "gfx/mobile/stadium2_n64.attrmap"

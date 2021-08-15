@@ -333,11 +333,12 @@ Function100232:
 	ret
 
 String10024d:
-	db   "つうしんを　キャンセル　しました@"
+	db   "Communication";"つうしんを　キャンセル　しました@"
+	next "canceled.@"
 
 String10025e:
-	db   "おともだちと　えらんだ　へやが"
-	next "ちがうようです@"
+	db   "The chosen rooms";"おともだちと　えらんだ　へやが"
+	next "differ!@";"ちがうようです@"
 
 Function100276:
 	ld a, [wcd2b]
@@ -873,8 +874,8 @@ MenuHeader_1005b2:
 MenuData_1005ba:
 	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
 	db 2
-	db "はい@"
-	db "いいえ@"
+	db "YES@";"はい@"
+	db "NO@";"いいえ@"
 
 Function1005c3:
 	ld a, [wcd26]
@@ -912,7 +913,7 @@ Function1005e1:
 
 MenuHeader_1005fc:
 	db MENU_BACKUP_TILES ; flags
-	db 6, 14
+	db 6, 13;14
 	db 10, 19
 	dw MenuData_100604
 	db 1 ; default option
@@ -920,8 +921,8 @@ MenuHeader_1005fc:
 MenuData_100604:
 	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
 	db 2
-	db "かける@"
-	db "まつ@"
+	db "CALL@";"かける@"
+	db "WAIT@";"まつ@"
 
 Mobile_CommunicationStandby:
 	hlcoord 3, 10
@@ -934,7 +935,7 @@ Mobile_CommunicationStandby:
 	ret
 
 .String:
-	db "つうしんたいきちゅう！@"
+	db "Waiting...!@";"つうしんたいきちゅう！@"
 
 AdvanceMobileInactivityTimerAndCheckExpired:
 	push bc
@@ -1392,9 +1393,9 @@ Function1008e0:
 	ret
 
 Function100902:
-	hlcoord 3, 10
+	hlcoord 0, 10;3, 10
 	ld b, $01
-	ld c, $0b
+	ld c, $12 ;$0b
 	call Textbox
 	ld a, [wcd6d]
 	ld c, a
@@ -1405,7 +1406,7 @@ Function100902:
 	ld de, .string_100966
 	hlcoord 4, 11
 	call PlaceString
-	hlcoord 8, 11
+	hlcoord 1, 11;8, 11
 	lb bc, 1, 2
 	ld de, wStringBuffer2
 	call PrintNum
@@ -1418,7 +1419,7 @@ Function100902:
 
 .asm_10093f
 	ld de, .string_10095a
-	hlcoord 4, 11
+	hlcoord 5, 11;4, 11
 	call PlaceString
 	ld de, SFX_4_NOTE_DITTY
 	call PlaySFX
@@ -1428,9 +1429,9 @@ Function100902:
 	ret
 
 .string_10095a
-	db "たいせん　しゅうりょう@"
+	db "Time's up!@";"たいせん　しゅうりょう@"
 .string_100966
-	db "のこり　　　ふん！@"
+	db "min. remaining!@";"のこり　　　ふん！@"
 
 Function100970:
 	hlcoord 0, 0
@@ -1877,17 +1878,22 @@ Mobile_MoveSelectionScreen:
 	jp .GetMoveSelection
 
 .ListMoves:
-	hlcoord 0, 8
-	ld b, 8
-	ld c, 8
+;	hlcoord 0, 8
+;	ld b, 8
+;	ld c, 8
+
+	hlcoord 4, 17 - NUM_MOVES - 1
+	ld b, 4
+	ld c, 14
+
 	call Textbox
 	ld hl, wBattleMonMoves
 	ld de, wListMoves_MoveIndicesBuffer
 	ld bc, NUM_MOVES
 	call CopyBytes
-	ld a, SCREEN_WIDTH * 2
+	ld a, SCREEN_WIDTH; ld a, SCREEN_WIDTH * 2
 	ld [wListMovesLineSpacing], a
-	hlcoord 2, 10
+	hlcoord 6, 17 - NUM_MOVES; hlcoord 2, 10
 	predef ListMoves
 	ret
 
@@ -1903,11 +1909,11 @@ Function100c98:
 	ret
 
 .data:
-	db 10, 1 ; cursor start y, x
+	db 13, 5 ; 10, 1
 	db -1, 1 ; rows, columns
-	db $a0, $00 ; flags
-	dn 2, 0 ; cursor offsets
-	db D_UP | D_DOWN | A_BUTTON | B_BUTTON ; accepted buttons
+	db $a0, $00
+	dn 1, 0 ; 2, 0
+	db D_UP | D_DOWN | A_BUTTON | B_BUTTON
 
 Mobile_PartyMenuSelect:
 	call Function100dd8
@@ -2025,9 +2031,9 @@ Function100d67:
 .MenuData:
 	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
 	db 3
-	db "いれかえる@"  ; TRADE
-	db "つよさをみる@" ; STATS
-	db "キャンセル@"  ; CANCEL
+	db "SWITCH@";"いれかえる@"  ; TRADE
+	db "STATS@";"つよさをみる@" ; STATS
+	db "CANCEL@";"キャンセル@"  ; CANCEL
 
 Function100da5:
 	ld hl, wcd2a
@@ -2558,7 +2564,7 @@ LoadSelectedPartiesForColosseum:
 .CopyThreeSpecies:
 ; Load the 3 choices to the buffer
 	push de
-	ld bc, wStringBuffer2 + NAME_LENGTH_JAPANESE
+	ld bc, wStringBuffer2 + NAME_LENGTH;_JAPANESE
 	xor a
 .party_loop
 	push af
@@ -2574,7 +2580,7 @@ LoadSelectedPartiesForColosseum:
 	ld a, 3
 	ld [de], a
 	inc de
-	ld hl, wStringBuffer2 + NAME_LENGTH_JAPANESE
+	ld hl, wStringBuffer2 + NAME_LENGTH;_JAPANESE
 	ld bc, 3
 	call CopyBytes
 	ld a, $ff
@@ -2735,7 +2741,7 @@ Jumptable_101247:
 	dw Function10126c
 	dw Function101265
 
-Function101251:
+Function101251: ; end of link card received
 	call UpdateSprites
 	call RefreshScreen
 	ld hl, ClosingLinkText
@@ -2750,7 +2756,7 @@ Function101265:
 	call Function1021e0
 	ret
 
-Function10126c:
+Function10126c: ; end of link no card received
 	call UpdateSprites
 	farcall Script_reloadmappart
 	ld hl, ClosingLinkText
@@ -3834,8 +3840,8 @@ _StartMobileBattle:
 	ld a, BANK(w5_dc0d)
 	ldh [rSVBK], a
 
-	ld bc, w5_dc0d
-	ld de, w5_dc11
+	ld bc, w5_dc0d + 10
+	ld de, w5_dc11 + 10
 	farcall GetMobileOTTrainerClass
 
 	pop af
@@ -4529,55 +4535,57 @@ String_101f13:
 	db "@"
 
 String_101f14:
-	db   "モバイルアダプタを　つかって"
-	next "おともだちと　つうしんします@"
+	db   "Dialing";"モバイルアダプタを　つかって"
+	next "a friend.@";"おともだちと　つうしんします@"
 
 String_101f32:
-	db   "でんわを　かけるひとには"
-	next "つうわりょうきんが　かかります@"
+	db   "Caller will";"でんわを　かけるひとには"
+	next "be charged.@";"つうわりょうきんが　かかります@"
 
 String_101f4f:
-	db   "モバイルアダプタの　じゅんびは"
-	next "できて　いますか？@"
+	db   "Is your MOBILE";"モバイルアダプタの　じゅんびは"
+	next "ADAPTER ready?@";"できて　いますか？@"
 
 String_101f69:
-	db   "あなたが　おともだちに"
-	next "でんわを　かけますか？@"
+	db   "Want to call";"あなたが　おともだちに"
+	next "your friend?@";"でんわを　かけますか？@"
 
 String_101f81:
-	db   "めいしフォルダーを"
-	next "つかいますか？@"
+	db   "Use the";"めいしフォルダーを"
+	next "CARD FOLDER?@";"つかいますか？@"
 
 String_101f93:
-	db   "でんわばんごうを　にゅうりょく"
-	next "してください@"
+	db   "Enter a";"でんわばんごうを　にゅうりょく"
+	next "phone number.@";"してください@"
 
 String_101faa:
-	db   "それでは　おともだちからの"
-	next "でんわを　おまちします⋯@"
+	db   "Waiting for";"それでは　おともだちからの"
+	next "call…@";"でんわを　おまちします⋯@"
 
 String_101fc5:
-	next "に　でんわを　かけます@"
+	db "Call this no.?@";"に　でんわを　かけます@"
 
 String_101fd2:
-	next "に　でんわを　かけています@"
+	db "Calling…@";"に　でんわを　かけています@"
 
 String_101fe1:
-	db   "でんわが　つながりました!@"
+	db   "Connected to";"でんわが　つながりました!@"
+	next "friend!@"
 
 String_101fef:
-	db   "つうわを"
-	next "しゅうりょう　します⋯@"
+	db   "Ending call…@";"つうわを"
+	;next "しゅうりょう　します⋯@"
 
 String_102000:
-	db   "つうしん　しゅうりょう@"
+	db   "Communication";"つうしん　しゅうりょう@"
+	next "ended.@"
 
 String_10200c:
-	db   "つうわ　じかん@"
+	db   "Dialed for@";"つうわ　じかん@"
 
 String_102014:
-	db   "それでは　つうしんの"
-	next "せっていを　してください@"
+	db   "Please adjust";"それでは　つうしんの"
+	next "the settings.@";"せっていを　してください@"
 
 Function10202c:
 	farcall Function115d99
@@ -4596,7 +4604,7 @@ Function102048:
 	ret
 
 Function10204c:
-	hlcoord 3, 2
+	hlcoord 3, 4;3, 2
 	ld c, $10
 	ld de, wcd53
 .asm_102054
@@ -4682,8 +4690,8 @@ Function1020bf:
 	and a
 	jr z, .asm_1020e8
 	dec a
-	ld hl, $a04c
-	ld bc, $25
+	ld hl, $a04c + 4 ; phone number of 1st friend in card folder
+	ld bc, $25 + 4
 	call AddNTimes
 	ld d, h
 	ld e, l
@@ -4722,15 +4730,15 @@ Function1020ea:
 	scf
 	ret
 
-Function102112:
+Function102112: ; search entry in card folder matching to opponent?
 	ld a, BANK(s4_a03b)
 	call OpenSRAM
-	ld hl, s4_a03b + 6
-	ld c, 40
+	ld hl, $a041 + 2; trainer name of 1st friend in card folder
+	ld c, 35 ;40
 .outer_loop
 	push hl
-	ld de, wc60f
-	ld b, 31
+	ld de, $c60f + 2
+	ld b, 31; + 4
 .inner_loop
 	ld a, [de]
 	cp [hl]
@@ -4745,7 +4753,7 @@ Function102112:
 
 .not_matching
 	pop hl
-	ld de, 37
+	ld de, 37 + 4
 	add hl, de
 	dec c
 	jr nz, .outer_loop
@@ -4785,20 +4793,39 @@ Function102142:
 	call Function1013d6
 	ret
 
-Function102180:
+Function102180: ; copy opponent name to string buffer
 	ld hl, wc608 + 1
 	ld de, wStringBuffer2
-	ld bc, 11
+	ld bc, PLAYER_NAME_LENGTH;11
 	call CopyBytes
 	ret
 
-Function10218d:
+Function10218d: ; load opponent's data
+;	ld hl, w5_dc00
+;	ld de, wc608
+;	ld bc, $26
+;	ld a, $05
+;	call FarCopyWRAM
+;	ld de, wc608 + 1 ; useless
+
 	ld hl, w5_dc00
 	ld de, wc608
-	ld bc, $26
+	ld bc, PLAYER_NAME_LENGTH + 1
 	ld a, $05
 	call FarCopyWRAM
-	ld de, wc608 + 1 ; useless
+	
+	ld hl, w5_dc00 + NAME_LENGTH + 1
+	ld de, wc608 + PLAYER_NAME_LENGTH + 1
+	ld bc, PLAYER_NAME_LENGTH
+	ld a, $05
+	call FarCopyWRAM
+
+	ld hl, w5_dc00 + NAME_LENGTH * 2 + 1
+	ld de, wc608 + PLAYER_NAME_LENGTH * 2 + 1
+	ld bc, $1A
+	ld a, $05
+	call FarCopyWRAM
+
 	ret
 
 Function10219f:
@@ -4814,7 +4841,7 @@ Function10219f:
 Function1021b8:
 	call FadeToMenu
 	call Function10218d
-	ld de, wPlayerMoveStruct
+	ld de, wPlayerMoveStruct + 2 ; wPlayerMoveStruct = wc60f
 	farcall Function8ac70
 	ld a, c
 	ld [wStringBuffer1], a
@@ -4824,7 +4851,7 @@ Function1021b8:
 	ret
 
 NewCardArrivedText:
-	text_far _NewCardArrivedText
+	text_far _NewCardArrivedText; a new card arrived from xxx
 	text_end
 
 PutCardInCardFolderText:
@@ -4849,7 +4876,7 @@ LinkTerminatedText:
 	text_far _LinkTerminatedText
 	text_end
 
-ClosingLinkText:
+ClosingLinkText: ; closing link
 	text_far _ClosingLinkText
 	text_end
 
@@ -6622,7 +6649,10 @@ Function102f15:
 	ret
 
 .TooBadTheTradeWasCanceled:
-	db "こうかんを　キャンセルしました@"
+	;db "こうかんを　キャンセルしました@"
+	db   "Canceling the"
+	next "trade..."
+	db   "@"
 
 Function102f32:
 	call Function102dc3
@@ -6642,7 +6672,8 @@ Function102f50:
 	ret
 
 .PleaseWait:
-	db "しょうしょう　おまち　ください@"
+	db   "Please wait a";"しょうしょう　おまち　ください@"
+	next "moment...@"
 
 Function102f6d:
 	call Function102dc3
@@ -6652,7 +6683,7 @@ Function102f6d:
 	ret
 
 .Finished:
-	db "しゅうりょう　します@"
+	db "Finishing trade...@";"しゅうりょう　します@"
 
 Function102f85:
 	ld a, [wd003]
@@ -6664,23 +6695,30 @@ Function102f85:
 	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	call Function102dc3
-	ld de, String_102fb2
-	hlcoord 1, 14
-	call PlaceString
-	ld de, wStringBuffer1
-	hlcoord 13, 14
-	call PlaceString
-	ld de, String_102fcc
-	call PlaceString
+	;ld de, String_102fb2
+	;hlcoord 1, 14
+	;call PlaceString
+	;ld de, wStringBuffer1
+	;hlcoord 13, 14
+	;call PlaceString
+	;ld de, String_102fcc
+	;call PlaceString
+	
+	ld hl, String_102fb2
+	bccoord 1, 14
+	call PlaceHLTextAtBC
+	
 	ret
 
 String_102fb2:
-	db   "あいてがわ<PKMN>えらんだ　"
-	next "いじょう<PKMN>あるようです！！"
-	db   "@"
+	text_far UnknownText_0x1c41e6 ; friend's pokemon abnormal
+	text_end
+	;db   "あいてがわ<PKMN>えらんだ　"
+	;next "いじょう<PKMN>あるようです！！"
+	;db   "@"
 
 String_102fcc:
-	db "に@"
+	;db "に@"
 
 Function102fce:
 	call Function102dc3
@@ -6690,8 +6728,9 @@ Function102fce:
 	ret
 
 String_102fdb:
-	db   "あいてがわ<NO>せんたくに"
-	next "いじょう<PKMN>あるようです！！"
+	db   "Your friend's";"あいてがわ<NO>せんたくに"
+	next "#MON appears";"いじょう<PKMN>あるようです！！"
+	cont "to be abnormal!"
 	done
 
 Function102ff5:
@@ -6702,8 +6741,9 @@ Function102ff5:
 	ret
 
 String_103002:
-	db   "その#を　こうかんすると"
-	next "せんとう　できなく　なっちゃうよ！"
+	db   "If you trade that";"その#を　こうかんすると"
+	next "#MON, you won't";"せんとう　できなく　なっちゃうよ！"
+	cont "be able to battle."
 	db   "@"
 
 Function103021:
@@ -6714,8 +6754,9 @@ Function103021:
 	ret
 
 String_10302e:
-	db   "あいてが　ちゅうしを　えらんだので"
-	next "こうかんを　ちゅうし　します"
+	db   "Your friend";"あいてが　ちゅうしを　えらんだので"
+	next "chose to end";"こうかんを　ちゅうし　します"
+	cont "the trade."
 	db   "@"
 
 Function10304f:
@@ -7129,7 +7170,7 @@ Function10343c:
 
 .asm_10347d
 	call Function10350f
-	ld bc, 11
+	ld bc, 13;11
 	call Function103487
 	ret
 
@@ -7154,10 +7195,10 @@ Function103490:
 Function1034a7:
 	ld a, [wd1f1]
 	ld [wd1f2], a
-	ld bc, 10
+	ld bc, 12;10
 	call Function1034f7
 	ld [hl], $7f
-	ld bc, 10
+	ld bc, 12;10
 	call Function1034f1
 	ld [hl], $ed
 	ret
@@ -7248,19 +7289,19 @@ Unknown_103522:
 	dw String_103545
 
 String_103545: db "@"
-String_103546: db "せんとう　アニメ@"
-String_10354f: db "でんわばんごう@"
-String_103557: db "めいしこうかん@"
-String_10355f: db "でんわを　かけるひとが　きめられる@"
-String_103571: db "でんわばんごうの　にゅうりょくのしかた@"
-String_103585: db "あたらしいめいしが　あれば　こうかん@"
-String_103598: db "とばして　みる@"
-String_1035a0: db "じっくり　みる@"
-String_1035a8: db "めいしからえらぶ@"
-String_1035b1: db "すうじで　いれる@"
-String_1035ba: db "する@"
-String_1035bd: db "しない@"
-String_1035c1: db "けってい@"
+String_103546: db "Animations@";"せんとう　アニメ@"
+String_10354f: db "Phone no.@";"でんわばんごう@"
+String_103557: db "CARD trade@";"めいしこうかん@"
+String_10355f: db "Caller decides.@";"でんわを　かけるひとが　きめられる@"
+String_103571: db "Phone no. source.@";"でんわばんごうの　にゅうりょくのしかた@" ; Entering a phone number
+String_103585: db "Replaces old CARD.@";"あたらしいめいしが　あれば　こうかん@" ; Replace if there is a new business card
+String_103598: db "SKIP@";"とばして　みる@"; Skip to see
+String_1035a0: db "SHOW@";"じっくり　みる@" ; Watch carefully
+String_1035a8: db "CARD@";"めいしからえらぶ@" ; Choose from business cards
+String_1035b1: db "ENTER@";"すうじで　いれる@"
+String_1035ba: db "YES@";"する@"
+String_1035bd: db "NO@";"しない@"
+String_1035c1: db "OK@";"けってい@"
 
 Function1035c6:
 	farcall Function10138b
@@ -7339,15 +7380,15 @@ AskMobileOrCable:
 
 MenuHeader_103640:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 13, 6, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	menu_coords 11, 6, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
 	dw MenuData_103648
 	db 1 ; default option
 
 MenuData_103648:
 	db STATICMENU_CURSOR ; flags
 	db 2
-	db "モバイル@"
-	db "ケーブル@"
+	db "MOBILE@";"モバイル@"
+	db "CABLE@";"ケーブル@"
 
 Function103654:
 	farcall Mobile_AlwaysReturnNotCarry
@@ -7487,16 +7528,16 @@ Function103700:
 
 MenuHeader_103747:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 13, 5, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	menu_coords 11, 5, SCREEN_WIDTH - 1, TEXTBOX_Y - 1;13, 5, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
 	dw MenuData_10374f
 	db 1 ; default option
 
 MenuData_10374f:
 	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
 	db 3
-	db "はい@"
-	db "やめる@"
-	db "せつめい@"
+	db "YES@";"はい@"
+	db "CANCEL@";"やめる@"
+	db "INFO@";"せつめい@"
 
 MobileBattleMustPickThreeMonText:
 	text_far _MobileBattleMustPickThreeMonText

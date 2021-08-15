@@ -3,7 +3,7 @@
 
 ; Copies certain values at the time the player enters the Hall of Fame.
 StubbedTrainerRankings_HallOfFame2::
-	ret
+;	ret
 	ld a, BANK(sTrainerRankingGameTimeHOF)
 	call OpenSRAM
 
@@ -34,7 +34,7 @@ StubbedTrainerRankings_HallOfFame2::
 	ret
 
 StubbedTrainerRankings_MagikarpLength:
-	ret
+;	ret
 	ld a, BANK(sTrainerRankingLongestMagikarp)
 	call OpenSRAM
 	ld de, wMagikarpLength
@@ -102,7 +102,7 @@ StubbedTrainerRankings_MagikarpLength:
 	ret
 
 StubbedTrainerRankings_BugContestScore:
-	ret
+;	ret
 	ld a, BANK(sTrainerRankingBugContestScore)
 	call OpenSRAM
 	ldh a, [hProduct]
@@ -131,7 +131,7 @@ StubbedTrainerRankings_BugContestScore:
 	ret
 
 StubbedTrainerRankings_AddToSlotsWinStreak:
-	ret
+;	ret
 	ld a, BANK(sTrainerRankingCurrentSlotsStreak)
 	call OpenSRAM
 
@@ -171,7 +171,7 @@ StubbedTrainerRankings_AddToSlotsWinStreak:
 	ret
 
 StubbedTrainerRankings_EndSlotsWinStreak:
-	ret
+;	ret
 	ld a, BANK(sTrainerRankingCurrentSlotsStreak)
 	call OpenSRAM
 	ld hl, sTrainerRankingCurrentSlotsStreak
@@ -183,7 +183,7 @@ StubbedTrainerRankings_EndSlotsWinStreak:
 	ret
 
 StubbedTrainerRankings_AddToSlotsPayouts:
-	ret
+;	ret
 	ld a, BANK(sTrainerRankingTotalSlotsPayouts)
 	call OpenSRAM
 	ld hl, sTrainerRankingTotalSlotsPayouts + 3
@@ -211,7 +211,7 @@ StubbedTrainerRankings_AddToSlotsPayouts:
 	ret
 
 StubbedTrainerRankings_AddToBattlePayouts:
-	ret
+;	ret
 	ld a, BANK(sTrainerRankingTotalBattlePayouts)
 	call OpenSRAM
 	ld hl, sTrainerRankingTotalBattlePayouts + 3
@@ -241,12 +241,12 @@ StubbedTrainerRankings_AddToBattlePayouts:
 	ret
 
 StubbedTrainerRankings_StepCount:
-	ret
+;	ret
 	ld hl, sTrainerRankingStepCount
 	jp StubbedTrainerRankings_Increment4Byte
 
 StubbedTrainerRankings_BattleTowerWins: ; unreferenced
-	ret
+;	ret
 	ld a, BANK(s5_aa8d)
 	call OpenSRAM
 	ld a, [s5_aa8d]
@@ -257,12 +257,12 @@ StubbedTrainerRankings_BattleTowerWins: ; unreferenced
 	jp StubbedTrainerRankings_Increment2Byte
 
 StubbedTrainerRankings_TMsHMsTaught:
-	ret
+;	ret
 	ld hl, sTrainerRankingTMsHMsTaught
 	jp StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_Battles:
-	ret
+;	ret
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL ; Exclude the Dude’s tutorial battle
 	ret z
@@ -270,7 +270,7 @@ StubbedTrainerRankings_Battles:
 	jp StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_WildBattles:
-	ret
+;	ret
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL ; Exclude the Dude’s tutorial battle
 	ret z
@@ -278,102 +278,102 @@ StubbedTrainerRankings_WildBattles:
 	jp StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_TrainerBattles:
-	ret
+;	ret
 	ld hl, sTrainerRankingTrainerBattles
 	jp StubbedTrainerRankings_Increment3Byte
 
-StubbedTrainerRankings_Unused1: ; unreferenced
-	ret
+StubbedTrainerRankings_Unused1:
+;	ret
 	ld hl, sTrainerRankingUnused1
 	jp StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_HallOfFame::
-	ret
+;	ret
 	ld hl, sTrainerRankingHOFEntries
 	jp StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_WildMonsCaught:
-	ret
+;	ret
 	ld hl, sTrainerRankingWildMonsCaught
 	jp StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_HookedEncounters:
-	ret
+;	ret
 	ld hl, sTrainerRankingHookedEncounters
 	jp StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_EggsHatched:
-	ret
+;	ret
 	ld hl, sTrainerRankingEggsHatched
 	jp StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_MonsEvolved:
-	ret
+;	ret
 	ld hl, sTrainerRankingMonsEvolved
 	jp StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_FruitPicked:
-	ret
+;	ret
 	ld hl, sTrainerRankingFruitPicked
 	jp StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_Healings:
-	ret
+;	ret
 	ld hl, sTrainerRankingHealings
 	jp StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_MysteryGift:
-	ret
+;	ret
 	ld hl, sTrainerRankingMysteryGift
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_Trades:
-	ret
+;	ret
 	ld hl, sTrainerRankingTrades
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_Fly:
-	ret
+;	ret
 	ld hl, sTrainerRankingFly
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_Surf:
-	ret
+;	ret
 	ld hl, sTrainerRankingSurf
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_Waterfall:
-	ret
+;	ret
 	ld hl, sTrainerRankingWaterfall
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_WhiteOuts:
-	ret
+;	ret
 	ld hl, sTrainerRankingWhiteOuts
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_LuckyNumberShow:
-	ret
+;	ret
 	ld hl, sTrainerRankingLuckyNumberShow
 	jr StubbedTrainerRankings_Increment2Byte
 
 StubbedTrainerRankings_PhoneCalls:
-	ret
+;	ret
 	ld hl, sTrainerRankingPhoneCalls
 	jr StubbedTrainerRankings_Increment3Byte
 
-StubbedTrainerRankings_Unused2: ; unreferenced
-	ret
+StubbedTrainerRankings_Unused2:
+;	ret
 	ld hl, sTrainerRankingUnused2
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_LinkBattles:
-	ret
+;	ret
 	ld hl, sTrainerRankingLinkBattles
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_Splash:
-	ret
+;	ret
 	; Only counts if it’s the player’s turn
 	ldh a, [hBattleTurn]
 	and a
@@ -382,33 +382,33 @@ StubbedTrainerRankings_Splash:
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_TreeEncounters:
-	ret
+;	ret
 	ld hl, sTrainerRankingTreeEncounters
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_Unused3: ; unreferenced
-	ret
+	;ret
 	ld hl, sTrainerRankingUnused3
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_ColosseumWins:
-	ret
+	;ret
 	ld hl, sTrainerRankingColosseumWins
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_ColosseumLosses:
-	ret
+	;ret
 	ld hl, sTrainerRankingColosseumLosses
 	jr StubbedTrainerRankings_Increment3Byte
 
 StubbedTrainerRankings_ColosseumDraws:
-	ret
+	;ret
 	ld hl, sTrainerRankingColosseumDraws
 	jr StubbedTrainerRankings_Increment3Byte
 
 ; Counts uses of both Selfdestruct and Explosion.
 StubbedTrainerRankings_Selfdestruct:
-	ret
+;	ret
 	; Only counts if it’s the player’s turn
 	ldh a, [hBattleTurn]
 	and a
@@ -473,7 +473,7 @@ StubbedTrainerRankings_Increment:
 
 ; Used when SRAM bank 5 isn’t already loaded — what’s the point of this?
 UpdateTrainerRankingsChecksum2:
-	ret
+;	ret
 	ld a, BANK(sTrainerRankings)
 	call OpenSRAM
 	call UpdateTrainerRankingsChecksum
@@ -513,26 +513,48 @@ CalculateTrainerRankingsChecksum:
 	ret
 
 BackupMobileEventIndex:
+;	ld a, BANK(sMobileEventIndex)
+;	call GetSRAMBank
+;	ld a, [sMobileEventIndex]
+;	push af
+;	ld a, BANK(sMobileEventIndexBackup)
+;	call GetSRAMBank
+;	pop af
+;	ld [sMobileEventIndexBackup], a
+;	call CloseSRAM
+;	ret
+
 	ld a, BANK(sMobileEventIndex)
 	call OpenSRAM
-	ld a, [sMobileEventIndex]
-	push af
-	ld a, BANK(sMobileEventIndexBackup)
-	call OpenSRAM
-	pop af
-	ld [sMobileEventIndexBackup], a
-	call CloseSRAM
+	ld hl, sMobileEventIndex
+	ld de, sMobileEventIndexBackup
+	ld bc, $83
+	call CopyBytes
+	call Unreferenced_VerifyTrainerRankingsChecksum
+	call nz, InitializeTrainerRankings
+	call CloseSRAM;$2fad
 	ret
 
 RestoreMobileEventIndex:
+;	ld a, BANK(sMobileEventIndexBackup)
+;	call GetSRAMBank
+;	ld a, [sMobileEventIndexBackup]
+;	push af
+;	ld a, BANK(sMobileEventIndex)
+;	call GetSRAMBank
+;	pop af
+;	ld [sMobileEventIndex], a
+;	call CloseSRAM
+;	ret
+
 	ld a, BANK(sMobileEventIndexBackup)
 	call OpenSRAM
-	ld a, [sMobileEventIndexBackup]
-	push af
-	ld a, BANK(sMobileEventIndex)
-	call OpenSRAM
-	pop af
-	ld [sMobileEventIndex], a
+	ld hl, sMobileEventIndexBackup
+	ld de, sMobileEventIndex
+	ld bc, $83
+	call CopyBytes
+	call Unreferenced_VerifyTrainerRankingsChecksum
+	call nz, InitializeTrainerRankings
 	call CloseSRAM
 	ret
 
@@ -547,16 +569,31 @@ VerifyTrainerRankingsChecksum: ; unreferenced
 	cp [hl]
 	ret
 
-DeleteMobileEventIndex:
+DeleteMobileEventIndex: ; after Call_041_6208 in jp
+;	ld a, BANK(sMobileEventIndex)
+;	call GetSRAMBank
+;	xor a
+;	ld [sMobileEventIndex], a
+;	call CloseSRAM
+;	ret
+
 	ld a, BANK(sMobileEventIndex)
 	call OpenSRAM
+	ld hl, sMobileEventIndex
+	ld bc, $0083
 	xor a
-	ld [sMobileEventIndex], a
+	call ByteFill
+	ld hl, $a07d
+	ld a, $03
+	ld [hl+], a
+	ld [hl], $e8
+	call UpdateTrainerRankingsChecksum
 	call CloseSRAM
 	ret
 
-InitializeTrainerRankings: ; unreferenced
-; Initializes Trainer Rankings data for a new save file in JP Crystal.
+; Used in the Japanese version to initialize Trainer Rankings data
+; for a new save file. Unreferenced in the English version.
+InitializeTrainerRankings: ; TODO Call_041_6233
 	ld hl, sTrainerRankings
 	ld bc, sTrainerRankingsEnd - sTrainerRankings
 	xor a
@@ -790,12 +827,13 @@ endr
 ; functions related to the cable club and various NPC scripts referencing communications
 
 Mobile_DummyReturnFalse:
-	xor a
+	call Function106331
+    ld a, c
 	ld [wScriptVar], a
 	ret
 
 Stubbed_Function106314:
-	ret
+;	ret
 	ld a, BANK(s4_b000)
 	call OpenSRAM
 	ld a, c
@@ -810,8 +848,8 @@ Stubbed_Function106314:
 	ret
 
 Mobile_AlwaysReturnNotCarry:
-	or a
-	ret
+;	or a
+;	ret
 
 Function106331: ; unreferenced
 ; called by Mobile_DummyReturnFalse in JP Crystal

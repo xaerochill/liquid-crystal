@@ -45,6 +45,7 @@ asm_11800b:
 BattleTowerRoomMenu_DoNothing:
 	ret
 
+; upload record
 Function11805f:
 	ld a, $1
 	ld [wcd38], a
@@ -137,11 +138,11 @@ Function11811a:
 _BattleTowerRoomMenu:
 	xor a
 	ld [wcd38], a
-Function118125:
+Function118125: ; jr_046_4125
 	call BattleTowerRoomMenu_InitRAM
-	ld a, $3
+	ld a, $23;$3
 	ld [wcd33], a
-	ld a, $d
+	ld a, $2d;$d
 	ld [wcd34], a
 	ld a, $4
 	ld [wc3f0], a
@@ -153,7 +154,7 @@ Function118125:
 	call JoyTextDelay
 	call Function118473
 	ld a, [wBattleTowerRoomMenuJumptableIndex]
-	cp $f
+	cp $32 ;$f
 	jr c, .skip
 	ld a, [wcd34]
 	ld [wBattleTowerRoomMenuJumptableIndex], a
@@ -176,6 +177,7 @@ Function118125:
 	call ReturnToMapFromSubmenu
 	ret
 
+; save honor roll data to sram
 Function118180:
 	ld a, [wScriptVar]
 	and a
@@ -183,11 +185,11 @@ Function118180:
 	ld a, [wcd38]
 	and a
 	ret z
-	ld a, BANK(s5_a89c) ; aka BANK(s5_a8b2)
+	ld a, BANK(s5_a89c)
 	call OpenSRAM
 	ld hl, wcd69
 	ld de, s5_a89c
-	ld bc, 22
+	ld bc, $0016
 	call CopyBytes
 
 	ldh a, [rSVBK]
@@ -196,18 +198,18 @@ Function118180:
 	ldh [rSVBK], a
 
 	ld de, w3_d202
-	ld c, $96
+	ld c, HONOR_ROLL_DATA_LENGTH;$96
 	farcall CheckStringForErrors_IgnoreTerminator
 	jr c, .return_d3
 
 	ld de, w3_d202
-	lb bc, 1, $96
+	lb bc, 1, HONOR_ROLL_DATA_LENGTH;$96
 	farcall CheckStringContainsLessThanBNextCharacters
 	jr c, .return_d3
 
 	ld hl, w3_d202
 	ld de, s5_a8b2
-	ld bc, 150
+	ld bc, HONOR_ROLL_DATA_LENGTH;$0096
 	call CopyBytes
 .reset_banks
 	pop af
@@ -513,6 +515,7 @@ BattleTowerRoomMenu_Cleanup:
 	ld [wScriptVar], a
 	ret
 
+; time counter
 Function118473:
 	ld a, [wcd65]
 	and a
@@ -622,27 +625,85 @@ Function1184ec:
 	dw Function119ac9
 	dw Function118e76
 
-BattleTowerRoomMenu_Jumptable:
+BattleTowerRoomMenu_Jumptable: ; Call_046_454d in jp crystal
 	jumptable .Jumptable, wBattleTowerRoomMenuJumptableIndex
 
-.Jumptable:
-	dw BattleTowerRoomMenu_PickLevelMessage
-	dw BattleTowerRoomMenu_PlacePickLevelMenu
-	dw BattleTowerRoomMenu_UpdatePickLevelMenu
-	dw BattleTowerRoomMenu_DoNothing
-	dw BattleTowerRoomMenu_PartyMonTopsThisLevelMessage
-	dw BattleTowerRoomMenu_WaitForMessage
-	dw BattleTowerRoomMenu_DelayRestartMenu
-	dw BattleTowerRoomMenu_QuitMessage
-	dw BattleTowerRoomMenu_PlaceYesNoMenu
-	dw BattleTowerRoomMenu_UpdateYesNoMenu
-	dw BattleTowerRoomMenu_UberRestrictionMessage
-	dw BattleTowerRoomMenu_WaitForMessage
-	dw BattleTowerRoomMenu_DelayRestartMenu
-	dw Function118e76 ; mobile
-	dw BattleTowerRoomMenu_CallRoomMenu2 ; mobile
-	dw Function118e76 ; mobile
+; this jumptable defines all the steps in the process that starts when selecting challenge or the honor roll download in the battle tower menu
+; wcd38 is commonly used here to differentiate between downloading challenge or honor roll data
+; function BattleTowerRoomMenu_IncrementJumptable is commonly used to advance one step forward
+; sometimes wcf66 is directly manipulated in order to jump to different steps
+.Jumptable: ; offset 11855c in jp rom, 51 entries long
+;	dw BattleTowerRoomMenu_PickLevelMessage
+;	dw BattleTowerRoomMenu_PlacePickLevelMenu
+;	dw BattleTowerRoomMenu_UpdatePickLevelMenu
+;	dw BattleTowerRoomMenu_DoNothing
+;	dw BattleTowerRoomMenu_PartyMonTopsThisLevelMessage
+;	dw BattleTowerRoomMenu_WaitForMessage
+;	dw BattleTowerRoomMenu_DelayRestartMenu
+;	dw BattleTowerRoomMenu_QuitMessage
+;	dw BattleTowerRoomMenu_PlaceYesNoMenu
+;	dw BattleTowerRoomMenu_UpdateYesNoMenu
+;	dw BattleTowerRoomMenu_UberRestrictionMessage
+;	dw BattleTowerRoomMenu_WaitForMessage
+;	dw BattleTowerRoomMenu_DelayRestartMenu
+;	dw Function118e76 ; mobile
+;	dw BattleTowerRoomMenu_CallRoomMenu2 ; mobile
+;	dw Function118e76 ; mobile
+	
+	; the jumptable in the japanese version
+	dw BattleTowerRoomMenu_PickLevelMessage ;6849
+	dw BattleTowerRoomMenu_PlacePickLevelMenu ;7C49
+	dw BattleTowerRoomMenu_UpdatePickLevelMenu ;C849
+	dw RemovedFunction8 ;9A4A
+	dw Function11886e ;B448
+	dw Function118880 ;C648
+	dw Function11878d ;D347
+	dw Function1188b0 ;F648
+	dw Function11878d ;D347
+	dw Function1188b8 ;FE48
+	dw Function11878d ;D347
+	dw Function1188c0 ;0649
+	dw Function11878d ;D347
+	dw Function1188c8 ;0E49
+	dw Function11878d ;D347
+	dw Function118903 ;4949
+	dw Function118a65 ;4E4D
+	dw Function11878d ;D347
+	dw Function11891c ;6249
+	dw Function118a54 ;3D4D
+	dw Function11878d ;D347
+	dw RemovedFunction ;A84A
+	dw RemovedFunction2 ;D84A
+	dw RemovedFunction3 ;244B
+	dw RemovedFunction4 ;4D4C
+	dw RemovedFunction5 ;D54C
+	dw RemovedFunction6 ;DE4C
+	dw RemovedFunction7 ;154D
+	dw Function11878d ;D347
+	dw Unreferenced_Function118d35 ;5B50
+	dw Function118e6d ;9351
+	dw Function11878d ;D347
+	dw Function118e76 ;9C51
+	dw Function118e7e ;A451
+	dw Function11878d ;D347
+	dw BattleTowerRoomMenu_DoNothing ;5E40
+	dw BattleTowerRoomMenu_PartyMonTopsThisLevelMessage ;B260
+	dw BattleTowerRoomMenu_WaitForMessage ;BB60
+	dw BattleTowerRoomMenu_DelayRestartMenu ;C860
+	dw BattleTowerRoomMenu_QuitMessage ;1261
+	dw BattleTowerRoomMenu_PlaceYesNoMenu ;2E61
+	dw BattleTowerRoomMenu_UpdateYesNoMenu ;3B61
+	dw BattleTowerRoomMenu_UberRestrictionMessage ;A760
+	dw BattleTowerRoomMenu_WaitForMessage ;BB60
+	dw BattleTowerRoomMenu_DelayRestartMenu ;C860
+	dw Function118e76 ;9C51
+	dw BattleTowerRoomMenu_CallRoomMenu2;Function118e7e AD51
+	dw RemovedFunction9 ;6060
+	dw RemovedFunction10 ;6960
+	dw RemovedFunction11 ;7660
+	dw Function118e76 ;9C51
 
+; register battle tower record
 Function11857c:
 	jumptable .Jumptable, wBattleTowerRoomMenuJumptableIndex
 
@@ -956,6 +1017,7 @@ Function11878d:
 .asm_118803
 	ld a, $d3
 
+; display an error?
 SetMobileErrorCode:
 	ld [wMobileErrorCodeBuffer], a
 	xor a
@@ -1117,6 +1179,7 @@ Function118903:
 	call BattleTowerRoomMenu2
 	jp BattleTowerRoomMenu_IncrementJumptable
 
+; parse downoaded battle tower index file
 Function11891c:
 	call Function118b42
 	jp BattleTowerRoomMenu_IncrementJumptable
@@ -1202,12 +1265,14 @@ BattleTowerRoomMenu_UpdatePickLevelMenu:
 	ld a, $1
 	ldh [rSVBK], a
 	ld bc, wStringBuffer3
+; save the current selection to wStringBuffer3 for later display in a textbox (never happens in the english version)
+; this no longer works properly in the english version without a slight adjustment due to there being a space in the beginning of the strings displayed
 .asm_1189b5
 	ld a, [hli]
 	cp $50
 	jr z, .asm_1189c4
 	cp $7f
-	jr z, .asm_1189c2
+	jr z, .asm_1189b5;.asm_1189c2 ; skip space instead of finishing string
 	ld [bc], a
 	inc bc
 	jr .asm_1189b5
@@ -1281,8 +1346,12 @@ BattleTowerRoomMenu_UpdatePickLevelMenu:
 	ret c
 
 .asm_118a30
-	ld a, [wcd4f]
-	ld [w3_d800], a
+;	ld a, [wcd4f]
+;	ld [w3_d800], a
+
+	ld hl, Text_LinkingWithCenter;$621a
+	call BattleTowerRoomMenu_SetMessage
+
 	jp BattleTowerRoomMenu_IncrementJumptable
 
 .b_button
@@ -1296,12 +1365,445 @@ BattleTowerRoomMenu_UpdatePickLevelMenu:
 	call CloseWindow
 	pop af
 	ldh [rSVBK], a
-	ld a, $7
+	ld a, 39 ;BattleTowerRoomMenu_QuitMessage;$7
 	ld [wBattleTowerRoomMenuJumptableIndex], a
 	ld a, $0
 	ld [wMobileInactivityTimerFrames], a
 	ret
 
+RemovedFunction8: ; 4A9A
+    ld a, [$c31a];$c340
+    and a
+    ret nz
+
+    ld a, [wcd4f];$cd43
+    ld [$cd61], a ;$cd55
+    jp BattleTowerRoomMenu_IncrementJumptable
+
+; sort of validation of the battle room number
+RemovedFunction:
+    ld a, [wcd89];$cd7d
+    bit 0, a
+    jr nz, jr_046_4aba
+
+    ld hl, wc3ee
+    ld a, [hl+]
+    or [hl]
+    jr z, jr_046_4abf
+
+    cp $0a
+    jr nc, jr_046_4ac4
+
+jr_046_4aba:
+    ld a, $d3
+    jp Function118805;Jump_046_484b
+
+
+jr_046_4abf:
+    ld a, $d4
+    jp Function118805;Jump_046_484b
+
+
+jr_046_4ac4:
+    ld a, [wcd38];$cd2c
+    and a
+    jr nz, jr_046_4acf
+
+    ld hl, Text_EnterWhichBattleRoom;$627b
+    jr jr_046_4ad2
+
+jr_046_4acf:
+    ld hl, Text_WhichBattleRoom;$6293
+
+jr_046_4ad2:
+    call BattleTowerRoomMenu_SetMessage;Call_046_6ef1
+    call BattleTowerRoomMenu_IncrementJumptable;Call_046_635f
+
+; initialize the menu for picking the battle room
+; similar to the menu for picking the level (BattleTowerRoomMenu_PlacePickLevelMenu) 
+RemovedFunction2:
+    ld a, [$c31a];$c340
+    and a
+    ret nz
+
+    ld hl, MenuData_119cff;$6189
+	call LoadMenuHeader;$1d00
+	call MenuBox;$1c86
+	call MenuBoxCoord2Tile;$1cc8
+	call ApplyTilemap;$31e8
+    ;hlcoord 17, 8, wAttrMap ; flip the upper arrow tile
+	hlcoord 16, 8, wAttrMap
+    ld a, $40
+    or [hl]
+    ld [hl], a
+    call WaitBGMap2;$31cc
+    ld a, $01
+    ld [wcd4b], a;$cd3f
+    xor a
+    ld [wcd4c], a;$cd40
+    ld a, [$c3ee]
+    ldh [hDividend + 0], a;ldh [$b3], a
+    ld a, [$c3ef]
+    ldh [hDividend + 1], a;ldh [$b4], a
+    ld a, $0a
+    ldh [hDivisor], a;ldh [$b7], a
+    ld b, $02
+    call Divide;$30f0
+    and a
+    ldh a, [hQuotient + 3];ldh a, [$b6]
+    add $01
+    ld [wcd4d], a;$cd41
+    ldh a, [hQuotient + 2];ldh a, [$b5]
+    adc $00
+    ld [wcd4e], a;$cd42
+    call BattleTowerRoomMenu_IncrementJumptable;Call_046_635f
+
+; run the menu
+RemovedFunction3:
+    ld hl, $c54f;$c550
+    ld de, String_119d07 + 2;$6193
+    call PlaceString;$1057
+    ld hl, $c577;$c578
+    ld de, String_119d07 + 2;$6193
+    call PlaceString;$1057
+    ld a, [wcd4b];$cd3f
+    ld hl, wcd4d;$cd41
+    cp [hl]
+    jr nz, jr_046_4b51
+
+    ld a, [wcd4c];$cd40
+    inc hl
+    cp [hl]
+    jr nz, jr_046_4b51
+
+    ld hl, $c561;$c564
+    ld de, String_119d8c;$6216
+    call PlaceString;$1057
+    jr jr_046_4b79
+
+jr_046_4b51:
+	;;;; blank the cancel text might have been displayed before
+	ld hl, $c561
+    ld de, String_blank
+    call PlaceString
+	;;;;
+
+    ld hl, $c563;$c564
+    push hl
+    ld de, wcd4b;$cd3f
+    ld bc, $8103
+    call PrintNum;$3164
+    pop hl
+    ldh a, [rSVBK]
+    push af
+    ld a, $01
+    ldh [rSVBK], a
+    ld de, wStringBuffer4;$d07c
+    ld a, $03
+; save the current selection to wStringBuffer4 for later display in a textbox
+jr_046_4b6b:
+    push af
+    ld a, [hl+]
+    ld [de], a
+    inc de
+    pop af
+    dec a
+    jr nz, jr_046_4b6b
+
+    ld a, $50
+    ld [de], a
+    pop af
+    ldh [rSVBK], a
+
+jr_046_4b79: ; keys pressed checks
+    ld hl, hJoyPressed;$ffa7
+    ld a, [hl]
+    and $01
+    jp nz, Jump_046_4c02
+
+    ld a, [hl]
+    and $80
+    jr nz, jr_046_4ba0
+
+    ld a, [hl]
+    and $40
+    jr nz, jr_046_4bcc
+
+    ld a, [hl]
+    and $20
+    jr nz, jr_046_4ba0
+
+    ld a, [hl]
+    and $10
+    jr nz, jr_046_4bcc
+
+    ld a, [hl]
+    and $02
+    jp nz, Jump_046_4c2d
+
+    call Function11a9f0;Call_046_6f21
+
+jr_046_4b9f:
+    ret
+
+
+jr_046_4ba0:
+    xor a
+    ld [wcd8a], a;$cd7e
+    ld [wcd8b], a;$cd7f
+    ld a, [wcd4b];$cd3f
+    ld l, a
+    ld a, [wcd4c];$cd40
+    ld h, a
+    ld de, $ffff
+    add hl, de
+    ld a, h
+    ld [wcd4c], a;$cd40
+    ld a, l
+    ld [wcd4b], a;$cd3f
+    or h
+    jr nz, jr_046_4b9f
+
+    ld a, [wcd4d];$cd41
+    ld [wcd4b], a;$cd3f
+    ld a, [wcd4e];$cd42
+    ld [wcd4c], a;$cd40
+    jr jr_046_4b9f
+
+jr_046_4bcc:
+    xor a
+    ld [wcd8a], a;$cd7e
+    ld [wcd8b], a;$cd7f
+    ld a, [wcd4b];$cd3f
+    ld l, a
+    ld a, [wcd4c];$cd40
+    ld h, a
+    ld de, $0001
+    add hl, de
+    ld a, l
+    ld [wcd4b], a;$cd3f
+    ld a, h
+    ld [wcd4c], a;$cd40
+    ld a, [wcd4e];$cd42
+    ld hl, wcd4c;$cd40
+    cp [hl]
+    jr nz, jr_046_4b9f
+
+    dec hl
+    ld a, [wcd4d];$cd41
+    cp [hl]
+    jr nc, jr_046_4b9f
+
+    ld a, $01
+    ld [wcd4b], a;$cd3f
+    xor a
+    ld [wcd4c], a;$cd40
+    jr jr_046_4b9f
+
+; selection made
+Jump_046_4c02:
+    xor a
+    ld [wcd8a], a;$cd7e
+    ld [wcd8b], a;$cd7f
+    call PlayClickSFX;$1fcc
+    ld a, [wcd4b];$cd3f
+    ld hl, wcd4d;$cd41
+    cp [hl]
+    jr nz, jr_046_4c1c
+
+    inc hl
+    ld a, [wcd4c];$cd40
+    cp [hl]
+    jr z, jr_046_4c30
+
+jr_046_4c1c:
+    ldh a, [rSVBK]
+    push af
+    ld a, $01
+    ldh [rSVBK], a
+    call CloseWindow;$1be2
+    pop af
+    ldh [rSVBK], a
+    call BattleTowerRoomMenu_IncrementJumptable;Call_046_635f
+    ret
+
+
+Jump_046_4c2d:
+    call PlayClickSFX;$1fcc
+
+jr_046_4c30:
+    ldh a, [rSVBK]
+    push af
+    ld a, $01
+    ldh [rSVBK], a
+    call CloseWindow;$1be2
+    pop af
+    ldh [rSVBK], a
+    ld a, $27
+    ld [wcf66], a;$cf5a
+    ld a, $15
+    ld [wMobileInactivityTimerFrames], a;$cd3a
+    ld a, $1e
+    ld [wcd47], a;$cd3b
+    ret
+
+RemovedFunction4:
+    xor a
+    ld b, a
+    ld c, a
+    ld a, [wcd4f];$$cd43
+    cp $0a
+    jr nz, jr_046_4c5a
+
+    ld c, $01
+    xor a
+
+jr_046_4c5a:
+    ld [$cd61], a;$cd55
+    ld a, [wcd4b];$cd3f
+    ld l, a
+    ld a, [wcd4c];$cd40
+    ld h, a
+    ld de, $ffff
+    add hl, bc
+    add hl, de
+    ld a, l
+    and $0f
+    ldh [hDividend + 0], a;$b3
+    ld a, l
+    and $f0
+    swap a
+    ldh [hDividend + 1], a;$b4
+    ld a, h
+    and $0f
+    ldh [hDividend + 2], a;$b5
+    call Function11a80c;Call_046_6d3d
+    call RemovedFunction12;Call_046_4e2b
+    ret c
+
+    ld a, [wcd38];$cd2c
+    and a
+    jr nz, jr_046_4c92
+
+    ld a, [wcd5b];$cd4f
+    ld l, a
+    ld a, [wcd5c];$cd50
+    ld h, a
+    jr jr_046_4cae
+
+jr_046_4c92:
+    ld a, $01
+    ldh [rSVBK], a
+    ld hl, wStringBuffer3;$d071
+    ld de, wcd69;$cd5d
+    ld bc, $0016
+    call CopyBytes;$2ff2
+    ld a, $03
+    ldh [rSVBK], a
+    ld a, [wcd5f];$cd53
+    ld l, a
+    ld a, [wcd60];$cd54
+    ld h, a
+
+jr_046_4cae:
+    dec hl
+    dec hl
+    dec hl
+    dec hl
+    dec hl
+    dec hl
+    dec hl
+    ld de, $cd61;$cd55
+    ld a, $04
+
+jr_046_4cba:
+    push af
+    ld a, [de]
+    inc de
+    add $30
+    ld [hl-], a
+    pop af
+    dec a
+    jr nz, jr_046_4cba
+
+    ld hl, $dffc
+    ld de, wcd64;$cd58
+    ld c, $04
+
+jr_046_4ccc:
+    ld a, [de]
+    dec de
+    ld [hl+], a
+    dec c
+    jr nz, jr_046_4ccc
+
+    call BattleTowerRoomMenu_IncrementJumptable;Call_046_635f
+
+RemovedFunction5:
+    ld hl, Text_ThisBattleRoomPleaseWait;$62a3
+    call BattleTowerRoomMenu_SetMessage;Call_046_6ef1
+    call BattleTowerRoomMenu_IncrementJumptable;Call_046_635f
+
+RemovedFunction6:
+    ld a, [$c31a];$c340
+    and a
+    ret nz
+
+    ld a, [wcd38];$cd2c
+    and a
+    jr nz, jr_046_4cf3
+
+    ld a, [wcd53];$cd47
+    ld l, a
+    ld a, [wcd54];$cd48
+    ld h, a
+    jr jr_046_4cfb
+
+jr_046_4cf3:
+    ld a, [wcd57];$cd4b
+    ld l, a
+    ld a, [wcd58];$cd4c
+    ld h, a
+
+jr_046_4cfb:
+    call Function118e39;Call_046_515f
+    ld a, $09
+    ld [wcd3c], a;$cd30
+    ld a, $27
+    ld [wMobileInactivityTimerSeconds], a;$cd39
+    ld a, $15
+    ld [wMobileInactivityTimerFrames], a;$cd3a
+    ld a, $1e
+    ld [wcd47], a;$cd3b
+    call BattleTowerRoomMenu_IncrementJumptable;Call_046_635f
+
+RemovedFunction7:
+    call BattleTowerRoomMenu2;Call_046_6409
+    ret c
+
+    call DelayFrame;$045a
+    ld a, [wcd38];$cd2c
+    and a
+    jr nz, jr_046_4d2c
+
+    ld a, [wcd53];$cd47
+    ld l, a
+    ld a, [wcd54];$cd48
+    ld h, a
+    jr jr_046_4d34
+
+jr_046_4d2c:
+    ld a, [wcd57];$cd4b
+    ld l, a
+    ld a, [wcd58];$cd4c
+    ld h, a
+
+jr_046_4d34:
+    ld de, $d200
+    ld bc, $0e00
+    jp Function118ae4;Jump_046_4dcd
+
+; download number of available battle rooms using the 2nd URL in the index file
 Function118a54: ; unreferenced
 	ld a, [wcd55]
 	ld l, a
@@ -1311,13 +1813,16 @@ Function118a54: ; unreferenced
 	ld bc, $0004
 	jp Function118ae4
 
-Function118a65: ; unreferenced
+; download battle tower index file
+Function118a65:
 	ld hl, BattleDownloadURL
 	ld de, wcc60
 	ld bc, $80
 	call CopyBytes
-	ld de, w3_d000
-	ld bc, $1000
+	; these set up a buffer for the received data to be written too
+	; if the received data is too big, the game will display an error
+	ld de, w3_d000 ; location
+	ld bc, $1000 ; size
 	jp Function118b10
 
 SetBattleDownloadURL:
@@ -1367,6 +1872,7 @@ SetOddEggDownloadURL:
 	ld bc, $1000
 	jr Function118b10
 
+; download data from server
 Function118ae4:
 	push bc
 	push de
@@ -1397,6 +1903,7 @@ Function118ae4:
 	ld a, MOBILEAPI_15
 	jp Function119e2b
 
+; download data from server
 Function118b10:
 	push de
 	push bc
@@ -1426,6 +1933,58 @@ Function118b24:
 	ld hl, wc346
 	ret
 
+RemovedFunction12:
+    ld a, [wcd38];$cd2c
+    and a
+    ret nz
+
+    ld a, $05
+    call GetSRAMBank;$2f9d
+    ld a, [$aa5d]
+    and a
+    jr z, jr_046_4e63
+
+    ld c, a
+    ld hl, $aa5e
+
+jr_046_4e3f:
+    push hl
+    ld de, wcd64;$cd58
+    ld b, $04
+
+jr_046_4e45:
+    ld a, [de]
+    dec de
+    cp [hl]
+    jr nz, jr_046_4e59
+
+    inc hl
+    dec b
+    jr nz, jr_046_4e45
+
+    pop hl
+    call CloseSRAM;$2fad
+    ld a, $2f
+    ld [wcf66], a;$cf5a
+    scf
+    ret
+
+
+jr_046_4e59:
+    pop hl
+    push bc
+    ld bc, $0004
+    add hl, bc
+    pop bc
+    dec c
+    jr nz, jr_046_4e3f
+
+jr_046_4e63:
+    call CloseSRAM;$2fad
+    and a
+    ret
+
+; seems to parse a downloaded index file
 Function118b42:
 	ld hl, wd002
 	ld a, l
@@ -1486,32 +2045,33 @@ pushc
 setcharmap ascii
 
 ExchangeDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTJ/exchange/index.txt", 0
+	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/exchange/index.txt", 0
 
 BattleDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTJ/battle/index.txt", 0
+	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/battle/index.txt", 0
 
 NewsDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTJ/news/index.txt", 0
+	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/news/index.txt", 0
 
 StadiumDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTJ/POKESTA/menu.cgb", 0
+	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/POKESTA/menu.cgb", 0
 
 OddEggDownloadURL:
-	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTJ/tamago/index.txt", 0
+	db "http://gameboy.datacenter.ne.jp/cgb/download?name=/01/CGB-BXTE/tamago/index.txt", 0
 
 popc
 
+; validates the length of the received battle room (1428 bytes) or honor roll data (150 bytes)
 Function118d35: ; unreferenced
 	ld hl, $d200
 	ld a, [wcd38]
 	and a
 	jr nz, .asm_118d6e
 	ld a, [hli]
-	cp $94
+	cp BATTLE_TOWER_STRUCT_LENGTH * BATTLETOWER_STREAK_LENGTH & $ff ;$94
 	jr nz, .asm_118d7b
 	ld a, [hl]
-	cp $5
+	cp BATTLE_TOWER_STRUCT_LENGTH * BATTLETOWER_STREAK_LENGTH >> 8 ;$5
 	jr nz, .asm_118d7b
 	ld a, [wcd4f]
 	sla a
@@ -1526,15 +2086,15 @@ Function118d35: ; unreferenced
 	ld [s5_b2fb], a
 	call CloseSRAM
 	farcall Function170be4
-	farcall Function1700c4
+	farcall Function1700c4 ; save battle room data to sram
 	jr .asm_118d78
 
 .asm_118d6e
 	ld a, [hli]
-	cp $96
+	cp HONOR_ROLL_DATA_LENGTH & $ff;$96
 	jr nz, .asm_118d7b
 	ld a, [hl]
-	cp $0
+	cp HONOR_ROLL_DATA_LENGTH >> 8;$0
 	jr nz, .asm_118d7b
 
 .asm_118d78
@@ -2151,6 +2711,7 @@ Function1191ad:
 	and a
 	ret
 
+; seems to parse a downloaded index file
 Function1191d3:
 	ld hl, w3_d100 + 2
 	ld a, l
@@ -2179,6 +2740,7 @@ Function1191d3:
 	call Function11920f
 	ret
 
+; find CRLF line endings
 Function11920f:
 .asm_11920f
 	call Function118b9a
@@ -3257,26 +3819,35 @@ Function1198ee:
 	call BattleTowerRoomMenu_SetMessage
 	call BattleTowerRoomMenu_IncrementJumptable
 
+; battle tower data post
 Function1198f7:
 	ld a, [wc31a]
 	and a
 	ret nz
-	ld hl, wc608 + 2
+	
+	; insert email address into data to post
+	ld hl, $d820 + 2;$c608 + 2
 	call Function119940
+	
+	; configuration for post
 	ld hl, w3_d800
-	ld a, LOW(wc608)
+	ld a, LOW($d820);$c608 ; memory location of data to post
 	ld [hli], a
-	ld a, HIGH(wc608)
+	ld a, HIGH($d820);$c608
 	ld [hli], a
-	ld a, $f6
+;	ld a, $f6 ; length of data to post
+;	ld [hli], a
+;	xor a
+;	ld [hli], a
+	ld a, LOW(246 + 17)
 	ld [hli], a
-	xor a
+	ld a, HIGH(246 + 17)
 	ld [hli], a
-	ld a, LOW(wc708)
+	ld a, LOW(wc708) ; memory location of login information
 	ld [hli], a
 	ld a, HIGH(wc708)
 	ld [hli], a
-	ld a, [wcd51]
+	ld a, [wcd51] ; memory location of url
 	ld [hli], a
 	ld a, [wcd52]
 	ld [hli], a
@@ -3284,9 +3855,9 @@ Function1198f7:
 	call Function119ec2
 	ld a, $40
 	ld [wcd89], a
-	ld hl, w3_d800
-	ld de, w3_de00
-	ld bc, $200
+	ld hl, w3_d800 ; memory location of configuration for post
+	ld de, w3_de00 ; buffer location
+	ld bc, $200 ; buffer size
 	ld a, MOBILEAPI_16
 	jp Function119e2b
 
@@ -3789,6 +4360,29 @@ popc
 	and a
 	ret
 
+RemovedFunction9:
+    ld hl, Text_BattleRoomVisitLimit;$6081
+    call BattleTowerRoomMenu_SetMessage;Call_046_6ef1
+    call BattleTowerRoomMenu_IncrementJumptable;Call_046_635f
+
+RemovedFunction10:
+    ld a, [$c31a];$c340
+    and a
+    ret nz
+
+    ld a, $80
+    ld [wcd50], a;$cd44
+    call BattleTowerRoomMenu_IncrementJumptable;Call_046_635f
+
+RemovedFunction11:
+    ld hl, wcd50;$cd44
+    dec [hl]
+    ret nz
+
+    ld a, $15
+    ld [wcf66], a;$cf5a
+    ret
+
 BattleTowerRoomMenu_UberRestrictionMessage:
 	ld hl, Text_UberRestriction
 	call BattleTowerRoomMenu_SetMessage
@@ -3856,16 +4450,19 @@ BattleTowerRoomMenu_UpdateYesNoMenu:
 	ret
 
 MenuHeader_119cf7:
+MenuData_119cff:
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 12, 7, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
 	dw NULL
 	db 0 ; default option
 
-MenuData_119cff: ; unreferenced
-	db MENU_BACKUP_TILES ; flags
-	menu_coords 15, 7, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
-	dw NULL
-	db 0 ; default option
+; this is the japanese version of the room number select menu
+; the english version needs to be larger for the cancel option, so the data from above can just be reused
+;MenuData_119cff:
+;	db MENU_BACKUP_TILES ; flags
+;	menu_coords 15, 7, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+;	dw NULL
+;	db 0 ; default option
 
 String_119d07:
 	db "   ▼@"
@@ -3892,6 +4489,10 @@ Strings_Ll0ToL40:
 
 BattleTowerCancelString: ; unreferenced
 	db "CANCEL@"
+
+; to clear the cancel text, japanese version does not require this
+String_blank:
+	db "      @"
 
 BattleTower_LevelCheck:
 	ldh a, [rSVBK]
@@ -3930,7 +4531,7 @@ BattleTower_LevelCheck:
 
 .exceeds
 	pop af
-	ld a, $4
+	ld a, 36 ;BattleTowerRoomMenu_PartyMonTopsThisLevelMessage;$4
 	ld [wBattleTowerRoomMenuJumptableIndex], a
 	pop af
 	ldh [rSVBK], a
@@ -3985,13 +4586,14 @@ BattleTower_UbersCheck:
 	ld de, wcd49
 	ld bc, MON_NAME_LENGTH
 	call CopyBytes
-	ld a, $a
+	ld a, 42 ;BattleTowerRoomMenu_UberRestrictionMessage;$a
 	ld [wBattleTowerRoomMenuJumptableIndex], a
 	pop af
 	ldh [rSVBK], a
 	scf
 	ret
 
+; seems to be for interacting with the mobile adapter
 Function119e2b:
 	call MobileAPI
 
@@ -4664,11 +5266,11 @@ Function11a302:
 	hlcoord 4, 2
 	ld de, String_11a72a
 	call PlaceString
-	hlcoord 9, 4
+	hlcoord 4, 4;9, 4
 	ld de, wcd68
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
-	hlcoord 14, 4
+	hlcoord 12, 4;14, 4
 	ld de, wcd67
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
@@ -5074,79 +5676,81 @@ Function11a63c:
 	ret
 
 String_11a661:
-	db   "これから　モバイルセンターに"
-	next "でんわ<WO>かけます@"
+	db   "Dialing the"
+	next "CENTER.@"
 
 String_11a679:
-	db   "モバイルアダプタ<NO>じゅんびは"
-	next "できて　いますか？@"
+	db   "Is your MOBILE"
+	next "ADAPTER ready?@"
 
 String_11a692:
-	db   "でんわ<WO>かけています"
-	next "しばらく　おまちください@"
+	db   "Please wait"
+	next "a moment…@"
 
 String_11a6aa:
-	db   "でんわをかけると　つうわりょう"
-	next "せつぞくりょう<GA>かかります@"
+	db   "Charges will"
+	next "apply.@"
 
 String_11a6c8:
-	db   "せつぞく　しました@"
+	db   "Connected.@";"せつぞく　しました@"
 
 String_11a6d2:
-	db   "つうしん　ちゅう@"
+	db   "Communicating…@";"つうしん　ちゅう@"
 
 String_11a6db:
-	db   "つうしん　ちゅう"
-	next "セレクト　エーでちゅうし@"
+	db   "Communication";"つうしん　ちゅう"
+	next "canceled.@";"セレクト　エーでちゅうし@"
 
 String_11a6f1:
-	db   "この　サービスには"
-	next "つうわりょう<NO>ほかに@"
+	db   "This is a";"この　サービスには"
+	next "paid service.@";"つうわりょう<NO>ほかに@"
 
 String_11a706:
-	db   "おかね<GA>@"
+	db   "Cost:@";"おかね<GA>@"
 
 String_11a70b:
-	db   "えん"
-	next "かかります　よろしい　ですか？@"
+	db   "Yen";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"
 
 String_11a71e:
-	db   "つうしん　しゅうりょう@"
+	db   "Communication";"つうしん　しゅうりょう@" ; ???
+	next "ended.@"
 
 String_11a72a:
-	db   "つないだ　じかん"
-	next "　　やく　　　ふん　　　びょう@"
+	db   "Dialed for";"つないだ　じかん"
+	next "  min.,   sec.@"
 
 String_11a743:
-	db   "もっていない　データが"
-	next "あります！@"
+	db   "No data";"もっていない　データが"
+	next "available!@";"あります！@"
 
 String_11a755:
-	db   "データ<WO>よみこみますか？@"
+	db   "Read the";"データ<WO>よみこみますか？@"
+	next "data?@"
 
 String_11a762:
-	db   "おなじ　データ<WO>よみこんだ"
-	next "こと<GA>ありますが@"
+	db   "Read the";"おなじ　データ<WO>よみこんだ"
+	next "same data.@";"こと<GA>ありますが@"
 
 String_11a779:
-	db   "そのデータ<WA>なくなっているか"
-	next "こわれて　います@"
+	db   "The data was";"そのデータ<WA>なくなっているか"
+	next "corrupted.@";"こわれて　います@"
 
 String_11a791:
 	db   "もっている　データと"
 	next "おなじデータしか　ありません！@"
 
 String_11a7ac:
-	db   "データ<NO>よみこみを"
-	next "ちゅうし　しますか？@"
+	db   "Stop reading"
+	next "data?@"
 
 String_11a7c1:
-	db   "あたらしい　ニュースは"
-	next "ありません　でした@"
+	db   "There was no"
+	next "new NEWS.@"
 
 String_11a7d7:
-	db   "あたらしいニュース<GA>あります"
-	next "ニュース<WO>よみこみますか？@"
+	db   "Receive the"
+	next "new NEWS?@"
 
 String_11a7f4:
 	db   "　　　　　　　　　　　　　　　@"
@@ -5505,13 +6109,21 @@ Text_WhichBattleRoom: ; unreferenced
 	text "Which BATTLE ROOM?"
 	done
 
-Text_ThisBattleRoomPleaseWait: ; unreferenced
+Text_ThisBattleRoomPleaseWait:
+;	text_ram wStringBuffer3
+;	text "'s ROOM"
+;	line "@"
+;	text_ram wStringBuffer4
+;	text "?"
+;	cont "Please wait…"
+;	done
+
+	; less awkward
 	text_ram wStringBuffer3
-	text "'s ROOM"
-	line "@"
+	text "'s ROOM "
 	text_ram wStringBuffer4
 	text "?"
-	cont "Please wait…"
+	line "Please wait…"
 	done
 
 Function11ac3e:
@@ -5570,7 +6182,7 @@ Function11ac51:
 	ld [wOptions], a
 	ret
 
-Function11acb7:
+Function11acb7: ; mobile phone animation?
 	ld hl, TilemapPack_11ba44
 	ld a, [wcd49]
 	ld c, a
@@ -5582,12 +6194,36 @@ Function11acb7:
 	sla c
 	rl b
 	add hl, bc
-	decoord 6, 6
+	decoord 5, 12 ;6, 6
 	ld a, [hli]
 	ld [de], a
-	decoord 0, 7
-	ld bc, 7
-	call CopyBytes
+	decoord 4, 6 ;0, 7
+	;ld bc, 7
+	;call CopyBytes
+	
+	; vertical
+	ld a, [hli]
+	ld [de], a
+	decoord 4, 7
+	ld a, [hli]
+	ld [de], a
+	decoord 4, 8
+	ld a, [hli]
+	ld [de], a
+	decoord 4, 9
+	ld a, [hli]
+	ld [de], a
+	decoord 4, 10
+	ld a, [hli]
+	ld [de], a
+	decoord 4, 11
+	ld a, [hli]
+	ld [de], a
+	decoord 4, 12
+	ld a, [hli]
+	ld [de], a
+	
+	
 	ld a, [wcd49]
 	inc a
 	ld [wcd49], a
@@ -5608,9 +6244,33 @@ Function11acb7:
 	sla c
 	rl b
 	add hl, bc
-	decoord 3, 9
-	ld bc, 7
-	call CopyBytes
+	decoord 2, 8 ;3, 9 ; wanted pokemon animation coordinates
+	;ld bc, 7
+	;call CopyBytes
+	
+	; vertical
+	ld a, [hli]
+	ld [de], a
+	decoord 2, 9
+	ld a, [hli]
+	ld [de], a
+	decoord 2, 10
+	ld a, [hli]
+	ld [de], a
+	decoord 2, 11
+	ld a, [hli]
+	ld [de], a
+	decoord 2, 12
+	ld a, [hli]
+	ld [de], a
+	decoord 2, 13
+	ld a, [hli]
+	ld [de], a
+	decoord 2, 14
+	ld a, [hli]
+	ld [de], a
+	
+	
 	ld a, [wcd4a]
 	inc a
 	ld [wcd4a], a
@@ -5687,11 +6347,11 @@ Function11ad95:
 	ld hl, MenuHeader_11ae38
 	call LoadMenuHeader
 	call MenuBox
-	hlcoord 12, 12
+	hlcoord 10, 12 ;12, 12
 	ld de, String_11ae40
 	call PlaceString
-	hlcoord 10, 10, wAttrmap
-	lb bc, 8, 8
+	hlcoord 8, 10, wAttrMap ;10, 10, wAttrMap
+	lb bc, 8, 10 ;8
 	call Function11afd6
 	farcall ReloadMapPart
 	call MobileIncJumptableIndex
@@ -5752,7 +6412,7 @@ Function11adc4:
 	ld [hl], a
 	and a
 	jr z, .asm_11ae28
-	hlcoord 2, 14
+	hlcoord 7, 4 ;2, 14
 	ld a, [wMenuCursorY]
 	cp $2
 	jr z, .asm_11ae23
@@ -5777,21 +6437,21 @@ Function11adc4:
 
 MenuHeader_11ae38:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 10, 10, 17, SCREEN_HEIGHT - 1
+	menu_coords  8, 10, 17, SCREEN_HEIGHT - 1
 	dw NULL
 	db 0 ; default option
 
 String_11ae40:
-	db   "どちらでも"
-	next "♂オス"
-	next "♀メス"
+	db   "EITHER"
+	next "♂MALE" ; male
+	next "♀FEMALE" ; female
 	db   "@"
 
 Function11ae4e:
 	ld hl, MenuHeader_11afe8
 	call LoadMenuHeader
 	call MenuBox
-	hlcoord 10, 14
+	hlcoord 8, 14 ;10, 14
 	ld de, String_11aff0
 	call PlaceString
 	ld hl, MenuHeader_11b013
@@ -5803,8 +6463,8 @@ Function11ae4e:
 	hlcoord 14, 7, wAttrmap
 	lb bc, 5, 6
 	call Function11afd6
-	hlcoord 9, 12, wAttrmap
-	lb bc, 6, 11
+	hlcoord 7, 12, wAttrMap ;9, 12, wAttrMap
+	lb bc, 6, 13 ;11
 	call Function11afd6
 	farcall ReloadMapPart
 	call MobileIncJumptableIndex
@@ -5832,7 +6492,7 @@ Function11ae98:
 	ret z
 	call PlayClickSFX
 .asm_11aeb4
-	hlcoord 2, 14
+	hlcoord 7, 4 ;2, 14
 	ld a, $7f
 	ld [hl], a
 	ld a, $1
@@ -5881,7 +6541,7 @@ Function11af04:
 	ld hl, MenuHeader_11afe8
 	call LoadMenuHeader
 	call MenuBox
-	hlcoord 10, 14
+	hlcoord 8, 14 ;10, 14
 	ld de, String_11b003
 	call PlaceString
 	ld hl, MenuHeader_11b013
@@ -5893,8 +6553,8 @@ Function11af04:
 	hlcoord 14, 7, wAttrmap
 	lb bc, 5, 6
 	call Function11afd6
-	hlcoord 9, 12, wAttrmap
-	lb bc, 6, 11
+	hlcoord 7, 12, wAttrMap ;9, 12, wAttrMap
+	lb bc, 6, 13 ;11
 	call Function11afd6
 	farcall ReloadMapPart
 	call MobileIncJumptableIndex
@@ -5922,7 +6582,7 @@ Function11af4e:
 	ret z
 	call PlayClickSFX
 .asm_11af6a
-	hlcoord 2, 14
+	hlcoord 7, 4 ;2, 14
 	ld a, $7f
 	ld [hl], a
 	ld a, $1
@@ -5989,9 +6649,9 @@ asm_11afbd:
 	ret
 
 Unknown_11afcc:
-	dwcoord 11, 12
-	dwcoord 11, 14
-	dwcoord 11, 16
+	dwcoord 9, 12 ;11, 12
+	dwcoord 9, 14 ;11, 14
+	dwcoord 9, 16 ;11, 16
 
 Unknown_11afd2:
 	dwcoord 15,  8
@@ -6016,17 +6676,17 @@ Function11afd6:
 
 MenuHeader_11afe8:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 9, 12, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
+	menu_coords 7, 12, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
 	dw NULL
 	db 0 ; default option
 
 String_11aff0:
-	db   "この　じょうけんで"
-	next "よろしいですか?@"
+	db   "Is this"
+	next "correct?@"
 
 String_11b003:
-	db   "こうかんを"
-	next "ちゅうししますか？@"
+	db   "Do you want"
+	next "to quit?@"
 
 MenuHeader_11b013:
 	db MENU_BACKUP_TILES ; flags
@@ -6035,8 +6695,8 @@ MenuHeader_11b013:
 	db 1 ; default option
 
 String_11b01b:
-	db   "はい"
-	next "いいえ@"
+	db   "YES"
+	next "NO@"
 
 Function11b022:
 	ld a, [wcd2e]
@@ -6078,7 +6738,7 @@ Function11b03d:
 .done
 	dec hl
 	push hl
-	ld e, 4
+	ld e, 2
 	ld d, 0
 	add hl, de
 	ld e, l
@@ -6101,16 +6761,16 @@ Function11b03d:
 	ld hl, .FemaleString
 
 .got_string
-	ld bc, 4 ; string length
+	ld bc, 2 ; string length
 	call CopyBytes
 	ret
 
-.MaleString: db "オスの　"
-.FemaleString: db "メスの　"
+.MaleString: db "♂　"
+.FemaleString: db "♀　"
 
 Function11b082:
 	call Function11b242
-	ld a, $7
+	ld a, $4 ;7 menu height
 	ld [wc7d3], a
 	call Function11b099
 	call Function11b295
@@ -6119,8 +6779,8 @@ Function11b082:
 	jp MobileIncJumptableIndex
 
 Function11b099:
-	ld c, $6
-	hlcoord 11, 1
+	ld c, $B ;6 menu width
+	hlcoord 7, 7;11, 1
 	ld a, [wc7d3]
 	add a
 	ld b, a
@@ -6133,7 +6793,7 @@ Function11b099:
 	add hl, de
 	ld e, l
 	ld d, h
-	hlcoord 11, 2
+	hlcoord 7, 8;11, 2
 	ld a, [wc7d3]
 .loop
 	push af
@@ -6434,14 +7094,14 @@ Function11b239:
 	ld l, a
 	ret
 
-Function11b242:
-	hlcoord 3, 4
+Function11b242: ; pokemon to trade
+	hlcoord 8, 2 ;3, 4
 	ld de, wStringBuffer3
 	call PlaceString
 	xor a
 	ld [wMonType], a
 	farcall GetGender
-	hlcoord 1, 4
+	hlcoord 7, 2 ;1, 4
 	ld a, [wCurPartySpecies]
 	ld bc, wcd2f
 	ld [bc], a
@@ -6490,11 +7150,11 @@ Function11b279:
 .asm_11b294
 	ret
 
-Function11b295:
-	hlcoord 4, 13
-	ld de, String_11b308
-	call PlaceString
-	hlcoord 4, 14
+Function11b295: ; pokemon to receive
+	;hlcoord 8, 3 ;4, 13
+	;ld de, String_11b308
+	;call PlaceString
+	hlcoord 8, 4 ;4, 14
 	ld de, String_11b308
 	call PlaceString
 	call Function11b20b
@@ -6512,7 +7172,7 @@ Function11b295:
 	add hl, bc
 	ld e, [hl]
 	farcall FlyFunction_GetMonIcon
-	hlcoord 4, 14
+	hlcoord 8, 4 ;4, 14
 	push hl
 	call GetPokemonName
 	jr .asm_11b2e7
@@ -6524,14 +7184,14 @@ Function11b295:
 	ld b, a
 	ld hl, $0007
 	add hl, bc
-	ld a, $50
+	ld a, $60 ;$50 move pokemon icon off screen
 	ld [hl], a
-	hlcoord 4, 13
+	hlcoord 8, 4 ;4, 13
 	push hl
 	ld de, String_11b30e
 
 .asm_11b2e7
-	ld a, NAME_LENGTH_JAPANESE
+	ld a, MON_NAME_LENGTH ;6 crash fix
 	ld bc, wStringBuffer4
 .asm_11b2ec
 	push af
@@ -6548,17 +7208,18 @@ Function11b295:
 	call PlaceString
 	ret
 
-String_11b2fe: ; unreferenced
-	db "あげる#@"
+; bank space, these are unused anyway
+;String_11b2fe: ; unreferenced
+;	db "あげる#@"
 
-String_11b303: ; unreferenced
-	db "ほしい#@"
+;String_11b303: ; unreferenced
+;	db "ほしい#@"
 
 String_11b308:
-	db "　　　　　@"
+	db "　　　　　　　　　　@"
 
 String_11b30e:
-	db "みはっけん@"
+	db "?????@" ;"みはっけん@"
 
 Function11b314:
 	call Function11b31b
@@ -6571,9 +7232,9 @@ Function11b31b:
 	cp 2
 	jr c, .tilemap_1
 	ld a, [wc7d1]
-	cp 4
+	cp 1 ;4
 	jr nc, .tilemap_3
-	cp 3
+	cp 0 ;3
 	jr c, .tilemap_1
 	ld a, [wJumptableIndex]
 	cp 2
@@ -6598,20 +7259,20 @@ Function11b31b:
 	ret
 
 .Coords:
-	dbpixel 3, 11, 2, 6 ;  0
-	dbpixel 3, 12, 2, 6 ;  1
-	dbpixel 3, 13, 2, 6 ;  2
-	dbpixel 3, 14, 2, 6 ;  3
-	dbpixel 3, 15, 2, 6 ;  4
-	dbpixel 3, 16, 2, 6 ;  5
-	dbpixel 3, 17, 2, 6 ;  6
-	dbpixel 4, 11, 2, 6 ;  7
-	dbpixel 4, 12, 2, 6 ;  8
-	dbpixel 4, 13, 2, 6 ;  9
-	dbpixel 4, 14, 2, 6 ; 10
-	dbpixel 4, 15, 2, 6 ; 11
-	dbpixel 4, 16, 2, 6 ; 12
-	dbpixel 4, 17, 2, 6 ; 13
+	dbpixel  9,  7, 2, 6 ;  0
+	dbpixel  9,  8, 2, 6 ;  1
+	dbpixel  9,  9, 2, 6 ;  2
+	dbpixel  9, 15, 2, 9 ;  3
+	dbpixel  9, 16, 2, 6 ;  4
+	dbpixel  9, 17, 2, 6 ;  5
+	dbpixel  9, 18, 2, 1 ;  6
+	dbpixel 10,  7, 2, 6 ;  7
+	dbpixel 10,  8, 2, 6 ;  8
+	dbpixel 10,  9, 2, 6 ;  9
+	dbpixel 10, 15, 2, 9 ; 10
+	dbpixel 10, 16, 2, 6 ; 11
+	dbpixel 10, 17, 2, 6 ; 12
+	dbpixel 10, 18, 2, 1 ; 13
 	db -1
 
 .Tilemap1: ; vtiles
@@ -6689,34 +7350,34 @@ Function11b397:
 	inc de
 	jr .loop
 
-Function11b3b6: ; unreferenced
-.loop
-	ld a, [hl]
-	cp -1
-	ret z
-	ld a, [wcd4d]
-	and $7
-	swap a
-	add [hl]
-	inc hl
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	push hl
-	ld l, c
-	ld h, b
-	ld a, [wcd4e]
-	add [hl]
-	inc bc
-	ld [de], a
-	inc de
-	pop hl
-	ld a, $5
-	ld [de], a
-	inc de
-	jr .loop
+;Function11b3b6: ; removed because bank space needed
+;.loop
+;	ld a, [hl]
+;	cp -1
+;	ret z
+;	ld a, [wcd4d]
+;	and $7
+;	swap a
+;	add [hl]
+;	inc hl
+;	ld [de], a
+;	inc de
+;	ld a, [hli]
+;	ld [de], a
+;	inc de
+;	push hl
+;	ld l, c
+;	ld h, b
+;	ld a, [wcd4e]
+;	add [hl]
+;	inc bc
+;	ld [de], a
+;	inc de
+;	pop hl
+;	ld a, $5
+;	ld [de], a
+;	inc de
+;	jr .loop
 
 Function11b3d9:
 	ld de, wShadowOAMSprite28

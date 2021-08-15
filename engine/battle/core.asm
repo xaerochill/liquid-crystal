@@ -229,7 +229,7 @@ BattleTurn:
 	ret
 
 Stubbed_Increments5_a89a:
-	ret
+;	ret
 	ld a, BANK(s5_a89a) ; MBC30 bank used by JP Crystal; inaccessible by MBC3
 	call OpenSRAM
 	ld hl, s5_a89a + 1 ; address of MBC30 bank

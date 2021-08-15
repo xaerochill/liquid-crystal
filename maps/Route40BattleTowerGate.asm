@@ -9,14 +9,23 @@ Route40BattleTowerGate_MapScripts:
 	callback MAPCALLBACK_OBJECTS, RouteBattleTowerGateShowSailorCallback
 
 RouteBattleTowerGateShowSailorCallback:
+	special Mobile_DummyReturnFalse
+	iffalse .nomobile
 	clearevent EVENT_BATTLE_TOWER_OPEN_CIVILIANS
-	endcallback
+
+.nomobile
+	return
 
 Route40BattleTowerGateRockerScript:
-	jumptextfaceplayer Route40BattleTowerGateRockerText
+	jumptextfaceplayer UnknownText_0x9f783
 
 Route40BattleTowerGateTwinScript:
-	jumptextfaceplayer Route40BattleTowerGateTwinText
+	special Mobile_DummyReturnFalse
+	iftrue .mobile
+	jumptextfaceplayer UnknownText_0x9f66f
+
+.mobile
+	jumptextfaceplayer UnknownText_0x9f6ba
 
 Route40BattleTowerGateUnusedText1: ; unreferenced
 	text "Did you come to"

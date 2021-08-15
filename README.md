@@ -1,3 +1,18 @@
+Old Pokemon Crystal mobile restoration project I did casually when feeling bored.
+Nearly all added stuff was disassembled from the Japanese ROM.
+Decided to upload this here as it's the most complete restoration so far (at least that I know of) and it might be useful to someone.
+
+Things that still need work (as far as I remember):
+- Easy Chat is not localized yet (fun)
+- many graphics still need localization
+- SRAM layout is terrible right now
+- some random NPCs throughout the game might not have their original text restored yet
+- translations could be better
+
+To use this properly with an already existing save file for normal Crystal:
+- let the emulator create a new save for this mod, start a new game and save once you can
+- open your normal Crystal save and the newly created one in a hex editor and replace the first 0x8000 bytes of the new save with the first 0x8000 bytes of your normal Crystal save
+
 # Pokémon Crystal [![Build Status][ci-badge]][ci]
 
 This is a disassembly of Pokémon Crystal.
