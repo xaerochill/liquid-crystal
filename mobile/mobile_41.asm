@@ -583,7 +583,7 @@ DeleteMobileEventIndex: ; after Call_041_6208 in jp
 	ld bc, $0083
 	xor a
 	call ByteFill
-	ld hl, $a07d
+	ld hl, sTrainerRankingShortestMagikarp
 	ld a, $03
 	ld [hl+], a
 	ld [hl], $e8
@@ -851,9 +851,9 @@ Mobile_AlwaysReturnNotCarry:
 ;	or a
 ;	ret
 
-Function106331: ; unreferenced
-; called by Mobile_DummyReturnFalse in JP Crystal
-	; check ~[s4_b000] == [s7_a800]
+Function106331:
+; called by Mobile_DummyReturnFalse in Crystal-J
+	; check ~[4:b000] == [7:a800]
 	ld a, BANK(s4_b000)
 	call OpenSRAM
 	ld a, [s4_b000]

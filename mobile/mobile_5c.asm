@@ -42,13 +42,13 @@ Function17005a:
 	ld [wOTTrademonSpecies], a
 	ld hl, sOfferMonSender
 	ld de, wOTTrademonSenderName
-	ld bc, NAME_LENGTH_JAPANESE - 1
+	ld bc, NAME_LENGTH - 1
 	call CopyBytes
 	ld a, "@"
 	ld [de], a
 	ld hl, sOfferMonOT
 	ld de, wOTTrademonOTName
-	ld bc, NAME_LENGTH_JAPANESE - 1
+	ld bc, MON_NAME_LENGTH - 1
 	call CopyBytes
 	ld a, "@"
 	ld [de], a
@@ -93,7 +93,7 @@ Clears5_a89a:
 	call CloseSRAM
 	ret
 
-Function170c06: ; unreferenced
+Function170c06:
 	ld a, BANK(s5_a894)
 	call OpenSRAM
 	ld hl, s5_a894

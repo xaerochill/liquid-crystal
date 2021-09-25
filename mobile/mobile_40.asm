@@ -1250,7 +1250,7 @@ Function1007f6:
 	call Function1006dc
 	ld a, $04
 	call OpenSRAM
-	ld hl, $a802
+	ld hl, s4_a800 + 2
 	call Function100826
 	call CloseSRAM
 	ld hl, wcd6e
@@ -2435,8 +2435,8 @@ Unknown_100ff3:
 	macro_100fc0 wPlayerID,            2
 	macro_100fc0 wSecretID,            2
 	macro_100fc0 wPlayerGender,        1
-	macro_100fc0 s4_a603,              8
-	macro_100fc0 s4_a007,              PARTYMON_STRUCT_LENGTH
+	macro_100fc0 sPhoneNumber,         PHONE_NUMBER_LENGTH
+	macro_100fc0 s4_a007,              EASY_CHAT_MESSAGE_LENGTH * 4
 	db -1 ; end
 
 Unknown_10102c:
@@ -4690,8 +4690,8 @@ Function1020bf:
 	and a
 	jr z, .asm_1020e8
 	dec a
-	ld hl, $a04c + 4 ; phone number of 1st friend in card folder
-	ld bc, $25 + 4
+	ld hl, sCardFolderData + 21 ; phone number of 1st friend in card folder
+	ld bc, CARD_FOLDER_ENTRY_LENGTH
 	call AddNTimes
 	ld d, h
 	ld e, l
@@ -4731,14 +4731,14 @@ Function1020ea:
 	ret
 
 Function102112: ; search entry in card folder matching to opponent?
-	ld a, BANK(s4_a03b)
+	ld a, BANK(sCardFolderData)
 	call OpenSRAM
-	ld hl, $a041 + 2; trainer name of 1st friend in card folder
-	ld c, 35 ;40
+	ld hl, sCardFolderData + 8; trainer name of 1st friend in card folder
+	ld c, NUM_CARD_FOLDER_ENTRIES
 .outer_loop
 	push hl
 	ld de, $c60f + 2
-	ld b, 31; + 4
+	ld b, 31
 .inner_loop
 	ld a, [de]
 	cp [hl]
@@ -4753,7 +4753,7 @@ Function102112: ; search entry in card folder matching to opponent?
 
 .not_matching
 	pop hl
-	ld de, 37 + 4
+	ld de, CARD_FOLDER_ENTRY_LENGTH
 	add hl, de
 	dec c
 	jr nz, .outer_loop
@@ -6309,9 +6309,9 @@ Function102c3b:
 
 Function102c48:
 	farcall Function10165a
-	ld a, 0
+	ld a, BANK(sPartyMail)
 	call OpenSRAM
-	ld hl, $a600
+	ld hl, sPartyMail
 	ld de, wc608
 	ld bc, $2f
 	call Function102c71
@@ -6347,15 +6347,15 @@ Function102c87:
 	ld a, [wPartyCount]
 	ld [wcf64], a
 	ld a, 0
-	ld hl, $a600
+	ld hl, sPartyMail
 	ld de, wc608
-	ld bc, $11a
+	ld bc, MAIL_STRUCT_LENGTH * 6
 	call Function102d3e
 	call Function102cee
 	ld a, 0
 	ld hl, wc608
-	ld de, $a600
-	ld bc, $11a
+	ld de, sPartyMail
+	ld bc, MAIL_STRUCT_LENGTH * 6
 	call Function102d3e
 	ld a, [wcd4d]
 	ld [wJumptableIndex], a
@@ -6364,13 +6364,13 @@ Function102c87:
 	ld a, $05
 	ld hl, w5_da00
 	ld de, wc608
-	ld bc, $11a
+	ld bc, MAIL_STRUCT_LENGTH * 6
 	call FarCopyWRAM
 	call Function102cee
 	ld a, $05
 	ld hl, wc608
 	ld de, w5_da00
-	ld bc, $11a
+	ld bc, MAIL_STRUCT_LENGTH * 6
 	call FarCopyWRAM
 	pop af
 	ld [wcf64], a

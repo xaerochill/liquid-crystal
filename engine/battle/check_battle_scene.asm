@@ -21,7 +21,7 @@ CheckBattleScene:
 
 	ld a, BANK(s4_a60c) ; MBC30 bank used by JP Crystal; inaccessible by MBC3
 	call OpenSRAM
-	ld a, [s4_a60c]
+	ld a, [s4_a60c] ; address of MBC30 bank
 	ld c, a
 	call CloseSRAM
 

@@ -1741,13 +1741,13 @@ StageDataForNameCard:
 	ld a, [sCrystalData + 0]
 	ld [de], a
 	inc de
-	ld a, BANK(s4_a603) ; aka BANK(s4_a007) ; MBC30 bank used by JP Crystal; inaccessible by MBC3
+	ld a, 4 ; MBC30 bank used by JP Crystal; inaccessible by MBC3
 	call OpenSRAM
-	ld hl, s4_a603 ; address of MBC30 bank
-	ld bc, 8
+	ld hl, sPhoneNumber ; address of MBC30 bank
+	ld bc, PHONE_NUMBER_LENGTH
 	call CopyBytes
 	ld hl, s4_a007 ; address of MBC30 bank
-	ld bc, 12
+	ld bc, EASY_CHAT_MESSAGE_LENGTH
 	call CopyBytes
 	call CloseSRAM
 	ret

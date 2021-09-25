@@ -382,9 +382,9 @@ Function4a28a:
 	call LoadMenuHeader
 	
 	;call LoadStandardMenuHeader
-	ld a, $5
+	ld a, BANK(sMobileLoginPassword)
 	call OpenSRAM
-	ld a, [$aa4b]
+	ld a, [sMobileLoginPassword]
 	call CloseSRAM
 	and a
 	jr z, .asm_4a2df

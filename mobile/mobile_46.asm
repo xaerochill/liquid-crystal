@@ -1938,14 +1938,14 @@ RemovedFunction12:
     and a
     ret nz
 
-    ld a, $05
+    ld a, BANK(s5_aa5d)
     call GetSRAMBank;$2f9d
-    ld a, [$aa5d]
+    ld a, [s5_aa5d]
     and a
     jr z, jr_046_4e63
 
     ld c, a
-    ld hl, $aa5e
+    ld hl, s5_aa5d + 1
 
 jr_046_4e3f:
     push hl
@@ -2536,7 +2536,7 @@ Function119054:
 	ld a, [wcd4f]
 	ld [s5_b1b3], a
 	ld a, [wcd50]
-	ld [s5_b1b4], a
+	ld [s5_b1b3 + 1], a
 	ld hl, wcd20
 	ld de, s5_aa7f
 	ld bc, 12
@@ -2548,7 +2548,7 @@ Function119054:
 	ld a, [wd474]
 	ld [s5_b2f3], a
 	ld hl, wd475
-	ld de, s5_b2f4
+	ld de, s5_b2f3 + 1
 	ld bc, 4
 	call CopyBytes
 	pop af
@@ -2583,14 +2583,14 @@ Function1190ec:
 	ld a, $1
 	ld [s5_aa72], a
 	call CloseSRAM
-	ld a, BANK(s6_a000)
+	ld a, BANK(sNewsData)
 	call OpenSRAM
 	ld a, [w3_d000]
 	ld c, a
 	ld a, [w3_d000 + 1]
 	ld b, a
 	ld hl, wd002
-	ld de, s6_a000
+	ld de, sNewsData
 	call Function119192
 	ret c
 	ld a, [wcd89]
@@ -2784,7 +2784,7 @@ Function119223:
 	ld [s5_b1b1], a
 	ld c, a
 	ld a, [hli]
-	ld [s5_b1b2], a
+	ld [s5_b1b1 + 1], a
 	ld b, a
 	ld de, s5_b1d3
 	call CopyBytes
@@ -4275,7 +4275,7 @@ Function119b6b:
 	ld a, [wcf64]
 	ld [s5_b090], a
 	ld a, [wcf65]
-	ld [s5_b091], a
+	ld [s5_b090 + 1], a
 	ld hl, w3_d800
 	ld de, s5_b023
 	ld bc, 105
@@ -7742,29 +7742,29 @@ Function11b5e8:
 	ld bc, 4
 	call CopyBytes
 	call CloseSRAM
-	ld a, $5
+	ld a, BANK(s5_b08c)
 	call OpenSRAM
 	ld hl, wc608
-	ld de, $b08c
+	ld de, s5_b08c
 	ld bc, 4
 	call CopyBytes
 	ld a, $2
-	ld [$a800], a
-	ld a, [$a81f]
+	ld [s5_a800], a
+	ld a, [s5_a81f]
 	ld [wcd2a], a
-	ld a, [$a820]
+	ld a, [s5_a81f + 1]
 	ld [wcd2b], a
-	ld a, [$a821]
+	ld a, [s5_a81f + 2]
 	ld [wcd2c], a
-	ld a, [$a822]
+	ld a, [s5_a81f + 3]
 	ld [wcd2d], a
-	ld a, [$a823]
+	ld a, [s5_a823]
 	ld [wcd2e], a
-	ld a, [$a824]
+	ld a, [s5_a824]
 	ld [wcd2f], a
-	ld a, [$a825]
+	ld a, [s5_a825]
 	ld [wcd30], a
-	ld a, [$a826]
+	ld a, [s5_a825 + 1]
 	ld [wcd31], a
 	call CloseSRAM
 	call Mobile46_InitJumptable
@@ -8035,11 +8035,11 @@ Function11b879:
 	ld [wScriptVar], a
 	ld a, [s5_a890]
 	ld [wcd49], a
-	ld a, [s5_a891]
+	ld a, [s5_a890 + 1]
 	ld [wcd4a], a
-	ld a, [s5_a892]
+	ld a, [s5_a890 + 2]
 	ld [wcd4b], a
-	ld a, [s5_a893]
+	ld a, [s5_a890 + 3]
 	ld [wcd4c], a
 	call CloseSRAM
 	ld a, [wScriptVar]

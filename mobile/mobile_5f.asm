@@ -601,14 +601,14 @@ Function17d314:
 	call CloseSRAM
 	cp $21
 	jr nc, .asm_17d354
-	ld a, BANK(s6_a006)
+	ld a, BANK(sNewsData)
 	call OpenSRAM
 	ld l, 0
 	ld h, l
-	ld de, s6_a006
-	ld a, [s6_a004]
+	ld de, sNewsData + 6
+	ld a, [sNewsData + 4]
 	ld c, a
-	ld a, [s6_a005]
+	ld a, [sNewsData + 5]
 	ld b, a
 .asm_17d336
 	push bc
@@ -622,10 +622,10 @@ Function17d314:
 	ld a, b
 	or c
 	jr nz, .asm_17d336
-	ld a, [s6_a002]
+	ld a, [sNewsData + 2]
 	cp l
 	jr nz, .asm_17d354
-	ld a, [s6_a003]
+	ld a, [sNewsData + 3]
 	cp h
 	jr nz, .asm_17d354
 	call CloseSRAM
@@ -634,10 +634,10 @@ Function17d314:
 
 .asm_17d354
 	call CloseSRAM
-	ld a, $5
+	ld a, BANK(s5_aa73)
 	call OpenSRAM
 	xor a
-	ld hl, $aa73
+	ld hl, s5_aa73
 	ld bc, $c
 	call ByteFill
 	call CloseSRAM
@@ -688,9 +688,9 @@ Function17d370:
 	ld [wBGMapBuffer], a
 	ld a, $d0
 	ld [wcd21], a
-	ld a, BANK(s6_a006)
+	ld a, BANK(sNewsData)
 	call OpenSRAM
-	ld hl, s6_a006
+	ld hl, sNewsData + 6
 	ld de, w4_d000
 	ld bc, $1000
 	call CopyBytes
@@ -1002,17 +1002,17 @@ Function17d5f6:
 Function17d60b:
 	ld a, $5
 	call OpenSRAM
-	ld hl, $b1d3
+	ld hl, s5_b1d3
 	ld de, wc608
 	ld bc, $20
 	call CopyBytes
-	ld a, [$b1b1]
+	ld a, [s5_b1b1]
 	ld c, a
-	ld a, [$b1b2]
+	ld a, [s5_b1b1 + 1]
 	ld b, a
-	ld a, [$b1b3]
+	ld a, [s5_b1b3]
 	ld l, a
-	ld a, [$b1b4]
+	ld a, [s5_b1b3 + 1]
 	ld h, a
 	call CloseSRAM
 	ld a, $6
@@ -1078,10 +1078,10 @@ Function17d60b:
 	ld a, $5
 	call OpenSRAM
 	ld hl, wc708
-	ld de, $b1b3
-	ld a, [$b1b1]
+	ld de, s5_b1b3
+	ld a, [s5_b1b1]
 	ld c, a
-	ld a, [$b1b2]
+	ld a, [s5_b1b1 + 1]
 	ld b, a
 	call CopyBytes
 	call CloseSRAM
@@ -1094,14 +1094,14 @@ Function17d6a1:
 	ld b, 0
 	ld a, $5
 	call OpenSRAM
-	ld hl, $b1d3
+	ld hl, s5_b1d3
 	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld [wcd47], a
 	ld a, [hl]
 	ld [wBGMapPalBuffer], a
-	ld hl, $b1b3
+	ld hl, s5_b1b3
 	add hl, bc
 	add hl, bc
 	ld a, [hli]
@@ -1229,9 +1229,9 @@ Function17d78d:
 	ld a, [hli]
 	ld b, a
 	call HlToCrashCheckPointer
-	ld a, BANK(s6_a006)
+	ld a, BANK(sNewsData)
 	call OpenSRAM
-	ld hl, s6_a006
+	ld hl, sNewsData + 6
 	add hl, bc
 	ld de, w4_d000
 	ld bc, $1000
@@ -2938,10 +2938,10 @@ Function17e2a7:
 	call Function17e349
 	xor a
 	ld [wcd7a], a
-	ld a, $5
+	ld a, BANK(s5_aa73)
 	call OpenSRAM
-	ld hl, $aa73
-	ld de, $aa7f
+	ld hl, s5_aa73
+	ld de, s5_aa7f
 	ld bc, $c
 	call CopyBytes
 	call CloseSRAM
@@ -2977,7 +2977,7 @@ Function17e32b:
 	ld a, $5
 	call OpenSRAM
 	ld hl, wc608
-	ld de, $b0b1
+	ld de, s5_b0b1
 	ld bc, $40
 	call CopyBytes
 	ld hl, wBGMapBuffer
@@ -2989,7 +2989,7 @@ Function17e32b:
 Function17e349:
 	ld a, $5
 	call OpenSRAM
-	ld hl, $b0b1
+	ld hl, s5_b0b1
 	ld de, wc608
 	ld bc, $40
 	call CopyBytes
@@ -4179,9 +4179,9 @@ Function17f382:
 	jr .asm_17f3ab
 
 .asm_17f3a3
-	ld a, BANK(s5_b2f4)
+	ld a, BANK(s5_b2f3)
 	call OpenSRAM
-	ld de, s5_b2f4
+	ld de, s5_b2f3 + 1
 
 .asm_17f3ab
 	ld a, PRINTNUM_LEADINGZEROS | 2

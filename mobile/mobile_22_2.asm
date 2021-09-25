@@ -156,7 +156,7 @@ Function8b3a4:
 	ret
 
 Function8b3b0:
-	ld bc, s4_a037
+	ld bc, sCardFolderPasscode ; 4:a037
 	ld a, [s4_a60b]
 	and a
 	jr z, .asm_8b3c2
@@ -479,7 +479,7 @@ Function8b555:
 .strings_equal
 	call OpenSRAMBank4
 	ld hl, wd013
-	ld de, s4_a037
+	ld de, sCardFolderPasscode ; 4:a037
 	ld bc, $4
 	call CopyBytes
 	call CloseSRAM
@@ -536,7 +536,7 @@ Function8b5e7:
 	ld bc, wd013
 	call Function8b493
 	call OpenSRAMBank4
-	ld hl, s4_a037
+	ld hl, sCardFolderPasscode ; 4:a037
 	call Function8b3a4
 	call CloseSRAM
 	jr z, .asm_8b635
@@ -890,10 +890,10 @@ Function8b84b:
 	ret
 
 Function8b855:
-	ld a, $23;$28
+	ld a, NUM_CARD_FOLDER_ENTRIES
 	ld hl, wd002
 	ld [hli], a
-	ld c, $23;$28
+	ld c, NUM_CARD_FOLDER_ENTRIES
 	xor a
 .asm_8b85e
 	inc a

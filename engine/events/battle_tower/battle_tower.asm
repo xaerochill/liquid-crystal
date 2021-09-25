@@ -165,11 +165,11 @@ Function170139:
 	dec a
 	jr nz, .CopyLoop
 
-	; easy chat messages?
+	; easy chat messages
 	ld a, BANK(s4_a013)
 	call OpenSRAM
 	ld hl, s4_a013
-	ld bc, 36
+	ld bc, EASY_CHAT_MESSAGE_LENGTH * 3
 	call CopyBytes
 	call CloseSRAM
 	
