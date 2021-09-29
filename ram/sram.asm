@@ -290,17 +290,17 @@ sOfferGender::     db
 sOfferSpecies::    db
 sOfferReqGender::  db
 sOfferReqSpecies:: db
-sOfferMonSender::  ds NAME_LENGTH_JAPANESE - 1
+sOfferMonSender::  ds PLAYER_NAME_LENGTH - 1
 sOfferMon::        party_struct sOfferMon
-sOfferMonOT::      ds NAME_LENGTH_JAPANESE - 1
-sOfferMonNick::    ds NAME_LENGTH_JAPANESE - 1
+sOfferMonOT::      ds PLAYER_NAME_LENGTH - 1
+sOfferMonNick::    ds PLAYER_NAME_LENGTH - 1
 sOfferMonMail::    mailmsg_jp sOfferMonMail
 
 s5_a890:: db
 s5_a891:: db
 s5_a892:: db
 s5_a893:: db
-s5_a894:: ds NAME_LENGTH_JAPANESE ; a894
+s5_a894:: ds PLAYER_NAME_LENGTH - 1 ; a894
 s5_a89a:: dw
 s5_a89c:: ds 22 ; a89c honor roll level and room string
 
@@ -376,7 +376,7 @@ s5_b2f9:: db
 s5_b2fa:: db
 s5_b2fb:: db
 
-	ds $c2a;$d03
+	ds $c20;$d03
 s5_bfff:: ds 1
 
 

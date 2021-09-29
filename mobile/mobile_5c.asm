@@ -3,13 +3,13 @@ Function170000:
 	ld [wPlayerTrademonSpecies], a
 	ld hl, wOfferMonSender
 	ld de, wPlayerTrademonSenderName
-	ld bc, NAME_LENGTH_JAPANESE - 1
+	ld bc, PLAYER_NAME_LENGTH - 1
 	call CopyBytes
 	ld a, "@"
 	ld [de], a
 	ld hl, wOfferMonOT
 	ld de, wPlayerTrademonOTName
-	ld bc, NAME_LENGTH_JAPANESE - 1
+	ld bc, MON_NAME_LENGTH - 1
 	call CopyBytes
 	ld a, "@"
 	ld [de], a
@@ -42,7 +42,7 @@ Function17005a:
 	ld [wOTTrademonSpecies], a
 	ld hl, sOfferMonSender
 	ld de, wOTTrademonSenderName
-	ld bc, NAME_LENGTH - 1
+	ld bc, PLAYER_NAME_LENGTH - 1
 	call CopyBytes
 	ld a, "@"
 	ld [de], a

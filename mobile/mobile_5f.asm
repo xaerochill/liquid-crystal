@@ -325,22 +325,22 @@ Function17d0f3:
 Mobile_CopyDefaultOTName:
 	ld hl, Mobile5F_PlayersName
 	ld de, wMobileMonOT
-	ld bc, NAME_LENGTH_JAPANESE - 1
+	ld bc, PLAYER_NAME_LENGTH - 1
 	call CopyBytes
 	ret
 
 Mobile5F_PlayersName:
-	db "クりス@@"
+	db "CHRIS@@"
 
 Mobile_CopyDefaultNickname:
 	ld hl, .DefaultNickname
 	ld de, wMobileMonNick
-	ld bc, NAME_LENGTH_JAPANESE - 1
+	ld bc, MON_NAME_LENGTH - 1
 	call CopyBytes
 	ret
 
 .DefaultNickname:
-	db "？？？？？"
+	db "??????????"
 
 Mobile_CopyDefaultMail:
 	ld a, "@"
@@ -354,17 +354,17 @@ Mobile_CopyDefaultMail:
 	ret
 
 .DefaultMessage:
-	db "こんにちは@"
+	db "Hello@"
 .DefaultMessageEnd:
 
 Mobile_CopyDefaultMailAuthor:
 	ld a, "@"
 	ld de, wMobileMonMailAuthor
-	ld bc, NAME_LENGTH_JAPANESE - 1
+	ld bc, PLAYER_NAME_LENGTH - 1
 	call ByteFill
 	ld hl, Mobile5F_PlayersName
 	ld de, wMobileMonMailAuthor
-	ld bc, NAME_LENGTH_JAPANESE - 1
+	ld bc, PLAYER_NAME_LENGTH - 1
 	call CopyBytes
 	ret
 

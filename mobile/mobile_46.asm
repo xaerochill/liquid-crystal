@@ -7489,7 +7489,7 @@ TradeCornerHoldMon_RunJumptable:
 TradeCornerHoldMon_PrepareForUpload:
 	call .InitRAM
 	ld hl, wPlayerName
-	ld a, NAME_LENGTH_JAPANESE - 1
+	ld a, PLAYER_NAME_LENGTH - 1
 .get_char
 	push af
 	ld a, [hli]
@@ -7568,7 +7568,7 @@ TradeCornerHoldMon_PrepareForUpload:
 	jr .loop4
 
 .okay2
-	ld a, NAME_LENGTH - 1
+	ld a, PLAYER_NAME_LENGTH - 1
 .loop5
 	push af
 	ld a, [hli]
@@ -7590,7 +7590,7 @@ TradeCornerHoldMon_PrepareForUpload:
 	jr .loop6
 
 .okay3
-	ld a, NAME_LENGTH - 1
+	ld a, PLAYER_NAME_LENGTH - 1
 .loop7
 	push af
 	ld a, [hli]
@@ -7684,7 +7684,7 @@ Function11b570:
 
 	ld hl, w3_d800
 	ld de, wc608
-	ld bc, w3_d88f - w3_d800
+	ld bc, w3_d88f - w3_d800 + 2 + 2 + 5
 	call CopyBytes
 
 	ld a, $1
@@ -7697,7 +7697,7 @@ Function11b570:
 	ld [de], a
 	inc de
 	ld hl, wc608
-	ld bc, w3_d88f - w3_d800
+	ld bc, w3_d88f - w3_d800 + 2 + 2 + 5
 	call CopyBytes
 
 	push de
@@ -7866,28 +7866,28 @@ Function11b6b4:
 	ld [wMobileMonHappiness], a
 
 	ld de, wMobileMonOT
-	ld c, NAME_LENGTH_JAPANESE - 1
+	ld c, PLAYER_NAME_LENGTH - 1
 	farcall CheckStringForErrors
 	jr nc, .length_check_OT
 	farcall Mobile_CopyDefaultOTName
 
 .length_check_OT
 	ld de, wMobileMonOT
-	lb bc, 1, NAME_LENGTH_JAPANESE - 1
+	lb bc, 1, PLAYER_NAME_LENGTH - 1
 	farcall CheckStringContainsLessThanBNextCharacters
 	jr nc, .error_check_nick
 	farcall Mobile_CopyDefaultOTName
 
 .error_check_nick
 	ld de, wMobileMonNick
-	ld c, NAME_LENGTH_JAPANESE - 1
+	ld c, MON_NAME_LENGTH - 1
 	farcall CheckStringForErrors
 	jr nc, .length_check_nick
 	farcall Mobile_CopyDefaultNickname
 
 .length_check_nick
 	ld de, wMobileMonNick
-	lb bc, 1, NAME_LENGTH_JAPANESE - 1
+	lb bc, 1, MON_NAME_LENGTH - 1
 	farcall CheckStringContainsLessThanBNextCharacters
 	jr nc, .error_check_mail
 	farcall Mobile_CopyDefaultNickname
@@ -7913,14 +7913,14 @@ Function11b6b4:
 
 .mail_ok
 	ld de, wMobileMonMailAuthor
-	ld c, NAME_LENGTH_JAPANESE - 1
+	ld c, PLAYER_NAME_LENGTH - 1
 	farcall CheckStringForErrors
 	jr nc, .length_check_author
 	farcall Mobile_CopyDefaultMailAuthor
 
 .length_check_author
 	ld de, wMobileMonMailAuthor
-	lb bc, 1, NAME_LENGTH_JAPANESE - 1
+	lb bc, 1, PLAYER_NAME_LENGTH - 1
 	farcall CheckStringContainsLessThanBNextCharacters
 	jr nc, .author_okay
 	farcall Mobile_CopyDefaultMailAuthor
@@ -7974,7 +7974,7 @@ Function11b7e5:
 	ld [wc74e], a
 	ld hl, wMobileMonOT ; OT
 	ld de, wOTTrademonOTName
-	ld bc, 5
+	ld bc, PLAYER_NAME_LENGTH - 1
 	call CopyBytes
 	ld a, "@"
 	ld [de], a
