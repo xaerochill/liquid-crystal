@@ -209,7 +209,7 @@ Function48187:
 	ret
 
 .String_TellLater:
-	db "TELL LATER@"
+	db "LATER   @"
 
 Function4820d:
 	call PlaceHollowCursor
