@@ -1,13 +1,13 @@
 	object_const_def
 	const GOLDENRODPOKECENTER1F_NURSE
 	const GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST
-	const GOLDENRODPOKECENTER1F_SUPER_NERD; $04
+	const GOLDENRODPOKECENTER1F_SUPER_NERD ; $04
 	const GOLDENRODPOKECENTER1F_LASS2 ; $05
 	const GOLDENRODPOKECENTER1F_YOUNGSTER
-	const GOLDENRODPOKECENTER1F_TEACHER; $07
-	const GOLDENRODPOKECENTER1F_ROCKER; $08
+	const GOLDENRODPOKECENTER1F_TEACHER ; $07
+	const GOLDENRODPOKECENTER1F_ROCKER ; $08
 	const GOLDENRODPOKECENTER1F_GAMEBOY_KID
-	const GOLDENRODPOKECENTER1F_GRAMPS; $0A
+	const GOLDENRODPOKECENTER1F_GRAMPS ; $0A
 	const GOLDENRODPOKECENTER1F_LASS
 	const GOLDENRODPOKECENTER1F_POKEFAN_F
 
@@ -22,21 +22,21 @@ GoldenrodPokecenter1F_MapScripts:
 .Scene0: ; stuff to handle the player turning his gb off without saving after a trade
 	setval BATTLETOWERACTION_10 ; 5671d checks if a trade was made
 	special BattleTowerAction
-	iffalse .noTrade;$2967
-	prioritysjump scenejmp01;$6F68 reveiced pokemon from trade corner dialogue
+	iffalse .noTrade ; $2967
+	prioritysjump scenejmp01 ; $6F68 received pokemon from trade corner dialogue
 	end
 
 .noTrade
 	setval BATTLETOWERACTION_EGGTICKET ; check if player received the odd egg or still has the egg ticket
 	special BattleTowerAction ; 5672b
-	iffalse .notReceivedOddEgg;$3467 still has egg ticket
-	prioritysjump scenejmp02;$B568 received odd egg dialogue
+	iffalse .notReceivedOddEgg ; $3467 still has egg ticket
+	prioritysjump scenejmp02 ; $B568 received odd egg dialogue
 .notReceivedOddEgg
 	end
 
 .prepareMap
 	special Mobile_DummyReturnFalse
-	iftrue .mobile;$5067
+	iftrue .mobile ; $5067
 	moveobject GOLDENRODPOKECENTER1F_LASS2, $10, $09 ; this is 71 in jp crystal???
 	moveobject GOLDENRODPOKECENTER1F_GRAMPS, $00, $07
 	moveobject GOLDENRODPOKECENTER1F_SUPER_NERD, $08, $0D
@@ -57,66 +57,66 @@ GoldenrodPokecenter1FTradeCornerAttendantScript:
 	db $01
 	db $00
 	opentext
-	writetext GoldenrodPokecomCenterWelcomeToTradeCornerText ;$2d6a
+	writetext GoldenrodPokecomCenterWelcomeToTradeCornerText ; $2d6a
 	buttonsound ; 54 in jp crystal?
 	checkitem EGG_TICKET ; 56762 in jp crystal
-	iftrue PlayerHasEggTicket;$7c68
+	iftrue PlayerHasEggTicket ; $7c68
 	db $0F
 	db $71 ; check save file?
 	db $00
-	ifequal $01, PokemonInTradeCorner;$F667
-	ifequal $02, LeftPokemonInTradeCornerRecently;$6968
+	ifequal $01, PokemonInTradeCorner ; $F667
+	ifequal $02, LeftPokemonInTradeCornerRecently ; $6968
 	readvar $01
-	ifequal $01, .onlyHaveOnePokemon;$CF67 ; 56772
-	writetext GoldenrodPokecomCenterWeMustHoldYourMonText ;$726A
+	ifequal $01, .onlyHaveOnePokemon ; $CF67 ; 56772
+	writetext GoldenrodPokecomCenterWeMustHoldYourMonText ; $726A
 	yesorno
-	iffalse PlayerCancelled;$D567
-	
-	writetext GoldenrodPokecomCenterSaveBeforeTradeCornerText ;$756E we'll save
+	iffalse PlayerCancelled ; $D567
+
+	writetext GoldenrodPokecomCenterSaveBeforeTradeCornerText ; $756E
 	yesorno
-	iffalse PlayerCancelled;$D567
+	iffalse PlayerCancelled ; $D567
 	special TryQuickSave
-	iffalse PlayerCancelled;$D567
-	writetext GoldenrodPokecomCenterWhichMonToTradeText ;$8F6E which pokemon do you want to trade?
+	iffalse PlayerCancelled ; $D567
+	writetext GoldenrodPokecomCenterWhichMonToTradeText ; $8F6E
 	waitbutton ; 53 in jp crystal?
 	db $0F
 	db $4D
 	db $00 ; 56792
-	ifequal $00, PlayerCancelled;$D567
-	ifequal $FD, CantAcceptEgg;$EA67
-	ifgreater $FB, PokemonAbnormal;$F067
+	ifequal $00, PlayerCancelled ; $D567
+	ifequal $FD, CantAcceptEgg ; $EA67
+	ifgreater $FB, PokemonAbnormal ; $F067
 	db $0F
 	db $7B ; check party pokemon fainted
 	db $00
-	ifnotequal $00, CantTradeLastPokemon ;$E467
-	writetext GoldenrodPokecomCenterWhatMonDoYouWantText ;$9E6A what kind of pokemon do you want in return?
+	ifnotequal $00, CantTradeLastPokemon ; $E467
+	writetext GoldenrodPokecomCenterWhatMonDoYouWantText ; $9E6A
 	waitbutton
 	special Function11ac3e
-	ifequal $00, PlayerCancelled;$D567
-	ifequal $02, .tradePokemonNeverSeen;$BB67
-	writetext GoldenrodPokecomCenterWeWillTradeYourMonForMonText ;$B96A ; 567B5
-	sjump  .tradePokemon;$BE67
+	ifequal $00, PlayerCancelled ; $D567
+	ifequal $02, .tradePokemonNeverSeen ; $BB67
+	writetext GoldenrodPokecomCenterWeWillTradeYourMonForMonText ; $B96A ; 567B5
+	sjump  .tradePokemon ; $BE67
 .tradePokemonNeverSeen
-	writetext GoldenrodPokecomCenterWeWillTradeYourMonForNewText;$1E6B
+	writetext GoldenrodPokecomCenterWeWillTradeYourMonForNewText ; $1E6B
 .tradePokemon
 	db $0F
 	db $6E ; create data to send?
 	db $00
-	ifequal $0A, PlayerCancelled;$D567
-	ifnotequal $00, MobileError;$DB67
-	writetext GoldenrodPokecomCenterYourMonHasBeenReceivedText ;$A86B pokemon received
+	ifequal $0A, PlayerCancelled ; $D567
+	ifnotequal $00, MobileError ; $DB67
+	writetext GoldenrodPokecomCenterYourMonHasBeenReceivedText ; $A86B
 	waitbutton
 	closetext
 	end
 
 .onlyHaveOnePokemon
-	writetext GoldenrodPokecomCenterYouHaveOnlyOneMonText ;$D76B only have 1 pokemon
+	writetext GoldenrodPokecomCenterYouHaveOnlyOneMonText ; $D76B
 	waitbutton
 	closetext
 	end
 
 PlayerCancelled:
-	writetext GoldenrodPokecomCenterWeHopeToSeeYouAgainText ;$0F6C hope to see you again
+	writetext GoldenrodPokecomCenterWeHopeToSeeYouAgainText ; $0F6C
 	waitbutton
 	closetext
 	end
@@ -125,225 +125,225 @@ MobileError:
 	db $0F
 	db $8B ; mobile error
 	db $00
-	writetext GoldenrodPokecomCenterTradeCanceledText ;$AA6E we must cancel the trade
+	writetext GoldenrodPokecomCenterTradeCanceledText ; $AA6E
 	waitbutton
 	closetext
 	end
 
 CantTradeLastPokemon:
-	writetext GoldenrodPokecomCenterCantAcceptLastMonText ;$2C6C if we accept this pokemon what will you battle with
+	writetext GoldenrodPokecomCenterCantAcceptLastMonText ; $2C6C
 	waitbutton
 	closetext
 	end
 
 CantAcceptEgg:
-	writetext GoldenrodPokecomCenterCantAcceptEggText ;$516C sorry but we can't accept an egg
+	writetext GoldenrodPokecomCenterCantAcceptEggText ; $516C
 	waitbutton
 	closetext
 	end
 
 PokemonAbnormal:
-	writetext GoldenrodPokecomCenterCantAcceptAbnormalMonText ;$6F6C pokemon appears to be abnormal
+	writetext GoldenrodPokecomCenterCantAcceptAbnormalMonText ; $6F6C
 	waitbutton
 	closetext
 	end
 
 PokemonInTradeCorner:
-	writetext GoldenrodPokecomCenterSaveBeforeTradeCornetText ;$756E we'll save
+	writetext GoldenrodPokecomCenterSaveBeforeTradeCornerText ; $756E
 	yesorno
-	iffalse PlayerCancelled;$D567
+	iffalse PlayerCancelled ; $D567
 	special TryQuickSave
-	iffalse PlayerCancelled;$D567 ; 56800
-	writetext GoldenrodPokecomCenterAlreadyHoldingMonText ;$896C aren't we holding a pokemon of your's?
+	iffalse PlayerCancelled ; $D567 ; 56800
+	writetext GoldenrodPokecomCenterAlreadyHoldingMonText ; $896C
 	buttonsound
 	readvar $01
-	ifequal $06, PartyFull;$3868
-	writetext GoldenrodPokecomCenterCheckingTheRoomsText ;$A56C we'll check the rooms
+	ifequal $06, PartyFull ; $3868
+	writetext GoldenrodPokecomCenterCheckingTheRoomsText ; $A56C
 	db $0F
 	db $6F ; connect
 	db $00
-	ifequal $0A, PlayerCancelled;$D567
-	ifnotequal $00, MobileError ;$DB67
+	ifequal $0A, PlayerCancelled ; $D567
+	ifnotequal $00, MobileError ; $DB67
 	setval $0F
 	db $0F
 	db $86 ; 86 = BattleTowerAction
 	db $00
-	ifequal $00, NoTradePartnerFound;$3E68 ; 56820
-	ifequal $01, .receivePokemon;$2B68
-	sjump PokemonInTradeCornerForALongTime;$5668
+	ifequal $00, NoTradePartnerFound ; $3E68 ; 56820
+	ifequal $01, .receivePokemon ; $2B68
+	sjump PokemonInTradeCornerForALongTime ; $5668
 
 .receivePokemon
-	writetext GoldenrodPokecomCenterTradePartnerHasBeenFoundText ;$C46C partner has been found
+	writetext GoldenrodPokecomCenterTradePartnerHasBeenFoundText ; $C46C
 	buttonsound
 	db $0F
 	db $70 ; receive a pokemon animation?
 	db $00
-	writetext GoldenrodPokecomCenterItsYourNewPartnerText ;$E66C it's your new partner
+	writetext GoldenrodPokecomCenterItsYourNewPartnerText ; $E66C
 	waitbutton
 	closetext
 	end
 
 PartyFull:
-	writetext GoldenrodPokecomCenterYourPartyIsFullText ;$216D ; 56838
+	writetext GoldenrodPokecomCenterYourPartyIsFullText ; $216D ; 56838
 	waitbutton
 	closetext
 	end
 
 NoTradePartnerFound:
-	writetext GoldenrodPokecomCenterNoTradePartnerFoundText ;$576D ; 5683E nobody found. would you like your pkm back?
+	writetext GoldenrodPokecomCenterNoTradePartnerFoundText ; $576D ; 5683E
 	yesorno
-	iffalse ContinueHoldingPokemon;$6368
+	iffalse ContinueHoldingPokemon ; $6368
 	db $0F
 	db $72 ; something with mobile
 	db $00
-	ifequal $0A, PlayerCancelled;$D567
-	ifnotequal $00, MobileError ;$DB67
-	writetext GoldenrodPokecomCenterReturnedYourMonText ;$8A6D we have returned your pokemon
+	ifequal $0A, PlayerCancelled ; $D567
+	ifnotequal $00, MobileError ; $DB67
+	writetext GoldenrodPokecomCenterReturnedYourMonText ; $8A6D
 	waitbutton
 	closetext
 	end
 
 PokemonInTradeCornerForALongTime:
-	writetext GoldenrodPokecomCenterYourMonIsLonelyText ;$9A6D ; 56856 you left your pkm for a long time
+	writetext GoldenrodPokecomCenterYourMonIsLonelyText ; $9A6D ; 56856
 	buttonsound
 	db $0F
 	db $73 ; something with mobile
 	db $00
-	writetext GoldenrodPokecomCenterWeHopeToSeeYouAgainText;$016E
+	writetext GoldenrodPokecomCenterWeHopeToSeeYouAgainText ; $016E
 	waitbutton
 	closetext
 	end
 
 ContinueHoldingPokemon:
-	writetext GoldenrodPokecomCenterContinueToHoldYourMonText ;$176E;56863 we'll continue to hold pkm
+	writetext GoldenrodPokecomCenterContinueToHoldYourMonText ; $176E ; 56863
 	waitbutton
 	closetext
 	end
 
 LeftPokemonInTradeCornerRecently:
-	writetext GoldenrodPokecomCenterRecentlyLeftYourMonText ;$306E ; 56869
+	writetext GoldenrodPokecomCenterRecentlyLeftYourMonText ; $306E ; 56869
 	waitbutton
 	closetext
 	end
-	
+
 scenejmp01: ; ???
-	setscene $01; 5686F
+	setscene $01 ; 5686F
 	refreshscreen
-	writetext GoldenrodPokecomCenterTradePartnerHasBeenFoundText ;$C46C partner has been found
+	writetext GoldenrodPokecomCenterTradePartnerHasBeenFoundText ; $C46C
 	buttonsound
-	writetext GoldenrodPokecomCenterItsYourNewPartnerText ;$E66C it's your new partner
+	writetext GoldenrodPokecomCenterItsYourNewPartnerText ; $E66C
 	waitbutton
 	closetext
 	end
-	
+
 PlayerHasEggTicket:
-	writetext GoldenrodPokecomCenterEggTicketText ;$CD6E ; 5687C
+	writetext GoldenrodPokecomCenterEggTicketText ; $CD6E ; 5687C
 	waitbutton
 	readvar $01
-	ifequal $06, PartyFull;$3868
-	writetext GoldenrodPokecomCenterOddEggBriefingText ;$106F
+	ifequal $06, PartyFull ; $3868
+	writetext GoldenrodPokecomCenterOddEggBriefingText ; $106F
 	waitbutton
-	writetext GoldenrodPokecomCenterSaveBeforeTradeCornetText ;$756E
+	writetext GoldenrodPokecomCenterSaveBeforeTradeCornerText ; $756E
 	yesorno
-	iffalse PlayerCancelled;$D567
+	iffalse PlayerCancelled ; $D567
 	special TryQuickSave
-	iffalse PlayerCancelled;$D567
-	writetext GoldenrodPokecomCenterPleaseWaitAMomentText ;$CC6F
+	iffalse PlayerCancelled ; $D567
+	writetext GoldenrodPokecomCenterPleaseWaitAMomentText ; $CC6F
 	db $0F
 	db $7D ; download odd egg
 	db $00
-	ifequal $0B, .eggTicketExchangeNotRunning;$AF68
-	ifequal $0A, PlayerCancelled;$D567
-	ifnotequal $00, MobileError ;$DB67
+	ifequal $0B, .eggTicketExchangeNotRunning ; $AF68
+	ifequal $0A, PlayerCancelled ; $D567
+	ifnotequal $00, MobileError ; $DB67
 .receivedOddEgg
-	writetext GoldenrodPokecomCenterHereIsYourOddEggText ;$E66F
+	writetext GoldenrodPokecomCenterHereIsYourOddEggText ; $E66F
 	waitbutton
 	closetext
 	end
 
 .eggTicketExchangeNotRunning
-	writetext GoldenrodPokecomCenterNoEggTicketServiceText ;$2270 ; 568AF
+	writetext GoldenrodPokecomCenterNoEggTicketServiceText ; $2270 ; 568AF
 	waitbutton
 	closetext
 	end
-	
-scenejmp02:; 568B5
+
+scenejmp02: ; 568B5
 	opentext
-	sjump PlayerHasEggTicket.receivedOddEgg;$A968
+	sjump PlayerHasEggTicket.receivedOddEgg ; $A968
 
 GoldenrodPokecenter1F_NewsMachineScript:
 	special Mobile_DummyReturnFalse ; 568B9
-	iftrue .mobileEnabled;$C268
-	jumptext GoldenrodPokecomCenterNewsMachineNotYetText ;$1F76 not in operation yet
+	iftrue .mobileEnabled ; $C268
+	jumptext GoldenrodPokecomCenterNewsMachineNotYetText ; $1F76
 	
 .mobileEnabled
 	opentext
-	writetext GoldenrodPokecomCenterNewsMachineText ;$4D70 it's a pokemon news machine
+	writetext GoldenrodPokecomCenterNewsMachineText ; $4D70
 	buttonsound
 	setval $14
 	db $0F
 	db $86 ; battle tower action (get battle tower save file flags if save is yours?)
 	db $00
-	ifnotequal $00, .skipExplanation;$D968
+	ifnotequal $00, .skipExplanation ; $D968
 	setval $15
 	db $0F
 	db $86 ; battle tower action (set battle tower save file flags?)
 	db $00
-	writetext GoldenrodPokecomCenterNewsMachineExplanationText ;$6370 news machine tut
+	writetext GoldenrodPokecomCenterNewsMachineExplanationText ; $6370
 	waitbutton
 .skipExplanation
-	writetext GoldenrodPokecomCenterSaveBeforeNewsMachineText ;$C371 we'll save
+	writetext GoldenrodPokecomCenterSaveBeforeNewsMachineText ; $C371
 	yesorno
-	iffalse .cancel;$FF68
+	iffalse .cancel ; $FF68
 	special TryQuickSave
-	iffalse .cancel;$FF68
+	iffalse .cancel ; $FF68
 	setval $15
 	db $0F
 	db $86 ; battle tower action (set battle tower save file flags?)
 	db $00
 .showMenu
-	writetext GoldenrodPokecomCenterWhatToDoText ;$5970 what would you like to do?
+	writetext GoldenrodPokecomCenterWhatToDoText ; $5970
 	setval $00
 	db $0F
 	db $88 ; show news machine menu
 	db $00
-	ifequal $01, .getNews;$0869
-	ifequal $02, .showNews;$1D69
-	ifequal $03, .showExplanation;$0169
+	ifequal $01, .getNews 		  ; $0869
+	ifequal $02, .showNews 		  ; $1D69
+	ifequal $03, .showExplanation ; $0169
 .cancel
 	closetext
 	end
 
 .showExplanation
-	writetext GoldenrodPokecomCenterNewsMachineExplanationText ;$6370 ; 56901 news machine tut
+	writetext GoldenrodPokecomCenterNewsMachineExplanationText ; $6370 ; 56901
 	waitbutton
-	sjump .showMenu;$EB68
+	sjump .showMenu; $EB68
 
 .getNews
-	writetext GoldenrodPokecomCenterWouldYouLikeTheNewsText ;$3E71 ; 56908 would you like to get the news?
+	writetext GoldenrodPokecomCenterWouldYouLikeTheNewsText ; $3E71 ; 56908
 	yesorno
 	iffalse .showMenu;$EB68
-	writetext GoldenrodPokecomCenterReadingTheLatestNewsText ;$5471 reading the latest news
+	writetext GoldenrodPokecomCenterReadingTheLatestNewsText ; $5471
 	db $0F
 	db $89 ; download news?
 	db $00
-	ifequal $0A, .showMenu;$EB68
-	ifnotequal $00, .mobileError;$3569
+	ifequal $0A, .showMenu ; $EB68
+	ifnotequal $00, .mobileError ; $3569
 .showNews
 	db $0F
 	db $8A ; show news?
 	db $00
-	iffalse .quitViewingNews;$3269
-	ifequal $01, .noOldNews;$2E69
-	writetext GoldenrodPokecomCenterCorruptedNewsDataText ;$8971 news corrupted
+	iffalse .quitViewingNews ; $3269
+	ifequal $01, .noOldNews ; $2E69
+	writetext GoldenrodPokecomCenterCorruptedNewsDataText ; $8971
 	waitbutton
-	sjump .showMenu;$EB68
+	sjump .showMenu ; $EB68
 	
 .noOldNews
-	writetext GoldenrodPokecomCenterNoOldNewsText ;$7971 ; 5692E no old news
+	writetext GoldenrodPokecomCenterNoOldNewsText ; $7971 ; 5692E
 	waitbutton
 .quitViewingNews
-	sjump .showMenu;$EB68
+	sjump .showMenu ; $EB68
 	
 .mobileError
 	db $0F ; 56935
@@ -353,7 +353,7 @@ GoldenrodPokecenter1F_NewsMachineScript:
 	end
 
 Unreferenced:
-	writetext GoldenrodPokecomCenterMakingPreparationsText ;??? $AA71 ; 5693A no jump to here?
+	writetext GoldenrodPokecomCenterMakingPreparationsText ; ??? $AA71 ; 5693A no jump to here?
 	waitbutton
 	closetext
 	end
@@ -363,9 +363,9 @@ GoldenrodPokecenter1F_GSBallSceneLeft:
 	db $0F
 	db $86 ; battle tower action (load mobile event index)
 	db $00
-	iffalse GoldenrodPokecenter1F_GSBallSceneRight.nogsball;$9769
+	iffalse GoldenrodPokecenter1F_GSBallSceneRight.nogsball ; $9769
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER ; 340
-	iftrue GoldenrodPokecenter1F_GSBallSceneRight.nogsball;$9769
+	iftrue GoldenrodPokecenter1F_GSBallSceneRight.nogsball ; $9769
 	moveobject $03, $0C, $0B
 	sjump GoldenrodPokecenter1F_GSBallSceneRight.gsball ; 6769
 	
@@ -374,16 +374,16 @@ GoldenrodPokecenter1F_GSBallSceneRight:
 	db $0F
 	db $86 ; battle tower action (load mobile event index)
 	db $00
-	iffalse .nogsball;$9769
+	iffalse .nogsball ; $9769
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER ; 340
-	iftrue .nogsball;$9769
+	iftrue .nogsball ; $9769
 	moveobject $03, $0D, $0B
 
-.gsball; 56769
+.gsball ; 56769
 	disappear GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST
 	appear GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST
 	playmusic MUSIC_SHOW_ME_AROUND
-	applymovement GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST, GoldenrodPokeCenter1FLinkReceptionistApproachPlayerMovement;$0F6A
+	applymovement GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST, GoldenrodPokeCenter1FLinkReceptionistApproachPlayerMovement ; $0F6A
 	turnobject PLAYER, UP
 	opentext
 	writetext GoldenrodPokeCenter1FLinkReceptionistPleaseAcceptGSBallText
@@ -394,7 +394,7 @@ GoldenrodPokecenter1F_GSBallSceneRight:
 	writetext GoldenrodPokeCenter1FLinkReceptionistPleaseDoComeAgainText
 	waitbutton
 	closetext
-	applymovement GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST, GoldenrodPokeCenter1FLinkReceptionistWalkBackMovement;$196A
+	applymovement GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST, GoldenrodPokeCenter1FLinkReceptionistWalkBackMovement ; $196A
 	special RestartMapMusic
 	moveobject GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST, 16,  8
 	disappear GOLDENRODPOKECENTER1F_LINK_RECEPTIONIST
@@ -405,70 +405,70 @@ GoldenrodPokecenter1F_GSBallSceneRight:
 
 GoldenrodPokecenter1FSuperNerdScript:
 	special Mobile_DummyReturnFalse ; 56998
-	iftrue .mobile;$A169
-	jumptextfaceplayer GoldenrodPokecomCenterPerson1Text ;$E071
+	iftrue .mobile ; $A169
+	jumptextfaceplayer GoldenrodPokecenter1FMobileOffSuperNerdText  ; $E071
 
 .mobile
-	jumptextfaceplayer GoldenrodPokecomCenterPerson2Text ;$1E72
+	jumptextfaceplayer GoldenrodPokecenter1FMobileOnSuperNerdText ; $1E72
 	
 GoldenrodPokecenter1FLass2Script:
 	special Mobile_DummyReturnFalse ; 569A4
 	iftrue .mobile
-	jumptextfaceplayer GoldenrodPokecomCenterPerson3Text ;$AD72
+	jumptextfaceplayer GoldenrodPokecenter1FMobileOffLassText ; $AD72
 
 .mobile
 	checkevent EVENT_33F
-	iftrue .alreadyMoved;$D369
+	iftrue .alreadyMoved ; $D369
 	faceplayer
 	opentext
-	writetext GoldenrodPokecomCenterPerson4Text;$EB72
+	writetext GoldenrodPokecenter1FMobileOnLassText1 ; $EB72
 	waitbutton
 	closetext
 	readvar $09
-	ifequal $02, .talkedToFromRight;$C769
-	applymovement GOLDENRODPOKECENTER1F_LASS2, GoldenrodPokeCenter1FLass2WalkRightMovement;$236A
-	sjump .skip;$CB69
+	ifequal $02, .talkedToFromRight ; $C769
+	applymovement GOLDENRODPOKECENTER1F_LASS2, GoldenrodPokeCenter1FLass2WalkRightMovement ; $236A
+	sjump .skip ; $CB69
 .talkedToFromRight
-	applymovement GOLDENRODPOKECENTER1F_LASS2, GoldenrodPokeCenter1FLassWalkRightAroundPlayerMovement;$276A
+	applymovement GOLDENRODPOKECENTER1F_LASS2, GoldenrodPokeCenter1FLassWalkRightAroundPlayerMovement ; $276A
 .skip
 	setevent EVENT_33F
 	moveobject GOLDENRODPOKECENTER1F_LASS2, $12, $09
 	end
 
 .alreadyMoved
-	jumptextfaceplayer GoldenrodPokecomCenterPerson5Text ;$2373
+	jumptextfaceplayer GoldenrodPokecenter1FMobileOnLassText2 ; $2373
 
 GoldenrodPokecenter1FYoungsterScript:
 	special Mobile_DummyReturnFalse ; 569D6
-	iftrue .mobile;$DF69
-	jumptextfaceplayer GoldenrodPokecomCenterPerson6Text ;$5473
+	iftrue .mobile ; $DF69
+	jumptextfaceplayer GoldenrodPokecenter1FMobileOffYoungsterText ; $5473
 
 .mobile
-	jumptextfaceplayer GoldenrodPokecomCenterPerson9Text;$1074
+	jumptextfaceplayer GoldenrodPokecenter1FMobileOnYoungsterText ; $1074
 
 GoldenrodPokecenter1FTeacherScript:
 	special Mobile_DummyReturnFalse ; 569E2
-	iftrue .mobile;$EB69
-	jumptextfaceplayer GoldenrodPokecomCenterPerson7Text ;$8273
+	iftrue .mobile ; $EB69
+	jumptextfaceplayer GoldenrodPokecenter1FMobileOffTeacherText ; $8273
 
 .mobile
-	jumptextfaceplayer GoldenrodPokecomCenterPerson10Text ;$3274
+	jumptextfaceplayer GoldenrodPokecenter1FMobileOnTeacherText ; $3274
 
 GoldenrodPokecenter1FRockerScript:
 	special Mobile_DummyReturnFalse ; 569EE
-	iftrue .mobile;$F769
-	jumptextfaceplayer GoldenrodPokecomCenterPerson8Text ;$D073
+	iftrue .mobile ; $F769
+	jumptextfaceplayer GoldenrodPokecenter1FMobileOffRockerText ; $D073
 	
 .mobile
-	jumptextfaceplayer GoldenrodPokecomCenterPerson11Text ;$5474
+	jumptextfaceplayer GoldenrodPokecenter1FMobileOnRockerText ; $5474
 
 GoldenrodPokecenter1FGrampsScript:
 	special Mobile_DummyReturnFalse ; 569FD
-	iftrue .mobile;$066A
-	jumptextfaceplayer GoldenrodPokecomCenterPerson12Text ;$D674
+	iftrue .mobile ; $066A
+	jumptextfaceplayer GoldenrodPokecenter1FMobileOffGrampsText ; $D674
 
 .mobile
-	jumptextfaceplayer GoldenrodPokecomCenterPerson13Text ;$1875
+	jumptextfaceplayer GoldenrodPokecenter1FMobileOnGrampsText ; $1875
 
 PokeComCenterInfoSign:
 	jumptext GoldenrodPokecomCenterSignText
@@ -538,18 +538,18 @@ GoldenrodPokeCenter1FLinkReceptionistWalkBackMovement:
 	step_end
 
 GoldenrodPokeCenter1FLass2WalkRightMovement:
-	db $0B
-	db $0B
-	db $01
-	db $47
+	slow_step RIGHT ; db $0B
+	slow_step RIGHT ; db $0B
+	turn_head UP    ; db $01
+	step_end        ; db $47
 
 GoldenrodPokeCenter1FLassWalkRightAroundPlayerMovement:
-	db $08
-	db $0B
-	db $0B
-	db $09
-	db $01
-	db $47
+	slow_step DOWN  ; db $08
+	slow_step RIGHT ; db $0B
+	slow_step RIGHT ; db $0B
+	slow_step UP    ; db $09
+	turn_head UP    ; db $01
+	step_end        ; db $47
 
 ; unused
 GoldenrodPokecomCenterWelcomeToTradeCornerText:
@@ -741,7 +741,7 @@ GoldenrodPokecomCenterYourMonIsLonelyText:
 	line "return it to you."
 	done
 
-GoldenrodPokecenter1FWeHopeToSeeYouAgainText_2: ; unreferenced
+GoldenrodPokecenter1FWeHopeToSeeYouAgainText_2:
 	text "We hope to see you"
 	line "again."
 	done
@@ -933,7 +933,7 @@ GoldenrodPokecomCenterSaveBeforeNewsMachineText:
 	line "MACHINE."
 	done
 
-GoldenrodPokecomCenterPerson1Text:
+GoldenrodPokecenter1FMobileOffSuperNerdText:
 	text "Whoa, this #MON"
 	line "CENTER is huge."
 
@@ -944,7 +944,7 @@ GoldenrodPokecomCenterPerson1Text:
 	line "new machines too."
 	done
 
-GoldenrodPokecomCenterPerson2Text:
+GoldenrodPokecenter1FMobileOnSuperNerdText:
 	text "I thought up a fun"
 	line "new thing for the"
 	cont "TRADE CORNER!"
@@ -972,7 +972,7 @@ GoldenrodPokecomCenterPerson2Text:
 	line "friends!"
 	done
 
-GoldenrodPokecomCenterPerson3Text:
+GoldenrodPokecenter1FMobileOffLassText:
 	text "They said you can"
 	line "trade #MON with"
 
@@ -983,7 +983,7 @@ GoldenrodPokecomCenterPerson3Text:
 	line "adjusting things."
 	done
 
-GoldenrodPokecomCenterPerson4Text:
+GoldenrodPokecenter1FMobileOnLassText1:
 	text "Some girl I don't"
 	line "know sent me her"
 
@@ -994,7 +994,7 @@ GoldenrodPokecomCenterPerson4Text:
 	line "you want."
 	done
 
-GoldenrodPokecomCenterPerson5Text:
+GoldenrodPokecenter1FMobileOnLassText2:
 	text "I received a"
 	line "female HOPPIP, but"
 	cont "its named STANLEY!"
@@ -1003,7 +1003,7 @@ GoldenrodPokecomCenterPerson5Text:
 	line "name!"
 	done
 
-GoldenrodPokecomCenterPerson6Text:
+GoldenrodPokecenter1FMobileOffYoungsterText:
 	text "What is the NEWS"
 	line "MACHINE?"
 
@@ -1012,7 +1012,7 @@ GoldenrodPokecomCenterPerson6Text:
 	cont "than the radio?"
 	done
 
-GoldenrodPokecomCenterPerson7Text:
+GoldenrodPokecenter1FMobileOffTeacherText:
 	text "The #COM CENTER"
 	line "will link with all"
 
@@ -1026,7 +1026,7 @@ GoldenrodPokecomCenterPerson7Text:
 	line "sorts of people."
 	done
 
-GoldenrodPokecomCenterPerson8Text:
+GoldenrodPokecenter1FMobileOffRockerText:
 	text "The machines here"
 	line "can't be used yet."
 
@@ -1037,7 +1037,7 @@ GoldenrodPokecomCenterPerson8Text:
 	line "people."
 	done
 
-GoldenrodPokecomCenterPerson9Text:
+GoldenrodPokecenter1FMobileOnYoungsterText:
 	text "My friend was in"
 	line "the NEWS a while"
 
@@ -1045,13 +1045,13 @@ GoldenrodPokecomCenterPerson9Text:
 	line "surprised!"
 	done
 
-GoldenrodPokecomCenterPerson10Text:
+GoldenrodPokecenter1FMobileOnTeacherText:
 	text "I get anxious if I"
 	line "don't check out"
 	cont "the latest NEWS!"
 	done
 
-GoldenrodPokecomCenterPerson11Text:
+GoldenrodPokecenter1FMobileOnRockerText:
 	text "If I get in the"
 	line "NEWS and become"
 
@@ -1075,7 +1075,7 @@ GoldenrodPokecenter1FGameboyKidText:
 	line "afford to lose."
 	done
 
-GoldenrodPokecomCenterPerson12Text:
+GoldenrodPokecenter1FMobileOffGrampsText:
 	text "I came over here"
 	line "when I got word"
 
@@ -1093,7 +1093,7 @@ GoldenrodPokecomCenterPerson12Text:
 	line "preparations…"
 	done
 
-GoldenrodPokecomCenterPerson13Text:
+GoldenrodPokecenter1FMobileOnGrampsText:
 	text "Just seeing all"
 	line "these new things"
 
@@ -1233,26 +1233,26 @@ GoldenrodPokecenter1F_MapEvents:
 	bg_event 29,  8, BGEVENT_READ, GoldenrodPokecenter1F_NewsMachineScript
 	bg_event 29,  9, BGEVENT_READ, GoldenrodPokecenter1F_NewsMachineScript
 	bg_event 29, 10, BGEVENT_READ, GoldenrodPokecenter1F_NewsMachineScript
-	bg_event  2,  9, BGEVENT_READ, PokeComCenterInfoSign
+	bg_event  2,  9, BGEVENT_READ, GoldenrodPokecenter1FInfoSign
 
 	def_object_events
 	object_event  7,  7, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FNurseScript, -1
-	; 576C4
+	 ; 576C4
 	object_event 16,  8, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FTradeCornerAttendantScript, -1
-	; boy left of trade corner 576D1
+	 ; boy left of trade corner 576D1
 	object_event 13,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 16, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FSuperNerdScript, -1
-	; girl in front of trade corner 576DE
+	 ; girl in front of trade corner 576DE
 	object_event 18,  9, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FLass2Script, -1
-	; boy left of news machine 576EB
+	 ; boy left of news machine 576EB
 	object_event 23, 08, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FYoungsterScript, -1
-	; girl right of news machine 576F8
+	 ; girl right of news machine 576F8
 	object_event 30, 09, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FTeacherScript, -1
-	; boy right of news machine 57705
+	 ; boy right of news machine 57705
 	object_event 30, 05, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FRockerScript, -1
-	; 57712
+	 ; 57712
 	object_event 11, 12, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FGameboyKidScript, -1
-	; old man 5771F
+	 ; old man 5771F
 	object_event 19, 14, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FGrampsScript, -1
-	; 5772C
+	 ; 5772C
 	object_event  4, 11, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FLassScript, -1
 	object_event 15, 12, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FPokefanF, -1

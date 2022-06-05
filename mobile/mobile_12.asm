@@ -209,7 +209,7 @@ Function48187:
 	ret
 
 .String_TellLater:
-	db "Tell Later@"
+	db "TELL LATER@"
 
 Function4820d:
 	call PlaceHollowCursor
@@ -539,11 +539,11 @@ Mobile12_Bin2Dec:
 	db "8@"
 	db "9@"
 
-MobileProfileString:         db "  Mobile Profile@"
-MobileString_Gender:         db "Gender@"
-MobileString_Age:            db "Age@"
-MobileString_Address:        db "Address@"
-MobileString_ZipCode:        db "Zip Code@"
+MobileProfileString:         db "  MOBILE PROFILE@"
+MobileString_Gender:         db "GENDER@"
+MobileString_Age:            db "AGE@"
+MobileString_Address:        db "ADDRESS@"
+MobileString_ZipCode:        db "ZIP CODE@"
 MobileString_OK:             db "OK@"
 MobileString_ProfileChanged: db "Profile Changed@"
 MobileDesc_Gender:           db "Boy or girl?@"
@@ -598,54 +598,54 @@ for x, 46
 endr
 	db -1
 
-Prefectures:
-Aichi:     db "あいちけん@"   ; Aichi
-Aomori:    db "あおもりけん@" ; Aomori
-Akita:     db "あきたけん@"   ; Akita
-Ishikawa:  db "いしかわけん@" ; Ishikawa
-Ibaraki:   db "いばらきけん@" ; Ibaraki
-Iwate:     db "いわてけん@"   ; Iwate
-Ehime:     db "えひめけん@"   ; Ehime
-Oita:      db "おおいたけん@" ; Oita
-Osakafu:   db "おおさかふ@"   ; Osakafu
-Okayama:   db "おかやまけん@" ; Okayama
-Okinawa:   db "おきなわけん@" ; Okinawa
-Kagawa:    db "かがわけん@"   ; Kagawa
-Kagoshima: db "かごしまけん@" ; Kagoshima
-Kanagawa:  db "かながわけん@" ; Kanagawa
-Gifu:      db "ぎふけん@"     ; Gifu
-Kyotofu:   db "きょうとふ@"   ; Kyotofu
-Kumamoto:  db "くまもとけん@" ; Kumamoto
-Gunma:     db "ぐんまけん@"   ; Gunma
-Kochi:     db "こうちけん@"   ; Kochi
-Saitama:   db "さいたまけん@" ; Saitama
-Saga:      db "さがけん@"     ; Saga
-Shiga:     db "しがけん@"     ; Shiga
-Shizuoka:  db "しずおかけん@" ; Shizuoka
-Shimane:   db "しまねけん@"   ; Shimane
-Chiba:     db "ちばけん@"     ; Chiba
-Tokyo:     db "とうきょうと@" ; Tokyo
-Tokushima: db "とくしまけん@" ; Tokushima
-Tochigi:   db "とちぎけん@"   ; Tochigi
-Tottori:   db "とっとりけん@" ; Tottori
-Toyama:    db "とやまけん@"   ; Toyama
-Nagasaki:  db "ながさきけん@" ; Nagasaki
-Nagano:    db "ながのけん@"   ; Nagano
-Naraken:   db "ならけん@"     ; Naraken
-Niigata:   db "にいがたけん@" ; Niigata
-Hyogo:     db "ひょうごけん@" ; Hyogo
-Hiroshima: db "ひろしまけん@" ; Hiroshima
-Fukui:     db "ふくいけん@"   ; Fukui
-Fukuoka:   db "ふくおかけん@" ; Fukuoka
-Fukushima: db "ふくしまけん@" ; Fukushima
-Hokkaido:  db "ほっかいどう@" ; Hokkaido
-Mie:       db "みえけん@"     ; Mie
-Miyagi:    db "みやぎけん@"   ; Miyagi
-Miyazaki:  db "みやざきけん@" ; Miyazaki
-Yamagata:  db "やまがたけん@" ; Yamagata
-Yamaguchi: db "やまぐちけん@" ; Yamaguchi
-Yamanashi: db "やまなしけん@" ; Yamanashi
-Wakayama:  db "わかやまけん@" ; Wakayama
+Prefectures: ; Some names shortened to fit, check for official initials later.
+Aichi:		db	"Aichi@" 	; "あいちけん@"
+Aomori:		db	"Aomori@" 	; "あおもりけん@"
+Akita:		db	"Akita@" 	; "あきたけん@"
+Ishikawa:	db	"Ishika-@"  ; "いしかわけん@"
+Ibaraki:	db	"Ibaraki@" 	; "いばらきけん@"
+Iwate:		db	"Iwate@" 	; "いわてけん@"
+Ehime:		db	"Ehime@" 	; "えひめけん@"
+Oita:		db	"Oita@" 	; "おおいたけん@"
+Osakafu:	db	"Osakafu@" 	; "おおさかふ@"
+Okayama:	db	"Okayama@" 	; "おかやまけん@"
+Okinawa:	db	"Okinawa@" 	; "おきなわけん@"
+Kagawa:		db	"Kagawa@" 	; "かがわけん@"
+Kagoshima:	db	"Kagosh-@"  ; "かごしまけん@"
+Kanagawa:	db	"Kanaga-@"  ; "かながわけん@"
+Gifu:		db	"Gifu@" 	; "ぎふけん@"
+Kyotofu:	db	"Kyotofu@" 	; "きょうとふ@"
+Kumamoto:	db	"Kumamo-@"  ; "くまもとけん@"
+Gunma:		db	"Gunma@" 	; "ぐんまけん@"
+Kochi:		db	"Kochi@" 	; "こうちけん@"
+Saitama:	db	"Saitama@" 	; "さいたまけん@"
+Saga:		db	"Saga@" 	; "さがけん@"
+Shiga:		db	"Shiga@" 	; "しがけん@"
+Shizuoka:	db	"Shizuo-@"  ; "しずおかけん@"
+Shimane:	db	"Shimane@" 	; "しまねけん@"
+Chiba:		db	"Chiba@" 	; "ちばけん@"
+Tokyo:		db	"Tokyo@" 	; "とうきょうと@"
+Tokushima:	db	"Tokush-@"  ; "とくしまけん@"
+Tochigi:	db	"Tochigi@" 	; "とちぎけん@"
+Tottori:	db	"Tottori@" 	; "とっとりけん@"
+Toyama:		db	"Toyama@" 	; "とやまけん@"
+Nagasaki:	db	"Nagasa-@"  ; "ながさきけん@"
+Nagano:		db	"Nagano@" 	; "ながのけん@"
+Naraken:	db	"Naraken@" 	; "ならけん@"
+Niigata:	db	"Niigata@" 	; "にいがたけん@"
+Hyogo:		db	"Hyogo@" 	; "ひょうごけん@"
+Hiroshima:	db	"Hirosh-@"  ; "ひろしまけん@"
+Fukui:		db	"Fukui@" 	; "ふくいけん@"
+Fukuoka:	db	"Fukuoka@" 	; "ふくおかけん@"
+Fukushima:	db	"Fukush-@"  ; "ふくしまけん@"
+Hokkaido:	db	"Hokkai-@"  ; "ほっかいどう@"
+Mie:		db	"Mie@" 		; "みえけん@"
+Miyagi:		db	"Miyagi@" 	; "みやぎけん@"
+Miyazaki:	db	"Miyaza-@"  ; "みやざきけん@"
+Yamagata:	db	"Yamaga-@"	; "やまがたけん@"
+Yamaguchi:	db	"Yamagu-@"	; "やまぐちけん@"
+Yamanashi:	db	"Yamana-@"	; "やまなしけん@"
+Wakayama:	db	"Wakaya-@"	; "わかやまけん@"
 
 Function48689:
 	ld c, 7
@@ -1260,8 +1260,8 @@ MenuHeader_0x48a9c:
 	menu_coords 10, 8, SCREEN_WIDTH - 1, 13
 
 String_48aa1:
-	db   "Tell Now"
-	next "Tell Later@"
+	db   "NOW"
+	next "LATER@"
 
 Function48ab5:
 	ldh a, [hJoyPressed]

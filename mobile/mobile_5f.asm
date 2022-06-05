@@ -512,10 +512,10 @@ MenuHeader_17d26a:
 MenuData_17d272:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 4
-	db "Receive NEWS@";"ニュース¯よみこむ@"
-	db "View NEWS@";"ニュース¯みる@"
-	db "Explanation@";"せつめい@"
-	db "Cancel@";"やめる@"
+	db "RECEIVE NEWS@" 	; "ニュース¯よみこむ@"
+	db "VIEW NEWS@" 	; "ニュース¯みる@"
+	db "EXPLANATION@" 	; "せつめい@"
+	db "CANCEL@" 		; "やめる@"
 
 MenuHeader_ChallengeExplanationCancel:
 	db MENU_BACKUP_TILES ; flags
@@ -526,10 +526,10 @@ MenuHeader_ChallengeExplanationCancel:
 MenuData_ChallengeExplanationCancel:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 4
-	db "Challenge@"
-	db "Check LEADERS@" ; check leaders?
-	db "Explanation@"
-	db "Cancel@"
+	db "CHALLENGE@"
+	db "CHECK LEADERS@" ; check leaders?
+	db "EXPLANATION@"
+	db "CANCEL@"
 
 MenuHeader_ChallengeRegisterExplanationCancel:
 	db MENU_BACKUP_TILES ; flags
@@ -540,11 +540,11 @@ MenuHeader_ChallengeRegisterExplanationCancel:
 MenuData_ChallengeRegisterExplanationCancel:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 5
-	db "Challenge@"
-	db "Check LEADERS@" ; check leaders?
-	db "Previous ROOM@"
-	db "Explanation@"
-	db "Cancel@"
+	db "CHALLENGE@"
+	db "CHECK LEADERS@" ; check leaders?
+	db "PREVIOUS ROOM@"
+	db "EXPLANATION@"
+	db "CANCEL@"
 
 Function17d2b6:
 	call Function17d2c0
@@ -1934,8 +1934,8 @@ Function17dc1f:
 MenuData_17dc96: ; unreferenced
 	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING | STATICMENU_WRAP ; flags
 	db 2
-	db "YES@";"はい@"
-	db "NO@";"いいえ@"
+	db "YES@"	; "はい@"
+	db "NO@"	; "いいえ@"
 
 Function17dc9f:
 	call IncCrashCheckPointer

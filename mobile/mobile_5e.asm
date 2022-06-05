@@ -938,4 +938,4 @@ Palette_17b4b5:
 	RGB 24, 30, 29
 
 MobileCardListGFX::
-INCBIN "gfx/mobile/card_list.2bpp"
+INCBIN "gfx/mobile/friend_cards.2bpp"
