@@ -1772,28 +1772,28 @@ InitNameCardLayout:
 	hlcoord 3, 7
 	lb bc, 9, 15
 	call ClearBox
-	hlcoord 0, 0
+	hlcoord 0, 0 ; Wireless icon in upper left
 	ld a, $0
 	ld [hli], a
 	inc a
 	ld [hl], a
-	hlcoord 0, 1
+	hlcoord 0, 1 ; Wireless icon in upper left
 	inc a
 	ld [hli], a
 	inc a
 	ld [hl], a
-	hlcoord 4, 2
+	hlcoord 4, 2 ; Top of CARD TRADE
 	ld a, $13
 	call .Load11Row
-	hlcoord 4, 3
+	hlcoord 4, 3 ; Middle of CARD TRADE
 	ld a, $1e
 	call .Load12Row
-	hlcoord 4, 4
+	hlcoord 4, 4 ; Bottom of CARD TRADE
 	ld a, $2a
 	call .Load12Row
-	hlcoord 1, 2
+	hlcoord 1, 2 ; Top of vertical line, left edge
 	ld [hl], $4
-	hlcoord 1, 3
+	hlcoord 1, 3 ; Vertical line, left edge
 	ld a, $5
 	call .Load14Column
 	ld a, $9
