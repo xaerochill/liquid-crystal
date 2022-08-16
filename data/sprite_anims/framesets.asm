@@ -67,6 +67,8 @@ SpriteAnimFrameData:
 	dw .Frameset_IntroUnownF
 	dw .Frameset_CelebiLeft
 	dw .Frameset_CelebiRight
+	dw .Frameset_EZChatCursor8
+	dw .Frameset_EZChatCursor9
 	assert_table_length NUM_SPRITE_ANIM_FRAMESETS
 
 .Frameset_00:
@@ -369,6 +371,14 @@ SpriteAnimFrameData:
 
 .Frameset_EZChatCursor7:
 	oamframe SPRITE_ANIM_OAMSET_EZCHAT_CURSOR_7,  2
+	oamend
+
+.Frameset_EZChatCursor8:
+	oamframe SPRITE_ANIM_OAMSET_EZCHAT_CURSOR_8,  2
+	oamend
+
+.Frameset_EZChatCursor9:
+	oamframe SPRITE_ANIM_OAMSET_EZCHAT_CURSOR_9,  2
 	oamend
 
 .Frameset_MobileTradeSentBall:

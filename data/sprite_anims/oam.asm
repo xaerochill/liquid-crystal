@@ -147,6 +147,8 @@ SpriteAnimOAMData:
 	spriteanimoam $08, .OAMData_GameFreakLogo4_11        ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_9
 	spriteanimoam $04, .OAMData_GameFreakLogo4_11        ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_10
 	spriteanimoam $00, .OAMData_GameFreakLogo4_11        ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_11
+	spriteanimoam $00, .OAMData_EZChatCursor8            ; SPRITE_ANIM_OAMSET_EZCHAT_CURSOR_8
+	spriteanimoam $00, .OAMData_EZChatCursor9            ; SPRITE_ANIM_OAMSET_EZCHAT_CURSOR_9
 	assert_table_length NUM_SPRITE_ANIM_OAMSETS
 
 .OAMData_1x1_Palette0:
@@ -746,6 +748,33 @@ SpriteAnimOAMData:
 	db 2
 	dbsprite  0,  0,  0,  0, $32, 0
 	dbsprite  0,  1,  0,  0, $35, 0
+
+; wider cursor in the menu screen
+.OAMData_EZChatCursor8:
+	db 18
+	dsprite  0,  0,  0,  0, $30, 0
+	dsprite  0,  0,  1,  0, $31, 0
+	dsprite  0,  0,  2,  0, $31, 0
+	dsprite  0,  0,  3,  0, $31, 0
+	dsprite  0,  0,  4,  0, $31, 0
+	dsprite  0,  0,  5,  0, $31, 0
+	dsprite  0,  0,  6,  0, $31, 0
+	dsprite  0,  0,  7,  0, $31, 0
+	dsprite  0,  0,  8,  0, $32, 0
+	dsprite  1,  0,  0,  0, $33, 0
+	dsprite  1,  0,  1,  0, $34, 0
+	dsprite  1,  0,  2,  0, $34, 0
+	dsprite  1,  0,  3,  0, $34, 0
+	dsprite  1,  0,  4,  0, $34, 0
+	dsprite  1,  0,  5,  0, $34, 0
+	dsprite  1,  0,  6,  0, $34, 0
+	dsprite  1,  0,  7,  0, $34, 0
+	dsprite  1,  0,  8,  0, $35, 0
+
+; arrow substitute
+.OAMData_EZChatCursor9:
+	db 1
+	dsprite  1,  -2,  -1,  4, $ed, 0
 
 .OAMData_BlueWalk:
 	db 4
