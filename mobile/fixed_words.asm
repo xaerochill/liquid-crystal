@@ -2791,9 +2791,9 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	dbpixel 14, 13 ; Y
 	dbpixel 16, 13 ; Z
 	dbpixel  2, 15 ; ETC.
-	dbpixel  1, 19, 0, 0 ; ERASE
-	dbpixel  7, 19, 0, 0 ; MODE
-	dbpixel 13, 19, 0, 0 ; CANCEL
+	dbpixel  1, 18, 5, 2 ; ERASE
+	dbpixel  7, 18, 5, 2 ; MODE
+	dbpixel 13, 18, 5, 2 ; CANCEL
 
 .Coords_Three: ; Words Submenu Arrow Positions
 	dbpixel  2, 10 
