@@ -2290,7 +2290,7 @@ EZChatScript_SortByCharacterTable:
 	db   "A B C D E F G H I"
 	next "J K L M N O P Q R"
 	next "S T U V W X Y Z"
-	next "?!"
+	next "!?"
 	db   "@"
 
 Function11cfb5:
@@ -2841,9 +2841,9 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_3 ; 18 (Letter selection box for the sort by menu)
 	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_3 ; 19 (Letter selection box for the sort by menu)
 	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_4 ; 1a (Misc selection box for the sort by menu)
-	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_2 ; 1b (Bottom Menu Selection box?)
-	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_2 ; 1c (Bottom Menu Selection box?)
-	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_2 ; 1d (Bottom Menu Selection box?)
+	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_9 ; 1b (Bottom Menu Selection box?)
+	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_9 ; 1c (Bottom Menu Selection box?)
+	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_9 ; 1d (Bottom Menu Selection box?)
 
 .UpdateObjectFlags:
 	ld hl, wcd24
