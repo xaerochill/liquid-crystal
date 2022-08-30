@@ -13,7 +13,7 @@ String_89135:
 	next "this CARD?@";"かきかえないで　やめますか？@" ; Quit anyway?
 
 String_89153:
-	db   "No message.";"メッセージは　ありません@"    ; No message
+	db   "No message.@";"メッセージは　ありません@"    ; No message
 
 OpenSRAMBank4:
 	push af
@@ -37,7 +37,7 @@ Function89174:
 	bit GAME_TIMER_MOBILE_F, [hl]
 	ret
 
-Function8917a:
+Function8917a: ; Clears 50 whats? Tiles?
 	ld hl, wd002
 	ld bc, $32
 	xor a
@@ -123,7 +123,7 @@ Function891d3:
 	pop bc
 	ret
 
-Function891de:
+Mobile22_ClearScreen:
 	call Mobile22_SetBGMapMode0
 	call ClearPalettes
 	hlcoord 0, 0, wAttrmap
@@ -137,9 +137,9 @@ Function891de:
 	call Function891ab
 	ret
 
-Function891fe:
+Mobile22_ClearScreenThenDelay:
 	push bc
-	call Function891de
+	call Mobile22_ClearScreen
 	ld c, $10
 	call DelayFrames
 	pop bc
@@ -479,8 +479,8 @@ Function893b3:
 	call ClearSprites
 	call LoadStandardFont
 	call LoadFontsExtra
-	call Function893ef
-	call Function8942b
+	call Mobile22_LoadCursorGFXIntoVRAM
+	call Mobile22_LoadMobileAdapterGFXIntoVRAM
 	call Function89455
 	call EnableLCD
 	ret
@@ -490,7 +490,7 @@ Function893cc:
 	call ClearSprites
 	call LoadStandardFont
 	call LoadFontsExtra
-	call Function893ef
+	call Mobile22_LoadCursorGFXIntoVRAM
 	call Function89464
 	call EnableLCD
 	ret
@@ -498,11 +498,11 @@ Function893cc:
 Function893e2:
 	call Function89b1e
 	call Function893b3
-	call Function8a5b6
+	call Mobile22_LoadCardFolderPals
 	call Function8949c
 	ret
 
-Function893ef: ; load cursor gfx
+Mobile22_LoadCursorGFXIntoVRAM:: ; load cursor gfx
 	ld de, vTiles0
 	ld hl, EZChatCursorGFX
 	ld bc, $20
@@ -512,7 +512,7 @@ Function893ef: ; load cursor gfx
 
 Function893fe: ; unreferenced
 	call DisableLCD
-	call Function893ef
+	call Mobile22_LoadCursorGFXIntoVRAM
 	call EnableLCD
 	call DelayFrame
 	ret
@@ -520,7 +520,7 @@ Function893fe: ; unreferenced
 EZChatCursorGFX:
 INCBIN "gfx/mobile/ez_chat_cursor.2bpp"
 
-Function8942b:
+Mobile22_LoadMobileAdapterGFXIntoVRAM:
 	ld de, vTiles0 tile $02
 	ld hl, CardLargeSpriteAndFolderGFX
 	ld bc, 8 tiles ; just the large card sprite
@@ -533,7 +533,7 @@ Function8942b:
 	call FarCopyBytes
 	ret
 
-Function89448:
+Mobile22_Clear24FirstOAM::
 ; Clears the sprite array
 	push af
 	ld hl, wShadowOAM
@@ -1430,11 +1430,11 @@ Function89975:
 .asm_89978
 	ld a, [bc]
 	ld d, a
-	call Function8998b
+	call Mobile22_DisplayPINDigit
 	swap d
 	inc hl
 	ld a, d
-	call Function8998b
+	call Mobile22_DisplayPINDigit
 	inc bc
 	inc hl
 	dec e
@@ -1442,19 +1442,19 @@ Function89975:
 	pop bc
 	ret
 
-Function8998b:
+Mobile22_DisplayPINDigit:
 	push bc
 	and $f
 	cp $a
-	jr nc, .asm_89997
-	ld c, $f6
-	add c
-	jr .asm_89999
+	jr nc, .overflow
+	ld c, $f6 ; '0' char index in VRAM.
+	add c ; Adds the offset to turn the value into a char index.
+	jr .char_index_found
 
-.asm_89997
-	ld a, $7f
+.overflow
+	ld a, $7f ; Blank char.
 
-.asm_89999
+.char_index_found
 	ld [hl], a
 	pop bc
 	ret
@@ -1696,7 +1696,7 @@ Function89b00:
 Function89b07:
 	call Mobile22_SetBGMapMode0
 	call DelayFrame
-	farcall Function4a3a7
+	farcall LoadTilesAndDisplayMobileMenuBackground
 	ret
 
 Function89b14: ; unreferenced
@@ -1706,12 +1706,12 @@ Function89b14: ; unreferenced
 	ret
 
 Function89b1e:
-	farcall Function4a485
+	farcall LoadMobileMenuUITiles
 	call Function89b00
 	ret
 
 Function89b28:
-	call Function891de
+	call Mobile22_ClearScreen
 	call ClearBGPalettes
 	call Function893e2
 	call Call_ExitMenu
@@ -1719,9 +1719,9 @@ Function89b28:
 	call SetPalettes
 	ret
 
-Function89b3b:
+SetBGAndDisplayBlankGoldenBox_DE:
 	call Mobile22_SetBGMapMode0
-	farcall Function48cda
+	farcall DisplayBlankGoldenBox_DE
 	ret
 
 Function89b45:
@@ -1773,23 +1773,25 @@ Function89b45:
 	pop hl
 	ret
 
-Function89b78:
+; E contains the index of the char.
+BlinkPINCodeDigit:
 	push bc
-	ld a, [wd010]
-	cp $10
-	jr c, .asm_89b8c
+	ld a, [wd010] ; wd010 is a counter.
+	cp $10 ; No blinking half the time.
+	jr c, .done
+
 	ld a, e
 	and a
-	jr z, .asm_89b89
+	jr z, .skip_hl_increase
 	ld c, e
-.asm_89b85
+.screen_offset_loop
 	inc hl
 	dec c
-	jr nz, .asm_89b85
-.asm_89b89
-	ld a, $7f
+	jr nz, .screen_offset_loop
+.skip_hl_increase
+	ld a, $7f ; Blank character.
 	ld [hl], a
-.asm_89b8c
+.done
 	ld a, [wd010]
 	inc a
 	and $1f
@@ -1798,9 +1800,9 @@ Function89b78:
 	ret
 
 Function89b97: ; the cursor used when editing a card
-	call Function89c34
+	call Mobile22_IncCursorFrameCounter
 	jr c, .asm_89ba0
-	call Function89448
+	call Mobile22_Clear24FirstOAM
 	ret
 .asm_89ba0
 	ld a, [wd014];[wd011]
@@ -1883,26 +1885,29 @@ Unknown_89c1f:
 	db $01, $80, $92, $01, 0 | X_FLIP | Y_FLIP ; $01, $80, $92, $01, 0 | X_FLIP | Y_FLIP
 	db -1 ; end
 
-Function89c34:
+Mobile22_IncCursorFrameCounter:
 	push bc
-	ld a, [wd012]
+	ld a, [wCursorFrameCounter] ; wd012. Yet another frame counter...
 	ld c, a
 	inc a
 	and $f
-	ld [wd012], a
+	ld [wCursorFrameCounter], a
 	ld a, c
 	cp $8
 	pop bc
 	ret
 
-Function89c44:
-	call Function89c34
-	jr c, .asm_89c4f
+; Input: BC: coords of the cursor under the first PIN char. D: contains the tile ID (0). E: index of the char.
+Mobile22_MoveAndBlinkCursor:
+	call Mobile22_IncCursorFrameCounter
+	jr c, .skip_cursor_hiding
+
 	push de
-	call Function89448
+	call Mobile22_Clear24FirstOAM
 	pop de
 	ret
-.asm_89c4f
+
+.skip_cursor_hiding
 	ld hl, wShadowOAMSprite00
 	push de
 	ld a, b
@@ -1911,12 +1916,14 @@ Function89c44:
 	ld a, e
 	and a
 	ld a, c
-	jr z, .asm_89c60
-.asm_89c5c
+	jr z, .skip_offset
+
+.offset_loop
 	add d
 	dec e
-	jr nz, .asm_89c5c
-.asm_89c60
+	jr nz, .offset_loop
+
+.skip_offset
 	pop de
 	ld [hli], a ; x
 	ld a, d
@@ -2161,7 +2168,7 @@ Function89dab:
 	and a
 	ret
 
-Function89de0:
+CardFolderMenu:
 	call ClearSprites
 	call Function89e0a
 	jr c, .asm_89e00
@@ -2179,9 +2186,9 @@ Function89de0:
 	pop bc
 	jr .asm_89dea
 .asm_89dfd
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 .asm_89e00
-	call Function8917a
+	call Function8917a ; Clears something.
 	ret
 
 Jumptable_89e04:
@@ -2191,7 +2198,7 @@ Jumptable_89e04:
 
 Function89e0a:
 	call OpenSRAMBank4
-	call Function8b3b0
+	call Function8b3b0 ; Loads passcode or something like that.
 	call CloseSRAM
 	ld hl, Jumptable_89e18
 	rst JumpTable
@@ -2210,7 +2217,7 @@ Function89e1e:
 	xor a
 	ld [wd02d], a
 
-asm_89e2e:
+asm_89e2e: ; Jumptable dispatcher.
 	ld a, [wd02d]
 	ld hl, Jumptable_89e3c
 	rst JumpTable
@@ -2221,7 +2228,7 @@ Function89e36:
 	inc [hl]
 	jr asm_89e2e
 
-Jumptable_89e3c:
+Jumptable_89e3c: ; CardFolderTutorialJumptable
 	dw Function89e6f
 	dw Function89fed
 	dw Function89ff6
@@ -2232,7 +2239,7 @@ Jumptable_89e3c:
 	dw Function8a04c
 	dw Function8a055
 	dw Function8a0e6
-	dw Function8a0ec
+	dw Function8a0ec ; AskForPINCode
 	dw Function8a0f5
 	dw Function89e58
 	dw Function89e68
@@ -2240,20 +2247,20 @@ Jumptable_89e3c:
 Function89e58:
 	ld a, $1
 	call Function8a2fe
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call Function893e2
 	call Function89168
 	and a
 	ret
 
 Function89e68:
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	ld a, $1
 	scf
 	ret
 
 Function89e6f:
-	call Function891de
+	call Mobile22_ClearScreen
 	call Function89245
 	call Function89ee1
 	call Function89e9a
@@ -2289,7 +2296,7 @@ Palette_89eb1:
 	RGB 00, 00, 00
 
 Function89eb9:
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call Function89ee1
 	call Function89e9a
 	hlcoord 7, 4
@@ -2308,10 +2315,10 @@ Function89ee1:
 	call ClearBGPalettes
 	call Function893e2
 	call Mobile22_SetBGMapMode0
-	farcall Function4a3a7
+	farcall LoadTilesAndDisplayMobileMenuBackground
 	farcall MG_Mobile_Layout_CreatePalBoxes
 	hlcoord 1, 0
-	call Function8a53d
+	call DisplayCardFolderHeader
 	ret
 
 Function89efd:
@@ -2473,14 +2480,14 @@ Function89fa5:
 	ret
 
 Function89fce:
-	call Function8a5b6
+	call Mobile22_LoadCardFolderPals
 	ld a, $5
 	hlcoord 7, 4, wAttrmap
 	call Function8a5a3
 	ld a, $6
 	hlcoord 10, 4, wAttrmap
 	call Function8a5a3
-	call Function89448
+	call Mobile22_Clear24FirstOAM
 	call SetPalettes
 	call Function891ab
 	jp Function89e36
@@ -2491,7 +2498,7 @@ Function89fed:
 	jp Function89e36
 
 Function89ff6:
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call ClearBGPalettes
 	call Function893cc
 	call Function89807
@@ -2687,7 +2694,7 @@ Function8a116:
 	call DelayFrames
 .asm_8a15a
 	call ExitMenu
-	call Function891de
+	call Mobile22_ClearScreen
 	call Function893e2
 	call Function89245
 	call Function89168
@@ -2708,7 +2715,7 @@ Function8a17b:
 	decoord 11, 0
 	ld b, $5
 	ld c, $7
-	call Function89b3b
+	call SetBGAndDisplayBlankGoldenBox_DE
 	ld hl, MenuHeader_0x8a19a
 	ld a, [wd030]
 	call Function89d5e
@@ -2792,18 +2799,18 @@ MobileCardFolderDeletedText:
 
 Function8a241:
 	call LoadStandardMenuHeader
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call Function8a262
 	jr nc, .asm_8a254
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call Function89b28
 	scf
 	ret
 .asm_8a254
-	call Function891de
+	call Mobile22_ClearScreen
 	call ClearBGPalettes
 	call Call_ExitMenu
-	call Function891de
+	call Mobile22_ClearScreen
 	and a
 	ret
 
@@ -2811,10 +2818,10 @@ Function8a262:
 	call ClearBGPalettes
 	call Function893e2
 	call Mobile22_SetBGMapMode0
-	farcall Function4a3a7
+	farcall LoadTilesAndDisplayMobileMenuBackground
 	farcall MG_Mobile_Layout_CreatePalBoxes
 	hlcoord 1, 0
-	call Function8a53d
+	call DisplayCardFolderHeader
 	hlcoord 12, 4
 	call Function8a58d
 	ld a, $5
@@ -2827,7 +2834,7 @@ Function8a262:
 	ld [wd02e], a
 	ld bc, wd013
 	call Function8b36c
-	call Function8b493
+	call Mobile22_DisplayPINCodeAndFrame
 	call Function891ab
 	call SetPalettes
 	call Function8b5e7
@@ -2855,7 +2862,7 @@ Function8a2aa:
 	ld a, $1
 	call Function8a313
 	call CloseSRAM
-	call Function891de
+	call Mobile22_ClearScreen
 	call Function89245
 	call Function89168
 	and a
@@ -2898,10 +2905,10 @@ Function8a313:
 Function8a31c:
 	push bc
 	call Mobile22_SetBGMapMode0
-	farcall Function4a3a7
+	farcall LoadTilesAndDisplayMobileMenuBackground
 	farcall MG_Mobile_Layout_CreatePalBoxes
 	hlcoord 1, 0
-	call Function8a53d
+	call DisplayCardFolderHeader
 	hlcoord 12, 4
 	call Function8a58d
 	call Function8a3b2
@@ -2925,12 +2932,12 @@ Function8a31c:
 	jr c, .asm_8a370
 	jr z, .asm_8a34e
 .asm_8a36a
-	call Function89448
+	call Mobile22_Clear24FirstOAM
 	xor a
 	ld e, a
 	ret
 .asm_8a370
-	call Function89448
+	call Mobile22_Clear24FirstOAM
 	call PlaceHollowCursor
 	call Function8a3a2
 	ld a, [wMenuSelection]
@@ -2980,14 +2987,14 @@ Function8a3b2:
 	decoord 0, 2
 	ld b, $6
 	ld c, $9
-	call Function89b3b
+	call SetBGAndDisplayBlankGoldenBox_DE
 	ld hl, MenuHeader_0x8a435
 	jr .asm_8a3db
 .asm_8a3ce
 	decoord 0, 2
 	ld b, $8
 	ld c, $9
-	call Function89b3b
+	call SetBGAndDisplayBlankGoldenBox_DE
 	ld hl, MenuHeader_0x8a40f
 .asm_8a3db
 	call CopyMenuHeader
@@ -3142,7 +3149,7 @@ asm_8a529:
 	call ByteFill
 	ret
 
-Function8a53d:
+DisplayCardFolderHeader:
 	push hl
 	ld a, $15
 	ld c, $8
@@ -3198,19 +3205,19 @@ Function8a58d:
 	ld a, $2d
 	ld bc, $606
 	ld de, $14
-.asm_8a595
+.outer_loop
 	push bc
 	push hl
-.asm_8a597
+.inner_loop
 	ld [hli], a
 	inc a
 	dec c
-	jr nz, .asm_8a597
+	jr nz, .inner_loop
 	pop hl
 	add hl, de
 	pop bc
 	dec b
-	jr nz, .asm_8a595
+	jr nz, .outer_loop
 	ret
 
 Function8a5a3:
@@ -3230,23 +3237,32 @@ Function8a5a3:
 	jr nz, .asm_8a5a9
 	ret
 
-Function8a5b6:
+Mobile22_LoadCardFolderPals::
 	ldh a, [rSVBK]
 	push af
-	ld a, $5
+	ld a, BANK(wBGPals1)
 	ldh [rSVBK], a
+
+	ld a, b
+	cp TRUE
+	jr z, .skip_bg_pals
+
 	ld hl, Palette_8a5e5
 	ld de, wBGPals1 + 4 palettes
 	ld bc, 3 palettes
 	call CopyBytes
+	
+.skip_bg_pals
 	ld hl, Palette_8a5fd
 	ld de, wOBPals1
 	ld bc, 1 palettes
 	call CopyBytes
+
 	ld hl, Palette_8a605
 	ld de, wOBPals1 + 1 palettes
 	ld bc, 1 palettes
 	call CopyBytes
+
 	pop af
 	ldh [rSVBK], a
 	ret
@@ -3300,7 +3316,7 @@ Palette_8a624:
 
 Function8a62c:
 	call LoadStandardMenuHeader
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	xor a
 	call Function8b94a
 	call Function8b677
@@ -3332,7 +3348,7 @@ Function8a62c:
 	rst JumpTable
 	jr .asm_8a639
 .asm_8a66a
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call Function89b28
 	ret
 
@@ -3343,7 +3359,7 @@ Jumptable_8a671:
 	dw Function8a930
 
 Function8a679:
-	call Function891de
+	call Mobile22_ClearScreen
 	call ClearBGPalettes
 	call Function893cc
 	call OpenSRAMBank4
@@ -3366,9 +3382,9 @@ Function8a679:
 	dec a
 	rst JumpTable
 	jr c, Function8a679
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call Function8b677
-	call Function89448
+	call Mobile22_Clear24FirstOAM
 	ret
 
 Jumptable_8a6bc:
@@ -3387,7 +3403,7 @@ Function8a6c5:
 	ret
 
 Function8a6cd:
-	call Function891de
+	call Mobile22_ClearScreen
 	call ClearBGPalettes
 	call Function893cc
 	call OpenSRAMBank4
@@ -3412,7 +3428,7 @@ Function8a6cd:
 	and a
 	jr z, .asm_8a6fb
 	call PlayClickSFX
-	call Function89448
+	call Mobile22_Clear24FirstOAM
 	ld a, [wd014];[wd011]
 	ld hl, Jumptable_8a74f
 	rst JumpTable
@@ -3424,7 +3440,7 @@ Function8a6cd:
 	call CloseSRAM
 	jr nc, .asm_8a73f
 	call Mobile22_SetBGMapMode0
-	call Function89448
+	call Mobile22_Clear24FirstOAM
 	call Function89a23
 	hlcoord 1, 13
 	ld de, String_89135
@@ -3437,7 +3453,7 @@ Function8a6cd:
 	call CloseSRAM
 .asm_8a742
 	call ClearBGPalettes
-	call Function89448
+	call Mobile22_Clear24FirstOAM
 	call Function891d3
 	call Function8b677
 	ret
@@ -3481,7 +3497,7 @@ Function8a765:
 	ret
 
 Function8a78c:
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	ld de, wd002
 	ld b, NAME_FRIEND
 	farcall NamingScreen
@@ -3500,7 +3516,7 @@ Function8a78c:
 	call CloseSRAM
 	call DelayFrame
 	call JoyTextDelay
-	call Function891de
+	call Mobile22_ClearScreen
 	call ClearBGPalettes
 	call Function893cc
 	call OpenSRAMBank4
@@ -3513,7 +3529,7 @@ Function8a78c:
 Function8a7cb:
 	ld a, [wMenuSelection]
 	push af
-	call Function891de
+	call Mobile22_ClearScreen
 	ld de, wCardPhoneNumber
 	ld c, $0
 	farcall Function17a68f
@@ -3530,7 +3546,7 @@ Function8a7cb:
 .asm_8a7f4
 	pop af
 	ld [wMenuSelection], a
-	call Function891de
+	call Mobile22_ClearScreen
 	call ClearBGPalettes
 	call Function893cc
 	call OpenSRAMBank4
@@ -3622,7 +3638,7 @@ Function8a8a1:
 	ret
 
 Function8a8c3:
-	call Function891de
+	call Mobile22_ClearScreen
 	call ClearBGPalettes
 	call Function893cc
 	call OpenSRAMBank4
@@ -3649,8 +3665,8 @@ Function8a8c3:
 	call WaitBGMap
 	call JoyWaitAorB
 .asm_8a90f
-	call Function89448
-	call Function891fe
+	call Mobile22_Clear24FirstOAM
+	call Mobile22_ClearScreenThenDelay
 	call Function8b677
 	ret
 
@@ -3731,7 +3747,7 @@ Function8a999:
 	ld a, e
 	ld hl, Jumptable_8a9c5
 	rst JumpTable
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call Function89b28
 	pop bc
 	jr .asm_8a9a1
@@ -3754,7 +3770,7 @@ Function8a9ce:
 	decoord 11, 4
 	ld b, $6
 	ld c, $6
-	call Function89b3b
+	call SetBGAndDisplayBlankGoldenBox_DE
 	pop bc
 	ld a, c
 	ld hl, MenuHeader_0x8a9f2
@@ -3800,7 +3816,7 @@ Function8aa0a:
 	ld de, wCardPhoneNumber
 	call Function89381
 	call CloseSRAM
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call ClearBGPalettes
 	call Function893cc
 	call Function89807
@@ -3818,7 +3834,7 @@ Function8aa0a:
 	and a
 	jr z, .asm_8aa43
 	call PlayClickSFX
-	call Function89448
+	call Mobile22_Clear24FirstOAM
 	ld a, [wd014];[wd011]
 	dec a
 	ld hl, Jumptable_8aa6d
@@ -3826,11 +3842,11 @@ Function8aa0a:
 	jr nc, .asm_8aa3a
 	jr .asm_8aa69
 .asm_8aa61
-	call Function89448
+	call Mobile22_Clear24FirstOAM
 	call Function8ab11
 	jr nc, .asm_8aa3a
 .asm_8aa69
-	call Function89448
+	call Mobile22_Clear24FirstOAM
 	ret
 
 Jumptable_8aa6d:
@@ -3842,7 +3858,7 @@ Function8aa73:
 	ld a, [wMenuSelection]
 	ld e, a
 	push de
-	call Function891de
+	call Mobile22_ClearScreen
 	ld de, wCardPhoneNumber
 	ld c, $0
 	farcall Function17a68f
@@ -3857,7 +3873,7 @@ Function8aa73:
 	ld c, $8
 	call Function89193
 .asm_8aa9d
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call ClearBGPalettes
 	call Function893cc
 	call Function89807
@@ -3931,7 +3947,7 @@ Function8ab11:
 
 Function8ab3b:
 .pressed_start
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call ClearBGPalettes
 	call Function893cc
 	call Function89807
@@ -3976,7 +3992,7 @@ Function8ab93:
 	call LoadStandardMenuHeader
 	farcall DoNameCardSwap
 	call ClearSprites
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call Function89b28
 	ret
 
@@ -3986,7 +4002,7 @@ Function8aba9: ; pick a friend to call
 	ld a, $1
 	ld [wd032], a
 .asm_8abb3
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call Function8b677
 .asm_8abb9
 	call Function8b7bd
@@ -4013,7 +4029,7 @@ Function8aba9: ; pick a friend to call
 .asm_8abe2
 	call PlayClickSFX
 .asm_8abe5
-	call Function891de
+	call Mobile22_ClearScreen
 	call ClearBGPalettes
 	call Function893cc
 	call OpenSRAMBank4
@@ -4056,7 +4072,7 @@ Function8ac4e:
 	xor a
 	ld [wMenuSelection], a
 	push de
-	call Function891de
+	call Mobile22_ClearScreen
 	call ClearBGPalettes
 	call Function893cc
 	pop bc
@@ -4074,7 +4090,7 @@ Function8ac70: ; insert friend's card to card folder
 	call Function8b94a
 
 Function8ac76:
-	call Function891fe
+	call Mobile22_ClearScreenThenDelay
 	call Function8b677
 
 Function8ac7c:
@@ -4161,7 +4177,7 @@ Function8ad0b:
 .asm_8ad0b
 	ld a, [wMenuSelection]
 	ld [wd02f], a
-	call Function891de
+	call Mobile22_ClearScreen
 	call ClearBGPalettes
 	call Function893cc
 	call OpenSRAMBank4
@@ -4229,10 +4245,10 @@ String_8ad9c:
 	next "friend's name?@";"のこして　おきますか？@"
 
 Function8adb3:
-	call Function891de
+	call Mobile22_ClearScreen
 	call Function8a262
 	push af
-	call Function891de
+	call Mobile22_ClearScreen
 	pop af
 	ret
 
