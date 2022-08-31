@@ -1084,13 +1084,25 @@ MobileProfileString:         db "  Mobile Profile@"
 MobileString_Gender:         db "Gender@"
 MobileString_Age:            db "Age@"
 MobileString_Address:        db "Address@"
+if DEF(_CRYSTAL_AU)
+MobileString_ZipCode:        db "Post Code@"
+elif DEF(_CRYSTAL_EU)
+MobileString_ZipCode:        db "Post Code@"
+else
 MobileString_ZipCode:        db "Zip Code@"
+endc
 MobileString_OK:             db "OK@"
 MobileString_ProfileChanged: db "Profile Changed@"
 MobileDesc_Gender:           db "Boy or girl?@"
 MobileDesc_Age:              db "How old are you?@"
 MobileDesc_Address:          db "Where do you live?@"
+if DEF(_CRYSTAL_AU)
+MobileDesc_ZipCode:          db "Your post code?@"
+elif DEF(_CRYSTAL_EU)
+MobileDesc_ZipCode:          db "Your post code?@"
+else
 MobileDesc_ZipCode:          db "Your zip code?@"
+endc
 
 MenuHeader_0x484f1:
 	db MENU_BACKUP_TILES ; flags
