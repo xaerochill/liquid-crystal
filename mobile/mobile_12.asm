@@ -1254,19 +1254,6 @@ elif DEF(_CRYSTAL_EU)
 	db "EU-SM@"     ; San Marino
 LastPrefecture: db "EU-UA@"     ; Ukraine
 else
-	db	"CA-AB@"  	;Alberta
-	db	"CA-BC@"  	;British_Columbia
-	db	"CA-MB@"  	;Manitoba
-	db	"CA-NB@"  	;New_Brunswick
-	db	"CA-NL@"  	;Newfoundland_and_Labrador
-	db	"CA-NS@"  	;Nova_Scotia
-	db	"CA-NT@"  	;Northwest_Territories
-	db	"CA-NU@"  	;Nunavut
-	db	"CA-ON@"  	;Ontario
-	db	"CA-PE@"  	;Prince_Edward_Island
-	db	"CA-QC@"  	;Quebec
-	db	"CA-SK@"  	;Saskatchewan
-	db	"CA-YT@"  	;Yukon
 	db	"US-AK@"  	;Alaska
 	db	"US-AL@"  	;Alabama
 	db	"US-AR@"  	;Arkansas
@@ -1317,7 +1304,20 @@ else
 	db	"US-WA@"  	;Washington
 	db	"US-WI@"  	;Wisconsin
 	db	"US-WV@"  	;West_Virginia
-LastPrefecture:	db	"US-WY@"  	;Wyoming
+	db	"US-WY@"  	;Wyoming	
+	db	"CA-AB@"  	;Alberta
+	db	"CA-BC@"  	;British_Columbia
+	db	"CA-MB@"  	;Manitoba
+	db	"CA-NB@"  	;New_Brunswick
+	db	"CA-NL@"  	;Newfoundland_and_Labrador
+	db	"CA-NS@"  	;Nova_Scotia
+	db	"CA-NT@"  	;Northwest_Territories
+	db	"CA-NU@"  	;Nunavut
+	db	"CA-ON@"  	;Ontario
+	db	"CA-PE@"  	;Prince_Edward_Island
+	db	"CA-QC@"  	;Quebec
+	db	"CA-SK@"  	;Saskatchewan
+LastPrefecture: db	"CA-YT@"  	;Yukon
 endc
 
 DisplayInitializedMobileProfileLayout: ; Clears the 4 top lines, displays the "Mobile Profile" title, and displays an empty golden box.
