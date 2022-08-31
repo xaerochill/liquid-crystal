@@ -18,7 +18,7 @@ To build a specific version, run one of these commands inside the repository dir
 
 - US Version:	`make`
 
-- EUR Version (Not done):	`make crystal_eu` 
+- EUR Version:	`make crystal_eu` 
 
 - AUS Version:	`make crystal_au`
 
