@@ -778,9 +778,9 @@ Strings_4a5f6:
 	db "Shown when a@";"モバイル　たいせん<GA>はじまるとき@"
 	db "battle begins.@";"あいて<NI>みえる　あいさつです@"
 	db "Shown when you@";"モバイル　たいせんで　かったとき@"
-	db "won a battle.@";"あいて<NI>みえる　あいさつです@"
+	db "win a battle.@";"あいて<NI>みえる　あいさつです@"
 	db "Shown when you@";"モバイル　たいせんで　まけたとき@"
-	db "lost a battle.@";"あいて<NI>みえる　あいさつです@"
+	db "lose a battle.@";"あいて<NI>みえる　あいさつです@"
 	db "Return to the@";"まえ<NO>がめん　<NI>もどります@"
 	db "previous screen.@"
 
