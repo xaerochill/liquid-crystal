@@ -6412,7 +6412,7 @@ Function11adc4:
 	ld [hl], a
 	and a
 	jr z, .asm_11ae28
-	hlcoord 6, 4 ; 2, 14 ; Changed from 7, 4
+	hlcoord 6, 4 ; 2, 14 ; Changed from 7, 4 ; Gender symbol location on Mobile Trade screen
 	ld a, [wMenuCursorY]
 	cp $2
 	jr z, .asm_11ae23
@@ -6443,8 +6443,8 @@ MenuHeader_11ae38:
 
 String_11ae40:
 	db   "EITHER"
-	next "♂MALE" ; male
-	next "♀FEMALE" ; female
+	next "♂" ; male
+	next "♀" ; female
 	db   "@"
 
 Function11ae4e:
