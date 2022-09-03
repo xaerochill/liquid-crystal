@@ -15,6 +15,12 @@ https://github.com/Sudel-Matze/pokecrystal
 ![image](https://user-images.githubusercontent.com/110418063/188284899-85bfa620-4cf2-4dc3-aac1-e950737ee2aa.png)
 ![image](https://user-images.githubusercontent.com/110418063/188285866-218d7bcd-5694-42c7-a993-e68635c27229.png)
 ![image](https://user-images.githubusercontent.com/110418063/188284957-4f1d28f1-8638-45a5-80cd-6cb1919c6e35.png)
+![image](https://user-images.githubusercontent.com/110418063/188287374-972fbb3c-df55-4e8b-b974-c9ebcb8c43d7.png)
+![image](https://user-images.githubusercontent.com/110418063/188287382-cac22ad1-f3ac-46e8-8b7c-c524460072fc.png)
+![image](https://user-images.githubusercontent.com/110418063/188287387-5cd5514c-267c-4fe6-b66f-0a0e36e712e6.png)
+![image](https://user-images.githubusercontent.com/110418063/188287421-ff2eedad-1569-4512-8224-d1ee2c5622da.png)
+![image](https://user-images.githubusercontent.com/110418063/188287429-e6e7d60a-1968-45e3-99ad-e8924e5c69c3.png)
+
 
 
 ## Setup [![Build Status][travis-badge]][travis]
