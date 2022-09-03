@@ -762,7 +762,7 @@ Function4a5b0:
 	jp Function4a545
 
 String_4a5c5:
-	db "MYSELF@";"じこしょうかい@"
+	db "ABOUT ME@";"じこしょうかい@"
 String_4a5cd:
 	db "BEGIN BATTLE@";"たいせん　<GA>はじまるとき@"
 String_4a5da:
@@ -773,8 +773,8 @@ String_4a5f2:
 	db "BACK@";"もどる@"
 
 Strings_4a5f6:
-	db "Put on your CARD@";"めいし　や　ニュース　<NI>のせる@"
-	db "and the NEWS.@";"あなた<NO>あいさつです@"
+	db "Shown on your@";"めいし　や　ニュース　<NI>のせる@"
+	db "CARD and the NEWS.@";"あなた<NO>あいさつです@"
 	db "Shown when a@";"モバイル　たいせん<GA>はじまるとき@"
 	db "battle begins.@";"あいて<NI>みえる　あいさつです@"
 	db "Shown when you@";"モバイル　たいせんで　かったとき@"
