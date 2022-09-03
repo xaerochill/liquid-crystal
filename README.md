@@ -7,6 +7,14 @@ This repository is built upon a substantial amount of work done by Sudel-Matze.
 A link to Matze’s repository can be found here:
 https://github.com/Sudel-Matze/pokecrystal
 
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/110418063/188284868-5d25cf63-ec57-4780-b6d0-8b7ff90e3826.png)
+![image](https://user-images.githubusercontent.com/110418063/188284842-21fb8827-cb15-4ab4-8b58-d7d58f648b27.png)
+![image](https://user-images.githubusercontent.com/110418063/188284859-ca7b46da-381a-4624-82ae-9ac8f14872cb.png)
+![image](https://user-images.githubusercontent.com/110418063/188284899-85bfa620-4cf2-4dc3-aac1-e950737ee2aa.png)
+
+
 ## Setup [![Build Status][travis-badge]][travis]
 
 An older version of RGBDS is required, we recommend 0.3.8
