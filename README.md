@@ -23,8 +23,11 @@ To build a specific version, run one of these commands inside the repository dir
 - AUS Version:	`make crystal_au`
 
 For a more accurate experience, we advising picking the build version based on where you live as this will make different 'address' options available to you.
+
 The US Version covers the United States and Canada.
+
 The EUR Version covers all countries in Europe (as of 2001).
+
 The AUS Version covers Australia and New Zealand.
 
 If you're looking for other languages, you can find them here: (https://github.com/pokecrystal-mobile)
