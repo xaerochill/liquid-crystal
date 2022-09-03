@@ -49,7 +49,6 @@ Now right click the ‘screen’ on BGB again and select `Load ROM…`, then cho
 ## To-Do
 
 - Finish restrictions on Pokémon names in EZ Chat Menu.
--	Finish localizing and restricting zip codes for each version
 
 ## Contributors
 
