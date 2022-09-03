@@ -22,7 +22,7 @@ To build a specific version, run one of these commands inside the repository dir
 
 - AUS Version:	`make crystal_au`
 
-For a more accurate experience, we advising picking the build version based on where you live as this will make different 'address' options available to you.
+For a more accurate experience, we advising picking the build version based on where you live as this will make different 'address' options available to you which are selectable for personal information.
 
 The US Version covers the United States and Canada.
 
