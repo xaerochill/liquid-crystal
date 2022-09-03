@@ -26,7 +26,7 @@ For more information, please see [INSTALL.md](INSTALL.md)
 After setup has been completed, you can choose which version you wish to build.
 To build a specific version, run one of these commands inside the repository directory in cygwin64:
 
-- US Version:	`make`
+- US Version:   `make`
 
 - EUR Version:	`make crystal_eu` 
 
