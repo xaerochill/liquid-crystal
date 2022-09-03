@@ -822,7 +822,7 @@ Text_ThisWayToMobileRoom: ; unreferenced
 	done
 
 Text_BattleReceptionistIntro:
-	text "Welcome to CABLE"
+	text "Welcome to #COM"
 	line "CLUB COLOSSEUM."
 
 	para "You may battle a"
@@ -833,7 +833,7 @@ Text_BattleReceptionistIntro:
 	done
 
 Text_TradeReceptionistIntro:
-	text "Welcome to CABLE"
+	text "Welcome to #COM"
 	line "TRADE CENTER."
 
 	para "You may trade your"
@@ -845,7 +845,7 @@ Text_TradeReceptionistIntro:
 	done
 
 Text_TimeCapsuleReceptionistIntro:
-	text "Welcome to CABLE"
+	text "Welcome to #COM"
 	line "CLUB TIME CAPSULE."
 
 	para "You can travel to"
