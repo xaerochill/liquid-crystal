@@ -1769,7 +1769,7 @@ InitNameCardLayout:
 	ld a, $3f
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	call ByteFill
-	hlcoord 3, 7
+	hlcoord 3, 7 ; White background behind text
 	lb bc, 9, 15
 	call ClearBox
 	hlcoord 0, 0 ; Wireless icon in upper left
@@ -1782,19 +1782,19 @@ InitNameCardLayout:
 	ld [hli], a
 	inc a
 	ld [hl], a
-	hlcoord 4, 2 ; Top of CARD TRADE
-	ld a, $13
-	call .Load11Row
-	hlcoord 4, 3 ; Middle of CARD TRADE
-	ld a, $1e
+	hlcoord 4, 2
+	ld a, $13 ; Top of CARD TRADE
 	call .Load12Row
-	hlcoord 4, 4 ; Bottom of CARD TRADE
-	ld a, $2a
+	hlcoord 4, 3
+	ld a, $1f ; Middle of CARD TRADE ($1e)
 	call .Load12Row
-	hlcoord 1, 2 ; Top of vertical line, left edge
-	ld [hl], $4
-	hlcoord 1, 3 ; Vertical line, left edge
-	ld a, $5
+	hlcoord 4, 4
+	ld a, $2b ; Bottom of CARD TRADE ($2a)
+	call .Load12Row
+	hlcoord 1, 2
+	ld [hl], $4  ; Top of vertical line, left edge
+	hlcoord 1, 3
+	ld a, $5	 ; Vertical line, left edge
 	call .Load14Column
 	ld a, $9
 	hlcoord 18, 5
@@ -1817,25 +1817,25 @@ InitNameCardLayout:
 	hlcoord 1, 16
 	ld [hl], $6
 	hlcoord 2, 6
-	ld a, $37
-	call .Load16Row
+	ld a, $38
+	call .Load16Row 	; Text Box, top edge
 	hlcoord 2, 15
 	ld a, $3d
-	call .Load16Row
+	call .Load16Row  	; Text Box, bottom edge
 	hlcoord 2, 6
-	ld a, $39
-	call .Load9Column
+	ld a, $3a
+	call .Load9Column 	; Text Box, left edge
 	hlcoord 17, 6
 	ld a, $3b
-	call .Load9Column
+	call .Load9Column 	; Text Box, right edge
 	hlcoord 2, 6
-	ld [hl], $36
+	ld [hl], $37 		; Text Box, upper-left
 	hlcoord 17, 6
-	ld [hl], $38
+	ld [hl], $39 		; Text Box, upper-right
 	hlcoord 2, 15
-	ld [hl], $3c
+	ld [hl], $3c 		; Text Box, bottom-left
 	hlcoord 17, 15
-	ld [hl], $3e
+	ld [hl], $3e 		; Text Box, bottom-right
 	ld de, wShadowOAMSprite00
 	ld hl, .NameCardOAMData
 	ld bc, 16 * SPRITEOAMSTRUCT_LENGTH
@@ -1850,8 +1850,8 @@ InitNameCardLayout:
 	ld b,  6
 	jr .row_loop
 
-.Load11Row:
-	ld b, 11
+.Load14Row:
+	ld b, 14
 	jr .row_loop
 
 .Load12Row:
