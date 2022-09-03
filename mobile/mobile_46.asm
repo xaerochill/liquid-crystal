@@ -6492,7 +6492,7 @@ Function11ae98:
 	ret z
 	call PlayClickSFX
 .asm_11aeb4
-	hlcoord 7, 4 ;2, 14
+	hlcoord 6, 4 ;2, 14 ; Changed from 7, 4 ; Gender symbol location on Mobile Trade screen
 	ld a, $7f
 	ld [hl], a
 	ld a, $1
@@ -6582,7 +6582,7 @@ Function11af4e:
 	ret z
 	call PlayClickSFX
 .asm_11af6a
-	hlcoord 7, 4 ;2, 14
+	hlcoord 6, 4 ;2, 14 ; Changed from 7, 4 ; Gender symbol location on Mobile Trade screen
 	ld a, $7f
 	ld [hl], a
 	ld a, $1
