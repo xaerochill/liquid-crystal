@@ -1047,11 +1047,11 @@ Function100697:
 	ret
 
 String1006c2:
-	db "Min@"			; "ふん　@" Minute
+	db " min @"			; "ふん　@" Minute
 String1006c6:
-	db "Sec@"			; "びょう@" Second
+	db " sec@"			; "びょう@" Second
 String1006ca:
-	db "１ Hour+ @" 		; "１じかんいじょう@" More than 1 hour
+	db "1 hour+ @" 		; "１じかんいじょう@" More than 1 hour
 
 Function1006d3:
 	call UpdateTime
@@ -1313,7 +1313,7 @@ Function100846:
 	hlcoord 1, 14
 	call PlaceString
 	ld de, wStringBuffer2
-	hlcoord 4, 16
+	hlcoord 6, 16 ; 4, 14
 	call Function100697
 	ret
 
@@ -1329,7 +1329,7 @@ Function100846:
 
 String_10088e:
 	db   "MOBILE BATTLE" 	; "モバイルたいせん　できる"
-	next "TIME LEFT@"	 	; "じかん@"
+	next "TIME @"	 	; "じかん@"
 
 String_10089f:
 	db " UNLIMITED@" 		; "　むせいげん@"
@@ -2264,7 +2264,7 @@ Function100efb: ; unreferenced
 Function100f02:
 	ld a, c
 	ld [wStringBuffer2], a
-	; someting that was previously stored in de gets backed up to here
+	; something that was previously stored in de gets backed up to here
 	ld a, e
 	ld [wStringBuffer2 + 1], a
 	ld a, d
