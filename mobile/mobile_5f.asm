@@ -527,7 +527,7 @@ MenuData_ChallengeExplanationCancel:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 4
 	db "Challenge@"
-	db "Leader History@" ; check leaders?
+	db "Honor Roll@" ; check leaders?
 	db "Explanation@"
 	db "Cancel@"
 
@@ -541,7 +541,7 @@ MenuData_ChallengeRegisterExplanationCancel:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 5
 	db "Challenge@"
-	db "Leader History@" ; check leaders?
+	db "Honor Roll@" ; check leaders?
 	db "Previous Room@"
 	db "Explanation@"
 	db "Cancel@"
