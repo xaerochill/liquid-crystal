@@ -57,7 +57,7 @@ PokecomCenterAdminOfficeMobileComputer1:
 	db 3 ; items
 	db "#COM CLUB@" ; # COM CLUB
 	db "MOBILE CENTER@" ; MOBILE CENTER
-	db "QUIT@" ; QUIT
+	db "CANCEL@" ; QUIT
 
 PokecomCenterAdminOfficeMobileComputer2:
 	opentext
@@ -99,7 +99,7 @@ PokecomCenterAdminOfficeMobileComputer2:
 	db 3 ; items
 	db "PHONE GUIDE@" ; Use phone
 	db "PHONE ISSUES@" ; Don't use phone
-	db "QUIT@" ; QUIT
+	db "CANCEL@" ; QUIT
 
 PokecomCenterAdminOfficeMobileComputer3:
 	jumptext PokecomCenterAdminOfficeMobileComputer3Text

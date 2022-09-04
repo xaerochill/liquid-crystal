@@ -625,11 +625,11 @@ String_17fe63:
 
 String_17fe9a: ; unused
 	db   "The #MON NEWS" 		; "ポケモンニュースが"
-	next "were updated." 		; "あたらしくなっているので"
-	next "Please load the" 		; "レポートを　おくれません"
-	next "new NEWS before" 		; "あたらしい　ポケモンニュースの"
-	next "updating the" 		; "よみこみを　さきに　してください"
-	next "RANKINGS."
+	next "was updated." 		; "あたらしくなっているので"
+	next "Please download" 		; "レポートを　おくれません"
+	next "the latest NEWS" 		; "あたらしい　ポケモンニュースの"
+	next "before updating" 		; "よみこみを　さきに　してください"
+	next "the rankings."
 	db   "@"
 
 String_17fedf:
