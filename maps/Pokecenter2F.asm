@@ -822,8 +822,9 @@ Text_ThisWayToMobileRoom: ; unreferenced
 	done
 
 Text_BattleReceptionistIntro:
-	text "Welcome to #COM"
-	line "CLUB COLOSSEUM."
+	text "Welcome to the"
+	line "#COM CLUB"
+	cont "COLOSSEUM!"
 
 	para "You may battle a"
 	line "friend here."
@@ -833,8 +834,9 @@ Text_BattleReceptionistIntro:
 	done
 
 Text_TradeReceptionistIntro:
-	text "Welcome to #COM"
-	line "TRADE CENTER."
+	text "Welcome to the"
+	line "#COM CLUB TRADE"
+	cont "CENTER!"
 
 	para "You may trade your"
 	line "#MON here with"
@@ -845,8 +847,9 @@ Text_TradeReceptionistIntro:
 	done
 
 Text_TimeCapsuleReceptionistIntro:
-	text "Welcome to #COM"
-	line "CLUB TIME CAPSULE."
+	text "Welcome to the"
+	line "#COM CLUB TIME"
+	cont "CAPSULE."
 
 	para "You can travel to"
 	line "the past and trade"
