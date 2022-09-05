@@ -7288,14 +7288,14 @@ Unknown_103522:
 	dw String_103545
 
 String_103545: db "@"
-String_103546: db "Animations@"			; "せんとう　アニメ@"
+String_103546: db "Battle Scene@"		; "せんとう　アニメ@"
 String_10354f: db "Phone no.@"			; "でんわばんごう@"
 String_103557: db "CARD trade@"			; "めいしこうかん@"
 String_10355f: db "Caller decides.@"	; "でんわを　かけるひとが　きめられる@"
 String_103571: db "Phone no. source.@"	; "でんわばんごうの　にゅうりょくのしかた@" ; Entering a phone number
 String_103585: db "Replaces old CARD.@"	; "あたらしいめいしが　あれば　こうかん@" ; Replace if there is a new card
-String_103598: db "SKIP@"				; "とばして　みる@"; Skip to see
-String_1035a0: db "SHOW@"				; "じっくり　みる@" ; Watch carefully
+String_103598: db "OFF@"				; "とばして　みる@"; Skip to see
+String_1035a0: db "ON@"				; "じっくり　みる@" ; Watch carefully
 String_1035a8: db "CARD@"				; "めいしからえらぶ@" ; Choose from cards
 String_1035b1: db "ENTER@"				; "すうじで　いれる@"
 String_1035ba: db "YES@"				; "する@"
