@@ -333,7 +333,7 @@ asm_4a19d:
 String_4a1ef:
 	db   "MOBILE CENTER";"モバイルセンター¯えらぶ"
 	next "LOG-IN PASSWORD";"ログインパスワード¯いれる"
-	next "BACK@";"もどる@"
+	next "CANCEL@";"もどる@"
 
 Function4a20e:
 	ld a, $1
@@ -770,7 +770,7 @@ String_4a5da:
 String_4a5e6:
 	db "LOSE BATTLE@";"たいせん　<NI>まけたとき@"
 String_4a5f2:
-	db "BACK@";"もどる@"
+	db "CANCEL@";"もどる@"
 
 Strings_4a5f6:
 	db "Shown on your@";"めいし　や　ニュース　<NI>のせる@"

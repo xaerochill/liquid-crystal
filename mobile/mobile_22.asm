@@ -2738,7 +2738,7 @@ MenuData_0x8a1a2:
 	db 3 ; items
 	db "OPEN@" ; "ひらく@"
 	db "DELETE@" ; "すてる@"
-	db "BACK@" ; "もどる@"
+	db "CANCEL@" ; "もどる@"
 
 Function8a1b0:
 	hlcoord 0, 12
@@ -3799,7 +3799,7 @@ MenuData_0x8a9fa:
 	db 3 ; items
 	db "EDIT@"
 	db "VIEW@"
-	db "BACK@"
+	db "QUIT@"
 
 Function8aa09:
 	ret
