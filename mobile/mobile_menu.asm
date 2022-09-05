@@ -106,7 +106,7 @@ MobileString1:
 	next "MESSAGES"
 	next "PROFILE"
 	next "SETTINGS"
-	next "EXIT"
+	next "CANCEL"
 	db   "@"
 
 MobileStrings2:
