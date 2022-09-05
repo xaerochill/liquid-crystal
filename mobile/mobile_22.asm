@@ -2763,8 +2763,9 @@ Strings_8a1cc:
 	next "CARD FOLDER." ;"あんしょうばんごう<WO>けします"
 	db   "@"
 
-	db   "Go back." ;"まえ<NO>がめん<NI>もどります"
-	db   "@"
+	db   "Return to the";"まえ<NO>がめん<NI>もどります@"
+	next "previous screen.@"
+	db   "@"	
 
 Function8a20d:
 	ld hl, MobileCardFolderAskDeleteText
