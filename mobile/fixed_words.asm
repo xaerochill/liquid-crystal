@@ -1001,7 +1001,7 @@ Function11c618:
 	ret
 
 EZChatString_Stop_Mode_Cancel:
-	db "DEL  　MODE　　QUIT@";"けす　　　　モード　　　やめる@"
+	db "DEL  　MODE　　EXIT@";"けす　　　　モード　　　やめる@"
 
 EZChatCoord_Categories: ; Category Coordinates
 	dwcoord  1,  7 ; PKMN
