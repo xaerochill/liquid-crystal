@@ -762,7 +762,7 @@ Function4a5b0:
 	jp Function4a545
 
 String_4a5c5:
-	db "ABOUT ME@";"じこしょうかい@"
+	db "INTRODUCTION@";"じこしょうかい@"
 String_4a5cd:
 	db "BEGIN BATTLE@";"たいせん　<GA>はじまるとき@"
 String_4a5da:
