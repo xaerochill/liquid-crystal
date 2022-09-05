@@ -116,7 +116,7 @@ String_0x49fe9:
 	next "friends' CARDS.@"
 
 String_0x4a004:
-	db   "Set MESSAGES";"モバイルたいせんや　じぶんのめいしで"
+	db   "Set messages";"モバイルたいせんや　じぶんのめいしで"
 	next "shown to others.@";"つかう　あいさつ¯つくります@"
 
 String_0x4a026:
