@@ -1998,19 +1998,19 @@ EZChatString_MessageSet: ; message accept strings, one for each type of message.
 
 EZChatString_MessageIntroSet:
 	db   "INTRODUCTION"		;"じこしょうかい　の"
-	next "MESSAGE set!@"	;next "あいさつ¯とうろくした！@"
+	next "message set!@"	;next "あいさつ¯とうろくした！@"
 
 EZChatString_MessageBattleStartSet:
 	db   "BEGIN BATTLE"		;"たいせん　<GA>はじまるとき　の"
-	next "MESSAGE set!@"	;next "あいさつ¯とうろくした！@"
+	next "message set!@"	;next "あいさつ¯とうろくした！@"
 
 EZChatString_MessageBattleWinSet:
 	db   "WIN BATTLE"		;"たいせん　<NI>かったとき　の"
-	next "MESSAGE set!@"	;next "あいさつ¯とうろくした！@"
+	next "message set!@"	;next "あいさつ¯とうろくした！@"
 
 EZChatString_MessageBattleLoseSet:
 	db   "LOSE BATTLE"		;"たいせん　<NI>まけたとき　の"
-	next "MESSAGE set!@"	;next "あいさつ¯とうろくした！@"
+	next "message set!@"	;next "あいさつ¯とうろくした！@"
 
 EZChatMenu_WarnEmptyMessage:
 	ld de, EZChatBKG_SortBy
