@@ -7295,7 +7295,7 @@ String_10355f: db "Caller decides.@"	; "でんわを　かけるひとが　き�
 String_103571: db "Phone no. source.@"	; "でんわばんごうの　にゅうりょくのしかた@" ; Entering a phone number
 String_103585: db "Replaces old CARD.@"	; "あたらしいめいしが　あれば　こうかん@" ; Replace if there is a new card
 String_103598: db "OFF@"				; "とばして　みる@"; Skip to see
-String_1035a0: db "ON@"				; "じっくり　みる@" ; Watch carefully
+String_1035a0: db "ON@"					; "じっくり　みる@" ; Watch carefully
 String_1035a8: db "CARD@"				; "めいしからえらぶ@" ; Choose from cards
 String_1035b1: db "ENTER@"				; "すうじで　いれる@"
 String_1035ba: db "YES@"				; "する@"
