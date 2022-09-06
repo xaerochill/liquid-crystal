@@ -1030,16 +1030,16 @@ Function8b960:
 	call LoadMenuHeader
 	call Function8b9e9
 	jr c, .asm_8b97a
-	hlcoord 11, 0
+	hlcoord 10, 0
 	ld b, $6
-	ld c, $7
+	ld c, $8
 	call Function8b703
 	ld hl, MenuHeader_0x8b9b1
 	jr .asm_8b987
 .asm_8b97a
-	hlcoord 11, 0
+	hlcoord 10, 0
 	ld b, $a
-	ld c, $7
+	ld c, $8
 	call Function8b703
 	ld hl, MenuHeader_0x8b9ca
 .asm_8b987
@@ -1072,11 +1072,11 @@ Function8b9ab:
 
 MenuHeader_0x8b9ac:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 11, 0, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	menu_coords 01, 0, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
 
 MenuHeader_0x8b9b1:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 11, 0, SCREEN_WIDTH - 1, 7
+	menu_coords 10, 0, SCREEN_WIDTH - 1, 7
 	dw MenuData_0x8b9b9
 	db 1 ; default option
 
@@ -1089,7 +1089,7 @@ MenuData_0x8b9b9:
 
 MenuHeader_0x8b9ca:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 11, 0, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	menu_coords 10, 0, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
 	dw MenuData_0x8b9d2
 	db 1 ; default option
 
@@ -1099,7 +1099,7 @@ MenuData_0x8b9d2:
 	db "VIEW@"       ; VIEW
 	db "EDIT@" ; EDIT
 	db "SWITCH@"   ; REPLACE
-	db "ERASE@"       ; ERASE
+	db "DELETE@"       ; ERASE
 	db "CANCEL@"     ; QUIT
 
 Function8b9e9: ; check if entry is filled out?
