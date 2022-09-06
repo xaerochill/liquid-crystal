@@ -2987,14 +2987,14 @@ Function8a3b2:
 	jr nc, .asm_8a3ce
 	decoord 0, 2
 	ld b, $6
-	ld c, $8
+	ld c, $9
 	call SetBGAndDisplayBlankGoldenBox_DE
 	ld hl, MenuHeader_0x8a435
 	jr .asm_8a3db
 .asm_8a3ce
 	decoord 0, 2
 	ld b, $8
-	ld c, $8
+	ld c, $9
 	call SetBGAndDisplayBlankGoldenBox_DE
 	ld hl, MenuHeader_0x8a40f
 .asm_8a3db
@@ -3031,7 +3031,7 @@ Unknown_8a40b: db 1, 2, 3, -1
 
 MenuHeader_0x8a40f:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 2, 9, TEXTBOX_Y - 1
+	menu_coords 0, 2, 10, TEXTBOX_Y - 1
 	dw MenuData_0x8a417
 	db 1 ; default option
 
@@ -3045,7 +3045,7 @@ MenuData_0x8a417:
 
 MenuHeader_0x8a435:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 2, 9, 8
+	menu_coords 0, 2, 10, 8
 	dw MenuData_0x8a43d
 	db 1 ; default option
 
@@ -3764,13 +3764,13 @@ Jumptable_8a9c5:
 
 MenuHeader_0x8a9c9:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 10, 4, 18, TEXTBOX_Y - 1
+	menu_coords 11, 4, 18, TEXTBOX_Y - 1
 
 Function8a9ce:
 	push bc
-	decoord 10, 4
+	decoord 11, 4
 	ld b, $6
-	ld c, $7
+	ld c, $6
 	call SetBGAndDisplayBlankGoldenBox_DE
 	pop bc
 	ld a, c
@@ -3791,7 +3791,7 @@ Function8a9ce:
 
 MenuHeader_0x8a9f2:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 10, 4, 18, TEXTBOX_Y - 1
+	menu_coords 11, 4, 18, TEXTBOX_Y - 1
 	dw MenuData_0x8a9fa
 	db 1 ; default option
 
@@ -3800,7 +3800,7 @@ MenuData_0x8a9fa:
 	db 3 ; items
 	db "EDIT@"
 	db "VIEW@"
-	db "CANCEL@"
+	db "QUIT@"
 
 Function8aa09:
 	ret
