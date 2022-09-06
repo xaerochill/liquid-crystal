@@ -5737,8 +5737,8 @@ String_11a779:
 	next "corrupted.@";"こわれて　います@"
 
 String_11a791:
-	db   "もっている　データと"
-	next "おなじデータしか　ありません！@"
+	db   "The received data"
+	next "already exists!@"
 
 String_11a7ac:
 	db   "Stop reading"
@@ -5746,11 +5746,11 @@ String_11a7ac:
 
 String_11a7c1:
 	db   "There was no"
-	next "new NEWS.@"
+	next "more NEWS.@"
 
 String_11a7d7:
 	db   "Receive the"
-	next "new NEWS?@"
+	next "latest NEWS?@"
 
 String_11a7f4:
 	db   "　　　　　　　　　　　　　　　@"
