@@ -896,7 +896,7 @@ Function1704e1: ; honor roll
 	db "ROOM:@";"ルーム@"
 
 .String_PastReaders:
-	db "Past LEADERS@";"れきだいりーダーいちらん@"
+	db "HONOR ROLL@";"れきだいりーダーいちらん@"
 
 BattleTowerAction:
 	jumptable .dw, wScriptVar
