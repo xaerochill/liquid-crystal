@@ -514,7 +514,7 @@ MenuData_17d272:
 	db 4
 	db "Receive News@" 	; "ニュース¯よみこむ@"
 	db "Read News@" 	; "ニュース¯みる@"
-	db "Information@" 	; "せつめい@"
+	db "Explanation@" 	; "せつめい@"
 	db "Cancel@" 		; "やめる@"
 
 MenuHeader_ChallengeExplanationCancel:
@@ -528,7 +528,7 @@ MenuData_ChallengeExplanationCancel:
 	db 4
 	db "Challenge@"
 	db "Honor Roll@" ; check leaders?
-	db "Information@"
+	db "Explanation@"
 	db "Cancel@"
 
 MenuHeader_ChallengeRegisterExplanationCancel:
@@ -543,7 +543,7 @@ MenuData_ChallengeRegisterExplanationCancel:
 	db "Challenge@"
 	db "Honor Roll@" ; check leaders?
 	db "Previous Room@"
-	db "Information@"
+	db "Explanation@"
 	db "Cancel@"
 
 Function17d2b6:
