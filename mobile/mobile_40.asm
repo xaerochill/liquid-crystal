@@ -4569,8 +4569,7 @@ String_101fd2:
 	db "Calling…@"			; "に　でんわを　かけています@"
 
 String_101fe1:
-	db   "Connected to"		; "でんわが　つながりました!@"
-	next "friend!@"
+	db   "Call connected!"		; "でんわが　つながりました!@"
 
 String_101fef:
 	db   "Ending call…@"	; "つうわを"
