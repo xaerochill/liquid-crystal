@@ -1233,7 +1233,7 @@ GoldenrodPokecenter1F_MapEvents:
 	bg_event 29,  8, BGEVENT_READ, GoldenrodPokecenter1F_NewsMachineScript
 	bg_event 29,  9, BGEVENT_READ, GoldenrodPokecenter1F_NewsMachineScript
 	bg_event 29, 10, BGEVENT_READ, GoldenrodPokecenter1F_NewsMachineScript
-	bg_event  2,  9, BGEVENT_READ, GoldenrodPokecenter1FInfoSign
+	bg_event  2,  9, BGEVENT_READ, PokeComCenterInfoSign
 
 	def_object_events
 	object_event  7,  7, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FNurseScript, -1
