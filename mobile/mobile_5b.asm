@@ -714,7 +714,7 @@ Function16cc5a:
 	ret
 
 Function16cc62:
-	hlcoord 0, 14, wAttrMap;0, 15, wAttrMap
+	hlcoord 0, 14, wAttrmap;0, 15, wAttrMap
 	ld bc, $0028 + $14
 	ld a, $1
 	call ByteFill

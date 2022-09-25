@@ -458,7 +458,7 @@ Menu_ChallengeExplanationCancel:
 
 Call_05f_5261:
     ld a, BANK(s5_aa8e);$05
-    call GetSRAMBank;$2f9d
+    call OpenSRAM;$2f9d
     ld hl, s5_aa8e
     ld bc, BATTLE_TOWER_STRUCT_LENGTH * BATTLETOWER_STREAK_LENGTH;$0594
 jr_05f_526c:

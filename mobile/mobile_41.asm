@@ -530,7 +530,7 @@ BackupMobileEventIndex:
 	ld de, sMobileEventIndexBackup
 	ld bc, $83
 	call CopyBytes
-	call Unreferenced_VerifyTrainerRankingsChecksum
+	call VerifyTrainerRankingsChecksum
 	call nz, InitializeTrainerRankings
 	call CloseSRAM;$2fad
 	ret
@@ -553,12 +553,12 @@ RestoreMobileEventIndex:
 	ld de, sMobileEventIndex
 	ld bc, $83
 	call CopyBytes
-	call Unreferenced_VerifyTrainerRankingsChecksum
+	call VerifyTrainerRankingsChecksum
 	call nz, InitializeTrainerRankings
 	call CloseSRAM
 	ret
 
-VerifyTrainerRankingsChecksum: ; unreferenced
+VerifyTrainerRankingsChecksum:
 	call CalculateTrainerRankingsChecksum
 	ld hl, sTrainerRankingsChecksum
 	ld a, d

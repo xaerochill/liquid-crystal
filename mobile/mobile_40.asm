@@ -1250,7 +1250,7 @@ Function1007f6:
 	call Function1006dc
 	ld a, $04
 	call OpenSRAM
-	ld hl, s4_a800 + 2
+	ld hl, sMobileBattleTimer + 2
 	call Function100826
 	call CloseSRAM
 	ld hl, wcd6e
@@ -6711,7 +6711,7 @@ Function102f85:
 	ret
 
 String_102fb2:
-	text_far UnknownText_0x1c41e6 ; friend's pokemon abnormal
+	text_far _LinkAbnormalMonText ; friend's pokemon abnormal
 	text_end
 	;db   "あいてがわ<PKMN>えらんだ　"
 	;next "いじょう<PKMN>あるようです！！"

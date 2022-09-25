@@ -17,17 +17,17 @@ RouteBattleTowerGateShowSailorCallback:
 	return
 
 Route40BattleTowerGateRockerScript:
-	jumptextfaceplayer UnknownText_0x9f783
+	jumptextfaceplayer Route40BattleTowerGateUnusedText3
 
 Route40BattleTowerGateTwinScript:
 	special Mobile_DummyReturnFalse
 	iftrue .mobile
-	jumptextfaceplayer UnknownText_0x9f66f
+	jumptextfaceplayer Route40BattleTowerGateUnusedText1
 
 .mobile
-	jumptextfaceplayer UnknownText_0x9f6ba
+	jumptextfaceplayer Route40BattleTowerGateUnusedText2
 
-Route40BattleTowerGateUnusedText1: ; unreferenced
+Route40BattleTowerGateUnusedText1:
 	text "Did you come to"
 	line "see the BATTLE"
 	cont "TOWER too?"
@@ -36,7 +36,7 @@ Route40BattleTowerGateUnusedText1: ; unreferenced
 	line "can't go in yet."
 	done
 
-Route40BattleTowerGateUnusedText2: ; unreferenced
+Route40BattleTowerGateUnusedText2:
 	text "BATTLE TOWER has"
 	line "opened."
 
@@ -58,7 +58,7 @@ Route40BattleTowerGateRockerText:
 	line "win special gifts."
 	done
 
-Route40BattleTowerGateUnusedText3: ; unreferenced
+Route40BattleTowerGateUnusedText3:
 	text "I'm going to train"
 	line "my #MON so I'll"
 

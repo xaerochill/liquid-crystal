@@ -260,7 +260,7 @@ RunBattleTowerTrainer:
 	and a ; WIN?
 	jr nz, .lost
 	
-	farcall Unreferenced_StubbedTrainerRankings_BattleTowerWins
+	farcall StubbedTrainerRankings_BattleTowerWins
 	farcall BackupMobileEventIndex
 	
 	ld a, BANK(sNrOfBeatenBattleTowerTrainers)
@@ -591,7 +591,7 @@ CopyBTTrainer_FromBT_OT_TowBT_OTTemp:
 ;
 ;	ld a, BANK(sBattleTowerChallengeState)
 ;	call GetSRAMBank
-;	ld a, BATTLETOWER_CHALLENGE_IN_PROGESS
+;	ld a, BATTLETOWER_CHALLENGE_IN_PROGRESS
 ;	ld [sBattleTowerChallengeState], a
 ;	ld hl, sNrOfBeatenBattleTowerTrainers
 ;	inc [hl]
@@ -600,9 +600,9 @@ CopyBTTrainer_FromBT_OT_TowBT_OTTemp:
 ;Call_05c_44b6
 	ld a, BANK(sBattleTowerChallengeState)
 	call OpenSRAM
-	ld a, BATTLETOWER_CHALLENGE_IN_PROGESS
+	ld a, BATTLETOWER_CHALLENGE_IN_PROGRESS
 	ld [sBattleTowerChallengeState], a ; sBattleTowerChallengeState = $aa3e in jp
-	call Unreferenced_Function1704ca;Call_05c_44d4
+	call Function1704ca;Call_05c_44d4
 	ld de, wBT_OTTemp
 	ld bc, BATTLE_TOWER_STRUCT_LENGTH;$00cc ; jp battle tower data length
 	call CopyBytes;$2ff2
@@ -1590,7 +1590,7 @@ LoadOpponentTrainerAndPokemonWithOTSprite:
 ;	ld hl, wBT_OTTrainerClass
 	ld a, $05
 	call OpenSRAM;$2f9d
-	call Unreferenced_Function1704ca;Call_05c_44d4
+	call Function1704ca;Call_05c_44d4
 	ld de, NAME_LENGTH - 1;$0005
 	add hl, de
 
@@ -1598,12 +1598,12 @@ LoadOpponentTrainerAndPokemonWithOTSprite:
 	dec a
 	
 	cp $42
-	jr c, jr_05c_4aa6
+	jr c, .jr_05c_4aa6
 	ld a, $16
-    ld [hl], a
-    dec a
+	ld [hl], a
+	dec a
 
-jr_05c_4aa6;
+.jr_05c_4aa6;
 	ld c, a
 	ld b, 0
 ;	pop af

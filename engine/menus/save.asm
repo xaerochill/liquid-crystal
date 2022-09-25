@@ -362,12 +362,12 @@ ErasePreviousSave:
 	call EraseHallOfFame
 	call EraseLinkBattleStats
 	call EraseMysteryGift
-	call Unreferenced_Function14d18
+	call Function14d18
 	call EraseBattleTowerStatus
 	call SaveData
-	call Unreferenced_Function14d6c
-	call Unreferenced_Function14d83
-	call Unreferenced_Function14d93
+	call Function14d6c
+	call Function14d83
+	call Function14d93
 	; the stack stuff here doesn't happen in the japanese version
 	; doesn't have anything to do with mobile though so that should probably stay here
 	ld a, BANK(sStackTop)
@@ -424,7 +424,7 @@ Function14d18: ; unreferenced
 
 EraseBattleTowerStatus: ; Call_005_4d09 in crystal jp
 ;	ld a, BANK(sBattleTowerChallengeState)
-;	call GetSRAMBank
+;	call OpenSRAM
 ;	xor a
 ;	ld [sBattleTowerChallengeState], a
 	
@@ -455,7 +455,7 @@ SaveData:
 	call _SaveData
 	ret
 
-Function14d6c: ; unreferenced
+Function14d6c:
 	ld a, BANK(s4_a60b) ; MBC30 bank used by JP Crystal; inaccessible by MBC3
 	call OpenSRAM
 	ld a, [s4_a60b] ; address of MBC30 bank
@@ -866,7 +866,7 @@ _SaveData:
 
 	call CloseSRAM
 	ld a, BANK(s4_a60e)
-    call GetSRAMBank
+    call OpenSRAM
     ld hl, wd479
 	ld a, [hli]
     ld [s4_a60e + 0], a
@@ -888,7 +888,7 @@ _LoadData:
 
 	call CloseSRAM
 	ld a, BANK(s4_a60e)
-    call GetSRAMBank
+    call OpenSRAM
 	ld hl, wd479
 	ld a, [s4_a60e + 0]
 	ld [hli], a

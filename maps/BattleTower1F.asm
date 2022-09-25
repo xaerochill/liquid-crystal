@@ -102,15 +102,15 @@ Script_Menu_ChallengeExplanationCancel: ; $712F
 	setval TRUE
 	special Menu_ChallengeExplanationCancel
 	ifequal 1, Script_ChooseChallenge ; 714A
-	ifequal 2, UnreferencedScript_0x9e4be ; 71F1
+	ifequal 2, Script_ChooseChallenge2 ; 71F1
 	ifequal 3, Script_BattleTowerExplanation ; 71D8
-	ifequal 5, UnreferencedScript_0x9e4ea ; $721D
+	ifequal 5, Script_StartChallenge ; $721D
 	sjump Script_BattleTowerHopeToServeYouAgain ; 71E3
 
 Script_ChooseChallenge:
 	setval BATTLETOWERACTION_0D
 	special BattleTowerAction
-	iftrue UnreferencedScript_0x9e53b;$726E
+	iftrue Script_ReachedBattleLimit;$726E
 	
 ;	setval BATTLETOWERACTION_RESETDATA ; ResetBattleTowerTrainerSRAM
 ;	special BattleTowerAction

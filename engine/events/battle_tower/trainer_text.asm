@@ -85,7 +85,7 @@ BattleTowerText::
 ;	ret
 
     ld a, $05
-    call GetSRAMBank;$2f9d
+    call OpenSRAM;$2f9d
     ld a, c
     cp $01
     jr nz, jr_047_400f

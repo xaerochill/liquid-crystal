@@ -446,7 +446,7 @@ Function4a28a:
 .dont_delete_password
 	call ExitMenu
 .quit
-	farcall Mobile_OpenAndCloseMenu_HDMATransferTileMapAndAttrMap ; switched
+	farcall Mobile_OpenAndCloseMenu_HDMATransferTilemapAndAttrmap ; switched
 	call Call_ExitMenu ;
 	xor a
 	ret

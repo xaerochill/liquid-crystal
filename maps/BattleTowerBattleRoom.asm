@@ -97,10 +97,10 @@ Script_FailedBattleTowerChallenge: ; 7a32
 
 	setval BATTLETOWERACTION_13
 	special BattleTowerAction
-	ifequal 1, UnreferencedScript_0x9f4f7;$7a90
+	ifequal 1, Script_ChallengeCanceled;$7a90
 	setval BATTLETOWERACTION_05
 	special BattleTowerAction
-	ifequal 8, UnreferencedScript_0x9f4eb;$7a84
+	ifequal 8, Script_TooMuchTimeElapsedNoRegister;$7a84
 	
 	setval BATTLETOWERACTION_CHALLENGECANCELED
 	special BattleTowerAction
@@ -122,10 +122,10 @@ Script_BeatenAllTrainers: ; 7a5b
 ;	sjump Script_GivePlayerHisPrize
 	setval BATTLETOWERACTION_13
 	special BattleTowerAction
-	ifequal 1, UnreferencedScript_0x9f4f7;$7a90
+	ifequal 1, Script_ChallengeCanceled;$7a90
 	setval BATTLETOWERACTION_05
 	special BattleTowerAction
-	ifequal 8, UnreferencedScript_0x9f4eb;$7a84
+	ifequal 8, Script_TooMuchTimeElapsedNoRegister;$7a84
 	setval BATTLETOWERACTION_CHALLENGECANCELED
 	special BattleTowerAction
 	opentext

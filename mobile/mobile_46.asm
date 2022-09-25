@@ -680,7 +680,7 @@ BattleTowerRoomMenu_Jumptable: ; Call_046_454d in jp crystal
 	dw RemovedFunction6 ;DE4C
 	dw RemovedFunction7 ;154D
 	dw Function11878d ;D347
-	dw Unreferenced_Function118d35 ;5B50
+	dw Function118d35 ;5B50
 	dw Function118e6d ;9351
 	dw Function11878d ;D347
 	dw Function118e76 ;9C51
@@ -1396,12 +1396,12 @@ RemovedFunction:
 
 jr_046_4aba:
     ld a, $d3
-    jp Function118805;Jump_046_484b
+    jp SetMobileErrorCode;Jump_046_484b
 
 
 jr_046_4abf:
     ld a, $d4
-    jp Function118805;Jump_046_484b
+    jp SetMobileErrorCode;Jump_046_484b
 
 
 jr_046_4ac4:
@@ -1431,8 +1431,8 @@ RemovedFunction2:
 	call MenuBox;$1c86
 	call MenuBoxCoord2Tile;$1cc8
 	call ApplyTilemap;$31e8
-    ;hlcoord 17, 8, wAttrMap ; flip the upper arrow tile
-	hlcoord 16, 8, wAttrMap
+    ;hlcoord 17, 8, wAttrmap ; flip the upper arrow tile
+	hlcoord 16, 8, wAttrmap
     ld a, $40
     or [hl]
     ld [hl], a
@@ -1477,7 +1477,7 @@ RemovedFunction3:
     jr nz, jr_046_4b51
 
     ld hl, $c561;$c564
-    ld de, String_119d8c;$6216
+    ld de, BattleTowerCancelString ;$6216
     call PlaceString;$1057
     jr jr_046_4b79
 
@@ -1768,7 +1768,7 @@ jr_046_4cf3:
 jr_046_4cfb:
     call Function118e39;Call_046_515f
     ld a, $09
-    ld [wcd3c], a;$cd30
+    ld [wBattleTowerRoomMenu2JumptableIndex], a;$cd30
     ld a, $27
     ld [wMobileInactivityTimerSeconds], a;$cd39
     ld a, $15
@@ -1939,7 +1939,7 @@ RemovedFunction12:
     ret nz
 
     ld a, BANK(s5_aa5d)
-    call GetSRAMBank;$2f9d
+    call OpenSRAM;$2f9d
     ld a, [s5_aa5d]
     and a
     jr z, jr_046_4e63
@@ -2062,7 +2062,7 @@ OddEggDownloadURL:
 popc
 
 ; validates the length of the received battle room (1428 bytes) or honor roll data (150 bytes)
-Function118d35: ; unreferenced
+Function118d35:
 	ld hl, $d200
 	ld a, [wcd38]
 	and a
@@ -4487,7 +4487,7 @@ Strings_Ll0ToL40:
 	db " L:40 @@"
 	db "CANCEL@@"
 
-BattleTowerCancelString: ; unreferenced
+BattleTowerCancelString:
 	db "CANCEL@"
 
 ; to clear the cancel text, japanese version does not require this
@@ -6350,7 +6350,7 @@ Function11ad95:
 	hlcoord 10, 12 ;12, 12
 	ld de, String_11ae40
 	call PlaceString
-	hlcoord 8, 10, wAttrMap ;10, 10, wAttrMap
+	hlcoord 8, 10, wAttrmap ;10, 10, wAttrmap
 	lb bc, 8, 10 ;8
 	call Function11afd6
 	farcall ReloadMapPart
@@ -6463,7 +6463,7 @@ Function11ae4e:
 	hlcoord 14, 7, wAttrmap
 	lb bc, 5, 6
 	call Function11afd6
-	hlcoord 7, 12, wAttrMap ;9, 12, wAttrMap
+	hlcoord 7, 12, wAttrmap ;9, 12, wAttrmap
 	lb bc, 6, 13 ;11
 	call Function11afd6
 	farcall ReloadMapPart
@@ -6553,7 +6553,7 @@ Function11af04:
 	hlcoord 14, 7, wAttrmap
 	lb bc, 5, 6
 	call Function11afd6
-	hlcoord 7, 12, wAttrMap ;9, 12, wAttrMap
+	hlcoord 7, 12, wAttrmap ;9, 12, wAttrmap
 	lb bc, 6, 13 ;11
 	call Function11afd6
 	farcall ReloadMapPart
@@ -7750,21 +7750,21 @@ Function11b5e8:
 	call CopyBytes
 	ld a, $2
 	ld [s5_a800], a
-	ld a, [s5_a81f]
+	ld a, [sOfferTrainerID]
 	ld [wcd2a], a
-	ld a, [s5_a81f + 1]
+	ld a, [sOfferTrainerID + 1]
 	ld [wcd2b], a
-	ld a, [s5_a81f + 2]
+	ld a, [sOfferTrainerID + 2]
 	ld [wcd2c], a
-	ld a, [s5_a81f + 3]
+	ld a, [sOfferTrainerID + 3]
 	ld [wcd2d], a
-	ld a, [s5_a823]
+	ld a, [sOfferGender]
 	ld [wcd2e], a
-	ld a, [s5_a824]
+	ld a, [sOfferSpecies]
 	ld [wcd2f], a
-	ld a, [s5_a825]
+	ld a, [sOfferReqGender]
 	ld [wcd30], a
-	ld a, [s5_a825 + 1]
+	ld a, [sOfferReqSpecies]
 	ld [wcd31], a
 	call CloseSRAM
 	call Mobile46_InitJumptable

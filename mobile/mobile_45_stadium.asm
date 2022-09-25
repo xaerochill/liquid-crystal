@@ -48,7 +48,7 @@ Call_045_767b:
     ld a, EGG_TICKET
 	ld [wCurItem], a
 	ld a, 1
-	ld [wItemQuantityChangeBuffer], a
+	ld [wItemQuantityChange], a
 	ld a, -1
 	ld [wCurItemQuantity], a
 	ld hl, wNumItems
@@ -76,21 +76,21 @@ Call_045_767b:
     ;ld [$cd16], a
     ;ld a, $c6
     ;ld [$cd17], a
-	ld [wMobileMonSpeciesBuffer], a
+	ld [wMobileMonMiscSpecies], a
 
-	; load pointer to (wMobileMonSpeciesBuffer - 1) in wMobileMonSpeciesPointerBuffer
-	ld a, LOW(wMobileMonSpeciesBuffer - 1)
-	ld [wMobileMonSpeciesPointerBuffer], a
-	ld a, HIGH(wMobileMonSpeciesBuffer - 1)
-	ld [wMobileMonSpeciesPointerBuffer + 1], a
-	; load pointer to wOddEgg in wMobileMonStructurePointerBuffer
+	; load pointer to (wMobileMonMiscSpecies - 1) in wMobileMonSpeciesPointer
+	ld a, LOW(wMobileMonMiscSpecies - 1)
+	ld [wMobileMonSpeciesPointer], a
+	ld a, HIGH(wMobileMonMiscSpecies - 1)
+	ld [wMobileMonSpeciesPointer + 1], a
+	; load pointer to wOddEgg in wMobileMonStructPointer
 	ld a, LOW(wOddEgg)
-	ld [wMobileMonStructurePointerBuffer], a
+	ld [wMobileMonStructPointer], a
 	ld a, HIGH(wOddEgg)
-	ld [wMobileMonStructurePointerBuffer + 1], a
+	ld [wMobileMonStructPointer + 1], a
 	
     ld hl, .Odd;$7712
-    ld de, wOddEggOTName;$cd1f
+    ld de, wOddEggOT;$cd1f
     ld bc, NAME_LENGTH;$0006
     call CopyBytes
     ;ld a, $1f
@@ -101,16 +101,16 @@ Call_045_767b:
     ;ld [$cd1a], a
     ;ld a, $c6
     ;ld [$cd1b], a
-	; load pointer to wOddEggOTName in wMobileMonOTNamePointerBuffer
-	ld a, LOW(wOddEggOTName)
-	ld [wMobileMonOTNamePointerBuffer], a
-	ld a, HIGH(wOddEggOTName)
-	ld [wMobileMonOTNamePointerBuffer + 1], a
-	; load pointer to wOddEggName in wMobileMonNicknamePointerBuffer
+	; load pointer to wOddEggOT in wMobileMonOTPointer
+	ld a, LOW(wOddEggOT)
+	ld [wMobileMonOTPointer], a
+	ld a, HIGH(wOddEggOT)
+	ld [wMobileMonOTPointer + 1], a
+	; load pointer to wOddEggName in wMobileMonNicknamePointer
 	ld a, LOW(wOddEggName)
-	ld [wMobileMonNicknamePointerBuffer], a
+	ld [wMobileMonNicknamePointer], a
 	ld a, HIGH(wOddEggName)
-	ld [wMobileMonNicknamePointerBuffer + 1], a
+	ld [wMobileMonNicknamePointer + 1], a
 	
     ;ld a, $46
     ;ld hl, $7c91
@@ -122,7 +122,7 @@ Call_045_767b:
 	farcall SaveAfterLinkTrade
     ld a, [wPartyCount]
     dec a
-    ld hl, wPartyMonOT
+    ld hl, wPartyMonOTs
     ld de, NAME_LENGTH;$0006
 
 .jr_045_7702:

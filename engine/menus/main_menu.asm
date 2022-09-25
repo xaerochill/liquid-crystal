@@ -221,7 +221,7 @@ MainMenu_GetWhichMenu:
     jr nc, .ok
 
     ld a, $7
-    call GetSRAMBank
+    call OpenSRAM
     ld a, [$a000]
     call CloseSRAM
     and a
@@ -238,7 +238,7 @@ MainMenu_GetWhichMenu:
     jr nc, .ok2
 
     ld a, $7
-    call GetSRAMBank
+    call OpenSRAM
     ld a, [$a000]
     call CloseSRAM
     and a
@@ -263,7 +263,7 @@ MainMenu_GetWhichMenu:
     jr nc, .ok3
 
     ld a, $7
-    call GetSRAMBank
+    call OpenSRAM
     ld a, [$a000]
     call CloseSRAM
     and a
@@ -279,7 +279,7 @@ MainMenu_GetWhichMenu:
     jr nc, .ok4
 
     ld a, $7
-    call GetSRAMBank
+    call OpenSRAM
     ld a, [$a000]
     call CloseSRAM
     and a

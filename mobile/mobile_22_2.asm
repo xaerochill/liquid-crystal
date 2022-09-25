@@ -1098,7 +1098,7 @@ MenuData_0x8b9d2:
 	db "ERASE@"       ; ERASE
 	db "CANCEL@"     ; QUIT
 
-Function8b9e9 ; check if entry is filled out?
+Function8b9e9: ; check if entry is filled out?
 	call OpenSRAMBank4
 	call Function8931b
 	call Function8932d

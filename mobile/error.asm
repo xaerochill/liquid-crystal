@@ -21,7 +21,7 @@ DisplayMobileError:
 	ld a, [wc303]
 	bit 7, a
 	jr nz, .quit
-	farcall HDMATransferAttrMapAndTileMapToWRAMBank3
+	farcall HDMATransferAttrmapAndTilemapToWRAMBank3
 	jr .loop
 
 .quit
@@ -29,41 +29,41 @@ DisplayMobileError:
 	ret
 
 .deinit
-	ld a, [wc300]
+	ld a, [wMobileErrorCodeBuffer]
 	cp $22
 	jr z, .asm_17f597
 	cp $31
 	jr z, .asm_17f58a
 	cp $33
 	ret nz
-	ld a, [wc301]
+	ld a, [wMobileErrorCodeBuffer + 1]
 	cp $1
 	ret nz
-	ld a, [wc302]
+	ld a, [wMobileErrorCodeBuffer + 2]
 	cp $2
 	ret nz
 	jr .asm_17f5a1
 
 .asm_17f58a
-	ld a, [wc301]
+	ld a, [wMobileErrorCodeBuffer + 1]
 	cp $3
 	ret nz
-	ld a, [wc302]
+	ld a, [wMobileErrorCodeBuffer + 2]
 	and a
 	ret nz
 	jr .asm_17f5a1
 
 .asm_17f597
-	ld a, [wc301]
+	ld a, [wMobileErrorCodeBuffer + 1]
 	and a
 	ret nz
-	ld a, [wc302]
+	ld a, [wMobileErrorCodeBuffer + 2]
 	and a
 	ret nz
 
 .asm_17f5a1
 	ld a, BANK(sMobileLoginPassword)
-	call GetSRAMBank
+	call OpenSRAM
 	xor a
 	ld [sMobileLoginPassword], a
 	call CloseSRAM
@@ -86,7 +86,7 @@ Function17f5c3:
 
 Function17f5d2:
 	call Function17f5e4
-	farcall HDMATransferAttrMapAndTileMapToWRAMBank3
+	farcall HDMATransferAttrmapAndTilemapToWRAMBank3
 	call SetPalettes
 	ld a, $1
 	ld [wc303], a
@@ -105,7 +105,7 @@ Function17f5e4:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
 	ld a, $6
-	hlcoord 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
 	hlcoord 2, 1
@@ -125,7 +125,7 @@ Function17f5e4:
 	call Function17f6b7
 
 .asm_17f632
-	ld a, [wc300]
+	ld a, [wMobileErrorCodeBuffer]
 	cp $d0
 	jr nc, .asm_17f684
 	cp $10
@@ -138,9 +138,9 @@ Function17f5e4:
 	ld hl, Table_17f706
 	add hl, de
 	add hl, de
-	ld a, [wc301]
+	ld a, [wMobileErrorCodeBuffer + 1]
 	ld e, a
-	ld a, [wc302]
+	ld a, [wMobileErrorCodeBuffer + 2]
 	ld d, a
 	ld a, [hli]
 	ld c, a
@@ -224,13 +224,13 @@ Palette_17f6af:
 	RGB 31, 31, 31
 
 Function17f6b7:
-	ld a, [wc300]
+	ld a, [wMobileErrorCodeBuffer]
 	call .bcd_two_digits
 	inc hl
-	ld a, [wc302]
+	ld a, [wMobileErrorCodeBuffer + 2]
 	and $f
 	call .bcd_digit
-	ld a, [wc301]
+	ld a, [wMobileErrorCodeBuffer + 1]
 	call .bcd_two_digits
 	ret
 
@@ -655,23 +655,23 @@ Function17ff23:
 
 Function17ff3c:
 	nop
-	ld a, [wc300]
+	ld a, [wMobileErrorCodeBuffer]
 	cp $d0
 	ret c
 	hlcoord 10, 2
 	ld de, String_17ff68
 	call PlaceString
-	ld a, [wc300]
+	ld a, [wMobileErrorCodeBuffer]
 	push af
 	sub $d0
 	inc a
-	ld [wc300], a
+	ld [wMobileErrorCodeBuffer], a
 	hlcoord 14, 2
-	ld de, wc300
+	ld de, wMobileErrorCodeBuffer
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
 	call PrintNum
 	pop af
-	ld [wc300], a
+	ld [wMobileErrorCodeBuffer], a
 	and a
 	ret
 
