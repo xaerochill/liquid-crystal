@@ -1,21 +1,24 @@
-MobileCardGFX::
-INCBIN "gfx/mobile/card.2bpp"
+;MobileCardGFX::
+;INCBIN "gfx/mobile/card.2bpp"
 
-ChrisSilhouetteGFX::
-INCBIN "gfx/mobile/chris_silhouette.2bpp"
+;ChrisSilhouetteGFX::
+;INCBIN "gfx/mobile/chris_silhouette.2bpp"
 
-KrisSilhouetteGFX::
-INCBIN "gfx/mobile/kris_silhouette.2bpp"
+;KrisSilhouetteGFX::
+;INCBIN "gfx/mobile/kris_silhouette.2bpp"
 
-MobileCard2GFX::
-INCBIN "gfx/mobile/card_2.2bpp"
+;MobileCard2GFX::
+;INCBIN "gfx/mobile/card_2.2bpp"
 
-CardLargeSpriteAndFolderGFX::
-INCBIN "gfx/mobile/card_large_sprite.2bpp"
-INCBIN "gfx/mobile/card_folder.2bpp"
+;CardLargeSpriteAndFolderGFX::
+;INCBIN "gfx/mobile/card_large_sprite.2bpp"
+;INCBIN "gfx/mobile/card_folder.2bpp"
 
-CardSpriteGFX::
-INCBIN "gfx/mobile/card_sprite.2bpp"
+;CardSpriteGFX::
+;INCBIN "gfx/mobile/card_sprite.2bpp"
+
+MobileAdapterGFX::
+INCBIN "gfx/mobile/mobile_adapter.2bpp.bin"
 
 Function17a68f:: ; phone number entry screen
 	call Function17a6a8
@@ -746,16 +749,16 @@ Function17aba0:
 	ldh [rVBK], a
 
 	ld hl, vTiles5 tile $00
-	ld de, DialpadGFX
-	lb bc, BANK(DialpadGFX), $80 ; includes first 4 tiles of DialpadCursorGFX
+	ld de, GFX_friend_cards
+	lb bc, BANK(GFX_friend_cards), $80
 	call Get2bpp
 
 	pop af
 	ldh [rVBK], a
 
 	ld hl, vTiles0 tile $00
-	ld de, DialpadCursorGFX
-	lb bc, BANK(DialpadCursorGFX), 5
+	ld de, GFX_friend_cards + $4c0
+	lb bc, BANK(GFX_friend_cards), 5
 	call Get2bpp
 
 	ld hl, vTiles0 tile $05
@@ -780,7 +783,7 @@ Function17abcf:
 	ld bc, 8 palettes
 	call CopyBytes
 
-	ld hl, Palette_17b4b5
+	ld hl, GFX_friend_cards + $510
 	ld de, wOBPals1 palette 1
 	ld bc, 2 palettes
 	call CopyBytes
@@ -805,14 +808,14 @@ Function17ac0c:
 	ret
 
 Function17ac1d:
-	ld hl, DialpadTilemap
+	ld hl, Tilemap_17acd5
 	decoord 0, 4
 	ld bc, (SCREEN_HEIGHT - 4) * SCREEN_WIDTH
 	call CopyBytes
 	ret
 
 Function17ac2a:
-	ld hl, DialpadAttrmap
+	ld hl, Tilemap_17ae3d
 	decoord 0, 4, wAttrmap
 	ld bc, (SCREEN_HEIGHT - 4) * SCREEN_WIDTH
 	call CopyBytes
@@ -921,21 +924,30 @@ Palette_17ac95:
 	RGB 27, 31,  0
 	RGB 31, 31,  0
 
-DialpadTilemap:
-INCBIN "gfx/mobile/dialpad.tilemap"
+;DialpadTilemap:
+;INCBIN "gfx/mobile/dialpad.tilemap"
 
-DialpadAttrmap:
-INCBIN "gfx/mobile/dialpad.attrmap"
+;DialpadAttrmap:
+;INCBIN "gfx/mobile/dialpad.attrmap"
 
-DialpadGFX:
-INCBIN "gfx/mobile/dialpad.2bpp"
+;DialpadGFX:
+;INCBIN "gfx/mobile/dialpad.2bpp"
 
-DialpadCursorGFX:
-INCBIN "gfx/mobile/dialpad_cursor.2bpp"
+;DialpadCursorGFX:
+;INCBIN "gfx/mobile/dialpad_cursor.2bpp"
 
-Palette_17b4b5:
-	RGB  2,  6, 10
-	RGB 24, 30, 29
+;Palette_17b4b5:
+;	RGB  2,  6, 10
+;	RGB 24, 30, 29
 
-MobileCardListGFX::
+;MobileCardListGFX::
+;INCBIN "gfx/mobile/friend_cards.2bpp"
+
+Tilemap_17acd5:
+INCBIN "gfx/unknown/17acd5.tilemap"
+
+Tilemap_17ae3d:
+INCBIN "gfx/unknown/17ae3d.tilemap"
+
+GFX_friend_cards::
 INCBIN "gfx/mobile/friend_cards.2bpp"

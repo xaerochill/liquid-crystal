@@ -53,7 +53,7 @@ sRTCStatusFlags:: db
 	ds 7
 sLuckyNumberDay:: db
 sLuckyIDNumber::  dw
-
+sNewsData:: db
 
 SECTION "Backup Save", SRAM
 
@@ -207,8 +207,6 @@ SECTION "Boxes 8-14", SRAM
 SECTION "SRAM Mobile 1", SRAM
 
 	ds $7 ; former location of sCrystalData
-
-	ds $7 ; former location of sCrystalData
 s4_a007:: ds EASY_CHAT_MESSAGE_LENGTH
 s4_a013:: ds EASY_CHAT_MESSAGE_LENGTH
 s4_a01f:: ds EASY_CHAT_MESSAGE_LENGTH
@@ -293,13 +291,14 @@ sOfferReqSpecies:: db
 sOfferMonSender::  ds PLAYER_NAME_LENGTH - 1
 sOfferMon::        party_struct sOfferMon
 sOfferMonOT::      ds PLAYER_NAME_LENGTH - 1
-sOfferMonNick::    ds PLAYER_NAME_LENGTH - 1
+sOfferMonNick::    ds MON_NAME_LENGTH - 1
+UNION
 sOfferMonMail::    mailmsg_jp sOfferMonMail
 
-s5_a890:: db
-s5_a891:: db
-s5_a892:: db
-s5_a893:: db
+NEXTU
+	ds $2a
+s5_a890:: ds 4
+ENDU
 s5_a894:: ds PLAYER_NAME_LENGTH - 1 ; a894
 s5_a89a:: dw
 s5_a89c:: ds 22 ; a89c honor roll level and room string
@@ -344,45 +343,39 @@ s5_aa8e:: ds BATTLE_TOWER_STRUCT_LENGTH * BATTLETOWER_STREAK_LENGTH ; aa8e battl
 
 sBattleTowerSaveFileFlags:: db
 
-s5_b023:: ds 105
-s5_b08c:: ds 4
-s5_b090:: db
-s5_b091:: db
+s5_b023:: ds 105 ; b023
+s5_b08c:: ds 4 ; b08c
+s5_b090:: ds 2
 s5_b092:: ds 31
 s5_b0b1:: ds $40
 	ds $c0
 
-s5_b1b1:: db
-s5_b1b2:: db
-s5_b1b3:: db
-s5_b1b4:: db
+s5_b1b1:: ds 2
+s5_b1b3:: ds 2
 
 	ds $1e
 
-s5_b1d3:: dw
+s5_b1d3:: ds 2
 
 	ds $1e
 
-s5_b1f3:: db
+s5_b1f3:: ds 1
 
 	ds $ff
 
-s5_b2f3:: db
-s5_b2f4:: ds 4
+s5_b2f3:: ds 2
 
-	ds $1
-
-s5_b2f9:: db
-s5_b2fa:: db
-s5_b2fb:: db
-
+	ds 4
+s5_b2f9:: db ; b2f9
+s5_b2fa:: db ; b2fa
+s5_b2fb:: db ; b2fb
 	ds $c20;$d03
 s5_bfff:: ds 1
 
 
 SECTION "SRAM Mobile 3", SRAM
 
-sNewsData::
+UNION
 s6_a000:: db
 	db
 s6_a002:: db
@@ -391,10 +384,14 @@ s6_a004:: db
 s6_a005:: db
 s6_a006:: ds $1000
 
-SECTION "SRAM Mobile 4", SRAM
-
+NEXTU
 s7_a000:: db
 s7_a001:: ds $799
 s7_a800:: ds $800
 s7_b000:: ds $fea
 s7_bfea:: ds 1
+ENDU
+
+SECTION "SRAM Mobile 4", SRAM
+
+; Bank 7 in bank 6??

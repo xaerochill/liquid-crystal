@@ -1154,6 +1154,7 @@ MenuData_0x4851b:
 x = 0
 rept NUM_REGION_CODES - 1 ; The number of locations in the prefectures list (-1 because it starts at 0)
 	db x
+x = x + 1
 endr
 	db -1
 

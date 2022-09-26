@@ -177,7 +177,7 @@ pokecrystal11_debug_base = dbg
 %.gbc: $$(%_obj) layout.link
 	$(RGBLINK) -n $*.sym -m $*.map -l layout.link -o $@ $(filter %.o,$^)
 	$(RGBFIX) $($*_opt) $@
-	tools/stadium --base $($*_base) $@
+	#tools/stadium --base $($*_base) $@
 
 
 ### LZ compression rules

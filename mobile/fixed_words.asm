@@ -3294,7 +3294,7 @@ SelectStartGFX:
 INCBIN "gfx/mobile/select_start.2bpp"
 
 EZChatSlowpokeLZ:
-INCBIN "gfx/pokedex/slowpoke_mobile.2bpp.lz"
+INCBIN "gfx/pokedex/slowpoke_mobile.2bpp.lz.bin"
 
 MobileEZChatCategoryNames:
 ; Fixed message categories
@@ -4156,10 +4156,10 @@ EZChat_SortedWords:
 ; These arrays are expanded dynamically to accomodate
 ; any Pokemon you've seen that starts with each kana.
 MACRO macro_11f23c
-	dw w3_d012 - w3_d000 + x, \1
-	DEF x += 2 * \1
+	dw x - w3_d000, \1
+x = x + 2 * \1
 ENDM
-DEF x = $d014
+x = $d014
 	macro_11f23c  50 ; A
 	macro_11f23c  31 ; B
 	macro_11f23c  41 ; C

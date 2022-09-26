@@ -12,11 +12,11 @@
 	const GOLDENRODPOKECENTER1F_POKEFAN_F
 
 GoldenrodPokecenter1F_MapScripts:
-	db 2 ; scene scripts
-	scene_script .Scene0 ; SCENE_DEFAULT
-	scene_script .Scene0 ; SCENE_DEFAULT
+	def_scene_scripts
+	scene_script .Scene0, SCENE_GOLDENRODPOKECENTER1F_DEFAULT
+	scene_script .Scene0, SCENE_GOLDENRODPOKECENTER1F_DEFAULT2
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, .prepareMap
 
 .Scene0: ; stuff to handle the player turning his gb off without saving after a trade
@@ -209,7 +209,7 @@ PokemonInTradeCornerForALongTime:
 	db $0F
 	db $73 ; something with mobile
 	db $00
-	writetext GoldenrodPokecomCenterWeHopeToSeeYouAgainText ; $016E
+	writetext GoldenrodPokecenter1FWeHopeToSeeYouAgainText_2 ; $016E
 	waitbutton
 	closetext
 	end

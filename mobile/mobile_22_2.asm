@@ -611,20 +611,20 @@ Function8b677:
 	ret
 
 Function8b690:
-	ld hl, MobileCardListGFX
+	ld hl, GFX_friend_cards + $514
 	ld de, vTiles2
 	ld bc, $16 tiles
-	ld a, BANK(MobileCardListGFX)
+	ld a, BANK(GFX_friend_cards)
 	call FarCopyBytes
-	ld hl, MobileCardListGFX tile $15
+	ld hl, GFX_friend_cards + $514 + $160 - $10
 	ld de, vTiles2 tile $61
 	ld bc, 1 tiles
-	ld a, BANK(MobileCardListGFX)
+	ld a, BANK(GFX_friend_cards)
 	call FarCopyBytes
-	ld hl, MobileCardListGFX tile $16
+	ld hl, GFX_friend_cards + $514 + $160
 	ld de, vTiles0 tile $ee
 	ld bc, 1 tiles
-	ld a, BANK(MobileCardListGFX)
+	ld a, BANK(GFX_friend_cards)
 	call FarCopyBytes
 	ret
 

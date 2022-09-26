@@ -522,14 +522,14 @@ INCBIN "gfx/mobile/ez_chat_cursor.2bpp"
 
 Mobile22_LoadMobileAdapterGFXIntoVRAM:
 	ld de, vTiles0 tile $02
-	ld hl, CardLargeSpriteAndFolderGFX
+	ld hl, MobileAdapterGFX + $7d tiles
 	ld bc, 8 tiles ; just the large card sprite
-	ld a, BANK(CardLargeSpriteAndFolderGFX)
+	ld a, BANK(MobileAdapterGFX)
 	call FarCopyBytes
 	ld de, vTiles0 tile $0a
-	ld hl, CardSpriteGFX
+	ld hl, MobileAdapterGFX + $c6 tiles
 	ld bc, 4 tiles
-	ld a, BANK(CardSpriteGFX)
+	ld a, BANK(MobileAdapterGFX)
 	call FarCopyBytes
 	ret
 
@@ -547,23 +547,23 @@ Mobile22_Clear24FirstOAM::
 	ret
 
 Function89455: ; load card folder gfx
-	ld hl, CardLargeSpriteAndFolderGFX
+	ld hl, MobileAdapterGFX + $7d tiles
 	ld de, vTiles2 tile $0c
 	ld bc, (8 + 65) tiles ; large card sprite + folder
-	ld a, BANK(CardLargeSpriteAndFolderGFX)
+	ld a, BANK(MobileAdapterGFX)
 	call FarCopyBytes
 	ret
 
 Function89464: ; load card gfx
-	ld hl, MobileCardGFX
+	ld hl, MobileAdapterGFX
 	ld de, vTiles2
 	ld bc, $20 tiles
-	ld a, BANK(MobileCardGFX)
+	ld a, BANK(MobileAdapterGFX)
 	call FarCopyBytes
-	ld hl, MobileCard2GFX
+	ld hl, MobileAdapterGFX + $66 tiles
 	ld de, vTiles2 tile $20
 	ld bc, $17 tiles
-	ld a, BANK(MobileCard2GFX)
+	ld a, BANK(MobileAdapterGFX)
 	call FarCopyBytes
 	ret
 
@@ -1197,16 +1197,16 @@ Function897d5:
 	ret
 
 Function89807: ; load black trainer pic gfx
-	ld hl, ChrisSilhouetteGFX
+	ld hl, MobileAdapterGFX + $20 tiles
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
 	jr z, .asm_89814
-	ld hl, KrisSilhouetteGFX
+	ld hl, MobileAdapterGFX + $43 tiles
 .asm_89814
 	call DisableLCD
 	ld de, vTiles2 tile $37
 	ld bc, (5 * 7) tiles
-	ld a, BANK(ChrisSilhouetteGFX) ; aka BANK(KrisSilhouetteGFX)
+	ld a, BANK(MobileAdapterGFX)
 	call FarCopyBytes
 	call EnableLCD
 	call DelayFrame

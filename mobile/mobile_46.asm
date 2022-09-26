@@ -2598,11 +2598,11 @@ Function1190ec:
 	jr z, .asm_11913e
 	ld a, BANK(w6_d000)
 	ldh [rSVBK], a
-	ld a, [w6_d000]
+	ld a, [w3_d000]
 	ld c, a
-	ld a, [w6_d000 + 1]
+	ld a, [w3_d000 + 1]
 	ld b, a
-	ld hl, w6_d000 + 2
+	ld hl, wd002
 	call Function119192
 	ret c
 
@@ -4095,16 +4095,10 @@ Function119ac9:
 	ld [wBattleTowerRoomMenuJumptableIndex], a
 	ret
 
-pushc
-setcharmap ascii
-
 XGameCode:
-	db "CGB-BXTJ-00", $0
-
-XGameResult: ; unreferenced
-	db "pokemon_crystal", $0
-
-popc
+INCBIN "data/mobile/x-game-code.txt"
+XGameResult:
+INCBIN "data/mobile/x-game-result.txt"
 
 Function119b0d:
 	ld a, $8
@@ -7926,15 +7920,15 @@ Function11b6b4:
 	farcall Mobile_CopyDefaultMailAuthor
 
 .author_okay
-	ld a, [wMobileMonItem]
+	ld a, [$c60e]
 	cp -1
 	jr nz, .item_okay
 	xor a
-	ld [wMobileMonItem], a
+	ld [$c60e], a
 
 .item_okay
 	ld a, [wcd31]
-	ld [wMobileMonSpecies], a
+	ld [$c60d], a
 	ld [wCurSpecies], a
 	call GetBaseData
 
@@ -8135,7 +8129,7 @@ Function11b93b:
 	ld [s5_a800], a
 	ld hl, sOfferGender
 	ld de, wc608
-	ld bc, TRADE_CORNER_REQUEST_LENGTH
+	ld bc, TRADE_CORNER_REQUEST_LENGTH + 2 + 2 + 5
 	call CopyBytes
 	call CloseSRAM
 

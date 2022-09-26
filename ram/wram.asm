@@ -672,7 +672,7 @@ NEXTU
 wMobileMonSender:: ds PLAYER_NAME_LENGTH - 1
 wMobileMon::       party_struct wMobileMon
 wMobileMonOT::     ds PLAYER_NAME_LENGTH - 1
-wMobileMonNick::   ds PLAYER_NAME_LENGTH - 1
+wMobileMonNick::   ds MON_NAME_LENGTH - 1
 wMobileMonMail::   mailmsg_jp wMobileMonMail
 
 NEXTU
@@ -686,7 +686,7 @@ wOfferReqSpecies:: db
 wOfferMonSender::  ds PLAYER_NAME_LENGTH - 1
 wOfferMon::        party_struct wOfferMon
 wOfferMonOT::      ds PLAYER_NAME_LENGTH - 1
-wOfferMonNick::    ds PLAYER_NAME_LENGTH - 1
+wOfferMonNick::    ds MON_NAME_LENGTH - 1
 wOfferMonMail::    mailmsg_jp wOfferMonMail
 
 NEXTU
@@ -697,7 +697,7 @@ wUnknownReqSpecies:: db
 wUnknownMonSender::  ds PLAYER_NAME_LENGTH - 1
 wUnknownMon::        party_struct wUnknownMon
 wUnknownMonOT::      ds PLAYER_NAME_LENGTH - 1
-wUnknownMonNick::    ds PLAYER_NAME_LENGTH - 1
+wUnknownMonNick::    ds MON_NAME_LENGTH - 1
 wUnknownMonMail::    mailmsg_jp wUnknownMonMail
 
 NEXTU

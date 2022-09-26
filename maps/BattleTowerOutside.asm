@@ -25,7 +25,6 @@ BattleTowerOutsideShowCiviliansCallback:
 	special Mobile_DummyReturnFalse
 	iffalse .nomobile
 	clearevent EVENT_BATTLE_TOWER_OPEN_CIVILIANS
-	endcallback
 
 .nomobile
 	endcallback

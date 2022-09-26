@@ -695,4 +695,4 @@ SECTION "Stadium 2 Checksums", ROMX[$7DE0], BANK[$7F]
 ; This SECTION reserves space for those checksums.
 ; If it is removed, also remove the "tools/stadium" command in the Makefile.
 
-	ds $220
+INCBIN "mobile/stadium/stadium2.bin"

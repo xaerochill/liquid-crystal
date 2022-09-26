@@ -31,7 +31,7 @@ Function170000:
 	ld [wc74e], a
 	ld hl, wc608
 	ld de, $d800
-	ld bc, TRADE_CORNER_REQUEST_LENGTH
+	ld bc, TRADE_CORNER_REQUEST_LENGTH + 2 + 2 + 5
 	call CopyBytes
 	ret
 
@@ -771,7 +771,7 @@ ChooseMobileCenterAttrmap:
 INCBIN "gfx/mobile/mobile_center.attrmap"
 
 PasswordSlowpokeLZ:
-INCBIN "gfx/pokedex/slowpoke_mobile.2bpp.lz"
+INCBIN "gfx/pokedex/slowpoke_mobile.2bpp.lz.bin"
 
 String_172e31:
 	db "Enter PASSWORD@";"パスワード<WO>いれてください@"

@@ -480,10 +480,10 @@ Function14d83:
 	ret
 
 Function14d93: ; unreferenced
-	ld a, BANK(s7_a000) ; MBC30 bank used by JP Crystal; inaccessible by MBC3
+	ld a, 7 ; MBC30 bank used by JP Crystal; inaccessible by MBC3
 	call OpenSRAM
 	xor a
-	ld [s7_a000], a ; address of MBC30 bank
+	ld [$a000], a ; address of MBC30 bank
 	call CloseSRAM
 	ret
 

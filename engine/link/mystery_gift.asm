@@ -1755,14 +1755,14 @@ StageDataForNameCard:
 InitNameCardLayout:
 	call ClearBGPalettes
 	call DisableLCD
-	ld hl, CardTradeGFX
+	ld hl, MysteryGiftJP_GFX
 	ld de, vTiles2 tile $00
-	ld a, BANK(CardTradeGFX)
+	ld a, BANK(MysteryGiftJP_GFX)
 	ld bc, $40 tiles
 	call FarCopyBytes
-	ld hl, CardTradeSpriteGFX
+	ld hl, MysteryGiftJP_GFX + $40 tiles
 	ld de, vTiles0 tile $00
-	ld a, BANK(CardTradeSpriteGFX)
+	ld a, BANK(MysteryGiftJP_GFX)
 	ld bc, 8 tiles
 	call FarCopyBytes
 	hlcoord 0, 0
@@ -1909,8 +1909,6 @@ InitNameCardLayout:
 	dbsprite 13,  1, 4, 1, $06, 0
 	dbsprite 14,  1, 4, 1, $07, 0
 
-CardTradeGFX:
-INCBIN "gfx/mystery_gift/card_trade.2bpp"
-
-CardTradeSpriteGFX:
-INCBIN "gfx/mystery_gift/card_sprite.2bpp"
+; japanese mystery gift gfx
+MysteryGiftJP_GFX:
+INCBIN "gfx/mystery_gift/mystery_gift_jp.2bpp"

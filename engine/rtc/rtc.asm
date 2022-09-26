@@ -138,12 +138,12 @@ ClockContinue:
 	farcall Function170923
 	ld a, BANK(s5_aa8c) ; aka BANK(s5_b2fa)
 	call OpenSRAM
-	ld a, [s5_aa8c]
+	ld a, [$aa8c]
 	inc a
-	ld [s5_aa8c], a
-	ld a, [s5_b2fa]
+	ld [$aa8c], a
+	ld a, [$b2fa]
 	inc a
-	ld [s5_b2fa], a
+	ld [$b2fa], a
 	call CloseSRAM
 	ret
 

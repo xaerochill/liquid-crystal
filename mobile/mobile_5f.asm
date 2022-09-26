@@ -265,27 +265,27 @@ CheckStringForErrors_IgnoreTerminator:
 	ret
 
 Function17d0f3:
-	ld a, [wMobileMonSpecies]
+	ld a, [wc608 + 5]
 	ld [wOTTrademonSpecies], a
 	ld [wCurPartySpecies], a
 	ld a, [wcd81]
 	ld [wc74e], a
-	ld hl, wMobileMonOT
+	ld hl, wc608 + 53
 	ld de, wOTTrademonOTName
 	ld bc, NAME_LENGTH_JAPANESE - 1
 	call CopyBytes
 	ld a, "@"
 	ld [de], a
-	ld a, [wMobileMonID]
+	ld a, [wc608 + 11]
 	ld [wOTTrademonID], a
-	ld a, [wMobileMonID + 1]
+	ld a, [wc608 + 12]
 	ld [wOTTrademonID + 1], a
-	ld hl, wMobileMonDVs
+	ld hl, wc608 + 26
 	ld a, [hli]
 	ld [wOTTrademonDVs], a
 	ld a, [hl]
 	ld [wOTTrademonDVs + 1], a
-	ld bc, wMobileMonSpecies
+	ld bc, wc608 + 5
 	farcall GetCaughtGender
 	ld a, c
 	ld [wOTTrademonCaughtData], a
