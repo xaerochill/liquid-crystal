@@ -28,8 +28,6 @@ https://github.com/Sudel-Matze/pokecrystal
 
 ## Setup [![Build Status][travis-badge]][travis]
 
-An older version of RGBDS is required, we recommend 0.3.8
-
 For more information, please see [INSTALL.md](INSTALL.md)
 
 After setup has been completed, you can choose which version you wish to build.
