@@ -4535,15 +4535,15 @@ String_101f13:
 	db "@"
 
 String_101f14:
-	db   "Dialing"			; "モバイルアダプタを　つかって"
-	next "a friend.@"		; "おともだちと　つうしんします@"
+	db   "Communicate"	; "モバイルアダプタを　つかって"
+	next "with a friend!@"	; "おともだちと　つうしんします"
 
 String_101f32:
-	db   "Caller will"		; "でんわを　かけるひとには"
+	db   "The caller will"	; "でんわを　かけるひとには"
 	next "be charged.@"		; "つうわりょうきんが　かかります@"
 
 String_101f4f:
-	db   "Is your MOBILE"	; "モバイルアダプタの　じゅんびは"
+	db   "Is the MOBILE"	; "モバイルアダプタの　じゅんびは"
 	next "ADAPTER ready?@"	; "できて　いますか？@"
 
 String_101f69:
@@ -4555,21 +4555,21 @@ String_101f81:
 	next "CARD FOLDER?@"	; "つかいますか？@"
 
 String_101f93:
-	db   "Enter a"			; "でんわばんごうを　にゅうりょく"
+	db   "Please enter a"	; "でんわばんごうを　にゅうりょく"
 	next "phone number.@"	; "してください@"
 
 String_101faa:
 	db   "Waiting for"		; "それでは　おともだちからの"
-	next "call…@"			; "でんわを　おまちします⋯@"
+	next "a call…@"			; "でんわを　おまちします⋯@"
 
 String_101fc5:
-	db "Call this no.?@"	; "に　でんわを　かけます@"
+	db 	"Call this no.?@"	; "に　でんわを　かけます@"
 
 String_101fd2:
-	db "Calling…@"			; "に　でんわを　かけています@"
+	db 	"Calling…@"			; "に　でんわを　かけています@"
 
 String_101fe1:
-	db   "Call connected!@"		; "でんわが　つながりました!@"
+	db   "Call connected!@"	; "でんわが　つながりました!@"
 
 String_101fef:
 	db   "Ending call…@"	; "つうわを"
@@ -4580,11 +4580,11 @@ String_102000:
 	next "ended.@"
 
 String_10200c:
-	db   "Dialed for@"		; "つうわ　じかん@"
+	db   "CALL TIME@"		; "つうわ　じかん@"
 
 String_102014:
-	db   "Please adjust"	; "それでは　つうしんの"
-	next "the settings.@"	; "せっていを　してください@"
+	db   "Communication"	; "それでは　つうしんの"
+	next "settings:@"	; "せっていを　してください@"
 
 Function10202c:
 	farcall Function115d99
@@ -6539,7 +6539,7 @@ Function102e07:
 	ret
 
 .waiting
-	db "Waiting...!@"
+	db "PLEASE WAIT!@"
 
 Function102e3e:
 	ld de, .CancelString
@@ -7193,10 +7193,10 @@ Function103490:
 Function1034a7:
 	ld a, [wd1f1]
 	ld [wd1f2], a
-	ld bc, 12;10
+	ld bc, 13;10
 	call Function1034f7
 	ld [hl], $7f
-	ld bc, 12;10
+	ld bc, 13;10
 	call Function1034f1
 	ld [hl], $ed
 	ret
@@ -7287,19 +7287,19 @@ Unknown_103522:
 	dw String_103545
 
 String_103545: db "@"
-String_103546: db "Battle Scene@"		; "せんとう　アニメ@"
-String_10354f: db "Phone no.@"			; "でんわばんごう@"
-String_103557: db "CARD trade@"			; "めいしこうかん@"
+String_103546: db "BATTLE SCENE@"		; "せんとう　アニメ@"
+String_10354f: db "PHONE NO.@"			; "でんわばんごう@"
+String_103557: db "CARD TRADE@"			; "めいしこうかん@"
 String_10355f: db "Caller decides.@"	; "でんわを　かけるひとが　きめられる@"
 String_103571: db "Phone no. source.@"	; "でんわばんごうの　にゅうりょくのしかた@" ; Entering a phone number
 String_103585: db "Replaces old CARD.@"	; "あたらしいめいしが　あれば　こうかん@" ; Replace if there is a new card
-String_103598: db "OFF@"				; "とばして　みる@"; Skip to see
-String_1035a0: db "ON@"					; "じっくり　みる@" ; Watch carefully
-String_1035a8: db "CARD@"				; "めいしからえらぶ@" ; Choose from cards
-String_1035b1: db "ENTER@"				; "すうじで　いれる@"
-String_1035ba: db "YES@"				; "する@"
-String_1035bd: db "NO@"					; "しない@"
-String_1035c1: db "OK@"					; "けってい@"
+String_103598: db " OFF@"				; "とばして　みる@"; Skip to see
+String_1035a0: db " ON@"				; "じっくり　みる@" ; Watch carefully
+String_1035a8: db " CARD@"				; "めいしからえらぶ@" ; Choose from cards
+String_1035b1: db " ENTER@"				; "すうじで　いれる@"
+String_1035ba: db " YES@"				; "する@"
+String_1035bd: db " NO@"				; "しない@"
+String_1035c1: db " OK@"				; "けってい@"
 
 Function1035c6:
 	farcall Function10138b
