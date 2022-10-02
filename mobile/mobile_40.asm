@@ -935,7 +935,7 @@ Mobile_CommunicationStandby:
 	ret
 
 .String:
-	db "Waiting...!@"	; "つうしんたいきちゅう！@"
+	db "PLEASE WAIT!@"	; "つうしんたいきちゅう！@"
 
 AdvanceMobileInactivityTimerAndCheckExpired:
 	push bc
@@ -4583,8 +4583,8 @@ String_10200c:
 	db   "CALL TIME@"		; "つうわ　じかん@"
 
 String_102014:
-	db   "Communication"	; "それでは　つうしんの"
-	next "settings:@"	; "せっていを　してください@"
+	db   "Please choose"	; "それでは　つうしんの"
+	next "the settings.@"	; "せっていを　してください@"
 
 Function10202c:
 	farcall Function115d99
@@ -4812,7 +4812,7 @@ Function10218d: ; load opponent's data
 	ld bc, PLAYER_NAME_LENGTH + 1
 	ld a, $05
 	call FarCopyWRAM
-
+	
 	ld hl, w5_dc00 + NAME_LENGTH + 1
 	ld de, wc608 + PLAYER_NAME_LENGTH + 1
 	ld bc, PLAYER_NAME_LENGTH
@@ -6539,7 +6539,7 @@ Function102e07:
 	ret
 
 .waiting
-	db "PLEASE WAIT!@"
+	db "Waiting...!@"
 
 Function102e3e:
 	ld de, .CancelString
@@ -7149,7 +7149,7 @@ Function10343c:
 .asm_103452
 	ld bc, $ffed
 	call Function1034f7
-	ld c, $12
+	ld c, $01 ;12
 	ld b, $02
 	call Function1034e0
 
@@ -7168,7 +7168,7 @@ Function10343c:
 
 .asm_10347d
 	call Function10350f
-	ld bc, 13;11
+	ld bc, 14;11
 	call Function103487
 	ret
 
@@ -7193,10 +7193,10 @@ Function103490:
 Function1034a7:
 	ld a, [wd1f1]
 	ld [wd1f2], a
-	ld bc, 13;10
+	ld bc, 1;10
 	call Function1034f7
 	ld [hl], $7f
-	ld bc, 13;10
+	ld bc, 1;10
 	call Function1034f1
 	ld [hl], $ed
 	ret
@@ -7281,25 +7281,25 @@ Unknown_103522:
 	dw String_1035bd
 	dw String_103585
 	db $04
+	dw String_1035c1
 	dw String_103545
-	dw String_1035c1
-	dw String_1035c1
+	dw String_103545
 	dw String_103545
 
 String_103545: db "@"
-String_103546: db "BATTLE SCENE@"		; "せんとう　アニメ@"
-String_10354f: db "PHONE NO.@"			; "でんわばんごう@"
-String_103557: db "CARD TRADE@"			; "めいしこうかん@"
-String_10355f: db "Caller decides.@"	; "でんわを　かけるひとが　きめられる@"
-String_103571: db "Phone no. source.@"	; "でんわばんごうの　にゅうりょくのしかた@" ; Entering a phone number
-String_103585: db "Replaces old CARD.@"	; "あたらしいめいしが　あれば　こうかん@" ; Replace if there is a new card
-String_103598: db " OFF@"				; "とばして　みる@"; Skip to see
-String_1035a0: db " ON@"				; "じっくり　みる@" ; Watch carefully
-String_1035a8: db " CARD@"				; "めいしからえらぶ@" ; Choose from cards
-String_1035b1: db " ENTER@"				; "すうじで　いれる@"
-String_1035ba: db " YES@"				; "する@"
-String_1035bd: db " NO@"				; "しない@"
-String_1035c1: db " OK@"				; "けってい@"
+String_103546: db " BATTLE SCENE@"			; "せんとう　アニメ@"
+String_10354f: db " PHONE NUMBER@"			; "でんわばんごう@"
+String_103557: db " CARD TRADE@"			; "めいしこうかん@"
+String_10355f: db "Caller decides.@"		; "でんわを　かけるひとが　きめられる@"
+String_103571: db "Input method.@"			; "でんわばんごうの　にゅうりょくのしかた@" ; Entering a phone number
+String_103585: db "Replace old CARD.@"		; "あたらしいめいしが　あれば　こうかん@" ; Replace if there is a new card
+String_103598: db "<LF>:OFF@"				; "とばして　みる@"; Skip to see
+String_1035a0: db "<LF>:ON @"				; "じっくり　みる@" ; Watch carefully
+String_1035a8: db "<LF>:CARD@"				; "めいしからえらぶ@" ; Choose from cards
+String_1035b1: db "<LF>:DIAL@"				; "すうじで　いれる@"
+String_1035ba: db "<LF>:YES@"				; "する@"
+String_1035bd: db "<LF>:NO @"				; "しない@"
+String_1035c1: db " OK@"					; "けってい@"
 
 Function1035c6:
 	farcall Function10138b
