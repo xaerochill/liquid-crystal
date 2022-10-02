@@ -5674,7 +5674,7 @@ String_11a661:
 	next "CENTER.@"
 
 String_11a679:
-	db   "Is your MOBILE"
+	db   "Is the MOBILE"
 	next "ADAPTER ready?@"
 
 String_11a692:
@@ -5711,8 +5711,8 @@ String_11a71e:
 	next "ended.@"
 
 String_11a72a:
-	db   "Dialed for";"つないだ　じかん"
-	next "  min.,   sec.@"
+	db   "CALL TIME";"つないだ　じかん"
+	next "  min.   sec.@"
 
 String_11a743:
 	db   "No data";"もっていない　データが"
