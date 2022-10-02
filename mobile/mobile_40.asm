@@ -7297,8 +7297,8 @@ String_103598: db "<LF>:OFF@"				; "とばして　みる@"; Skip to see
 String_1035a0: db "<LF>:ON @"				; "じっくり　みる@" ; Watch carefully
 String_1035a8: db "<LF>:CARD@"				; "めいしからえらぶ@" ; Choose from cards
 String_1035b1: db "<LF>:DIAL@"				; "すうじで　いれる@"
-String_1035ba: db "<LF>:OFF@"				; "する@"
-String_1035bd: db "<LF>:ON @"				; "しない@"
+String_1035ba: db "<LF>:ON @"				; "する@"
+String_1035bd: db "<LF>:OFF@"				; "しない@"
 String_1035c1: db " OK@"					; "けってい@"
 
 Function1035c6:
