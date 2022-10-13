@@ -411,9 +411,9 @@ Unknown_17f844: db 19
 String_17f891: ; 18 max!
 	db   "The MOBILE ADAPTER" 	; "モバイルアダプタが　ただしく"
 	next "is not connected" 	; "さしこまれていません"
-	next "properly. Please" 	; "とりあつかいせつめいしょを"
-	next "refer to the" 		; "ごらんのうえ　しっかりと"
-	next "instruction" 			; "さしこんで　ください"
+	next "properly." 			; "とりあつかいせつめいしょを"
+	next "Please refer to" 		; "ごらんのうえ　しっかりと"
+	next "the instruction" 		; "さしこんで　ください"
 	next "manual."
 	db   "@"
 
@@ -593,7 +593,7 @@ String_17fdb2:
 	db   "@"
 
 String_17fdd9:
-	db   "Communication" 		; "つうしんが　うまく"
+	db   "Communication"		; "つうしんが　うまく"
 	next "failed." 				; "できませんでした"
 	next "Please try" 			; "もういちど　はじめから"
 	next "again." 				; "やりなおしてください"
