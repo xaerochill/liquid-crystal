@@ -519,7 +519,7 @@ MenuData_17d272:
 
 MenuHeader_ChallengeExplanationCancel:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 16, 9;14, 7
+	menu_coords 0, 0, 15, 9;14, 7
 	dw MenuData_ChallengeExplanationCancel
 	db 1 ; default option
 
@@ -533,7 +533,7 @@ MenuData_ChallengeExplanationCancel:
 
 MenuHeader_ChallengeRegisterExplanationCancel:
 	db MENU_BACKUP_TILES ; flags
-	menu_coords 0, 0, 17, 11
+	menu_coords 0, 0, 15, 11
 	dw MenuData_ChallengeRegisterExplanationCancel
 	db 1 ; default option
 
