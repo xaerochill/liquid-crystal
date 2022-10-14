@@ -1080,16 +1080,16 @@ DEF N = ZIPCODE_LENGTH - 1
 DEF S EQUS STRCAT("LOW(Zipcode_CharPoolsLength - Zipcode_CharPoolForStringIndex", STRSUB("01234567", N+1, 1))
 	db S ) / 2
 
-MobileProfileString:         db "  Mobile Profile@"
-MobileString_Gender:         db "Gender@"
-MobileString_Age:            db "Age@"
-MobileString_Address:        db "Address@"
+MobileProfileString:         db "  MOBILE PROFILE@"
+MobileString_Gender:         db "GENDER@"
+MobileString_Age:            db "AGE@"
+MobileString_Address:        db "ADDRESS@"
 if DEF(_CRYSTAL_AU)
-MobileString_ZipCode:        db "Post Code@"
+MobileString_ZipCode:        db "POST CODE@"
 elif DEF(_CRYSTAL_EU)
-MobileString_ZipCode:        db "Post Code@"
+MobileString_ZipCode:        db "POST CODE@"
 else
-MobileString_ZipCode:        db "Zip Code@"
+MobileString_ZipCode:        db "ZIP CODE@"
 endc
 MobileString_OK:             db "OK@"
 MobileString_ProfileChanged: db "Profile Changed@"
