@@ -5706,7 +5706,7 @@ String_11a6f1:
 	next "paid service.@";"つうわりょう<NO>ほかに@"
 
 String_11a706:
-	db   "Cost: @";"おかね<GA>@"
+	db   "Cost:@";"おかね<GA>@"
 
 String_11a70b:
 	db   " Yen";"えん" ; This currency will need to be changed
