@@ -216,7 +216,7 @@ Function48187:
 	ret
 
 .String_TellLater:
-	db "Tell Later@"
+	db "TELL LATER@"
 
 MobileProfileOptionPressed:
 	call PlaceHollowCursor
