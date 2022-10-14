@@ -1114,11 +1114,11 @@ MenuData_0x484f9:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 2 ; items
 Strings_484fb:
-String_484fb: db "Boy@"
-String_484ff: db "Girl@"
+String_484fb: db "BOY@"
+String_484ff: db "GIRL@"
 Strings_484fc:
-String_484fc: db " Boy@"
-String_48500: db "Girl@"
+String_484fc: db " BOY@"
+String_48500: db "GIRL@"
 
 MenuHeader_0x48504:
 	db MENU_BACKUP_TILES ; flags
@@ -2007,8 +2007,8 @@ MenuHeader_0x48a9c:
 	menu_coords 5, 8, SCREEN_WIDTH - 1, 13 ; For clearing the 'Tell Later' 'Tell Now' Box
 
 TellNowLaterStrings:
-	db   "Tell Now"
-	next "Tell Later@"
+	db   "TELL NOW"
+	next "TELL LATER@"
 
 InputZipcodeCharacters: ; Function48ab5. Zip code menu controls.
 	ldh a, [hJoyPressed]
