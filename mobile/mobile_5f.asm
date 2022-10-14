@@ -526,10 +526,10 @@ MenuHeader_ChallengeExplanationCancel:
 MenuData_ChallengeExplanationCancel:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 4
-	db "CHALLENGE@"
-	db "HONOR ROLL@" ; check leaders?
-	db "INFORMATION@"
-	db "CANCEL@"
+	db "Challenge@"
+	db "Honor Roll@" ; check leaders?
+	db "Explanation@"
+	db "Cancel@"
 
 MenuHeader_ChallengeRegisterExplanationCancel:
 	db MENU_BACKUP_TILES ; flags
@@ -540,11 +540,11 @@ MenuHeader_ChallengeRegisterExplanationCancel:
 MenuData_ChallengeRegisterExplanationCancel:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 5
-	db "CHALLENGE@"
-	db "HONOR ROLL@" ; check leaders?
-	db "PREVIOUS ROOM@"
-	db "INFORMATION@"
-	db "CANCEL@"
+	db "Challenge@"
+	db "Honor Roll@" ; check leaders?
+	db "Previous Room@"
+	db "Explanation@"
+	db "Cancel@"
 
 Function17d2b6:
 	call Function17d2c0

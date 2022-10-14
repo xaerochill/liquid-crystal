@@ -216,7 +216,7 @@ Function48187:
 	ret
 
 .String_TellLater:
-	db "TELL LATER@"
+	db "Tell Later@"
 
 MobileProfileOptionPressed:
 	call PlaceHollowCursor
@@ -1080,16 +1080,16 @@ DEF N = ZIPCODE_LENGTH - 1
 DEF S EQUS STRCAT("LOW(Zipcode_CharPoolsLength - Zipcode_CharPoolForStringIndex", STRSUB("01234567", N+1, 1))
 	db S ) / 2
 
-MobileProfileString:         db "  MOBILE PROFILE@"
-MobileString_Gender:         db "GENDER@"
-MobileString_Age:            db "AGE@"
-MobileString_Address:        db "ADDRESS@"
+MobileProfileString:         db "  Mobile Profile@"
+MobileString_Gender:         db "Gender@"
+MobileString_Age:            db "Age@"
+MobileString_Address:        db "Address@"
 if DEF(_CRYSTAL_AU)
-MobileString_ZipCode:        db "POST CODE@"
+MobileString_ZipCode:        db "Post Code@"
 elif DEF(_CRYSTAL_EU)
-MobileString_ZipCode:        db "POST CODE@"
+MobileString_ZipCode:        db "Post Code@"
 else
-MobileString_ZipCode:        db "ZIP CODE@"
+MobileString_ZipCode:        db "Zip Code@"
 endc
 MobileString_OK:             db "OK@"
 MobileString_ProfileChanged: db "Profile Changed@"
@@ -1114,11 +1114,11 @@ MenuData_0x484f9:
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 2 ; items
 Strings_484fb:
-String_484fb: db "BOY@"
-String_484ff: db "GIRL@"
+String_484fb: db "Boy@"
+String_484ff: db "Girl@"
 Strings_484fc:
-String_484fc: db " BOY@"
-String_48500: db "GIRL@"
+String_484fc: db " Boy@"
+String_48500: db "Girl@"
 
 MenuHeader_0x48504:
 	db MENU_BACKUP_TILES ; flags
@@ -2007,8 +2007,8 @@ MenuHeader_0x48a9c:
 	menu_coords 5, 8, SCREEN_WIDTH - 1, 13 ; For clearing the 'Tell Later' 'Tell Now' Box
 
 TellNowLaterStrings:
-	db   "TELL NOW"
-	next "TELL LATER@"
+	db   "Tell Now"
+	next "Tell Later@"
 
 InputZipcodeCharacters: ; Function48ab5. Zip code menu controls.
 	ldh a, [hJoyPressed]
