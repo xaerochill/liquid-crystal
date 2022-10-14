@@ -3306,13 +3306,13 @@ MobileEZChatCategoryNames:
 	db "VOICE@" 	; 05 ; Voices		; "こえ@@@@"
 	db "TALK@@" 	; 06 ; Speech		; "かいわ@@@"
 	db "EMOTE@" 	; 07 ; Feelings		; "きもち@@@"
-	db "DESC@@" 	; 08 ; Conditions	; "じょうたい@"
+	db "COND.@" 	; 08 ; Conditions	; "じょうたい@"
 	db "LIFE@@" 	; 09 ; Lifestyle	; "せいかつ@@"
 	db "HOBBY@" 	; 0a ; Hobbies		; "しゅみ@@@"
 	db "ACT@@@" 	; 0b ; Actions		; "こうどう@@"
-	db "ITEM@@" 	; 0c ; Time			; "じかん@@@"
+	db "TIME@@" 	; 0c ; Time			; "じかん@@@"
 	db "END@@@" 	; 0d ; Endings		; "むすび@@@"
-	db "MISC@@" 	; 0e ; Misc			; "あれこれ@@"
+	db "MISC.@" 	; 0e ; Misc			; "あれこれ@@"
 
 MobileEZChatCategoryPointers:
 ; entries correspond to EZCHAT_* constants
