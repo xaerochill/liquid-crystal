@@ -1716,8 +1716,8 @@ Function11ca19:
 	ret
 
 EZChatString_EraseMenu: ; Erase words string, accessed from erase command on entry menu for EZ chat
-	db   "Want to erase";"とうろくちゅう<NO>あいさつ¯ぜんぶ"
-	next "all words?@";"けしても　よろしいですか？@"
+	db   "All words will";"とうろくちゅう<NO>あいさつ¯ぜんぶ"
+	next "be erased. OK?@";"けしても　よろしいですか？@"
 
 EZChatString_EraseConfirmation: ; Erase words confirmation string
 	db   "YES";"はい"
@@ -2031,8 +2031,8 @@ Function11cd04:
 	ret
 
 EZChatString_EnterSomeWords:
-	db "Please enter some";"なにか　ことば¯いれてください@"
-	next "words.@"
+	db "Please enter a";"なにか　ことば¯いれてください@"
+	next "phrase or word.@"
 
 EZChatDraw_SortByMenu: ; Draws/Opens Sort By Menu
 	call EZChat_ClearBottom12Rows
