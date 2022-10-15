@@ -514,7 +514,7 @@ MenuData_17d272:
 	db 4
 	db "RECEIVE NEWS@" 	; "ニュース¯よみこむ@"
 	db "READ NEWS@" 	; "ニュース¯みる@"
-	db "INFORMATION@" 	; "せつめい@"
+	db "EXPLANATION@" 	; "せつめい@"
 	db "CANCEL@" 		; "やめる@"
 
 MenuHeader_ChallengeExplanationCancel:
