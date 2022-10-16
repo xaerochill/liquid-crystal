@@ -775,12 +775,12 @@ String_4a5f2:
 Strings_4a5f6:
 	db "Shown on your@";"めいし　や　ニュース　<NI>のせる@"
 	db "CARD and the NEWS.@";"あなた<NO>あいさつです@"
-	db "Shown when a@";"モバイル　たいせん<GA>はじまるとき@"
-	db "battle begins.@";"あいて<NI>みえる　あいさつです@"
-	db "Shown when you@";"モバイル　たいせんで　かったとき@"
-	db "win a battle.@";"あいて<NI>みえる　あいさつです@"
-	db "Shown when you@";"モバイル　たいせんで　まけたとき@"
-	db "lose a battle.@";"あいて<NI>みえる　あいさつです@"
+	db "Seen upon starting@";"モバイル　たいせん<GA>はじまるとき@"
+	db "a mobile battle.@";"あいて<NI>みえる　あいさつです@"
+    db "Seen upon winning@";"モバイル　たいせんで　かったとき@"
+    db "a mobile battle.@";"あいて<NI>みえる　あいさつです@"
+    db "Seen upon losing@";"モバイル　たいせんで　まけたとき@"
+    db "a mobile battle.@";"あいて<NI>みえる　あいさつです@"
 	db "Return to the@";"まえ<NO>がめん　<NI>もどります@"
 	db "previous screen.@"
 

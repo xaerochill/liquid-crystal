@@ -1843,11 +1843,11 @@ EZChatMenu_ExitSubmenu: ; Exit Message menu
 
 EZChatString_ExitPrompt: ; Exit menu string
 	db   "Want to stop";"あいさつ<NO>とうろく¯ちゅうし"
-	next "setting a MESSAGE?@";"しますか？@"
+	next "setting a message?@";"しますか？@"
 
 EZChatString_ExitConfirmation: ; Exit menu confirmation string
-	db   "Quit without sav-";"とうろくちゅう<NO>あいさつ<WA>ほぞん"
-	next "ing the MESSAGE?  @";"されません<GA>よろしい　ですか？@"
+	db   "Quit without";"とうろくちゅう<NO>あいさつ<WA>ほぞん"
+	next "saving a message? @";"されません<GA>よろしい　ですか？@"
 
 EZChatDraw_MessageTypeMenu: ; Message Type Menu Drawing (Intro/Battle Start/Win/Lose menu)
 	ld hl, EZChatString_MessageDescription
@@ -1975,20 +1975,20 @@ EZChatString_MessageDescription: ; Message usage strings
 	dw EZChatString_MessageBattleLoseDescription
 
 EZChatString_MessageIntroDescription:
-	db   "Shown to introduce";"じこしょうかい　は"
-	next "yourself. OK?@";"この　あいさつで　いいですか？@"
+	db   "Shown as an";"じこしょうかい　は"
+	next "introduction. OK?@";"この　あいさつで　いいですか？@"
 
 EZChatString_MessageBattleStartDescription:
-	db   "Shown when begin-";"たいせん　<GA>はじまるとき　は"
-	next "ning a battle. OK?@";"この　あいさつで　いいですか？@"
+	db   "Shown when a";"たいせん　<GA>はじまるとき　は"
+	next "battle starts. OK?@";"この　あいさつで　いいですか？@"
 
 EZChatString_MessageBattleWinDescription:
-	db   "Shown when win-";"たいせん　<NI>かったとき　は"
-	next "ning a battle. OK?@";"この　あいさつで　いいですか？@"
+	db   "Shown if you";"たいせん　<NI>かったとき　は"
+	next "win a battle. OK?@";"この　あいさつで　いいですか？@"
 
 EZChatString_MessageBattleLoseDescription:
-	db   "Shown when los-";"たいせん　<NI>まけたとき　は"
-	next "ing a battle. OK?@";"この　あいさつで　いいですか？@"
+	db   "Shown if you";"たいせん　<NI>まけたとき　は"
+	next "lose a battle. OK?@";"この　あいさつで　いいですか？@"
 
 EZChatString_MessageSet: ; message accept strings, one for each type of message.
 	dw EZChatString_MessageIntroSet
@@ -2031,7 +2031,7 @@ Function11cd04:
 	ret
 
 EZChatString_EnterSomeWords:
-	db "Please enter a";"なにか　ことば¯いれてください@"
+	db 	 "Please enter a";"なにか　ことば¯いれてください@"
 	next "phrase or word.@"
 
 EZChatDraw_SortByMenu: ; Draws/Opens Sort By Menu
