@@ -1012,13 +1012,13 @@ EZChatCoord_Categories: ; Category Coordinates
 	dwcoord 13,  9 ; VOICE
 	dwcoord  1, 11 ; TALK
 	dwcoord  7, 11 ; EMOTE
-	dwcoord 13, 11 ; DESC
+	dwcoord 13, 11 ; STATE
 	dwcoord  1, 13 ; LIFE
 	dwcoord  7, 13 ; HOBBY
 	dwcoord 13, 13 ; ACT
-	dwcoord  1, 15 ; ITEM
+	dwcoord  1, 15 ; TIME
 	dwcoord  7, 15 ; END
-	dwcoord 13, 15 ; MISC
+	dwcoord 13, 15 ; MISC.
 
 EZChatDraw_WordSubmenu: ; Opens/Draws Word Submenu
 	call EZChat_ClearBottom12Rows
@@ -2752,13 +2752,13 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	dbpixel 13, 10, 5, 2 ; VOICE
 	dbpixel  1, 12, 5, 2 ; TALK
 	dbpixel  7, 12, 5, 2 ; EMOTE
-	dbpixel 13, 12, 5, 2 ; DESC
+	dbpixel 13, 12, 5, 2 ; STATE
 	dbpixel  1, 14, 5, 2 ; LIFE
 	dbpixel  7, 14, 5, 2 ; HOBBY
 	dbpixel 13, 14, 5, 2 ; ACT
-	dbpixel  1, 16, 5, 2 ; ITEM
+	dbpixel  1, 16, 5, 2 ; TIME
 	dbpixel  7, 16, 5, 2 ; END
-	dbpixel 13, 16, 5, 2 ; MISC
+	dbpixel 13, 16, 5, 2 ; MISC.
 	dbpixel  1, 18, 5, 2 ; ERASE
 	dbpixel  7, 18, 5, 2 ; MODE
 	dbpixel 13, 18, 5, 2 ; CANCEL
