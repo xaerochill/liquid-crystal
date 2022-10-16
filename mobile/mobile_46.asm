@@ -5718,7 +5718,7 @@ String_11a71e:
 
 String_11a72a:
 	db   "CALL TIME";"つないだ　じかん"
-	next "  min.   sec.@"
+	next "   min.    sec.@"
 
 String_11a743:
 	db   "No data";"もっていない　データが"
