@@ -6681,12 +6681,12 @@ MenuHeader_11afe8:
 	db 0 ; default option
 
 String_11aff0:
-	db   "Is this"
-	next "correct?@"
+	db   "Is this OK?@"
+	;next ""
 
 String_11b003:
-	db   "Do you want"
-	next "to quit?@"
+	db   "Cancel the"
+	next "trade?@"
 
 MenuHeader_11b013:
 	db MENU_BACKUP_TILES ; flags
