@@ -15,7 +15,7 @@ https://github.com/Sudel-Matze/pokecrystal
 ![image](https://user-images.githubusercontent.com/110418063/188298896-8d03b589-8ab1-4d5f-b205-b163e4f616b9.png)
 ![image](https://user-images.githubusercontent.com/110418063/188284899-85bfa620-4cf2-4dc3-aac1-e950737ee2aa.png)
 ![image](https://user-images.githubusercontent.com/110418063/188285866-218d7bcd-5694-42c7-a993-e68635c27229.png)
-![image](https://user-images.githubusercontent.com/110418063/195791461-d52ba1c0-555b-4bf5-abac-6d4cfd98d94b.png)
+![image](https://user-images.githubusercontent.com/110418063/196290251-dc54e329-4924-4ab9-9366-d1e167ca9ca3.png)
 ![image](https://user-images.githubusercontent.com/110418063/188287374-972fbb3c-df55-4e8b-b974-c9ebcb8c43d7.png)
 ![image](https://user-images.githubusercontent.com/110418063/188287382-cac22ad1-f3ac-46e8-8b7c-c524460072fc.png)
 ![image](https://user-images.githubusercontent.com/110418063/188287387-5cd5514c-267c-4fe6-b66f-0a0e36e712e6.png)
