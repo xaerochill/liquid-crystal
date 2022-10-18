@@ -1012,7 +1012,7 @@ Unknown_8b903:
 String_8b90b: db "Choose a CARD.@"        ; Please select a noun.
 String_8b919: db "Move to where?@"    ; OK to swap with any noun?
 String_8b92a: db "Choose a friend.@"        ; Please select an opponent.
-String_8b938: db "Put to where?@" ; Please select a location.
+String_8b938: db "Place it where?@" ; Please select a location.
 
 Function8b94a:
 	ld [wd033], a
