@@ -112,8 +112,8 @@ MobileString1:
 MobileStrings2:
 ; string 0
 String_0x49fe9:
-	db   "Create and view"
-	next "friends' CARDS.@"
+	db   "A folder used for"
+	next "storing CARDS.@"
 
 String_0x4a004:
 	db   "Set messages";"モバイルたいせんや　じぶんのめいしで"
@@ -124,7 +124,7 @@ String_0x4a026:
 	next "and address.@";"せ<TTE>い¯かえられます@"
 
 String_0x4a042:
-	db   "Change settings";"モバイルセンター<NI>せつぞくするとき"
+	db   "Choose settings";"モバイルセンター<NI>せつぞくするとき"
 	next "used to connect.@";"ひつような　こと¯きめます@"
 
 String_0x4a062:
