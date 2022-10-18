@@ -112,8 +112,8 @@ MobileString1:
 MobileStrings2:
 ; string 0
 String_0x49fe9:
-	db   "A folder used for"
-	next "storing CARDS.@"
+	db   "A folder to create"
+	next "and store CARDS.@"
 
 String_0x4a004:
 	db   "Set messages";"モバイルたいせんや　じぶんのめいしで"
