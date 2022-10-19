@@ -112,12 +112,12 @@ MobileString1:
 MobileStrings2:
 ; string 0
 String_0x49fe9:
-	db   "A folder to create"
-	next "and store CARDS.@"
+	db   "Create and store"
+	next "CARDS in a folder.@"
 
 String_0x4a004:
-	db   "Set messages";"モバイルたいせんや　じぶんのめいしで"
-	next "shown to others.@";"つかう　あいさつ¯つくります@"
+	db   "Compose CARD and";"モバイルたいせんや　じぶんのめいしで"
+	next "battle messages.@";"つかう　あいさつ¯つくります@"
 
 String_0x4a026:
 	db   "Change your age";"あなた<NO>じゅうしょや　ねんれいの"

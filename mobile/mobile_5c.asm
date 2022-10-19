@@ -782,8 +782,8 @@ String_172e4e:
 String_172e58:
 	db "OK@";"けってい@"
 String_172e5d:
-	db   "Select CENTER";"せつぞくする　モバイルセンターを"
-	next "to connect to@";"えらんで　ください@"
+	db   "Connect to which";"せつぞくする　モバイルセンターを"
+	next "MOBILE CENTER?@";"えらんで　ください@"
 
 Function172e78:
 	ld a, $7f
