@@ -805,8 +805,8 @@ EZChatDrawBKG_ChatWords:
 	ret
 
 EZChatString_ChatExplanation: ; Explanation string
-	db   "Combine 4 words or";"６つのことば¯くみあわせます"
-	next "phrases.";"かえたいところ¯えらぶと　でてくる"
+	db   "Combine four words";"６つのことば¯くみあわせます"
+	next "or phrases.";"かえたいところ¯えらぶと　でてくる"
 	next "Select a space";"ことばのグループから　いれかえたい"
 	next "and choose a word.";"たんご¯えらんでください"
 	db   "@"
