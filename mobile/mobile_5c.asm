@@ -741,7 +741,7 @@ Function171d2b:
 	hlcoord 2, 2
 	ld de, String_172e5d
 	call PlaceString
-	hlcoord 14, 16
+	hlcoord 16, 16
 	ld de, String_172e58
 	call PlaceString
 	ret
@@ -782,8 +782,8 @@ String_172e4e:
 String_172e58:
 	db "OK@";"けってい@"
 String_172e5d:
-	db   "Connect to which";"せつぞくする　モバイルセンターを"
-	next "MOBILE CENTER?@";"えらんで　ください@"
+	db   "Connect to a";"せつぞくする　モバイルセンターを"
+	next "MOBILE CENTER@";"えらんで　ください@"
 
 Function172e78:
 	ld a, $7f

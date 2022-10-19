@@ -3086,7 +3086,7 @@ Strings_8a483:
 	next "to trade CARDS.@";"めいしこうかん<GA>できます@"
 
 	db   "Trade CARDS with";"ともだちと　じぶん<NO>めいしを"
-	next "friends.@";"せきがいせんで　こうかん　します@"
+	next "friends via IR.@";"せきがいせんで　こうかん　します@"
 
 Function8a4d3:
 	ld a, [wMenuSelection]
@@ -3672,11 +3672,11 @@ Function8a8c3:
 	ret
 
 String_8a919:
-	db "Delete this data?@";"このデータ<WO>けしますか？@"
+	db "Delete this CARD?@";"このデータ<WO>けしますか？@"	
 
 String_8a926:
-	db   "The data was";"データ<WO>けしまし<TA!>@"
-	next "deleted.@"
+	db   "The CARD has";"データ<WO>けしまし<TA!>@"
+	next "been deleted.@"
 
 Function8a930: ; switch entries?
 	ld a, [wMenuSelection]
