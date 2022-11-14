@@ -234,7 +234,7 @@ CopyMobileEZChatToC608:
 	ldh [rSVBK], a
 	ld a, "@"
 	ld hl, wEZChatWordBuffer
-	ld bc, EZCHAT_WORD_LENGTH + 1
+	ld bc, NAME_LENGTH + 1
 	call ByteFill
 	ld a, d
 	and a
@@ -283,7 +283,15 @@ endr
 	ld [wNamedObjectIndex], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
+	ld a, 1
+	ld [wEZChatPokemonNameRendered], a
+	ld a, [wEZChatAreNamesRenderedFully]
+	and a
+	jr nz, .copy_full_name
 	ld bc, EZCHAT_WORD_LENGTH
+	jr .copy_string
+.copy_full_name
+	ld bc, NAME_LENGTH
 	jr .copy_string
 
 Function11c1ab:
@@ -313,14 +321,17 @@ Function11c1b9:
 	ld [wcf64], a
 	ld [wcf65], a
 	ld [wcf66], a
-	ld [wcd23], a
+	ld [wEZChatBlinkingMask], a
 	ld [wEZChatSelection], a
 	ld [wEZChatCategorySelection], a
 	ld [wEZChatSortedSelection], a
+	ld [wEZChatPokemonNameRendered], a
 	ld [wcd35], a
 	ld [wEZChatCategoryMode], a
+	ld a, 1
+	ld [wEZChatAreNamesRenderedFully], a
 	ld a, $ff
-	ld [wcd24], a
+	ld [wEZChatSpritesMask], a
 	ld a, [wMenuCursorY]
 	dec a
 	call Function11c254
@@ -521,7 +532,7 @@ EZChat_MasterLoop:
 	ld a, $2 ; Sort By Letter Menu Index (?)
 	ld [hl], a
 
-	ld hl, wcd23
+	ld hl, wEZChatBlinkingMask
 	set 1, [hl]
 	set 2, [hl]
 	jp Function11cfb5
@@ -566,7 +577,14 @@ Function11c373:
 	call EZChatMenu_MessageSetup
 	jp Function11cfb5
 
+EZChatMenu_RerenderMessage:
+; nugget of a solution
+	ld de, EZChatBKG_ChatWords
+	call EZChat_Textbox
+
 EZChatMenu_MessageSetup:
+	xor a
+	ld [wEZChatPokemonNameRendered], a
 	ld hl, EZChatCoord_ChatWords
 	ld bc, wEZChatWords
 	ld a, EZCHAT_WORD_COUNT
@@ -595,8 +613,14 @@ EZChatMenu_MessageSetup:
 	call EZChat_RenderOneWord
 	jr .asm_11c3b5
 .emptystring
+	ld a, [wEZChatPokemonNameRendered]
+	and a
+	jr nz, .clear_rendered_flag
 	ld de, EZChatString_EmptyWord
 	call PlaceString
+.clear_rendered_flag
+	xor a
+	ld [wEZChatPokemonNameRendered], a
 .asm_11c3b5
 	pop bc
 	pop hl
@@ -619,9 +643,9 @@ EZChatDraw_ChatWords: ; Switches between menus?, not sure which.
 	ld de, EZChatString_ChatExplanationBottom
 	call PlaceString
 	call EZChatDrawBKG_ChatWords
-	ld hl, wcd23
+	ld hl, wEZChatBlinkingMask
 	set 0, [hl]
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	res 0, [hl]
 	call Function11cfb5
 
@@ -664,22 +688,22 @@ EZChatMenu_ChatWords: ; EZChat Word Menu
 	ld de, hJoyLast
 	ld a, [de]
 	and D_UP
-	jr nz, .up
+	jp nz, .up
 	ld a, [de]
 	and D_DOWN
-	jr nz, .down
+	jp nz, .down
 	ld a, [de]
 	and D_LEFT
-	jr nz, .left
+	jp nz, .left
 	ld a, [de]
 	and D_RIGHT
-	jr nz, .right
+	jp nz, .right
 	ret
 
 .click_sound_and_quit
 	call PlayClickSFX
 .to_quit_prompt
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	set 0, [hl]
 	ld a, EZCHAT_DRAW_EXIT_SUBMENU
 	jr .move_jumptable_index
@@ -715,19 +739,19 @@ EZChatMenu_ChatWords: ; EZChat Word Menu
 	decoord 1, 2
 	ld bc, wEZChatWords
 	call EZChat_RenderWords
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	set 0, [hl]
 	ld a, EZCHAT_DRAW_MESSAGE_TYPE_MENU
 	jr .move_jumptable_index
 
 .if_all_empty
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	set 0, [hl]
 	ld a, EZCHAT_MENU_WARN_EMPTY_MESSAGE
 	jr .move_jumptable_index
 
 .to_reset_prompt
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	set 0, [hl]
 	ld a, EZCHAT_DRAW_ERASE_SUBMENU
 	jr .move_jumptable_index
@@ -741,16 +765,56 @@ EZChatMenu_ChatWords: ; EZChat Word Menu
 
 .up
 	ld a, [hl]
-	cp 2
+	cp EZCHAT_MAIN_WORD3
 	ret c
+; if at QUIT
+	cp EZCHAT_MAIN_QUIT
+	jr z, .up_on_quit
+; if in 2nd row and 2nd column
+	cp EZCHAT_MAIN_WORD4
+	jr nz, .up_normal
+; to first row
+	ld a, [wEZChatWord1 + 1]
+	and a
+	jr nz, .up_normal
+; 1st word not empty
+	ld a, [wEZChatWord1]
+	and a
+	jr z, .up_normal
+; pokemon is 1st word
+	ld a, EZCHAT_MAIN_WORD1
+	jr .finish_dpad
+.up_normal
+	ld a, [hl]
 	sub 2
 	jr .finish_dpad
+.up_on_quit
+	ld a, EZCHAT_MAIN_WORD3
+	jr .finish_dpad
+
 .down
 	ld a, [hl]
 	cp 4
 	ret nc
+; if in top row	
+	cp 2
+	jr nc, .down_normal
+; to second row
+	ld a, [wEZChatWord3 + 1]
+	and a
+	jr nz, .down_normal
+; 3rd word not empty
+	ld a, [wEZChatWord3]
+	and a
+	jr z, .down_normal
+; pokemon is 3rd word
+	ld a, EZCHAT_MAIN_WORD3
+	jr .finish_dpad
+.down_normal
+	ld a, [hl]
 	add 2
 	jr .finish_dpad
+
 .left
 	ld a, [hl]
 	and a ; cp a, 0
@@ -770,13 +834,41 @@ EZChatMenu_ChatWords: ; EZChat Word Menu
 	ret z
 	cp 6
 	ret z
+; prevent selection if it's a pokemon
+	and a
+	jr nz, .right_not_0th
+; for word 0
+	ld c, a
+	ld a, [wEZChatWord1 + 1]
+	and a
+	ld a, c
+	jr nz, .right_normal
+; is category 0
+	ld a, [wEZChatWord1]
+	and a
+	ret nz ; stop here if is pokemon
+.right_not_0th
+	cp 2
+	jr nz, .right_normal
+; for word 2
+	ld c, a
+	ld a, [wEZChatWord3 + 1]
+	and a
+	ld a, c
+	jr nz, .right_normal
+; is category 0
+	ld a, [wEZChatWord3]
+	and a
+	ret nz ; stop here if is pokemon
+	ld a, 2 ; jank
+.right_normal
 	inc a
 .finish_dpad
 	ld [hl], a
 	ret
 
 EZChat_MoveToCategoryOrSortMenu:
-	ld hl, wcd23
+	ld hl, wEZChatBlinkingMask
 	res 0, [hl]
 	ld a, [wEZChatCategoryMode]
 	and a
@@ -819,7 +911,7 @@ EZChatDraw_CategoryMenu: ; Open category menu
 	call EZChat_ClearBottom12Rows
 	call EZChat_PlaceCategoryNames
 	call Function11c618
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	res 1, [hl]
 	call Function11cfb5
 
@@ -874,7 +966,7 @@ EZChatMenu_CategoryMenu: ; Category Menu Controls
 	jr .b
 
 .start
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	set 0, [hl]
 	ld a, EZCHAT_MAIN_OK
 	ld [wEZChatSelection], a
@@ -898,7 +990,7 @@ EZChatMenu_CategoryMenu: ; Category Menu Controls
 	ld a, EZCHAT_DRAW_WORD_SUBMENU
 
 .go_to_function
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	set 1, [hl]
 	ld [wJumptableIndex], a
 	call PlayClickSFX
@@ -907,6 +999,7 @@ EZChatMenu_CategoryMenu: ; Category Menu Controls
 .done
 	ld a, [wEZChatSelection]
 	call EZChatDraw_EraseWordsLoop
+	call EZChatMenu_RerenderMessage
 	call PlayClickSFX
 	ret
 
@@ -1021,6 +1114,8 @@ EZChatCoord_Categories: ; Category Coordinates
 	dwcoord 13, 15 ; MISC.
 
 EZChatDraw_WordSubmenu: ; Opens/Draws Word Submenu
+	xor a
+	ld [wEZChatAreNamesRenderedFully], a
 	call EZChat_ClearBottom12Rows
 	call Function11c770
 	ld de, EZChatBKG_WordSubmenu
@@ -1028,7 +1123,7 @@ EZChatDraw_WordSubmenu: ; Opens/Draws Word Submenu
 	call EZChat_WhiteOutLowerMenu
 	call Function11c7bc
 	call EZChatMenu_WordSubmenuBottom
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	res 3, [hl]
 	call Function11cfb5
 
@@ -1097,14 +1192,17 @@ EZChatMenu_WordSubmenu: ; Word Submenu Controls
 	jr nz, .down
 	ld a, [de]
 	and D_LEFT
-	jr nz, .left
+	jp nz, .left
 	ld a, [de]
 	and D_RIGHT
 	jp nz, .right
 	ret
 
 .a
-	call Function11c8f6
+	ld a, 1
+	ld [wEZChatAreNamesRenderedFully], a
+	call EZChat_SetOneWord
+	call EZChat_VerifyWordPlacement
 	ld a, EZCHAT_DRAW_CHAT_WORDS
 	ld [wcd35], a
 
@@ -1128,6 +1226,8 @@ EZChatMenu_WordSubmenu: ; Word Submenu Controls
 	jr .jump_to_index
 
 .b
+	ld a, 1
+	ld [wEZChatAreNamesRenderedFully], a
 	ld a, [wEZChatCategoryMode]
 	and a
 	jr nz, .to_sorted_menu
@@ -1138,7 +1238,7 @@ EZChatMenu_WordSubmenu: ; Word Submenu Controls
 	ld a, EZCHAT_DRAW_SORT_BY_CHARACTER
 .jump_to_index
 	ld [wJumptableIndex], a
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	set 3, [hl]
 	call PlayClickSFX
 	ret
@@ -1489,39 +1589,139 @@ MobileString_Prev:
 MobileString_Next:
 	db "NEXT@";"つぎ@"
 
-Function11c8f6:
+EZChat_VerifyWordPlacement:
+; make sure that if one row contains a mon name
+; that row only contain the pokemon name
+	push hl
+	push bc
+; fix selection placement
 	ld a, [wEZChatSelection]
-	call EZChat_ClearWords
+	cp 1
+	jr z, .one
+	cp 3
+	jr z, .three
+	jr .limit_words ; out of range
+.one
+; is current word a pokemon?
+	ld hl, wEZChatWord2 + 1
+	ld a, [hld]
+	and a
+	jr nz, .limit_words
+	ld a, [hl]
+	jr nz, .limit_words
+; change selection
+	ld a, 0
+	ld [wEZChatSelection], a
+	jr .limit_words
+.three
+; is current word a pokemon?
+	ld hl, wEZChatWord4 + 1
+	ld a, [hld]
+	and a
+	jr nz, .limit_words
+	ld a, [hl]
+	jr nz, .limit_words
+; change selection
+	ld a, 2
+	ld [wEZChatSelection], a
+	; jr .limit_words
+.limit_words
+; row 1
+	ld hl, wEZChatWord1
+	ld bc, 0
+.loop
+	call .iterate
+	ld b, 0
+	ld a, c
+	cp EZCHAT_WORD_COUNT
+	jr nc, .done
+	jr .loop
+.done
+; rerender words
+	call EZChatMenu_RerenderMessage
+	
+	pop bc
+	pop hl
+	ret
+
+.iterate
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	and a
+	jr nz, .skip_iteration ; skip if category != 0
+	or b
+	jr z, .skip_iteration ; skip if category||index == 0000
+	ld a, b
+	and a
+	jr z, .skip_iteration ; skip if index == 0
+; is pokemon
+	ld a, c
+	and $1
+	jr z, .even_index
+; odd index
+	dec hl
+	dec hl
+	ld a, [hl]
+	dec hl
+	dec hl
+	ld [hli], a
+	ld [hl], 0
+	inc hl
+	ld [hl], 0
+	inc hl
+	ld [hl], 0
+	inc hl
+	;inc c
+	jr .skip_iteration
+.even_index
+	ld [hl], 0
+	inc hl
+	ld [hl], 0
+	inc hl
+	inc c
+	jr .skip_iteration
+.skip_iteration
+	inc c
+	ret
+
+EZChat_SetOneWord:
+; clear the word that it's occupying
+	ld a, [wEZChatSelection]
+	call EZChat_ClearOneWord
+; get which category mode
 	push hl
 	ld a, [wEZChatCategoryMode]
 	and a
-	jr nz, .asm_11c938
+	jr nz, .alphabetical
+; categorical
 	ld a, [wEZChatCategorySelection]
 	ld d, a
 	and a
-	jr z, .asm_11c927
+	jr z, .pokemon
 	ld hl, wEZChatPageOffset
 	ld a, [wEZChatWordSelection]
 	add [hl]
-.asm_11c911
+.got_word_entry
 	ld e, a
-.asm_11c912
+.put_word
 	pop hl
 	push de
 	call EZChat_RenderOneWord
 	pop de
 	ld a, [wEZChatSelection]
 	ld c, a
-	ld b, $0
+	ld b, 0
 	ld hl, wEZChatWords
 	add hl, bc
 	add hl, bc
 	ld [hl], e
 	inc hl
 	ld [hl], d
+; finished
 	ret
 
-.asm_11c927
+.pokemon
 	ld hl, wEZChatPageOffset
 	ld a, [wEZChatWordSelection]
 	add [hl]
@@ -1530,8 +1730,9 @@ Function11c8f6:
 	ld hl, wListPointer
 	add hl, bc
 	ld a, [hl]
-	jr .asm_11c911
-.asm_11c938
+	jr .got_word_entry
+
+.alphabetical
 	ld hl, wEZChatSortedWordPointers
 	ld a, [wEZChatSortedSelection]
 	ld e, a
@@ -1557,38 +1758,41 @@ Function11c8f6:
 	ld e, a
 	ld a, [hl]
 	ld d, a
-	jr .asm_11c912
+	jr .put_word
 
-EZChat_ClearWords:
+EZChat_ClearOneWord:
+; a = idx of which word
+; get starting coordinate to clear out
 	sla a
 	ld c, a
 	ld b, 0
 	ld hl, EZChatCoord_ChatWords
 	add hl, bc
+; coord -> bc
 	ld a, [hli]
 	ld c, a
 	ld a, [hl]
 	ld b, a
 	push bc
-	push bc
-	pop hl
-	ld a, EZCHAT_WORD_LENGTH
-	ld c, a
-	ld a, " "
-.asm_11c972
-	ld [hli], a
-	dec c
-	jr nz, .asm_11c972
-	dec hl
-	ld bc, -SCREEN_WIDTH
-	add hl, bc
-	ld a, EZCHAT_WORD_LENGTH
-	ld c, a
-	ld a, " "
-.asm_11c980
-	ld [hld], a
-	dec c
-	jr nz, .asm_11c980
+; bc -> hl
+		push bc
+		pop hl
+		ld c, EZCHAT_WORD_LENGTH
+		ld a, " "
+.clear_word
+		ld [hli], a
+		dec c
+		jr nz, .clear_word
+; clear the row above it
+		dec hl
+		ld bc, -SCREEN_WIDTH
+		add hl, bc
+		ld c, EZCHAT_WORD_LENGTH
+		ld a, " "
+.clear_row_above
+		ld [hld], a
+		dec c
+		jr nz, .clear_row_above
 	pop hl
 	ret
 
@@ -1654,7 +1858,7 @@ EZChatMenu_EraseSubmenu: ; Erase submenu controls
 	xor a
 	ld [wEZChatSelection], a
 .b
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	set 4, [hl]
 	ld a, EZCHAT_DRAW_CHAT_WORDS
 	ld [wJumptableIndex], a
@@ -1732,6 +1936,7 @@ EZChatMenu_EraseWordsAccept:
 	inc a
 	cp EZCHAT_WORD_COUNT
 	jr nz, .loop
+	call EZChatMenu_RerenderMessage
 	ret
 
 EZChatDraw_EraseWordsLoop:
@@ -1743,7 +1948,7 @@ EZChatDraw_EraseWordsLoop:
 	ld [hl], b
 	inc hl
 	ld [hl], b
-	call EZChat_ClearWords
+	call EZChat_ClearOneWord
 	ld de, EZChatString_EmptyWord
 	call PlaceString
 	ret
@@ -1763,7 +1968,7 @@ EZChatDraw_ConfirmationSubmenu:
 	call Function11ca01
 	ld a, $1
 	ld [wcd2a], a
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	res 4, [hl]
 	call Function11cfb5
 	ret
@@ -1816,7 +2021,7 @@ EZChatMenu_ExitSubmenu: ; Exit Message menu
 .b
 	call PlayClickSFX
 .asm_11cafc
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	set 4, [hl]
 	ld a, EZCHAT_DRAW_CHAT_WORDS
 	ld [wJumptableIndex], a
@@ -1936,10 +2141,8 @@ EZChatMenu_MessageTypeMenu: ; Message Type Menu Controls (Intro/Battle Start/Win
 .clicksound
 	call PlayClickSFX
 .b
-	ld de, EZChatBKG_ChatWords
-	call EZChat_Textbox
-	call EZChatMenu_MessageSetup
-	ld hl, wcd24
+	call EZChatMenu_RerenderMessage
+	ld hl, wEZChatSpritesMask
 	set 4, [hl]
 	ld a, EZCHAT_DRAW_CHAT_WORDS
 	ld [wJumptableIndex], a
@@ -2053,7 +2256,7 @@ EZChatDraw_SortByMenu: ; Draws/Opens Sort By Menu
 	ld de, EZChatString_SortByMenu
 	call PlaceString
 	call Function11cdaa
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	res 5, [hl]
 	call Function11cfb5
 
@@ -2088,7 +2291,7 @@ EZChatMenu_SortByMenu: ; Sort Menu Controls
 	ld a, EZCHAT_DRAW_SORT_BY_CHARACTER
 .jump_to_index
 	ld [wJumptableIndex], a
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	set 5, [hl]
 	call PlayClickSFX
 	ret
@@ -2151,7 +2354,7 @@ EZChatDraw_SortByCharacter: ; Sort by Character Menu
 	ld de, EZChatString_Stop_Mode_Cancel
 	call PlaceString
 	call Function11c618
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	res 2, [hl]
 	call Function11cfb5
 
@@ -2206,7 +2409,7 @@ EZChatMenu_SortByCharacter: ; Sort By Character Menu Controls
 	jr .b ; cancel
 
 .start
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	set 0, [hl]
 	ld a, EZCHAT_MAIN_OK
 	ld [wEZChatSelection], a
@@ -2229,7 +2432,7 @@ EZChatMenu_SortByCharacter: ; Sort By Character Menu Controls
 	ld a, EZCHAT_DRAW_SORT_BY_MENU
 .load
 	ld [wJumptableIndex], a
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	set 2, [hl]
 	call PlayClickSFX
 	ret
@@ -2237,6 +2440,7 @@ EZChatMenu_SortByCharacter: ; Sort By Character Menu Controls
 .done
 	ld a, [wEZChatSelection]
 	call EZChatDraw_EraseWordsLoop
+	call EZChatMenu_RerenderMessage
 	call PlayClickSFX
 	ret
 
@@ -2529,11 +2733,41 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	dw .nine
 	dw .ten
 
+.is_pkmn
+	or a ; reset carry
+	push bc
+	push hl
+		ld c, a
+		ld b, 0
+		ld hl, wEZChatWords
+		add hl, bc
+		add hl, bc
+		ld a, [hli]
+		ld b, a
+		ld a, [hl]
+		or b
+		jr z, .chk_pkmn_ok ; == 0
+		ld a, [hl]
+		and a
+		jr nz, .chk_pkmn_ok ; != 0
+		scf
+.chk_pkmn_ok
+	pop hl
+	pop bc
+	ret
+
 .zero ; EZChat Message Menu
 ; reinit sprite
 	ld a, [wEZChatSelection]
 	cp EZCHAT_MAIN_RESET
 	jr nc, .shorter_cursor
+	call .is_pkmn
+	jr nc, .normal
+; is pokemon
+	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_10
+	call ReinitSpriteAnimFrame
+	jr .cont0
+.normal
 	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_8
 	call ReinitSpriteAnimFrame
 	jr .cont0
@@ -2846,11 +3080,11 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_9 ; 1d (Bottom Menu Selection box?)
 
 .UpdateObjectFlags:
-	ld hl, wcd24
+	ld hl, wEZChatSpritesMask
 	and [hl]
 	jr nz, .update_y_offset
 	ld a, e
-	ld hl, wcd23
+	ld hl, wEZChatBlinkingMask
 	and [hl]
 	jr z, .reset_y_offset
 	ld hl, SPRITEANIMSTRUCT_VAR3
