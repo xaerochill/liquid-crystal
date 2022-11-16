@@ -681,7 +681,7 @@ EZChatDraw_ChatWords: ; Switches between menus?, not sure which.
 	ld de, EZChatString_ChatExplanationBottom
 	call PlaceString
 	call EZChatDrawBKG_ChatWords
-	ld hl, wEZChatBlinkingMask
+	;ld hl, wEZChatBlinkingMask
 	set 0, [hl]
 	ld hl, wEZChatSpritesMask
 	res 0, [hl]
@@ -1947,11 +1947,11 @@ EZChat_ClearOneWord:
 	ret
 
 EZChatCoord_ChatWords: ; EZChat Message Coordinates
-	dwcoord  1,  2
-	dwcoord 10,  2 ;  7, 2
+	dwcoord  2,  2
+	dwcoord 11,  2 ;  7, 2
 	;dwcoord  7,  7 ; 13, 2 (Pushed under 'Combine 4 words' menu) WORD_COUNT
-	dwcoord  1,  4
-	dwcoord 10,  4 ;  7, 4
+	dwcoord  2,  4
+	dwcoord 11,  4 ;  7, 4
 	;dwcoord 12, 12 ; 13, 4 (Pushed under 'Combine 4 words' menu) WORD_COUNT
 
 Function11c992: ; Likely related to the word submenu, references the first word position
@@ -2955,11 +2955,11 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	call .is_pkmn
 	jr nc, .normal
 ; is pokemon
-	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_10
+	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_2
 	call ReinitSpriteAnimFrame
 	jr .cont0
 .normal
-	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_8
+	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_2
 	call ReinitSpriteAnimFrame
 	jr .cont0
 .shorter_cursor
@@ -2977,7 +2977,7 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	cp 15
 	push af
 	jr c, .not_menu
-	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_9
+	ld a, SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_1
 	call ReinitSpriteAnimFrame
 	jr .got_sprite
 .not_menu
@@ -3168,10 +3168,10 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	ret
 
 .Coords_Zero: ; EZChat Message Menu
-	dbpixel  1,  3, 5, 2 ; Message 1 - 00
-	dbpixel 10,  3, 5, 2 ; Message 2 - 01
-	dbpixel  1,  5, 5, 2 ; Message 3 - 02
-	dbpixel 10,  5, 5, 2 ; Message 4 - 03
+	dbpixel  1,  3, 8, 8 ; Message 1 - 00
+	dbpixel 10,  3, 8, 8 ; Message 2 - 01
+	dbpixel  1,  5, 8, 8 ; Message 3 - 02
+	dbpixel 10,  5, 8, 8 ; Message 4 - 03
 	dbpixel  1, 17, 5, 2 ; RESET     - 04
 	dbpixel  7, 17, 5, 2 ; QUIT      - 05
 	dbpixel 13, 17, 5, 2 ; OK        - 06
@@ -3192,9 +3192,9 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	dbpixel  1, 16, 5, 2 ; TIME
 	dbpixel  7, 16, 5, 2 ; END
 	dbpixel 13, 16, 5, 2 ; MISC.
-	dbpixel  1, 18, 5, 2 ; ERASE
+	dbpixel  1, 18, 5, 2 ; DEL
 	dbpixel  7, 18, 5, 2 ; MODE
-	dbpixel 13, 18, 5, 2 ; CANCEL
+	dbpixel 13, 18, 5, 2 ; QUIT
 
 .Coords_Two: ; Sort By Letter Menu
 	table_width 2, .Coords_Two
@@ -3284,10 +3284,10 @@ AnimateEZChatCursor: ; EZChat cursor drawing code, extends all the way down to r
 	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_3 ; 18 (Letter selection box for the sort by menu)
 	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_3 ; 19 (Letter selection box for the sort by menu)
 	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_4 ; 1a (Misc selection box for the sort by menu)
-	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_4 ; 1b (Bottom Menu Selection box?)
-	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_9 ; 1b (Bottom Menu Selection box?)
-	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_9 ; 1c (Bottom Menu Selection box?)
-	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_9 ; 1d (Bottom Menu Selection box?)
+	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_4 ; 1b (Pkmn selection box for the sort by menu)
+	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_1 ; 1c (Bottom Menu Selection box?)
+	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_1 ; 1d (Bottom Menu Selection box?)
+	db SPRITE_ANIM_FRAMESET_EZCHAT_CURSOR_1 ; 1e (Bottom Menu Selection box?)
 	assert_table_length NUM_EZCHAT_SORTED
 
 .UpdateObjectFlags:
