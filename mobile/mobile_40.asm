@@ -927,7 +927,7 @@ MenuData_100604:
 Mobile_CommunicationStandby:
 	hlcoord 3, 10
 	ld b, 1
-	ld c, 11
+	ld c, 12
 	call Function3eea
 	ld de, .String
 	hlcoord 4, 11
