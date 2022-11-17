@@ -2545,17 +2545,20 @@ EZChatMenu_SortByCharacter: ; Sort By Character Menu Controls
 	jr nz, .right
 
 	ret
+	
+.invalid
+	ld de, SFX_WRONG
+	call PlaySFX
+	jp WaitSFX
 
 .a
 	ld a, [wEZChatSortedSelection]
 ; exit early on "no words begin with this letter" - sort count 0
 	cp EZCHAT_SORTED_X
-	ld de, SFX_WRONG
-	call PlaySFX
+	jr z, .invalid
 	ret z
 	cp EZCHAT_SORTED_Z
-	ld de, SFX_WRONG
-	call PlaySFX
+	jr z, .invalid
 	ret z
 ; otherwise
 	cp EZCHAT_SORTED_ERASE
