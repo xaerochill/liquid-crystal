@@ -2550,8 +2550,12 @@ EZChatMenu_SortByCharacter: ; Sort By Character Menu Controls
 	ld a, [wEZChatSortedSelection]
 ; exit early on "no words begin with this letter" - sort count 0
 	cp EZCHAT_SORTED_X
+	ld de, SFX_WRONG
+	call PlaySFX
 	ret z
 	cp EZCHAT_SORTED_Z
+	ld de, SFX_WRONG
+	call PlaySFX
 	ret z
 ; otherwise
 	cp EZCHAT_SORTED_ERASE
