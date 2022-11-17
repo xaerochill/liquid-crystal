@@ -1,4 +1,4 @@
-EZCHAT_WORD_COUNT equ 4
+EZCHAT_WORD_COUNT equ EASY_CHAT_MESSAGE_WORD_COUNT
 EZCHAT_WORD_LENGTH equ 8
 EZCHAT_WORDS_PER_ROW equ 2
 EZCHAT_WORDS_PER_COL equ 4
@@ -116,7 +116,7 @@ EZChat_RenderWords:
 	pop hl
 	ld de, 2 * SCREEN_WIDTH
 	add hl, de
-	ld a, $3
+	ld a, EZCHAT_WORDS_PER_ROW
 .loop2
 	push af
 	ld a, [bc]
@@ -172,6 +172,14 @@ PrintEZChatBattleMessage:
 	; if $0000, we're done
 	or e
 	jr z, .done
+	
+	cp $ff
+	jr nz, .d_not_ff
+	ld a, e
+	cp $ff
+	jr z, .done ; de == $ffff, done
+
+.d_not_ff
 	; preserving hl and bc, get the length of the word
 	push hl
 	push bc
@@ -323,12 +331,6 @@ endr
 	ld hl, wStringBuffer1
 	ld a, 1
 	ld [wEZChatPokemonNameRendered], a
-	ld a, [wEZChatAreNamesRenderedFully]
-	and a
-	jr nz, .copy_full_name
-	ld bc, EZCHAT_WORD_LENGTH
-	jr .copy_string
-.copy_full_name
 	ld bc, NAME_LENGTH
 	jr .copy_string
 
@@ -366,8 +368,6 @@ Function11c1b9:
 	ld [wEZChatPokemonNameRendered], a
 	ld [wcd35], a
 	ld [wEZChatCategoryMode], a
-	ld a, 1
-	ld [wEZChatAreNamesRenderedFully], a
 	ld a, $ff
 	ld [wEZChatSpritesMask], a
 	ld a, [wMenuCursorY]
@@ -407,15 +407,14 @@ Function11c1b9:
 
 Function11c254:
 	push af
-	ld a, BANK(s4_a007)
+	ld a, BANK(sEZChatIntroductionMessage)
 	call OpenSRAM
-	ld hl, s4_a007
+	ld hl, sEZChatIntroductionMessage
 	pop af
+; a * 4 * 2
 	sla a
 	sla a
-	ld c, a
 	sla a
-	add c
 	ld c, a
 	ld b, 0
 	add hl, bc
@@ -1161,8 +1160,6 @@ EZChatCoord_Categories: ; Category Coordinates
 	dwcoord 13, 15 ; MISC.
 
 EZChatDraw_WordSubmenu: ; Opens/Draws Word Submenu
-	;xor a
-	;ld [wEZChatAreNamesRenderedFully], a
 	call EZChat_ClearBottom12Rows
 	call EZChat_ForcePokemonSubmenu
 	call EZChat_DetermineWordAndPageCounts
@@ -1263,8 +1260,6 @@ EZChatMenu_WordSubmenu: ; Word Submenu Controls
 	ret
 
 .a
-	;ld a, 1
-	;ld [wEZChatAreNamesRenderedFully], a
 	call EZChat_SetOneWord
 	call EZChat_VerifyWordPlacement
 	ld a, EZCHAT_DRAW_CHAT_WORDS
@@ -1291,8 +1286,6 @@ EZChatMenu_WordSubmenu: ; Word Submenu Controls
 
 .b
 	call EZChat_CheckCategorySelectionConsistency
-	;ld a, 1
-	;ld [wEZChatAreNamesRenderedFully], a
 	ld a, [wEZChatCategoryMode]
 	bit 0, a
 	jr nz, .to_sorted_menu
@@ -2241,27 +2234,25 @@ EZChatMenu_MessageTypeMenu: ; Message Type Menu Controls (Intro/Battle Start/Win
 	ld a, [hl]
 	and a
 	jr nz, .clicksound
-	ld a, BANK(s4_a007)
+	ld a, BANK(sEZChatIntroductionMessage)
 	call OpenSRAM
-	ld hl, s4_a007
+	ld hl, sEZChatIntroductionMessage
 	ld a, [wMenuCursorY]
 	dec a
 	sla a
 	sla a
-	ld c, a
 	sla a
-	add c
 	ld c, a
 	ld b, 0
 	add hl, bc
 	ld de, wEZChatWords
 	ld c, EZCHAT_WORD_COUNT * 2
-.asm_11cba2
+.save_message
 	ld a, [de]
 	ld [hli], a
 	inc de
 	dec c
-	jr nz, .asm_11cba2
+	jr nz, .save_message
 	call CloseSRAM
 	call PlayClickSFX
 	ld de, EZChatBKG_SortBy
@@ -2557,6 +2548,12 @@ EZChatMenu_SortByCharacter: ; Sort By Character Menu Controls
 
 .a
 	ld a, [wEZChatSortedSelection]
+; exit early on "no words begin with this letter" - sort count 0
+	cp EZCHAT_SORTED_X
+	ret z
+	cp EZCHAT_SORTED_Z
+	ret z
+; otherwise
 	cp EZCHAT_SORTED_ERASE
 	jr c, .place
 	sub EZCHAT_SORTED_ERASE
