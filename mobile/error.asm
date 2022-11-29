@@ -587,12 +587,12 @@ String_17fd84:
 	db   "@" 
 
 String_17fdb2:
-	db   "Call was ended" ; "３ぷん　いじょう　なにも"
-	next "due to no input" ; "にゅうりょく　しなかったので"
-	next "being received" ; "でんわが　きれました"
-	next "for three" 
-	next "minutes." 
-	db   "@" 
+	db   "The call was" ; "３ぷん　いじょう　なにも"
+	next "ended due to" ; "にゅうりょく　しなかったので"
+	next "no input being" ; "でんわが　きれました"
+	next "received for " 
+	next "three minutes." 
+	db   "@"
 
 String_17fdd9:
 	db   "Communication" ; "つうしんが　うまく"
@@ -612,12 +612,10 @@ String_17fe03:
 	db   "@" 
 
 String_17fe4b:
-	db   "Call was ended" ; "まちじかんが　ながいので"
-	next "due to no" ; "でんわが　きれました"
-	next "response being" 
-	next "received after a" 
-	next "long wait time." 
-	db   "@" 
+    db   "The call was" ; "まちじかんが　ながいので"
+    next "ended because" ; "でんわが　きれました"
+    next "of inactivity." 
+    db   "@"
 
 String_17fe63:
 	db   "Your friend is" ; "あいての　モバイルアダプタと"
