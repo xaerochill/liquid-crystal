@@ -620,7 +620,7 @@ String_17fe4b:
 String_17fe63:
 	db   "Your friend is" ; "あいての　モバイルアダプタと"
 	next "using a different" ; "タイプが　ちがいます"
-	next "type of" ; "くわしくは　とりあつかい"
+	next "kind of" ; "くわしくは　とりあつかい"
 	next "Mobile Adapter." ; "せつめいしょを　ごらんください"
 	next "Check the manual" 
 	next "for details." 
