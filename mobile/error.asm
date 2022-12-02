@@ -451,13 +451,13 @@ String_17f98e:
 	db   "@" 
 
 String_17f9d0:
-	db   "Invalid Log-in" ; "ログインパスワードか"
-	next "Password or" ; "ログイン　アイディーに"
-	next "Log-in ID." ; "まちがいがあります"
-	next "Please confirm" ; "パスワードを　かくにんして"
-	next "your Log-in info" ; "しばらく　まって"
-	next "and try again." ; "かけなおして　ください"
-	db   "@" 
+    db   "Invalid Log-in" ; "ログインパスワードか"
+    next "ID or Password." ; "ログイン　アイディーに"
+    next "Please confirm" ; "まちがいがあります"
+    next "your Log-in" ; "パスワードを　かくにんして"
+    next "information" ; "しばらく　まって"
+    next "and try again." ; "かけなおして　ください"
+    db   "@"
 
 String_17fa14:
 	db   "The phone was" ; "でんわが　きれました"
