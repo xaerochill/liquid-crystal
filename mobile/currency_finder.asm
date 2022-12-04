@@ -135,98 +135,98 @@ CopyCurrencyString: ; I know this is ugly, I copied and pasted this function fro
 
 
 String_Currency_Cents: ; Note that this is unoptimized, as the string "Is this OK?@" is repeted.
-	db   " Cents";"えん"
+	db   " cents";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"
 	
 String_Currency_Lek: ; Note that this is unoptimized, as the string "Is this OK?@" is repeted.
-	db   " Lek";"えん"
+	db   " lek";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Fening:
-	db   " Fening";"えん"
+	db   " fening";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 
 String_Currency_Stotinki:
-	db   " St.";"えん"
+	db   " st.";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Copecks:
-	db   " Copecks";"えん"
+	db   " copecks";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 
 String_Currency_Crowns:
-	db   " Crowns";"えん"
+	db   " crowns";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Ore:
-	db   " Öre";"えん"
+	db   " öre";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Krooni:
-	db   " Krooni";"えん"
+	db   " krooni";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Kronur:
-	db   " Kronur";"えん"
+	db   " kronur";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 
 String_Currency_Pence:
-	db   " Pence";"えん"
+	db   " pence";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"
 	
 String_Currency_Lp:
-	db   " Lp";"えん"
+	db   " lp";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Filler:
-	db   " Fillér";"えん"
+	db   " fillér";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"
 
 String_Currency_Centai:
-	db   " Centai";"えん"
+	db   " centai";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Santimi:
-	db   " Santimi";"えん"
+	db   " santimi";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Lei:
-	db   " Lei";"えん"
+	db   " lei";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Liri:
-	db   " Liri";"えん"
+	db   " liri";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Groszy:
-	db   " Groszy";"えん"
+	db   " groszy";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Bani:
-	db   " Bani";"えん"
+	db   " bani";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"		
 
 String_Currency_Dinari:
-	db   " Dinari";"えん"
+	db   " dinari";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"
 	
 String_Currency_Rubles:
-	db   " Rubles";"えん"
+	db   " rubles";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"
 	
 String_Currency_Kronor:
-	db   " Kronor";"えん"
+	db   " kronor";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Tolars:
-	db   " Tolars";"えん"
+	db   " tolars";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Haliers:
-	db   " Haliers";"えん"
+	db   " haliers";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"
 
 String_Currency_Kopikyk:
-	db   " Kopikyk";"えん"
+	db   " kopikyk";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"		
 	
