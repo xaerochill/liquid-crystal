@@ -46,20 +46,24 @@ if DEF(_CRYSTAL_EU)
 	ld hl, String_Currency_Krooni
 	cp 11  ; "EU-EE@"     ; Estonia
 	ret z			
-
+	
+	ld hl, String_Currency_Lp
+	cp 17  ; "EU-HR@"     ; Croatia
+	ret z		
+	
+	ld hl, String_Currency_Filler
+	cp 18  ; "EU-HU@"     ; Hungary
+	ret z	
+	
 	ld hl, String_Currency_Pence
 	cp 15 ; "EU-GB@"     ; United Kingdom
 	ret z
 	cp 19 ; "EU-IE@"     ; Ireland
-	ret z	
+	ret z		
 	
-	ld hl, String_Currency_Lp
-	cp 17  ; "EU-HR@"     ; Croatia
-	ret z	
-
-	ld hl, String_Currency_Filler
-	cp 18  ; "EU-HU@"     ; Hungary
-	ret z	
+	ld hl, String_Currency_Kronur
+	cp 20 ; "EU-IS@"     ; Iceland
+	ret z
 	
 	ld hl, String_Currency_Centai
 	cp 23  ; "EU-LT@"     ; Lithuania
@@ -160,6 +164,10 @@ String_Currency_Ore:
 	
 String_Currency_Krooni:
 	db   " Krooni";"えん"
+	next "Is this OK?@";"かかります　よろしい　ですか？@"	
+	
+String_Currency_Kronur:
+	db   " Kronur";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 
 String_Currency_Pence:
