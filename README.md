@@ -66,7 +66,8 @@ Now right click the ‘screen’ on BGB again and select `Load ROM…`, then cho
 
 ## To-Do
 
-- Finish restrictions on Pokémon names in EZ Chat Menu.
+- Fix Pokemon name cut-off when trading via the mobile Trade Corner.
+- Fix issue with cursor not blinking in bottom of main EZ Chat screen.
 
 ## Contributors
 
