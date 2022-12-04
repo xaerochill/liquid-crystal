@@ -5101,8 +5101,7 @@ Function11a1e6:
 	call Function11a1ff
 	ld hl, wcd85
 	call Function11a1ff
-	ld hl, String_11a70b
-	call Function11a1ff
+	farcall WriteCurrencyName ; Copies the currency string at the end of the current string pointed by address stored into DE.
 	ld a, $50
 	ld [de], a
 	ret
@@ -5707,10 +5706,6 @@ String_11a6f1:
 
 String_11a706:
 	db   "Cost:@";"おかね<GA>@"
-
-String_11a70b:
-	db   " Yen";"えん" ; This currency will need to be changed
-	next "Is this OK?@";"かかります　よろしい　ですか？@"
 
 String_11a71e:
 	db   "Communication";"つうしん　しゅうりょう@" ; ???
