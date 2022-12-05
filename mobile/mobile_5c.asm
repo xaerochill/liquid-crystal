@@ -741,7 +741,7 @@ Function171d2b:
 	hlcoord 2, 2
 	ld de, String_172e5d
 	call PlaceString
-	hlcoord 16, 16
+	hlcoord 15, 16
 	ld de, String_172e58
 	call PlaceString
 	ret
