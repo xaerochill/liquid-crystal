@@ -64,6 +64,11 @@ Simply open BGB, right click the ‘screen’ and select `Link > Listen`, then a
 Once done, run the latest version of libmobile for your operating system (`mobile-windows.exe` or windows and `mobile-linux` for linux).
 Now right click the ‘screen’ on BGB again and select `Load ROM…`, then choose the pokecrystal-mobile `.gbc` file you have built.
 
+## Mobile Adapter Features
+
+A full list of Mobile Adapter features for Pokémon Crystal can be found here:
+https://github.com/gb-mobile/pokecrystal-mobile-en/wiki/Pok%C3%A9mon-Crystal-Mobile-Features
+
 ## To-Do
 
 - Fix Pokemon name cut-off when trading via the mobile Trade Corner.
