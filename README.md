@@ -71,8 +71,8 @@ https://github.com/gb-mobile/pokecrystal-mobile-en/wiki/Pok%C3%A9mon-Crystal-Mob
 
 ## To-Do
 
-- Fix Pokemon name cut-off when trading via the mobile Trade Corner.
-- Fix issue with cursor not blinking in bottom of main EZ Chat screen.
+- Make sure NEWS can be downloaded
+- Make sure Battle Tower functionality works.
 
 ## Contributors
 
