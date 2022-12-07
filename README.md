@@ -48,7 +48,7 @@ The EUR Version covers all countries in Europe (as of 2001).
 
 The AUS Version covers Australia and New Zealand.
 
-If you're looking for other languages, you can find them here: (https://github.com/pokecrystal-mobile)
+Other languages are being worked on, but are not complete.
 
 But please note that they still require a lot of polish.
 
@@ -82,12 +82,6 @@ https://github.com/gb-mobile/pokecrystal-mobile-en/wiki/Pok%C3%A9mon-Crystal-Mob
 - DS             : GFX & Code
 - Ryuzac         : Code & Japanese Translation
 - Zumilsawhat?   : Code (Large amounts of work on the EZ Chat system)
-- Arves          : Italian Mobile Translation
-- Federx         : Italian Mobile Translation
-- FerozElMejor   : Spanish Mobile Translation
-- FrenchOrange   : French Mobile Translation
-- Lesserkuma     : German Mobile Translation
-- Muffet         : German Mobile Translation
 - REON Community : Support and Assistance
 
 [travis]: https://travis-ci.org/pret/pokecrystal
