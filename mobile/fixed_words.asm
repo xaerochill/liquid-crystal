@@ -2554,19 +2554,19 @@ EZChatMenu_SortByCharacter: ; Sort By Character Menu Controls
 
 	ret
 	
-.invalid
-	ld de, SFX_WRONG
-	call PlaySFX
-	jp WaitSFX
+;.invalid ; Removed to be more in line with Gen 3
+;	ld de, SFX_WRONG
+;	call PlaySFX
+;	jp WaitSFX
 
 .a
 	ld a, [wEZChatSortedSelection]
 ; exit early on "no words begin with this letter" - sort count 0
 	cp EZCHAT_SORTED_X
-	jr z, .invalid
+;	jr z, .invalid ; Removed to be more in line with Gen 3
 	ret z
 	cp EZCHAT_SORTED_Z
-	jr z, .invalid
+;	jr z, .invalid ; Removed to be more in line with Gen 3
 	ret z
 ; otherwise
 	cp EZCHAT_SORTED_ERASE
