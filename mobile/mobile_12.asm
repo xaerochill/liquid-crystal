@@ -1085,9 +1085,9 @@ MobileString_Gender:         db "Gender@"
 MobileString_Age:            db "Age@"
 MobileString_Address:        db "Address@"
 if DEF(_CRYSTAL_AU)
-MobileString_ZipCode:        db "Post Code@"
+MobileString_ZipCode:        db "Postcode@"
 elif DEF(_CRYSTAL_EU)
-MobileString_ZipCode:        db "Post Code@"
+MobileString_ZipCode:        db "Postcode@"
 else
 MobileString_ZipCode:        db "Zip Code@"
 endc
@@ -1187,29 +1187,29 @@ if DEF(_CRYSTAL_AU)
 	db "NZ-WTC@"      ; West Coast
 
 PrefecturesScrollList: ; Quick and dirty solution for the margin offset.
-	db "AU-ACT@"      ; Australian Capital Territory
 	db "AU-NSW@"      ; New South Wales
+	db "AU-QLD@"      ; Queensland	
+	db "AU-SA@"       ; South Australia	
+	db "AU-TAS@"      ; Tasmania	
+	db "AU-VIC@"      ; Victoria	
+	db "AU-WA@"       ; Western Australia	
+	db "AU-ACT@"      ; Australian Capital Territory
 	db "AU-NT@"       ; Northern Territory
-	db "AU-QLD@"      ; Queensland
-	db "AU-SA@"       ; South Australia
-	db "AU-TAS@"      ; Tasmania
-	db "AU-VIC@"      ; Victoria
-	db "AU-WA@"       ; Western Australia
 	db "NZ-AUK@"      ; Auckland
 	db "NZ-BOP@"      ; Bay of Plenty
 	db "NZ-CAN@"      ; Canterbury
 	db "NZ-CIT@"      ; Chatham Islands Territory
 	db "NZ-GIS@"      ; Gisborne
+	db "NZ-WGN@"      ; Wellington	
 	db "NZ-HKB@"      ; Hawke's Bay
+	db "NZ-MWT@"      ; Manawatu-Wanganui	
 	db "NZ-MBH@"      ; Marlborough
-	db "NZ-MWT@"      ; Manawatu-Wanganui
 	db "NZ-NSN@"      ; Nelson
 	db "NZ-NTL@"      ; Northland
 	db "NZ-OTA@"      ; Otago
 	db "NZ-STL@"      ; Southland
+	db "NZ-TKI@"      ; Taranaki	
 	db "NZ-TAS@"      ; Tasman
-	db "NZ-TKI@"      ; Taranaki
-	db "NZ-WGN@"      ; Wellington
 	db "NZ-WKO@"      ; Waikato
 LastPrefecture: db "NZ-WTC@"      ; West Coast
 
@@ -1255,41 +1255,40 @@ elif DEF(_CRYSTAL_EU)
 	db "EU-SM@"     ; San Marino
 LastPrefecture: db "EU-UA@"     ; Ukraine
 else
-	db	"US-AK@"  	;Alaska
 	db	"US-AL@"  	;Alabama
-	db	"US-AR@"  	;Arkansas
+	db	"US-AK@"  	;Alaska
 	db	"US-AZ@"  	;Arizona
+	db	"US-AR@"  	;Arkansas
 	db	"US-CA@"  	;California
 	db	"US-CO@"  	;Colorado
 	db	"US-CT@"  	;Connecticut
-	db	"US-DC@"  	;District_Of_Columbia
 	db	"US-DE@"  	;Delaware
 	db	"US-FL@"  	;Florida
 	db	"US-GA@"  	;Georgia
 	db	"US-HI@"  	;Hawaii
-	db	"US-IA@"  	;Iowa
 	db	"US-ID@"  	;Idaho
 	db	"US-IL@"  	;Illinois
 	db	"US-IN@"  	;Indiana
+	db	"US-IA@"  	;Iowa
 	db	"US-KS@"  	;Kansas
 	db	"US-KY@"  	;Kentucky
 	db	"US-LA@"  	;Louisiana
-	db	"US-MA@"  	;Massachusetts
-	db	"US-MD@"  	;Maryland
 	db	"US-ME@"  	;Maine
+	db	"US-MD@"  	;Maryland
+	db	"US-MA@"  	;Massachusetts
 	db	"US-MI@"  	;Michigan
 	db	"US-MN@"  	;Minnesota
-	db	"US-MO@"  	;Missouri
 	db	"US-MS@"  	;Mississippi
+	db	"US-MO@"  	;Missouri
 	db	"US-MT@"  	;Montana
-	db	"US-NC@"  	;North_Carolina
-	db	"US-ND@"  	;North_Dakota
 	db	"US-NE@"  	;Nebraska
+	db	"US-NV@"  	;Nevada
 	db	"US-NH@"  	;New_Hampshire
 	db	"US-NJ@"  	;New_Jersey
 	db	"US-NM@"  	;New_Mexico
-	db	"US-NV@"  	;Nevada
 	db	"US-NY@"  	;New_York
+	db	"US-NC@"  	;North_Carolina
+	db	"US-ND@"  	;North_Dakota
 	db	"US-OH@"  	;Ohio
 	db	"US-OK@"  	;Oklahoma
 	db	"US-OR@"  	;Oregon
@@ -1300,11 +1299,11 @@ else
 	db	"US-TN@"  	;Tennessee
 	db	"US-TX@"  	;Texas
 	db	"US-UT@"  	;Utah
-	db	"US-VA@"  	;Virginia
 	db	"US-VT@"  	;Vermont
+	db	"US-VA@"  	;Virginia
 	db	"US-WA@"  	;Washington
-	db	"US-WI@"  	;Wisconsin
 	db	"US-WV@"  	;West_Virginia
+	db	"US-WI@"  	;Wisconsin
 	db	"US-WY@"  	;Wyoming
 	db	"CA-AB@"  	;Alberta
 	db	"CA-BC@"  	;British_Columbia
@@ -1312,12 +1311,12 @@ else
 	db	"CA-NB@"  	;New_Brunswick
 	db	"CA-NL@"  	;Newfoundland_and_Labrador
 	db	"CA-NS@"  	;Nova_Scotia
+	db	"CA-ON@"  	;Ontario	
+	db	"CA-PE@"  	;Prince_Edward_Island	
+	db	"CA-QC@"  	;Quebec	
+	db	"CA-SK@"  	;Saskatchewan	
 	db	"CA-NT@"  	;Northwest_Territories
 	db	"CA-NU@"  	;Nunavut
-	db	"CA-ON@"  	;Ontario
-	db	"CA-PE@"  	;Prince_Edward_Island
-	db	"CA-QC@"  	;Quebec
-	db	"CA-SK@"  	;Saskatchewan
 LastPrefecture: db	"CA-YT@"  	;Yukon
 endc
 
