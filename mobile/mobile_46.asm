@@ -5717,28 +5717,28 @@ String_11a72a:
 	next "   min.    sec.@"
 
 String_11a743:
-	db   "No data";"もっていない　データが"
-	next "available!@";"あります！@"
-
+    db   "There is no";"もっていない　データが"
+    next "stored data!@";"あります！@"
+	
 String_11a755:
-	db   "Read the";"データ<WO>よみこみますか？@"
-	next "data?@"
-
+    db   "Read the";"データ<WO>よみこみますか？@"
+    next "data?@"
+	
 String_11a762:
-	db   "Read the";"おなじ　データ<WO>よみこんだ"
-	next "same data.@";"こと<GA>ありますが@"
-
+    db   "Read the";"おなじ　データ<WO>よみこんだ"
+    next "same data.@";"こと<GA>ありますが@"
+	
 String_11a779:
-	db   "The data was";"そのデータ<WA>なくなっているか"
-	next "corrupted.@";"こわれて　います@"
-
+    db   "The data is";"そのデータ<WA>なくなっているか"
+    next "corrupted.@";"こわれて　います@"
+	
 String_11a791:
-	db   "Received data"
-	next "already exists!@"
-
+    db   "This data";"もっている　データと"
+    next "already exists!@";"おなじデータしか　ありません！@"
+	
 String_11a7ac:
-	db   "Stop reading"
-	next "data?@"
+    db   "Quit reading";"データの よみこみを"
+    next "data?@";"ちゅうし しますか？""
 
 String_11a7c1:
 	db   "There was no"
