@@ -18,6 +18,9 @@ INCLUDE "gfx/tilesets/johto_palette_map.asm"
 TilesetJohtoModernPalMap:
 INCLUDE "gfx/tilesets/johto_modern_palette_map.asm"
 
+TilesetJohtoClassicPalMap:
+INCLUDE "gfx/tilesets/johto_classic_palette_map.asm"
+
 TilesetHousePalMap:
 INCLUDE "gfx/tilesets/house_palette_map.asm"
 
@@ -90,8 +93,8 @@ INCLUDE "gfx/tilesets/lighthouse_palette_map.asm"
 TilesetPlayersRoomPalMap:
 INCLUDE "gfx/tilesets/players_room_palette_map.asm"
 
-UnusedMuseumPalMap: ; unreferenced
-INCLUDE "gfx/tilesets/unused_museum_palette_map.asm"
+TilesetMuseumPalMap:
+INCLUDE "gfx/tilesets/museum_palette_map.asm"
 
 TilesetIcePathPalMap:
 INCLUDE "gfx/tilesets/ice_path_palette_map.asm"

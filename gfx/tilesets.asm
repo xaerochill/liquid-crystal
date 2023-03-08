@@ -188,11 +188,14 @@ INCLUDE "data/tilesets/underground_collision.asm"
 TilesetDarkCaveGFX::
 INCBIN "gfx/tilesets/dark_cave.2bpp.lz"
 
-UnusedTilesetJohtoMeta:: ; unreferenced
-INCBIN "data/tilesets/unused_johto_metatiles.bin"
+TilesetJohtoClassicGFX::
+INCBIN "gfx/tilesets/johto_classic.2bpp.lz"
 
-UnusedTilesetJohtoColl:: ; unreferenced
-INCLUDE "data/tilesets/unused_johto_collision.asm"
+TilesetJohtoClassicMeta::
+INCBIN "data/tilesets/johto_classic_metatiles.bin"
+
+TilesetJohtoClassicColl::
+INCLUDE "data/tilesets/johto_classic_collision.asm"
 
 
 SECTION "Tileset Data 5", ROMX
@@ -335,3 +338,12 @@ INCBIN "data/tilesets/omanyte_word_room_metatiles.bin"
 
 TilesetAerodactylWordRoomMeta::
 INCBIN "data/tilesets/aerodactyl_word_room_metatiles.bin"
+
+TilesetMuseumGFX::
+INCBIN "gfx/tilesets/museum.2bpp.lz"
+
+TilesetMuseumMeta::
+INCBIN "data/tilesets/museum_metatiles.bin"
+
+TilesetMuseumColl::
+INCLUDE "data/tilesets/museum_collision.asm"
