@@ -159,7 +159,7 @@ String_Currency_Crowns:
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Ore:
-	db   " öre";"えん"
+	db   " oere";"えん"
 	next "Is this OK?@";"かかります　よろしい　ですか？@"	
 	
 String_Currency_Krooni:

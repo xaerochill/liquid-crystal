@@ -302,8 +302,8 @@ ROMX $77
 	"Tileset Data 7"
 	"bank77"
 	"Pokégear GFX"
-	"European Mail"
 ROMX $78
+	"European Mail"
 	"Debug Room"
 	"Tileset Data 8"
 ROMX $7b
