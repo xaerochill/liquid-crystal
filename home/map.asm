@@ -162,6 +162,7 @@ _LoadMetatilesOrAttributes:
 	; Load the current wSurroundingTiles address into de.
 	ld e, l
 	ld d, h
+	; Set hl to the address of the current metatile data ([wTilesetBlocksAddress] + (a) tiles).
 	ld l, a
 	ld h, 0
 	add hl, hl
@@ -187,10 +188,6 @@ rept METATILE_WIDTH
 	ld [de], a
 	inc de
 endr
-
-	pop af
-	ldh [rSVBK], a
-
 	ld a, e
 	add SURROUNDING_WIDTH - METATILE_WIDTH
 	ld e, a
@@ -203,6 +200,10 @@ rept METATILE_WIDTH
 	ld [de], a
 	inc de
 endr
+
+	pop af
+	ldh [rSVBK], a
+
 	; Next metatile
 	pop hl
 	ld de, METATILE_WIDTH
