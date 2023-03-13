@@ -2020,7 +2020,7 @@ Slots_AnimateGolem:
 	dec [hl]
 	ld e, a
 	ld d, 14 * 8
-	farcall BattleAnim_Sine_e
+	call Sine
 	ld a, e
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
