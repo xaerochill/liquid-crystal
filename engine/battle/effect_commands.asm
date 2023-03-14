@@ -5270,6 +5270,7 @@ BattleCommand_EndLoop:
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOOP, [hl]
 	call BattleCommand_BeatUpFailText
+	call BattleCommand_RaiseSub
 	jp EndMoveEffect
 
 .not_triple_kick
