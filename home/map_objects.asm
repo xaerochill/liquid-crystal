@@ -261,6 +261,7 @@ CheckObjectTime::
 ; entries correspond to TimeOfDay values
 	db MORN
 	db DAY
+	db EVE
 	db NITE
 
 .check_hour
