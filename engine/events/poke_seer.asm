@@ -95,10 +95,17 @@ SeerAction4:
 	ret
 
 ReadCaughtData:
+	ld a, MON_CAUGHTTIME
+	call GetPartyParamLocation
+	ld a , [hl]
+	and CAUGHT_TIME_MASK
+	rlca
+	rlca
+	ld [wSeerCaughtTime], a
 	ld a, MON_CAUGHTDATA
 	call GetPartyParamLocation
 	ld a, [hli]
-	ld [wSeerCaughtData], a
+	ld [wSeerCaughtLevel], a
 	ld a, [hld]
 	ld [wSeerCaughtGender], a
 	or [hl]
@@ -153,8 +160,8 @@ GetCaughtLevel:
 
 	; caught level
 	; Limited to between 1 and 63 since it's a 6-bit quantity.
-	ld a, [wSeerCaughtData]
-	and CAUGHT_LEVEL_MASK
+	ld a, [wSeerCaughtLevel]
+	and a
 	jr z, .unknown
 	cp CAUGHT_EGG_LEVEL ; egg marker value
 	jr nz, .print
@@ -179,10 +186,10 @@ GetCaughtLevel:
 	db "???@"
 
 GetCaughtTime:
-	ld a, [wSeerCaughtData]
-	and CAUGHT_TIME_MASK
-	rlca
-	rlca
+	ld a, [wSeerCaughtTime]
+	and a
+	jr z, .none
+	
 	dec a
 	maskbits NUM_DAYTIMES
 	ld hl, .times
@@ -192,6 +199,11 @@ GetCaughtTime:
 	ld hl, wSeerTimeOfDay
 	call CopyName2
 	and a
+	ret
+
+.none
+	ld de, wSeerTimeOfDay
+	call UnknownCaughtData
 	ret
 
 .times
