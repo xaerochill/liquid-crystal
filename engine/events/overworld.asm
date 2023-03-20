@@ -1367,7 +1367,7 @@ RockSmashScript:
 
 	callasm RockMonEncounter
 	readmem wTempWildMonSpecies
-	iffalse .nobattle
+	iffalse .no_battle
 	randomwildmon
 	startbattle
 	reloadmapafterbattle
