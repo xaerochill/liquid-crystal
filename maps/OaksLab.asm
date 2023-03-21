@@ -54,7 +54,177 @@ Oak:
 	sjump .CheckPokedex
 
 OaksAssistant1Script:
-	jumptextfaceplayer OaksAssistant1Text
+	faceplayer
+	opentext
+	checkflag ENGINE_SWARM
+	iftrue .skiprandomswarm
+	random 8
+	ifequal 0, .chansey
+	ifequal 1, .ditto
+    ifequal 2, .marill
+	ifequal 3, .yanma
+	ifequal 4, .dunsparce
+	ifequal 5, .snubbull
+	ifequal 6, .qwilfish
+	ifequal 7, .remoraid
+
+.chansey
+	setflag ENGINE_SWARM
+	swarm ROUTE_13
+	writetext SwarmChanseyText
+	waitbutton
+	closetext
+	end
+
+.ditto
+	setflag ENGINE_SWARM
+	swarm ROUTE_15
+	writetext SwarmDittoText
+	waitbutton
+	closetext
+	end
+
+.marill
+	setflag ENGINE_SWARM
+	swarm MOUNT_MORTAR_1F_OUTSIDE
+	writetext SwarmMarillText
+	waitbutton
+	closetext
+	end
+
+.yanma
+	setflag ENGINE_SWARM
+	swarm ROUTE_35
+	writetext SwarmYanmaText
+	waitbutton
+	closetext
+	end
+
+.dunsparce
+	setflag ENGINE_SWARM
+	swarm DARK_CAVE_VIOLET_ENTRANCE
+	writetext SwarmDunsparceText
+	waitbutton
+	closetext
+	end
+
+.snubbull
+	setflag ENGINE_SWARM
+	swarm ROUTE_38
+	writetext SwarmSnubbullText
+	waitbutton
+	closetext
+	end
+
+.qwilfish
+	setflag ENGINE_SWARM
+	swarm ROUTE_32
+	writetext SwarmQwilfishText
+	waitbutton
+	closetext
+	end
+
+.remoraid
+	setflag ENGINE_SWARM
+	swarm ROUTE_44
+	writetext SwarmRemoraidText
+	waitbutton
+	closetext
+	end
+
+.skiprandomswarm
+	writetext SkipSwarmText
+	waitbutton
+	closetext
+	end
+
+SwarmChanseyText:
+	text "I study #MON as"
+	line "PROF.OAK's AIDE."
+	cont "I received field"
+
+	para "reports about a"
+	line "CHANSEY swarm"
+	cont "on ROUTE 14."
+	done
+
+SwarmDittoText:
+	text "I study #MON as"
+	line "PROF.OAK's AIDE."
+	cont "I received field"
+
+	para "reports about a"
+	line "DITTO swarm"
+	cont "on ROUTE 15."
+	done
+
+SwarmMarillText:
+	text "I study #MON as"
+	line "PROF.OAK's AIDE."
+	cont "I received field"
+
+	para "reports about a"
+	line "MARILL swarm"
+	cont "at MT. MORTAR."
+	done
+
+SwarmYanmaText:
+	text "I study #MON as"
+	line "PROF.OAK's AIDE."
+	cont "I received field"
+
+	para "reports about a"
+	line "YANMA swarm"
+	cont "on ROUTE 35."
+	done
+
+SwarmDunsparceText:
+	text "I study #MON as"
+	line "PROF.OAK's AIDE."
+	cont "I received field"
+
+	para "reports about a"
+	line "DUNSPARCE swarm"
+	cont "at DARK CAVE."
+	done
+
+SwarmSnubbullText:
+	text "I study #MON as"
+	line "PROF.OAK's AIDE."
+	cont "I received field"
+
+	para "reports about a"
+	line "SNUBBULL swarm"
+	cont "on ROUTE 38."
+	done
+
+SwarmQwilfishText:
+	text "I study #MON as"
+	line "PROF.OAK's AIDE."
+	cont "I received field"
+
+	para "reports about a"
+	line "QWILFISH swarm"
+	cont "on ROUTE 32."
+	done
+
+SwarmRemoraidText:
+	text "I study #MON as"
+	line "PROF.OAK's AIDE."
+	cont "I received field"
+
+	para "reports about a"
+	line "REMORAID swarm"
+	cont "on ROUTE 44."
+	done
+
+SkipSwarmText:
+	text "Often #MON"
+	line "of unusual colors"
+
+	para "are reported in"
+	line "swarms."
+	done
 
 OaksAssistant2Script:
 	jumptextfaceplayer OaksAssistant2Text
@@ -180,17 +350,6 @@ OakYesKantoBadgesText:
 
 	para "Keep trying hard,"
 	line "<PLAY_G>!"
-	done
-
-OaksAssistant1Text:
-	text "The PROF's #MON"
-	line "TALK radio program"
-
-	para "isn't aired here"
-	line "in KANTO."
-
-	para "It's a shame--I'd"
-	line "like to hear it."
 	done
 
 OaksAssistant2Text:
