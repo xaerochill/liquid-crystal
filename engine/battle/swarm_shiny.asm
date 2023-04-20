@@ -4,10 +4,6 @@ GenerateSwarmShiny:
 	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
-    cp LANDMARK_ROUTE_13
-	jr z, .chansey
-	cp LANDMARK_ROUTE_15
-	jr z, .ditto
 	cp LANDMARK_MT_MORTAR
 	jr z, .marill
 	cp LANDMARK_ROUTE_35
@@ -22,16 +18,6 @@ GenerateSwarmShiny:
 	jr z, .remoraid
     jr .skipshine
 
-.chansey
-    ld a, [wCurPartySpecies]
-    cp CHANSEY
-    jr nz, .skipshine
-    jr .rollshiny
-.ditto
-    ld a, [wCurPartySpecies]
-    cp DITTO
-    jr nz, .skipshine
-    jr .rollshiny
 .marill
     ld a, [wCurPartySpecies]
     cp MARILL
