@@ -27,15 +27,6 @@ Tileset0Coll::
 TilesetJohtoColl::
 INCLUDE "data/tilesets/johto_collision.asm"
 
-TilesetIcePathGFX::
-INCBIN "gfx/tilesets/ice_path.2bpp.lz"
-
-TilesetIcePathMeta::
-INCBIN "data/tilesets/ice_path_metatiles.bin"
-
-TilesetIcePathColl::
-INCLUDE "data/tilesets/ice_path_collision.asm"
-
 TilesetPlayersRoomGFX::
 INCBIN "gfx/tilesets/players_room.2bpp.lz"
 
@@ -143,20 +134,8 @@ INCBIN "data/tilesets/train_station_metatiles.bin"
 TilesetTrainStationColl::
 INCLUDE "data/tilesets/train_station_collision.asm"
 
-TilesetForestMeta::
-INCBIN "data/tilesets/forest_metatiles.bin"
-
 
 SECTION "Tileset Data 4", ROMX
-
-TilesetEliteFourRoomGFX::
-INCBIN "gfx/tilesets/elite_four_room.2bpp.lz"
-
-TilesetEliteFourRoomMeta::
-INCBIN "data/tilesets/elite_four_room_metatiles.bin"
-
-TilesetEliteFourRoomColl::
-INCLUDE "data/tilesets/elite_four_room_collision.asm"
 
 TilesetParkGFX::
 INCBIN "gfx/tilesets/park.2bpp.lz"
@@ -243,14 +222,11 @@ SECTION "Tileset Data 6", ROMX
 TilesetForestGFX::
 INCBIN "gfx/tilesets/forest.2bpp.lz"
 
-TilesetChampionsRoomGFX::
-INCBIN "gfx/tilesets/champions_room.2bpp.lz"
+TilesetForestMeta::
+INCBIN "data/tilesets/forest_metatiles.bin"
 
-TilesetChampionsRoomMeta::
-INCBIN "data/tilesets/champions_room_metatiles.bin"
-
-TilesetChampionsRoomColl::
-INCLUDE "data/tilesets/champions_room_collision.asm"
+TilesetForestColl::
+INCLUDE "data/tilesets/forest_collision.asm"
 
 TilesetHouseGFX::
 INCBIN "gfx/tilesets/house.2bpp.lz"
@@ -270,9 +246,6 @@ INCBIN "data/tilesets/lighthouse_metatiles.bin"
 TilesetLighthouseColl::
 INCLUDE "data/tilesets/lighthouse_collision.asm"
 
-TilesetForestColl::
-INCLUDE "data/tilesets/forest_collision.asm"
-
 TilesetFacilityGFX::
 INCBIN "gfx/tilesets/facility.2bpp.lz"
 
@@ -291,12 +264,16 @@ INCLUDE "data/tilesets/battle_tower_outside_collision.asm"
 
 SECTION "Tileset Data 7", ROMX
 
+TilesetChampionsRoomGFX::
+INCBIN "gfx/tilesets/champions_room.2bpp.lz"
+
+TilesetChampionsRoomMeta::
+INCBIN "data/tilesets/champions_room_metatiles.bin"
+
+TilesetChampionsRoomColl::
+INCLUDE "data/tilesets/champions_room_collision.asm"
+
 TilesetRuinsOfAlphGFX::
-TilesetBetaWordRoomGFX::
-TilesetHoOhWordRoomGFX::
-TilesetKabutoWordRoomGFX::
-TilesetOmanyteWordRoomGFX::
-TilesetAerodactylWordRoomGFX::
 INCBIN "gfx/tilesets/ruins_of_alph.2bpp.lz"
 
 TilesetRuinsOfAlphMeta::
@@ -304,6 +281,9 @@ INCBIN "data/tilesets/ruins_of_alph_metatiles.bin"
 
 TilesetRuinsOfAlphColl::
 INCLUDE "data/tilesets/ruins_of_alph_collision.asm"
+
+
+SECTION "Tileset Data 8", ROMX
 
 TilesetTraditionalHouseGFX::
 INCBIN "gfx/tilesets/traditional_house.2bpp.lz"
@@ -314,39 +294,24 @@ INCBIN "data/tilesets/traditional_house_metatiles.bin"
 TilesetTraditionalHouseColl::
 INCLUDE "data/tilesets/traditional_house_collision.asm"
 
-TilesetBetaWordRoomMeta::
-INCBIN "data/tilesets/beta_word_room_metatiles.bin"
+TilesetIcePathGFX::
+INCBIN "gfx/tilesets/ice_path.2bpp.lz"
 
-TilesetBetaWordRoomColl::
-TilesetHoOhWordRoomColl::
-TilesetKabutoWordRoomColl::
-TilesetOmanyteWordRoomColl::
-TilesetAerodactylWordRoomColl::
-INCLUDE "data/tilesets/beta_word_room_collision.asm"
+TilesetIcePathMeta::
+INCBIN "data/tilesets/ice_path_metatiles.bin"
 
+TilesetIcePathColl::
+INCLUDE "data/tilesets/ice_path_collision.asm"
 
-SECTION "Tileset Data 8", ROMX
+TilesetEliteFourRoomGFX::
+INCBIN "gfx/tilesets/elite_four_room.2bpp.lz"
 
-TilesetHoOhWordRoomMeta::
-INCBIN "data/tilesets/ho_oh_word_room_metatiles.bin"
+TilesetEliteFourRoomMeta::
+INCBIN "data/tilesets/elite_four_room_metatiles.bin"
 
-TilesetKabutoWordRoomMeta::
-INCBIN "data/tilesets/kabuto_word_room_metatiles.bin"
+TilesetEliteFourRoomColl::
+INCLUDE "data/tilesets/elite_four_room_collision.asm"
 
-TilesetOmanyteWordRoomMeta::
-INCBIN "data/tilesets/omanyte_word_room_metatiles.bin"
-
-TilesetAerodactylWordRoomMeta::
-INCBIN "data/tilesets/aerodactyl_word_room_metatiles.bin"
-
-TilesetMuseumGFX::
-INCBIN "gfx/tilesets/museum.2bpp.lz"
-
-TilesetMuseumMeta::
-INCBIN "data/tilesets/museum_metatiles.bin"
-
-TilesetMuseumColl::
-INCLUDE "data/tilesets/museum_collision.asm"
 
 SECTION "Tileset Data 9", ROMX
 
@@ -448,21 +413,3 @@ INCBIN "data/tilesets/ice_path_attributes.bin"
 
 TilesetForestAttr::
 INCBIN "data/tilesets/forest_attributes.bin"
-
-TilesetBetaWordRoomAttr::
-INCBIN "data/tilesets/beta_word_room_attributes.bin"
-
-TilesetHoOhWordRoomAttr::
-INCBIN "data/tilesets/ho_oh_word_room_attributes.bin"
-
-TilesetKabutoWordRoomAttr::
-INCBIN "data/tilesets/kabuto_word_room_attributes.bin"
-
-TilesetOmanyteWordRoomAttr::
-INCBIN "data/tilesets/omanyte_word_room_attributes.bin"
-
-TilesetAerodactylWordRoomAttr::
-INCBIN "data/tilesets/aerodactyl_word_room_attributes.bin"
-
-TilesetMuseumAttr::
-INCBIN "data/tilesets/museum_attributes.bin"

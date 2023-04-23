@@ -53,9 +53,9 @@ ROMX $09
 	"bank9"
 ROMX $0a
 	"bankA"
-	"Trainer Backpics"
 ROMX $0b
 	"bankB"
+	"Trainer Backpics"
 ROMX $0c
 	"Tileset Data 4"
 ROMX $0d
@@ -112,7 +112,6 @@ ROMX $24
 	"bank24"
 ROMX $25
 	"Maps"
-	"Events"
 ROMX $26
 	"Map Scripts 11"
 ROMX $27
@@ -294,6 +293,8 @@ ROMX $73
 	"Pokedex Entries 129-192"
 ROMX $74
 	"Pokedex Entries 193-251"
+ROMX $75
+	"Events"
 ROMX $77
 	"Unown Font"
 	"Print Party"
