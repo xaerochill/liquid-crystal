@@ -151,9 +151,18 @@ ENDM
 	map_const UNDERGROUND_PATH,                             3, 14 ; 86
 	map_const ROCK_TUNNEL_1F,                              15, 18 ; 87
 	map_const ROCK_TUNNEL_B1F,                             15, 18 ; 88
-	map_const SAFARI_ZONE_FUCHSIA_GATE_BETA,                5,  4 ; 89
-	map_const SAFARI_ZONE_BETA,                            10, 18 ; 90
-	map_const VICTORY_ROAD,                                10, 36 ; 91
+	map_const VICTORY_ROAD,                                10, 36 ; 89
+	map_const SAFARI_ZONE_HIDEOUT_1F,                      15, 14 ; 90
+	map_const SAFARI_ZONE_HIDEOUT_2F,                      15, 14 ; 91
+	map_const SAFARI_ZONE_HIDEOUT_3F,                      15, 14 ; 92
+	map_const SAFARI_ZONE_HIDEOUT_B1F,                     15, 14 ; 93
+	map_const POWER_PLANT_B1F,                             15, 15 ; 94
+	map_const POWER_PLANT_B2F,                             15, 15 ; 95
+	map_const POWER_PLANT_B3F,                             20, 18 ; 96
+	map_const POKEMON_MANSION_1F,                          15, 14 ; 97
+	map_const POKEMON_MANSION_2F,                          15, 14 ; 98
+	map_const POKEMON_MANSION_3F,                          15,  9 ; 99
+	map_const POKEMON_MANSION_B1F,                         15, 14 ; 100
 	endgroup
 
 	newgroup ECRUTEAK                                             ;  4
@@ -190,6 +199,10 @@ ENDM
 	map_const ROUTE_20,                                    30,  9 ;  6
 	map_const ROUTE_21,                                    10, 18 ;  7
 	map_const CINNABAR_ISLAND,                             10,  9 ;  8
+	map_const CINNABAR_LAB,                                 9,  4 ;  9
+	map_const CINNABAR_LAB_CONFERENCE_ROOM,                 9,  4 ;  10
+	map_const CINNABAR_LAB_RESEARCH_ROOM,                   9,  4 ;  11
+	map_const CINNABAR_LAB_FOSSIL_ROOM,                     9,  4 ;  12
 	endgroup
 
 	newgroup CERULEAN                                             ;  7
@@ -312,6 +325,8 @@ ENDM
 	map_const PEWTER_POKECENTER_1F,                         5,  4 ;  6
 	map_const PEWTER_POKECENTER_2F_BETA,                    8,  4 ;  7
 	map_const PEWTER_SNOOZE_SPEECH_HOUSE,                   4,  4 ;  8
+	map_const PEWTER_MUSEUM_1F,								8,  5 ;  9
+	map_const PEWTER_MUSEUM_2F,								8,  5 ;  10
 	endgroup
 
 	newgroup FAST_SHIP                                            ; 15
@@ -354,6 +369,12 @@ ENDM
 	map_const FUCHSIA_POKECENTER_2F_BETA,                   8,  4 ; 11
 	map_const SAFARI_ZONE_WARDENS_HOME,                     5,  4 ; 12
 	map_const ROUTE_15_FUCHSIA_GATE,                        5,  4 ; 13
+	map_const SAFARI_ZONE_FUCHSIA_GATE,                     5,  4 ; 14
+	map_const SAFARI_ZONE_BETA,                            10, 18 ; 15
+	map_const SAFARI_ZONE_CENTER,                          15, 13 ; 16
+	map_const SAFARI_ZONE_EAST,                            15, 13 ; 17
+	map_const SAFARI_ZONE_NORTH,                           20, 18 ; 18
+	map_const SAFARI_ZONE_WEST,                            15, 13 ; 19
 	endgroup
 
 	newgroup LAVENDER                                             ; 18
@@ -451,6 +472,7 @@ ENDM
 	map_const ROUTE_2_NUGGET_HOUSE,                         4,  4 ; 11
 	map_const ROUTE_2_GATE,                                 5,  4 ; 12
 	map_const VICTORY_ROAD_GATE,                           10,  9 ; 13
+	map_const VIRIDIAN_FOREST,                             17, 24 ; 14
 	endgroup
 
 	newgroup NEW_BARK                                             ; 24

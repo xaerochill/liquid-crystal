@@ -121,6 +121,34 @@ KantoWaterWildMons:
 	db 40, POLIWHIRL
 	end_water_wildmons
 
+	def_water_wildmons SAFARI_ZONE_CENTER
+	db 6 percent ; encounter rate
+	db 15, PSYDUCK
+	db 15, POLIWAG
+	db 15, DRATINI
+	end_water_wildmons
+
+	def_water_wildmons SAFARI_ZONE_EAST
+	db 6 percent ; encounter rate
+	db 15, PSYDUCK
+	db 15, POLIWAG
+	db 15, DRATINI
+	end_water_wildmons
+
+	def_water_wildmons SAFARI_ZONE_NORTH
+	db 6 percent ; encounter rate
+	db 15, PSYDUCK
+	db 15, POLIWAG
+	db 15, DRATINI
+	end_water_wildmons
+
+	def_water_wildmons SAFARI_ZONE_BETA
+	db 6 percent ; encounter rate
+	db 15, PSYDUCK
+	db 15, POLIWAG
+	db 15, DRATINI
+	end_water_wildmons
+
 	def_water_wildmons PALLET_TOWN
 	db 6 percent ; encounter rate
 	db 35, TENTACOOL

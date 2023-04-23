@@ -25,6 +25,9 @@ TreeMonMaps:
 	treemon_map ROUTE_44,                  TREEMON_SET_CANYON
 	treemon_map ROUTE_45,                  TREEMON_SET_CANYON
 	treemon_map ROUTE_46,                  TREEMON_SET_CANYON
+	treemon_map SAFARI_ZONE_CENTER,        TREEMON_SET_FOREST
+	treemon_map SAFARI_ZONE_NORTH,         TREEMON_SET_ROCK
+	treemon_map SAFARI_ZONE_WEST,          TREEMON_SET_CANYON
 	treemon_map NEW_BARK_TOWN,             TREEMON_SET_CITY
 	treemon_map CHERRYGROVE_CITY,          TREEMON_SET_CITY
 	treemon_map VIOLET_CITY,               TREEMON_SET_CITY

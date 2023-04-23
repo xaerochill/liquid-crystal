@@ -44,5 +44,4 @@ Tilesets::
 	tileset TilesetDarkCave
 	tileset TilesetForest
 	tileset TilesetJohtoClassic
-	tileset TilesetMuseum
 	assert_table_length NUM_TILESETS + 1

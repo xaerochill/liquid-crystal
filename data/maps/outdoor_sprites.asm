@@ -119,6 +119,12 @@ FuchsiaGroupSprites:
 	; 7 of max 9 walking sprites
 	db SPRITE_POKE_BALL
 	db SPRITE_FRUIT_TREE
+	db SPRITE_SHELLDER
+	db SPRITE_VOLTORB
+	db SPRITE_SLOWPOKE
+	db SPRITE_LAPRAS
+	db SPRITE_RHYDON
+	db SPRITE_CLEFAIRY
 	db 0 ; end
 
 IndigoGroupSprites:

@@ -479,8 +479,44 @@ ENDM
 	map_attributes UndergroundPath, UNDERGROUND_PATH, $00, 0
 	map_attributes RockTunnel1F, ROCK_TUNNEL_1F, $09, 0
 	map_attributes RockTunnelB1F, ROCK_TUNNEL_B1F, $09, 0
-	map_attributes SafariZoneFuchsiaGateBeta, SAFARI_ZONE_FUCHSIA_GATE_BETA, $00, 0
-	map_attributes SafariZoneBeta, SAFARI_ZONE_BETA, $13, 0
+	map_attributes SafariZoneFuchsiaGate, SAFARI_ZONE_FUCHSIA_GATE, $00, 0
+	
+	map_attributes SafariZoneCenter, SAFARI_ZONE_CENTER, $00, NORTH | WEST | EAST
+	connection north, SafariZoneNorth, SAFARI_ZONE_NORTH, 5
+	connection west, SafariZoneWest, SAFARI_ZONE_WEST, 0
+	connection east, SafariZoneEast, SAFARI_ZONE_EAST, -6
+	
+	map_attributes SafariZoneEast, SAFARI_ZONE_EAST, $00, WEST
+	connection west, SafariZoneCenter, SAFARI_ZONE_CENTER, 6
+	
+	map_attributes SafariZoneNorth, SAFARI_ZONE_NORTH, $00, SOUTH | WEST | EAST
+	connection south, SafariZoneCenter, SAFARI_ZONE_CENTER, -6
+	connection west, SafariZoneBeta, SAFARI_ZONE_BETA, 0
+	connection east, SafariZoneEast, SAFARI_ZONE_EAST, 12
+	
+	map_attributes SafariZoneWest, SAFARI_ZONE_WEST, $00, NORTH | EAST
+	connection north, SafariZoneBeta, SAFARI_ZONE_BETA, 0
+	connection east, SafariZoneCenter, SAFARI_ZONE_CENTER, 0
+	
+	map_attributes SafariZoneBeta, SAFARI_ZONE_BETA, $00, SOUTH | EAST
+	connection south, SafariZoneWest, SAFARI_ZONE_WEST, 0
+	connection east, SafariZoneNorth, SAFARI_ZONE_NORTH, 0
+	
+	map_attributes SafariZoneHideout1F, SAFARI_ZONE_HIDEOUT_1F, $00, 0
+	map_attributes SafariZoneHideout2F, SAFARI_ZONE_HIDEOUT_2F, $00, 0
+	map_attributes SafariZoneHideout3F, SAFARI_ZONE_HIDEOUT_3F, $00, 0
+	map_attributes SafariZoneHideoutB1F, SAFARI_ZONE_HIDEOUT_B1F, $00, 0
+	map_attributes PowerPlantB1F, POWER_PLANT_B1F, $00, 0
+	map_attributes PowerPlantB2F, POWER_PLANT_B2F, $00, 0
+	map_attributes PowerPlantB3F, POWER_PLANT_B3F, $00, 0
+	map_attributes PokemonMansion1F, POKEMON_MANSION_1F, $00, 0
+	map_attributes PokemonMansion2F, POKEMON_MANSION_2F, $00, 0
+	map_attributes PokemonMansion3F, POKEMON_MANSION_3F, $00, 0
+	map_attributes PokemonMansionB1F, POKEMON_MANSION_B1F, $00, 0
+	map_attributes CinnabarLab, CINNABAR_LAB, $00, 0
+	map_attributes CinnabarLabConferenceRoom, CINNABAR_LAB_CONFERENCE_ROOM, $00, 0
+	map_attributes CinnabarLabResearchRoom, CINNABAR_LAB_RESEARCH_ROOM, $00, 0
+	map_attributes CinnabarLabFossilRoom, CINNABAR_LAB_FOSSIL_ROOM, $00, 0
 	map_attributes VictoryRoad, VICTORY_ROAD, $1d, 0
 	map_attributes EcruteakTinTowerEntrance, ECRUTEAK_TIN_TOWER_ENTRANCE, $00, 0
 	map_attributes WiseTriosRoom, WISE_TRIOS_ROOM, $00, 0
@@ -572,6 +608,8 @@ ENDM
 	map_attributes PewterNidoranSpeechHouse, PEWTER_NIDORAN_SPEECH_HOUSE, $00, 0
 	map_attributes PewterGym, PEWTER_GYM, $00, 0
 	map_attributes PewterMart, PEWTER_MART, $00, 0
+	map_attributes PewterMuseum1F, PEWTER_MUSEUM_1F, $00, 0
+	map_attributes PewterMuseum2F, PEWTER_MUSEUM_2F, $00, 0
 	map_attributes PewterPokecenter1F, PEWTER_POKECENTER_1F, $00, 0
 	map_attributes PewterPokecenter2FBeta, PEWTER_POKECENTER_2F_BETA, $00, 0
 	map_attributes PewterSnoozeSpeechHouse, PEWTER_SNOOZE_SPEECH_HOUSE, $00, 0
@@ -662,6 +700,7 @@ ENDM
 	map_attributes ViridianMart, VIRIDIAN_MART, $00, 0
 	map_attributes ViridianPokecenter1F, VIRIDIAN_POKECENTER_1F, $00, 0
 	map_attributes ViridianPokecenter2FBeta, VIRIDIAN_POKECENTER_2F_BETA, $00, 0
+	map_attributes ViridianForest, VIRIDIAN_FOREST, $00, 0
 	map_attributes Route2NuggetHouse, ROUTE_2_NUGGET_HOUSE, $00, 0
 	map_attributes Route2Gate, ROUTE_2_GATE, $00, 0
 	map_attributes VictoryRoadGate, VICTORY_ROAD_GATE, $00, 0

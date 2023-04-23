@@ -226,6 +226,34 @@ KantoGrassWildMons:
 	db 4, NOCTOWL
 	end_grass_wildmons
 
+	def_grass_wildmons VIRIDIAN_FOREST
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 3, CATERPIE
+	db 3, WEEDLE
+	db 4, METAPOD
+	db 4, KAKUNA
+	db 7, BEEDRILL
+	db 7, BUTTERFREE
+	db 4, PIKACHU
+	; day
+	db 3, CATERPIE
+	db 3, WEEDLE
+	db 4, METAPOD
+	db 4, KAKUNA
+	db 7, BEEDRILL
+	db 7, BUTTERFREE
+	db 4, PIKACHU
+	; nite
+	db 3, CATERPIE
+	db 3, WEEDLE
+	db 4, METAPOD
+	db 4, KAKUNA
+	db 7, BEEDRILL
+	db 7, BUTTERFREE
+	db 4, PIKACHU
+	end_grass_wildmons
+
 	def_grass_wildmons ROUTE_3
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
@@ -840,6 +868,342 @@ KantoGrassWildMons:
 	db 42, GOLBAT
 	db 42, GOLBAT
 	db 42, GOLBAT
+	end_grass_wildmons
+
+	def_grass_wildmons SAFARI_ZONE_CENTER
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 22, NIDORAN_M
+	db 22, NIDORAN_F
+	db 31, NIDORINO
+	db 31, NIDORINA
+	db 24, EXEGGCUTE
+	db 23, CHANSEY
+	db 23, CHANSEY
+	; day
+	db 22, NIDORAN_M
+	db 22, NIDORAN_F
+	db 31, NIDORINO
+	db 31, NIDORINA
+	db 24, EXEGGCUTE
+	db 23, CHANSEY
+	db 23, CHANSEY
+	; nite
+	db 22, NIDORAN_M
+	db 22, NIDORAN_F
+	db 31, NIDORINO
+	db 31, NIDORINA
+	db 24, EXEGGCUTE
+	db 23, CHANSEY
+	db 23, CHANSEY
+	end_grass_wildmons
+
+	def_grass_wildmons SAFARI_ZONE_EAST
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 19, CUBONE
+	db 26, RHYHORN
+	db 26, DODUO
+	db 24, MAROWAK
+	db 31, ODDISH
+	db 28, KANGASKHAN
+	db 28, KANGASKHAN
+	; day
+	db 19, CUBONE
+	db 26, RHYHORN
+	db 26, DODUO
+	db 24, MAROWAK
+	db 31, ODDISH
+	db 28, KANGASKHAN
+	db 28, KANGASKHAN
+	; nite
+	db 19, CUBONE
+	db 26, RHYHORN
+	db 26, DODUO
+	db 24, MAROWAK
+	db 31, ODDISH
+	db 28, KANGASKHAN
+	db 28, KANGASKHAN
+	end_grass_wildmons
+
+	def_grass_wildmons SAFARI_ZONE_NORTH
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 22, PARAS
+	db 23, VENONAT
+	db 25, PARASECT
+	db 31, VENOMOTH
+	db 31, HOPPIP
+	db 28, PINSIR
+	db 28, PINSIR
+	; day
+	db 22, PARAS
+	db 23, VENONAT
+	db 25, PARASECT
+	db 31, VENOMOTH
+	db 31, HOPPIP
+	db 28, PINSIR
+	db 28, PINSIR
+	; nite
+	db 22, PARAS
+	db 23, VENONAT
+	db 25, PARASECT
+	db 31, VENOMOTH
+	db 31, HOPPIP
+	db 28, PINSIR
+	db 28, PINSIR
+	end_grass_wildmons
+
+	def_grass_wildmons SAFARI_ZONE_WEST
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 22, NIDORAN_M
+	db 22, NIDORAN_F
+	db 31, NIDORINO
+	db 31, NIDORINA
+	db 27, TANGELA
+	db 21, TAUROS
+	db 21, TAUROS
+	; day
+	db 22, NIDORAN_M
+	db 22, NIDORAN_F
+	db 31, NIDORINO
+	db 31, NIDORINA
+	db 27, TANGELA
+	db 21, TAUROS
+	db 21, TAUROS
+	; nite
+	db 22, NIDORAN_M
+	db 22, NIDORAN_F
+	db 31, NIDORINO
+	db 31, NIDORINA
+	db 27, TANGELA
+	db 21, TAUROS
+	db 21, TAUROS
+	end_grass_wildmons
+
+	def_grass_wildmons SAFARI_ZONE_BETA
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 22, PARAS
+	db 23, VENONAT
+	db 25, PARASECT
+	db 31, VENOMOTH
+	db 31, SUNKERN
+	db 28, SCYTHER
+	db 28, SCYTHER
+	; day
+	db 22, PARAS
+	db 23, VENONAT
+	db 25, PARASECT
+	db 31, VENOMOTH
+	db 31, SUNKERN
+	db 28, SCYTHER
+	db 28, SCYTHER
+	; nite
+	db 22, PARAS
+	db 23, VENONAT
+	db 25, PARASECT
+	db 31, VENOMOTH
+	db 31, SUNKERN
+	db 28, SCYTHER
+	db 28, SCYTHER
+	end_grass_wildmons
+
+	def_grass_wildmons POWER_PLANT_B1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 21, VOLTORB
+	db 21, MAGNEMITE
+	db 21, GRIMER
+	db 5, PICHU
+	db 21, PIKACHU
+	db 33, RAICHU
+	db 33, ELECTABUZZ
+	; day
+	db 21, VOLTORB
+	db 21, MAGNEMITE
+	db 21, GRIMER
+	db 5, PICHU
+	db 21, PIKACHU
+	db 33, RAICHU
+	db 33, ELECTABUZZ
+	; nite
+	db 21, VOLTORB
+	db 21, MAGNEMITE
+	db 21, GRIMER
+	db 5, PICHU
+	db 21, PIKACHU
+	db 33, RAICHU
+	db 33, ELECTABUZZ
+	end_grass_wildmons
+
+	def_grass_wildmons POWER_PLANT_B2F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 21, VOLTORB
+	db 21, MAGNEMITE
+	db 21, GRIMER
+	db 5, ELEKID
+	db 21, PIKACHU
+	db 33, ELECTABUZZ
+	db 33, RAICHU
+	; day
+	db 21, VOLTORB
+	db 21, MAGNEMITE
+	db 21, GRIMER
+	db 5, ELEKID
+	db 21, PIKACHU
+	db 33, ELECTABUZZ
+	db 33, RAICHU
+	; nite
+	db 21, VOLTORB
+	db 21, MAGNEMITE
+	db 21, GRIMER
+	db 5, ELEKID
+	db 21, PIKACHU
+	db 33, ELECTABUZZ
+	db 33, RAICHU
+	end_grass_wildmons
+
+	def_grass_wildmons POWER_PLANT_B3F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 33, VOLTORB
+	db 33, MAGNEMITE
+	db 33, GRIMER
+	db 33, MAGNETON
+	db 33, MUK
+	db 33, RAICHU
+	db 33, ELECTABUZZ
+	; day
+	db 33, VOLTORB
+	db 33, MAGNEMITE
+	db 33, GRIMER
+	db 33, MAGNETON
+	db 33, MUK
+	db 33, RAICHU
+	db 33, ELECTABUZZ
+	; nite
+	db 33, VOLTORB
+	db 33, MAGNEMITE
+	db 33, GRIMER
+	db 33, MAGNETON
+	db 33, MUK
+	db 33, RAICHU
+	db 33, ELECTABUZZ
+	end_grass_wildmons
+
+	def_grass_wildmons POKEMON_MANSION_1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 32, KOFFING
+	db 34, RATTATA
+	db 34, RATICATE
+	db 37, WEEZING
+	db 34, SLUGMA
+	db 38, MAGMAR
+	db 38, MAGMAR
+	; day
+	db 32, KOFFING
+	db 34, RATTATA
+	db 34, RATICATE
+	db 37, WEEZING
+	db 34, SLUGMA
+	db 38, MAGMAR
+	db 38, MAGMAR
+	; nite
+	db 32, KOFFING
+	db 34, RATTATA
+	db 34, RATICATE
+	db 37, WEEZING
+	db 34, SLUGMA
+	db 38, MAGMAR
+	db 38, MAGMAR
+	end_grass_wildmons
+
+	def_grass_wildmons POKEMON_MANSION_2F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 32, KOFFING
+	db 32, GRIMER
+	db 37, WEEZING
+	db 39, MUK
+	db 34, VULPIX
+	db 24, DITTO
+	db 24, DITTO
+	; day
+	db 32, KOFFING
+	db 32, GRIMER
+	db 37, WEEZING
+	db 39, MUK
+	db 34, VULPIX
+	db 24, DITTO
+	db 24, DITTO
+	; nite
+	db 32, KOFFING
+	db 32, GRIMER
+	db 37, WEEZING
+	db 39, MUK
+	db 34, VULPIX
+	db 24, DITTO
+	db 24, DITTO
+	end_grass_wildmons
+
+	def_grass_wildmons POKEMON_MANSION_3F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 32, KOFFING
+	db 32, GRIMER
+	db 34, PONYTA
+	db 34, GROWLITHE
+	db 24, CYNDAQUIL
+	db 38, MAGMAR
+	db 38, MAGMAR
+	; day
+	db 32, KOFFING
+	db 32, GRIMER
+	db 34, PONYTA
+	db 34, GROWLITHE
+	db 24, CYNDAQUIL
+	db 38, MAGMAR
+	db 38, MAGMAR
+	; nite
+	db 32, KOFFING
+	db 32, GRIMER
+	db 34, PONYTA
+	db 34, GROWLITHE
+	db 24, CYNDAQUIL
+	db 38, MAGMAR
+	db 38, MAGMAR
+	end_grass_wildmons
+
+	def_grass_wildmons POKEMON_MANSION_B1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 32, KOFFING
+	db 32, GRIMER
+	db 34, PONYTA
+	db 34, GROWLITHE
+	db 24, CHARMANDER
+	db 24, DITTO
+	db 24, DITTO
+	; day
+	db 32, KOFFING
+	db 32, GRIMER
+	db 34, PONYTA
+	db 34, GROWLITHE
+	db 24, CHARMANDER
+	db 24, DITTO
+	db 24, DITTO
+	; nite
+	db 32, KOFFING
+	db 32, GRIMER
+	db 34, PONYTA
+	db 34, GROWLITHE
+	db 24, CHARMANDER
+	db 24, DITTO
+	db 24, DITTO
 	end_grass_wildmons
 
 	db -1 ; end

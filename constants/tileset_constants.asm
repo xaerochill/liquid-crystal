@@ -32,7 +32,6 @@
 	const TILESET_DARK_CAVE            ; 1e
 	const TILESET_FOREST               ; 1f
 	const TILESET_JOHTO_CLASSIC        ; 20
-	const TILESET_MUSEUM               ; 21
 DEF NUM_TILESETS EQU const_value - 1
 
 ; wTileset struct size

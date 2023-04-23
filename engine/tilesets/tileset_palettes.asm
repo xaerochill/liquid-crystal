@@ -20,8 +20,8 @@ LoadSpecialMapPalette:
 	jr z, .radio_tower
 	cp TILESET_MANSION
 	jr z, .mansion_mobile
-	cp TILESET_MUSEUM
-	jr z, .museum
+	cp TILESET_GATE
+	jr z, .gate
 	jr .do_nothing
 
 .darkness
@@ -63,8 +63,8 @@ LoadSpecialMapPalette:
 	scf
 	ret
 
-.museum
-	call LoadMuseumPalette
+.gate
+	call LoadGatePalette
 	scf
 	ret
 
@@ -166,16 +166,16 @@ LoadMansionPalette:
 MansionPalette2:
 INCLUDE "gfx/tilesets/mansion_2.pal"
 
-LoadMuseumPalette:
+LoadGatePalette:
 	ld a, BANK(wBGPals1)
 	ld de, wBGPals1
-	ld hl, MuseumPalette
+	ld hl, GatePalette
 	ld bc, 8 palettes
 	call FarCopyWRAM
 	ret
 
-MuseumPalette:
-INCLUDE "gfx/tilesets/museum.pal"
+GatePalette:
+INCLUDE "gfx/tilesets/gate.pal"
 
 LoadSpecialNPCPalette:
 	call GetMapTimeOfDay
