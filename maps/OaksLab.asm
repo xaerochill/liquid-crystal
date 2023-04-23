@@ -58,31 +58,13 @@ OaksAssistant1Script:
 	opentext
 	checkflag ENGINE_SWARM
 	iftrue .skiprandomswarm
-	random 8
-	ifequal 0, .chansey
-	ifequal 1, .ditto
-    ifequal 2, .marill
-	ifequal 3, .yanma
-	ifequal 4, .dunsparce
-	ifequal 5, .snubbull
-	ifequal 6, .qwilfish
-	ifequal 7, .remoraid
-
-.chansey
-	setflag ENGINE_SWARM
-	swarm ROUTE_13
-	writetext SwarmChanseyText
-	waitbutton
-	closetext
-	end
-
-.ditto
-	setflag ENGINE_SWARM
-	swarm ROUTE_15
-	writetext SwarmDittoText
-	waitbutton
-	closetext
-	end
+	random 6
+    ifequal 0, .marill
+	ifequal 1, .yanma
+	ifequal 2, .dunsparce
+	ifequal 3, .snubbull
+	ifequal 4, .qwilfish
+	ifequal 5, .remoraid
 
 .marill
 	setflag ENGINE_SWARM
@@ -137,26 +119,6 @@ OaksAssistant1Script:
 	waitbutton
 	closetext
 	end
-
-SwarmChanseyText:
-	text "I study #MON as"
-	line "PROF.OAK's AIDE."
-	cont "I received field"
-
-	para "reports about a"
-	line "CHANSEY swarm"
-	cont "on ROUTE 14."
-	done
-
-SwarmDittoText:
-	text "I study #MON as"
-	line "PROF.OAK's AIDE."
-	cont "I received field"
-
-	para "reports about a"
-	line "DITTO swarm"
-	cont "on ROUTE 15."
-	done
 
 SwarmMarillText:
 	text "I study #MON as"
