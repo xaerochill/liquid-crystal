@@ -3077,7 +3077,7 @@ wPokegearFlags::
 	db
 wRadioTuningKnob:: db
 wLastDexMode:: db
-wCurPokedexColor:: db ; current dex color
+	ds 1
 wWhichRegisteredItem:: db
 wRegisteredItem:: db
 
