@@ -3,7 +3,8 @@
 ## Table of Contents
 
 - [What is Liquid Crystal?](#what-is-liquid-crystal)
-- [Gae Changes](#game-changes)
+- [Game Changes](#game-changes)
+- [Map Changes](#map-changes)
 - [What was changed?](#what-was-changed)
   - [QOL Changes](#qol-changes)
   - [Difficulty Changes](#difficulty-changes)
@@ -22,26 +23,27 @@
 
 Liquid Crystal is a branch of pokecrystal with Mobile Adapter Features. In terms of gameplay, it floats somewhere between RBY and HGSS and takes select elements of each generation without breaking compatibility with vanilla GSC. Canon-wise, it takes plays after the [Gold, Silver & Crystal chapter](https://bulbapedia.bulbagarden.net/wiki/Gold,_Silver_%26_Crystal_chapter_(Adventures)).
 
-All Pokémon are available:
-Bulbasaur: Cerulean City Gift, Viridian Forest
-Charmander: Route 24 Gift, Pokémon Mansion
-Squirtle: Vermilion City Gift, Seafoam Islands
-Vulpix: Pokémon Mansion
-Mankey: Routes 3 - 9, 22, 23, 42
-Primeape: Cerulean Cave
-Omanyte: Fossil
-Kabuto: Fossil
-Articuno: Seafoam Islands
-Zapdos: Power Plant
-Moltres: Victory Road
-Mewtwo: Cerulean Cave
-Mew: Harbour
-Mareep: Routes 32, 42, 43
-Flaaffy: Routes 42, 43
-Girafarig: Route 43
-Remoraid: Route 44
+All Pokémon not pressent in vanilla Crystal are available:
+* Bulbasaur: Cerulean City Gift, Viridian Forest
+* Charmander: Route 24 Gift, Pokémon Mansion
+* Squirtle: Vermilion City Gift, Seafoam Islands
+* Vulpix: Pokémon Mansion
+* Mankey: Routes 3 - 9, 22, 23, 42
+* Primeape: Cerulean Cave
+* Omanyte: Fossil
+* Kabuto: Fossil
+* Articuno: Seafoam Islands
+* Zapdos: Power Plant
+* Moltres: Victory Road
+* Mewtwo: Cerulean Cave
+* Mew: Harbour
+* Mareep: Routes 32, 42, 43
+* Flaaffy: Routes 42, 43
+* Girafarig: Route 43
+* Remoraid: Route 44
 
 ## Game Changes
+- [ ] Scaling trainer parties with individual DVs, stat experience & nicknames
 - [ ] Wall-to-wall carpeting in your room
 - [ ] Items that act like HM field moves: Dive
 - [ ] Remove TM's from Game Corners and Marts
@@ -71,7 +73,7 @@ Remoraid: Route 44
 - [x] [Pewter City Museum of Science](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Pewter_City_Museum) is revamped and accessible
 - [x] Safari Zone is available via the [unused gate](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Safari_Zone_Gate) and contains the [Safari Zone Beta Map](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Safari_Zone). As referenced in [unused Red & Blue text](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue/Unused_Text#Safari_Zone), a Silph Manager might be hiding here! The hideout uses the scrapped [Haunted House Map](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Haunted_House)
 - [x] [Bill's Garden](https://tcrf.net/Development:Pok%C3%A9mon_Red_and_Blue/Unused_Maps#Garden) is not a lie! Look around his house to access it.
-- [ ]Make use of [Spaceworld 1997 Demo Pokémon Center](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Time_Capsule)
+- [ ] Make use of [Spaceworld 1997 Demo Pokémon Center](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Time_Capsule)
 - [ ] Make use of rubble sitting on water https://tcrf.net/Pok%C3%A9mon_Red_and_Blue/Unseen_Graphics#Tileset_0A
 - [ ] S.S. Anne sunk, Truck and unused [bollards from RB](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue/Unseen_Graphics#Tileset_04) in [Vermilion City Harbour](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue/Unseen_Graphics#Vermilion_City_Harbor)
 - [ ] Restore Vermilion City Gym
@@ -80,8 +82,8 @@ Remoraid: Route 44
 - [ ] Fix Map Boundary Route 16/17 going from tree blocks to water blocks
 - [ ] Restore the [unused Olivine City house](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Olivine_House)
 - [ ] Restore the [Celadon Chief House](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Celadon_House)
-- [ ] [Unknown House](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Unknown_House)
-- [ ] [Unknown Office](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Unknown_Office
+- [ ] Make ue of the [Unknown House](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Unknown_House)
+- [ ] Make ue of the [Unknown Office](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Unknown_Office)
 - [ ] Make use of [scrapped Seafoam Islands map](https://tcrf.net/Development:Pok%C3%A9mon_Red_and_Blue/Unused_Maps#Seafoam_Islands)
 - [ ] Make use of unused [Burned Tower B2F](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Burned_Tower
 - [ ] Make use of [Olivine Gym 2F](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Olivine_Gym_2F)
@@ -126,7 +128,6 @@ All of the changes are taken from the [pokecrystal wiki](https://github.com/pret
 - Removed Gym Badges Boosts
 - Removed 25% failure chance for AI status moves
 - Any encountered wild Pokémon (excluding legendaries) may vary up to 0-4 levels
-- Scaling trainer parties with individual DVs, stat experience & nicknames
 
 ### Other Changes
 - Removed redundant Japanese move grammar table
