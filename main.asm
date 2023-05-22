@@ -123,14 +123,14 @@ INCLUDE "engine/events/kurt_selectquantity_interpretjoypad.asm"
 
 SECTION "bankA", ROMX
 
-INCLUDE "engine/link/link.asm"
 INCLUDE "engine/overworld/wildmons.asm"
-INCLUDE "engine/battle/link_result.asm"
 
 
 SECTION "Own Section", ROMX
 
 INCLUDE "engine/battle/swarm_shiny.asm"
+INCLUDE "engine/link/link.asm"
+INCLUDE "engine/battle/link_result.asm"
 
 
 SECTION "bankB", ROMX
@@ -199,8 +199,6 @@ INCLUDE "engine/events/buena_menu.asm"
 
 SECTION "bank13", ROMX
 
-;INCLUDE "engine/tilesets/map_palettes.asm"
-;INCLUDE "gfx/tileset_palette_maps.asm"
 INCLUDE "data/collision/collision_permissions.asm"
 INCLUDE "engine/menus/empty_sram.asm"
 INCLUDE "engine/menus/savemenu_copytilemapatonce.asm"
@@ -693,7 +691,6 @@ INCLUDE "mobile/currency_finder.asm"
 
 SECTION "Crystal Events", ROMX
 
-;INCLUDE "engine/events/battle_tower/load_trainer.asm"
 INCLUDE "engine/events/odd_egg.asm"
 
 
