@@ -19,7 +19,7 @@
 	const TILESET_TRAIN_STATION        ; 11
 	const TILESET_CHAMPIONS_ROOM       ; 12
 	const TILESET_LIGHTHOUSE           ; 13
-	const TILESET_PLAYERS_ROOM         ; 14
+	const TILESET_JOHTO_CLASSIC        ; 14
 	const TILESET_POKECOM_CENTER       ; 15
 	const TILESET_BATTLE_TOWER_INSIDE  ; 16
 	const TILESET_TOWER                ; 17
@@ -31,7 +31,6 @@
 	const TILESET_ICE_PATH             ; 1d
 	const TILESET_DARK_CAVE            ; 1e
 	const TILESET_FOREST               ; 1f
-	const TILESET_JOHTO_CLASSIC        ; 20
 DEF NUM_TILESETS EQU const_value - 1
 
 ; wTileset struct size

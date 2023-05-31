@@ -31,7 +31,7 @@ Tilesets::
 	tileset TilesetTrainStation
 	tileset TilesetChampionsRoom
 	tileset TilesetLighthouse
-	tileset TilesetPlayersRoom
+	tileset TilesetJohtoClassic
 	tileset TilesetPokeComCenter
 	tileset TilesetBattleTowerInside
 	tileset TilesetTower
@@ -43,5 +43,4 @@ Tilesets::
 	tileset TilesetIcePath
 	tileset TilesetDarkCave
 	tileset TilesetForest
-	tileset TilesetJohtoClassic
 	assert_table_length NUM_TILESETS + 1

@@ -140,3 +140,9 @@
 	tilecoll FLOOR, STOP_SPIN, WALL, WALL ; 8b
 	tilecoll FLOOR, SPIN_RIGHT, SPIN_RIGHT, FLOOR ; 8c
 	tilecoll WALL, WALL, WALL, WALL ; 8d
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 8e
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 8f
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 90
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 91
+	tilecoll FLOOR, FLOOR, WALL, WALL ; 92
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 93
