@@ -502,6 +502,7 @@ ENDM
 	connection south, SafariZoneWest, SAFARI_ZONE_WEST, 0
 	connection east, SafariZoneNorth, SAFARI_ZONE_NORTH, 0
 	
+	map_attributes VictoryRoad, VICTORY_ROAD, $1d, 0
 	map_attributes SafariZoneHideout1F, SAFARI_ZONE_HIDEOUT_1F, $00, 0
 	map_attributes SafariZoneHideout2F, SAFARI_ZONE_HIDEOUT_2F, $00, 0
 	map_attributes SafariZoneHideout3F, SAFARI_ZONE_HIDEOUT_3F, $00, 0
@@ -513,11 +514,25 @@ ENDM
 	map_attributes PokemonMansion2F, POKEMON_MANSION_2F, $00, 0
 	map_attributes PokemonMansion3F, POKEMON_MANSION_3F, $00, 0
 	map_attributes PokemonMansionB1F, POKEMON_MANSION_B1F, $00, 0
-	map_attributes CinnabarLab, CINNABAR_LAB, $00, 0
-	map_attributes CinnabarLabConferenceRoom, CINNABAR_LAB_CONFERENCE_ROOM, $00, 0
-	map_attributes CinnabarLabResearchRoom, CINNABAR_LAB_RESEARCH_ROOM, $00, 0
-	map_attributes CinnabarLabFossilRoom, CINNABAR_LAB_FOSSIL_ROOM, $00, 0
-	map_attributes VictoryRoad, VICTORY_ROAD, $1d, 0
+	map_attributes CeruleanCave1F, CERULEAN_CAVE_1F, $09, 0
+	map_attributes CeruleanCave2F, CERULEAN_CAVE_2F, $09, 0
+	map_attributes CeruleanCaveB1F, CERULEAN_CAVE_B1F, $09, 0
+	map_attributes RocketHideoutB1F, ROCKET_HIDEOUT_B1F, $00, 0
+	map_attributes RocketHideoutB2F, ROCKET_HIDEOUT_B2F, $00, 0
+	map_attributes RocketHideoutB3F, ROCKET_HIDEOUT_B3F, $00, 0
+	map_attributes RocketHideoutB4F, ROCKET_HIDEOUT_B4F, $00, 0
+	map_attributes RocketHideoutElevator, ROCKET_HIDEOUT_ELEVATOR, $00, 0
+	map_attributes Mineshaft1F, MINESHAFT_1F, $1D, 0
+	map_attributes MineshaftB1F, MINESHAFT_B1F, $1D, 0
+	map_attributes MineshaftB2F, MINESHAFT_B2F, $1D, 0
+	map_attributes MineshaftB3F, MINESHAFT_B3F, $09, 0
+	map_attributes MineshaftB4F, MINESHAFT_B4F, $1D, 0
+	map_attributes MineshaftB5F, MINESHAFT_B5F, $1D, 0
+	map_attributes SeafoamIslands1F, SEAFOAM_ISLANDS_1F, $3B, 0
+	map_attributes SeafoamIslandsB1F, SEAFOAM_ISLANDS_B1F, $19, 0
+	map_attributes SeafoamIslandsB2F, SEAFOAM_ISLANDS_B2F, $3B, 0
+	map_attributes SeafoamIslandsB3F, SEAFOAM_ISLANDS_B3F, $19, 0
+	map_attributes SeafoamIslandsB4F, SEAFOAM_ISLANDS_B4F, $3B, 0
 	map_attributes EcruteakTinTowerEntrance, ECRUTEAK_TIN_TOWER_ENTRANCE, $00, 0
 	map_attributes WiseTriosRoom, WISE_TRIOS_ROOM, $00, 0
 	map_attributes EcruteakPokecenter1F, ECRUTEAK_POKECENTER_1F, $00, 0
@@ -535,17 +550,19 @@ ENDM
 	map_attributes MoveDeletersHouse, MOVE_DELETERS_HOUSE, $00, 0
 	map_attributes CinnabarPokecenter1F, CINNABAR_POKECENTER_1F, $00, 0
 	map_attributes CinnabarPokecenter2FBeta, CINNABAR_POKECENTER_2F_BETA, $00, 0
+	map_attributes CinnabarLab, CINNABAR_LAB, $00, 0
+	map_attributes CinnabarLabConferenceRoom, CINNABAR_LAB_CONFERENCE_ROOM, $00, 0
+	map_attributes CinnabarLabResearchRoom, CINNABAR_LAB_RESEARCH_ROOM, $00, 0
+	map_attributes CinnabarLabFossilRoom, CINNABAR_LAB_FOSSIL_ROOM, $00, 0
 	map_attributes Route19FuchsiaGate, ROUTE_19_FUCHSIA_GATE, $00, 0
 	map_attributes SeafoamGym, SEAFOAM_GYM, $09, 0
 	map_attributes CeruleanGymBadgeSpeechHouse, CERULEAN_GYM_BADGE_SPEECH_HOUSE, $00, 0
 	map_attributes CeruleanPoliceStation, CERULEAN_POLICE_STATION, $00, 0
 	map_attributes CeruleanTradeSpeechHouse, CERULEAN_TRADE_SPEECH_HOUSE, $00, 0
 	map_attributes CeruleanPokecenter1F, CERULEAN_POKECENTER_1F, $00, 0
-	map_attributes CeruleanPokecenter2FBeta, CERULEAN_POKECENTER_2F_BETA, $00, 0
 	map_attributes CeruleanGym, CERULEAN_GYM, $00, 0
 	map_attributes CeruleanMart, CERULEAN_MART, $00, 0
 	map_attributes Route10Pokecenter1F, ROUTE_10_POKECENTER_1F, $00, 0
-	map_attributes Route10Pokecenter2FBeta, ROUTE_10_POKECENTER_2F_BETA, $00, 0
 	map_attributes PowerPlant, POWER_PLANT, $00, 0
 	map_attributes BillsHouse, BILLS_HOUSE, $00, 0
 	map_attributes AzaleaPokecenter1F, AZALEA_POKECENTER_1F, $00, 0
@@ -593,7 +610,6 @@ ENDM
 	map_attributes DayCare, DAY_CARE, $00, 0
 	map_attributes VermilionFishingSpeechHouse, VERMILION_FISHING_SPEECH_HOUSE, $00, 0
 	map_attributes VermilionPokecenter1F, VERMILION_POKECENTER_1F, $00, 0
-	map_attributes VermilionPokecenter2FBeta, VERMILION_POKECENTER_2F_BETA, $00, 0
 	map_attributes PokemonFanClub, POKEMON_FAN_CLUB, $00, 0
 	map_attributes VermilionMagnetTrainSpeechHouse, VERMILION_MAGNET_TRAIN_SPEECH_HOUSE, $00, 0
 	map_attributes VermilionMart, VERMILION_MART, $00, 0
@@ -611,7 +627,6 @@ ENDM
 	map_attributes PewterMuseum1F, PEWTER_MUSEUM_1F, $00, 0
 	map_attributes PewterMuseum2F, PEWTER_MUSEUM_2F, $00, 0
 	map_attributes PewterPokecenter1F, PEWTER_POKECENTER_1F, $00, 0
-	map_attributes PewterPokecenter2FBeta, PEWTER_POKECENTER_2F_BETA, $00, 0
 	map_attributes PewterSnoozeSpeechHouse, PEWTER_SNOOZE_SPEECH_HOUSE, $00, 0
 	map_attributes OlivinePort, OLIVINE_PORT, $0a, 0
 	map_attributes VermilionPort, VERMILION_PORT, $0a, 0
@@ -637,17 +652,19 @@ ENDM
 	map_attributes FuchsiaGym, FUCHSIA_GYM, $00, 0
 	map_attributes BillsBrothersHouse, BILLS_BROTHERS_HOUSE, $00, 0
 	map_attributes FuchsiaPokecenter1F, FUCHSIA_POKECENTER_1F, $00, 0
-	map_attributes FuchsiaPokecenter2FBeta, FUCHSIA_POKECENTER_2F_BETA, $00, 0
 	map_attributes SafariZoneWardensHome, SAFARI_ZONE_WARDENS_HOME, $00, 0
 	map_attributes Route15FuchsiaGate, ROUTE_15_FUCHSIA_GATE, $00, 0
 	map_attributes LavenderPokecenter1F, LAVENDER_POKECENTER_1F, $00, 0
-	map_attributes LavenderPokecenter2FBeta, LAVENDER_POKECENTER_2F_BETA, $00, 0
 	map_attributes MrFujisHouse, MR_FUJIS_HOUSE, $00, 0
 	map_attributes LavenderSpeechHouse, LAVENDER_SPEECH_HOUSE, $00, 0
 	map_attributes LavenderNameRater, LAVENDER_NAME_RATER, $00, 0
 	map_attributes LavenderMart, LAVENDER_MART, $00, 0
 	map_attributes SoulHouse, SOUL_HOUSE, $00, 0
-	map_attributes LavRadioTower1F, LAV_RADIO_TOWER_1F, $00, 0
+	map_attributes KantoRadioTower1F, KANTO_RADIO_TOWER_1F, $00, 0
+	map_attributes KantoRadioTower2F, KANTO_RADIO_TOWER_2F, $00, 0
+	map_attributes KantoRadioTower3F, KANTO_RADIO_TOWER_3F, $00, 0
+	map_attributes KantoRadioTower4F, KANTO_RADIO_TOWER_4F, $00, 0
+	map_attributes KantoRadioTower5F, KANTO_RADIO_TOWER_5F, $00, 0
 	map_attributes Route8SaffronGate, ROUTE_8_SAFFRON_GATE, $00, 0
 	map_attributes Route12SuperRodHouse, ROUTE_12_SUPER_ROD_HOUSE, $00, 0
 	map_attributes SilverCavePokecenter1F, SILVER_CAVE_POKECENTER_1F, $00, 0
@@ -671,7 +688,6 @@ ENDM
 	map_attributes CeladonMansionRoof, CELADON_MANSION_ROOF, $01, 0
 	map_attributes CeladonMansionRoofHouse, CELADON_MANSION_ROOF_HOUSE, $00, 0
 	map_attributes CeladonPokecenter1F, CELADON_POKECENTER_1F, $00, 0
-	map_attributes CeladonPokecenter2FBeta, CELADON_POKECENTER_2F_BETA, $00, 0
 	map_attributes CeladonGameCorner, CELADON_GAME_CORNER, $00, 0
 	map_attributes CeladonGameCornerPrizeRoom, CELADON_GAME_CORNER_PRIZE_ROOM, $00, 0
 	map_attributes CeladonGym, CELADON_GYM, $00, 0
@@ -699,7 +715,6 @@ ENDM
 	map_attributes TrainerHouseB1F, TRAINER_HOUSE_B1F, $00, 0
 	map_attributes ViridianMart, VIRIDIAN_MART, $00, 0
 	map_attributes ViridianPokecenter1F, VIRIDIAN_POKECENTER_1F, $00, 0
-	map_attributes ViridianPokecenter2FBeta, VIRIDIAN_POKECENTER_2F_BETA, $00, 0
 	map_attributes ViridianForest, VIRIDIAN_FOREST, $00, 0
 	map_attributes Route2NuggetHouse, ROUTE_2_NUGGET_HOUSE, $00, 0
 	map_attributes Route2Gate, ROUTE_2_GATE, $00, 0
@@ -717,7 +732,6 @@ ENDM
 	map_attributes SaffronGym, SAFFRON_GYM, $00, 0
 	map_attributes SaffronMart, SAFFRON_MART, $00, 0
 	map_attributes SaffronPokecenter1F, SAFFRON_POKECENTER_1F, $00, 0
-	map_attributes SaffronPokecenter2FBeta, SAFFRON_POKECENTER_2F_BETA, $00, 0
 	map_attributes MrPsychicsHouse, MR_PSYCHICS_HOUSE, $00, 0
 	map_attributes SaffronMagnetTrainStation, SAFFRON_MAGNET_TRAIN_STATION, $00, 0
 	map_attributes SilphCo1F, SILPH_CO_1F, $00, 0
@@ -726,6 +740,17 @@ ENDM
 	map_attributes Route5UndergroundPathEntrance, ROUTE_5_UNDERGROUND_PATH_ENTRANCE, $00, 0
 	map_attributes Route5SaffronGate, ROUTE_5_SAFFRON_GATE, $00, 0
 	map_attributes Route5CleanseTagHouse, ROUTE_5_CLEANSE_TAG_HOUSE, $00, 0
+	map_attributes SilphCo2F, SILPH_CO_2F, $00, 0
+	map_attributes SilphCo3F, SILPH_CO_3F, $00, 0
+	map_attributes SilphCo4F, SILPH_CO_4F, $00, 0
+	map_attributes SilphCo5F, SILPH_CO_5F, $00, 0
+	map_attributes SilphCo6F, SILPH_CO_6F, $00, 0
+	map_attributes SilphCo7F, SILPH_CO_7F, $00, 0
+	map_attributes SilphCo8F, SILPH_CO_8F, $00, 0
+	map_attributes SilphCo9F, SILPH_CO_9F, $00, 0
+	map_attributes SilphCo10F, SILPH_CO_10F, $00, 0
+	map_attributes SilphCo11F, SILPH_CO_11F, $00, 0
+	map_attributes SilphCoElevator, SILPH_CO_ELEVATOR, $00, 0
 	map_attributes CherrygroveMart, CHERRYGROVE_MART, $00, 0
 	map_attributes CherrygrovePokecenter1F, CHERRYGROVE_POKECENTER_1F, $00, 0
 	map_attributes CherrygroveGymSpeechHouse, CHERRYGROVE_GYM_SPEECH_HOUSE, $00, 0
@@ -734,3 +759,11 @@ ENDM
 	map_attributes Route30BerryHouse, ROUTE_30_BERRY_HOUSE, $00, 0
 	map_attributes MrPokemonsHouse, MR_POKEMONS_HOUSE, $00, 0
 	map_attributes Route31VioletGate, ROUTE_31_VIOLET_GATE, $00, 0
+	map_attributes PokemonTower1F, POKEMON_TOWER_1F, $00, 0
+	map_attributes PokemonTower2F, POKEMON_TOWER_2F, $00, 0
+	map_attributes PokemonTower3F, POKEMON_TOWER_3F, $00, 0
+	map_attributes PokemonTower4F, POKEMON_TOWER_4F, $00, 0
+	map_attributes PokemonTower5F, POKEMON_TOWER_5F, $00, 0
+	map_attributes PokemonTower6F, POKEMON_TOWER_6F, $00, 0
+	map_attributes PokemonTower7F, POKEMON_TOWER_7F, $00, 0
+	map_attributes BillsGarden, BILLS_GARDEN, $00, 0

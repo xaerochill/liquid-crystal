@@ -5,40 +5,40 @@
 	const LAVRADIOTOWER1F_GENTLEMAN
 	const LAVRADIOTOWER1F_SUPER_NERD2
 
-LavRadioTower1F_MapScripts:
+KantoRadioTower1F_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
 
-LavRadioTower1FReceptionistScript:
-	jumptextfaceplayer LavRadioTower1FReceptionistText
+KantoRadioTower1FReceptionistScript:
+	jumptextfaceplayer KantoRadioTower1FReceptionistText
 
-LavRadioTower1FOfficerScript:
-	jumptextfaceplayer LavRadioTower1FOfficerText
+KantoRadioTower1FOfficerScript:
+	jumptextfaceplayer KantoRadioTower1FOfficerText
 
-LavRadioTower1FSuperNerd1Script:
-	jumptextfaceplayer LavRadioTower1FSuperNerd1Text
+KantoRadioTower1FSuperNerd1Script:
+	jumptextfaceplayer KantoRadioTower1FSuperNerd1Text
 
-LavRadioTower1FGentlemanScript:
+KantoRadioTower1FGentlemanScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_EXPN_CARD
 	iftrue .GotExpnCard
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue .ReturnedMachinePart
-	writetext LavRadioTower1FGentlemanText
+	writetext KantoRadioTower1FGentlemanText
 	waitbutton
 	closetext
 	end
 
 .ReturnedMachinePart:
-	writetext LavRadioTower1FGentlemanText_ReturnedMachinePart
+	writetext KantoRadioTower1FGentlemanText_ReturnedMachinePart
 	promptbutton
 	getstring STRING_BUFFER_4, .expncardname
 	scall .receiveitem
 	setflag ENGINE_EXPN_CARD
 .GotExpnCard:
-	writetext LavRadioTower1FGentlemanText_GotExpnCard
+	writetext KantoRadioTower1FGentlemanText_GotExpnCard
 	waitbutton
 	closetext
 	end
@@ -50,32 +50,29 @@ LavRadioTower1FGentlemanScript:
 .expncardname
 	db "EXPN CARD@"
 
-LavRadioTower1FSuperNerd2Script:
+KantoRadioTower1FSuperNerd2Script:
 	faceplayer
 	opentext
 	checkflag ENGINE_EXPN_CARD
 	iftrue .GotExpnCard
-	writetext LavRadioTower1FSuperNerd2Text
+	writetext KantoRadioTower1FSuperNerd2Text
 	waitbutton
 	closetext
 	end
 
 .GotExpnCard:
-	writetext LavRadioTower1FSuperNerd2Text_GotExpnCard
+	writetext KantoRadioTower1FSuperNerd2Text_GotExpnCard
 	waitbutton
 	closetext
 	end
 
-LavRadioTower1FDirectory:
-	jumptext LavRadioTower1FDirectoryText
+KantoRadioTower1FDirectory:
+	jumptext KantoRadioTower1FDirectoryText
 
-LavRadioTower1FPokeFluteSign:
-	jumptext LavRadioTower1FPokeFluteSignText
+KantoRadioTower1FPokeFluteSign:
+	jumptext KantoRadioTower1FPokeFluteSignText
 
-LavRadioTower1FReferenceLibrary: ; unreferenced
-	jumptext LavRadioTower1FReferenceLibraryText
-
-LavRadioTower1FReceptionistText:
+KantoRadioTower1FReceptionistText:
 	text "Welcome!"
 	line "Feel free to look"
 
@@ -83,12 +80,8 @@ LavRadioTower1FReceptionistText:
 	line "this floor."
 	done
 
-LavRadioTower1FOfficerText:
-	text "Sorry, but you can"
-	line "only tour the"
-	cont "ground floor."
-
-	para "Ever since JOHTO's"
+KantoRadioTower1FOfficerText:
+	text "Ever since JOHTO's"
 	line "RADIO TOWER was"
 
 	para "taken over by a"
@@ -98,7 +91,7 @@ LavRadioTower1FOfficerText:
 	line "up our security."
 	done
 
-LavRadioTower1FSuperNerd1Text:
+KantoRadioTower1FSuperNerd1Text:
 	text "Many people are"
 	line "hard at work here"
 
@@ -110,7 +103,7 @@ LavRadioTower1FSuperNerd1Text:
 	cont "on good shows."
 	done
 
-LavRadioTower1FGentlemanText:
+KantoRadioTower1FGentlemanText:
 	text "Oh, no, no, no!"
 
 	para "We've been off the"
@@ -128,7 +121,7 @@ LavRadioTower1FGentlemanText:
 	para "I'll be ruined!"
 	done
 
-LavRadioTower1FGentlemanText_ReturnedMachinePart:
+KantoRadioTower1FGentlemanText_ReturnedMachinePart:
 	text "Ah! So you're the"
 	line "<PLAY_G> who solved"
 
@@ -145,7 +138,7 @@ LavRadioTower1FGentlemanText_ReturnedMachinePart:
 	line "as my thanks."
 	done
 
-LavRadioTower1FGentlemanText_GotExpnCard:
+KantoRadioTower1FGentlemanText_GotExpnCard:
 	text "With that thing,"
 	line "you can tune into"
 
@@ -155,7 +148,7 @@ LavRadioTower1FGentlemanText_GotExpnCard:
 	para "Gahahahaha!"
 	done
 
-LavRadioTower1FSuperNerd2Text:
+KantoRadioTower1FSuperNerd2Text:
 	text "Hey there!"
 
 	para "I am the super"
@@ -174,7 +167,7 @@ LavRadioTower1FSuperNerd2Text:
 	line "better get one!"
 	done
 
-LavRadioTower1FSuperNerd2Text_GotExpnCard:
+KantoRadioTower1FSuperNerd2Text_GotExpnCard:
 	text "Hey there!"
 
 	para "I am the super"
@@ -191,7 +184,7 @@ LavRadioTower1FSuperNerd2Text_GotExpnCard:
 	cont "off the air!"
 	done
 
-LavRadioTower1FDirectoryText:
+KantoRadioTower1FDirectoryText:
 	text "1F RECEPTION"
 	line "2F SALES"
 
@@ -202,7 +195,7 @@ LavRadioTower1FDirectoryText:
 	line "   OFFICE"
 	done
 
-LavRadioTower1FPokeFluteSignText:
+KantoRadioTower1FPokeFluteSignText:
 	text "Perk Up #MON"
 	line "with Mellow Sounds"
 
@@ -210,31 +203,23 @@ LavRadioTower1FPokeFluteSignText:
 	line "on CHANNEL 20"
 	done
 
-LavRadioTower1FReferenceLibraryText:
-	text "Wow! A full rack"
-	line "of #MON CDs and"
-	cont "videos."
-
-	para "This must be the"
-	line "reference library."
-	done
-
-LavRadioTower1F_MapEvents:
+KantoRadioTower1F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  2,  7, LAVENDER_TOWN, 7
-	warp_event  3,  7, LAVENDER_TOWN, 7
+	warp_event  2, 7, SAFFRON_CITY, 16
+	warp_event  3, 7, SAFFRON_CITY, 16
+	warp_event 15, 0, KANTO_RADIO_TOWER_2F, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 11,  0, BGEVENT_READ, LavRadioTower1FDirectory
-	bg_event  5,  0, BGEVENT_READ, LavRadioTower1FPokeFluteSign
+	bg_event 11,  0, BGEVENT_READ, KantoRadioTower1FDirectory
+	bg_event  5,  0, BGEVENT_READ, KantoRadioTower1FPokeFluteSign
 
 	def_object_events
-	object_event  6,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FReceptionistScript, -1
-	object_event 15,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FOfficerScript, -1
-	object_event  1,  3, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FSuperNerd1Script, -1
-	object_event  9,  1, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FGentlemanScript, -1
-	object_event 14,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FSuperNerd2Script, -1
+	object_event  6,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, KantoRadioTower1FReceptionistScript, -1
+	object_event 14,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, KantoRadioTower1FOfficerScript, -1
+	object_event  1,  3, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, KantoRadioTower1FSuperNerd1Script, -1
+	object_event  9,  1, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KantoRadioTower1FGentlemanScript, -1
+	object_event 14,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KantoRadioTower1FSuperNerd2Script, -1

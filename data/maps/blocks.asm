@@ -41,15 +41,6 @@ Route10South_Blocks:
 
 Pokecenter2F_Blocks:
 CinnabarPokecenter2FBeta_Blocks:
-CeruleanPokecenter2FBeta_Blocks:
-Route10Pokecenter2FBeta_Blocks:
-VermilionPokecenter2FBeta_Blocks:
-PewterPokecenter2FBeta_Blocks:
-FuchsiaPokecenter2FBeta_Blocks:
-LavenderPokecenter2FBeta_Blocks:
-CeladonPokecenter2FBeta_Blocks:
-ViridianPokecenter2FBeta_Blocks:
-SaffronPokecenter2FBeta_Blocks:
 	INCBIN "maps/Pokecenter2F_jp.ablk"
 
 Route41_Blocks:
@@ -769,9 +760,6 @@ SafariZoneWardensHome_Blocks:
 FightingDojo_Blocks:
 	INCBIN "maps/FightingDojo.ablk"
 
-SilphCo1F_Blocks:
-	INCBIN "maps/SilphCo1F.ablk"
-
 ViridianGym_Blocks:
 	INCBIN "maps/ViridianGym.ablk"
 
@@ -793,8 +781,20 @@ OaksLab_Blocks:
 MrFujisHouse_Blocks:
 	INCBIN "maps/MrFujisHouse.ablk"
 
-LavRadioTower1F_Blocks:
-	INCBIN "maps/LavRadioTower1F.ablk"
+KantoRadioTower1F_Blocks:
+	INCBIN "maps/KantoRadioTower1F.ablk"
+
+KantoRadioTower2F_Blocks:
+	INCBIN "maps/KantoRadioTower2F.ablk"
+
+KantoRadioTower3F_Blocks:
+	INCBIN "maps/KantoRadioTower3F.ablk"
+
+KantoRadioTower4F_Blocks:
+	INCBIN "maps/KantoRadioTower4F.ablk"
+
+KantoRadioTower5F_Blocks:
+	INCBIN "maps/KantoRadioTower4F.ablk"
 
 SilverCaveItemRooms_Blocks:
 	INCBIN "maps/SilverCaveItemRooms.ablk"
@@ -963,6 +963,33 @@ SafariZoneHideout3F_Blocks:
 SafariZoneHideoutB1F_Blocks:
 	INCBIN "maps/SafariZoneHideoutB1F.ablk"
 
+CinnabarLab_Blocks:
+	INCBIN "maps/CinnabarLab.ablk"
+	
+CinnabarLabConferenceRoom_Blocks:
+	INCBIN "maps/CinnabarLabConferenceRoom.ablk"
+	
+CinnabarLabResearchRoom_Blocks:
+	INCBIN "maps/CinnabarLabResearchRoom.ablk"
+
+CinnabarLabFossilRoom_Blocks:
+	INCBIN "maps/CinnabarLabFossilRoom.ablk"
+
+PewterMuseum1F_Blocks:
+	INCBIN "maps/PewterMuseum1F.ablk"
+
+PewterMuseum2F_Blocks:
+	INCBIN "maps/PewterMuseum2F.ablk"
+
+PowerPlantB1F_Blocks:
+	INCBIN "maps/PowerPlantB1F.ablk"
+
+PowerPlantB2F_Blocks:
+	INCBIN "maps/PowerPlantB2F.ablk"
+
+PowerPlantB3F_Blocks:
+	INCBIN "maps/PowerPlantB3F.ablk"
+
 PokemonMansion1F_Blocks:
 	INCBIN "maps/PokemonMansion1F.ablk"
 
@@ -975,32 +1002,123 @@ PokemonMansion3F_Blocks:
 PokemonMansionB1F_Blocks:
 	INCBIN "maps/PokemonMansionB1F.ablk"
 
-PowerPlantB1F_Blocks:
-	INCBIN "maps/PowerPlantB1F.ablk"
+CeruleanCave1F_Blocks:
+	INCBIN "maps/CeruleanCave1F.ablk"
 
-PowerPlantB2F_Blocks:
-	INCBIN "maps/PowerPlantB2F.ablk"
+CeruleanCave2F_Blocks:
+	INCBIN "maps/CeruleanCave2F.ablk"
 
-PowerPlantB3F_Blocks:
-	INCBIN "maps/PowerPlantB3F.ablk"
-	
-PewterMuseum1F_Blocks:
-	INCBIN "maps/PewterMuseum1F.ablk"
-
-PewterMuseum2F_Blocks:
-	INCBIN "maps/PewterMuseum2F.ablk"
+CeruleanCaveB1F_Blocks:
+	INCBIN "maps/CeruleanCaveB1F.ablk"
 
 ViridianForest_Blocks:
 	INCBIN "maps/ViridianForest.ablk"
 
-CinnabarLab_Blocks:
-	INCBIN "maps/CinnabarLab.ablk"
-	
-CinnabarLabConferenceRoom_Blocks:
-	INCBIN "maps/CinnabarLabConferenceRoom.ablk"
-	
-CinnabarLabResearchRoom_Blocks:
-	INCBIN "maps/CinnabarLabResearchRoom.ablk"
+RocketHideoutB1F_Blocks:
+	INCBIN "maps/RocketHideoutB1F.ablk"
 
-CinnabarLabFossilRoom_Blocks:
-	INCBIN "maps/CinnabarLabFossilRoom.ablk"
+RocketHideoutB2F_Blocks:
+	INCBIN "maps/RocketHideoutB2F.ablk"
+
+RocketHideoutB3F_Blocks:
+	INCBIN "maps/RocketHideoutB3F.ablk"
+
+RocketHideoutB4F_Blocks:
+	INCBIN "maps/RocketHideoutB4F.ablk"
+
+RocketHideoutElevator_Blocks:
+	INCBIN "maps/RocketHideoutElevator.ablk"
+
+Mineshaft1F_Blocks:
+	INCBIN "maps/Mineshaft1F.ablk"
+
+MineshaftB1F_Blocks:
+	INCBIN "maps/MineshaftB1F.ablk"
+
+MineshaftB2F_Blocks:
+	INCBIN "maps/MineshaftB2F.ablk"
+
+MineshaftB3F_Blocks:
+	INCBIN "maps/MineshaftB3F.ablk"
+
+MineshaftB4F_Blocks:
+	INCBIN "maps/MineshaftB4F.ablk"
+
+MineshaftB5F_Blocks:
+	INCBIN "maps/MineshaftB5F.ablk"
+
+SeafoamIslands1F_Blocks:
+	INCBIN "maps/SeafoamIslands1F.ablk"
+
+SeafoamIslandsB1F_Blocks:
+	INCBIN "maps/SeafoamIslandsB1F.ablk"
+
+SeafoamIslandsB2F_Blocks:
+	INCBIN "maps/SeafoamIslandsB2F.ablk"
+
+SeafoamIslandsB3F_Blocks:
+	INCBIN "maps/SeafoamIslandsB3F.ablk"
+
+SeafoamIslandsB4F_Blocks:
+	INCBIN "maps/SeafoamIslandsB4F.ablk"
+
+
+SilphCo1F_Blocks:
+	INCBIN "maps/SilphCo1F.ablk"
+
+SilphCo2F_Blocks:
+	INCBIN "maps/SilphCo2F.ablk"
+
+SilphCo3F_Blocks:
+	INCBIN "maps/SilphCo3F.ablk"
+
+SilphCo4F_Blocks:
+	INCBIN "maps/SilphCo4F.ablk"
+
+SilphCo5F_Blocks:
+	INCBIN "maps/SilphCo5F.ablk"
+
+SilphCo6F_Blocks:
+	INCBIN "maps/SilphCo6F.ablk"
+
+SilphCo7F_Blocks:
+	INCBIN "maps/SilphCo7F.ablk"
+
+SilphCo8F_Blocks:
+	INCBIN "maps/SilphCo8F.ablk"
+
+SilphCo9F_Blocks:
+	INCBIN "maps/SilphCo9F.ablk"
+
+SilphCo10F_Blocks:
+	INCBIN "maps/SilphCo10F.ablk"
+
+SilphCo11F_Blocks:
+	INCBIN "maps/SilphCo11F.ablk"
+
+SilphCoElevator_Blocks:
+	INCBIN "maps/SilphCoElevator.ablk"
+
+PokemonTower1F_Blocks:
+	INCBIN "maps/PokemonTower1F.ablk"
+
+PokemonTower2F_Blocks:
+	INCBIN "maps/PokemonTower2F.ablk"
+
+PokemonTower3F_Blocks:
+	INCBIN "maps/PokemonTower3F.ablk"
+
+PokemonTower4F_Blocks:
+	INCBIN "maps/PokemonTower4F.ablk"
+
+PokemonTower5F_Blocks:
+	INCBIN "maps/PokemonTower5F.ablk"
+
+PokemonTower6F_Blocks:
+	INCBIN "maps/PokemonTower6F.ablk"
+
+PokemonTower7F_Blocks:
+	INCBIN "maps/PokemonTower7F.ablk"
+
+BillsGarden_Blocks:
+	INCBIN "maps/BillsGarden.ablk"

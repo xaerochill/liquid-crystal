@@ -138,19 +138,20 @@ CinnabarIsland_MapEvents:
 
 	def_warp_events
 	warp_event 11, 11, CINNABAR_POKECENTER_1F, 1
-	warp_event  5,  3, POKEMON_MANSION_1F, 2
-	warp_event  7,  3, POKEMON_MANSION_1F, 5
+	warp_event  5,  3, POKEMON_MANSION_1F, 1
+	warp_event  7,  3, POKEMON_MANSION_1F, 3
 	warp_event  5,  9, CINNABAR_LAB, 1
+	warp_event 16,  5, SEAFOAM_GYM, 1
 
 	def_coord_events
 
 	def_bg_events
 	bg_event 12, 11, BGEVENT_READ, CinnabarIslandPokecenterSign
 	bg_event 15,  9, BGEVENT_READ, CinnabarIslandGymSign
-	bg_event  9,  5, BGEVENT_READ, CinnabarIslandSign
-	bg_event  9, 11, BGEVENT_READ, CinnabarLabSign
+	bg_event  7,  5, BGEVENT_READ, CinnabarIslandSign
 	bg_event 15,  0, BGEVENT_ITEM, CinnabarIslandHiddenRareCandy
+	bg_event  9, 11, BGEVENT_READ, CinnabarLabSign
 	bg_event 18, 11, BGEVENT_READ, CinnabarIslandMartSign
 
 	def_object_events
-	object_event 14, 0, SPRITE_BLUE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
+	object_event 14,  0, SPRITE_BLUE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR

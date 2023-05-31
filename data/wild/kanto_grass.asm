@@ -1206,4 +1206,368 @@ KantoGrassWildMons:
 	db 24, DITTO
 	end_grass_wildmons
 
+	def_grass_wildmons CERULEAN_CAVE_1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 52, PARASECT
+	db 55, GLOOM
+	db 52, VENOMOTH
+	db 53, WEEPINBELL
+	db 52, MACHOKE
+	db 54, PRIMEAPE
+	db 52, SNORLAX
+	; day
+	db 52, ARBOK
+	db 55, GLOOM
+	db 52, VENOMOTH
+	db 53, WEEPINBELL
+	db 52, MACHOKE
+	db 54, PRIMEAPE
+	db 52, SNORLAX
+	; nite
+	db 52, GOLBAT
+	db 55, GLOOM
+	db 52, VENOMOTH
+	db 53, WEEPINBELL
+	db 52, MACHOKE
+	db 54, PRIMEAPE
+	db 52, SNORLAX
+	end_grass_wildmons
+
+	def_grass_wildmons CERULEAN_CAVE_2F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 57, RAICHU
+	db 56, DODRIO
+	db 56, PERSIAN
+	db 56, LICKITUNG
+	db 58, WOBBUFFET
+	db 59, WIGGLYTUFF
+	db 60, KADABRA
+	; day
+	db 57, ELECTRODE
+	db 56, DODRIO
+	db 56, PERSIAN
+	db 56, LICKITUNG
+	db 58, WOBBUFFET
+	db 59, WIGGLYTUFF
+	db 60, KADABRA
+	; nite
+	db 57, MAGNETON
+	db 56, DODRIO
+	db 56, PERSIAN
+	db 56, LICKITUNG
+	db 58, WOBBUFFET
+	db 59, WIGGLYTUFF
+	db 60, KADABRA
+	end_grass_wildmons
+
+	def_grass_wildmons CERULEAN_CAVE_B1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 62, RHYDON
+	db 63, MAROWAK
+	db 63, HYPNO
+	db 64, GRAVELER
+	db 64, SANDSLASH
+	db 66, CHANSEY
+	db 65, DITTO
+	; day
+	db 62, RHYDON
+	db 63, MAROWAK
+	db 63, HYPNO
+	db 64, GRAVELER
+	db 64, SANDSLASH
+	db 66, CHANSEY
+	db 65, DITTO
+	; nite
+	db 62, RHYDON
+	db 63, MAROWAK
+	db 63, HYPNO
+	db 64, GRAVELER
+	db 64, SANDSLASH
+	db 66, CHANSEY
+	db 65, DITTO
+	end_grass_wildmons
+
+	def_grass_wildmons SEAFOAM_ISLANDS_1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 30, STARYU
+	db 30, KRABBY
+	db 28, ZUBAT
+	db 29, GOLBAT
+	db 28, SLOWPOKE
+	db 32, GOLDUCK
+	db 35, SLOWBRO
+	; day
+	db 30, STARYU
+	db 30, KRABBY
+	db 28, ZUBAT
+	db 29, GOLBAT
+	db 28, SLOWPOKE
+	db 32, GOLDUCK
+	db 35, SLOWBRO
+	; nite
+	db 30, STARYU
+	db 30, KRABBY
+	db 28, ZUBAT
+	db 29, GOLBAT
+	db 28, SLOWPOKE
+	db 32, GOLDUCK
+	db 35, SLOWBRO
+	end_grass_wildmons
+
+	def_grass_wildmons SEAFOAM_ISLANDS_B1F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 30, PSYDUCK
+	db 30, KRABBY
+	db 28, SQUIRTLE
+	db 29, GOLBAT
+	db 28, SLOWPOKE
+	db 36, DEWGONG
+	db 38, SLOWBRO
+	; day
+	db 30, PSYDUCK
+	db 30, KRABBY
+	db 28, SQUIRTLE
+	db 29, GOLBAT
+	db 28, SLOWPOKE
+	db 36, DEWGONG
+	db 38, SLOWBRO
+	; nite
+	db 30, PSYDUCK
+	db 30, KRABBY
+	db 28, SQUIRTLE
+	db 29, GOLBAT
+	db 28, SLOWPOKE
+	db 36, DEWGONG
+	db 38, SLOWBRO
+	end_grass_wildmons
+
+	def_grass_wildmons SEAFOAM_ISLANDS_B2F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 32, SLOWPOKE
+	db 28, TOTODILE
+	db 30, STARYU
+	db 30, SHELLDER
+	db 34, GOLBAT
+	db 40, JYNX
+	db 40, JYNX
+	; day
+	db 32, SLOWPOKE
+	db 28, TOTODILE
+	db 30, STARYU
+	db 30, SHELLDER
+	db 34, GOLBAT
+	db 40, JYNX
+	db 40, JYNX
+	; nite
+	db 32, SLOWPOKE
+	db 28, TOTODILE
+	db 30, STARYU
+	db 30, SHELLDER
+	db 34, GOLBAT
+	db 40, JYNX
+	db 40, JYNX
+	end_grass_wildmons
+
+	def_grass_wildmons SEAFOAM_ISLANDS_B3F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 33, PSYDUCK
+	db 33, SEEL
+	db 31, SHELLDER
+	db 31, KRABBY
+	db 38, GOLBAT
+	db 39, KINGLER
+	db 37, DEWGONG
+	; day
+	db 33, PSYDUCK
+	db 33, SEEL
+	db 31, SHELLDER
+	db 31, KRABBY
+	db 38, GOLBAT
+	db 39, KINGLER
+	db 37, DEWGONG
+	; nite
+	db 33, PSYDUCK
+	db 33, SEEL
+	db 31, SHELLDER
+	db 31, KRABBY
+	db 38, GOLBAT
+	db 39, KINGLER
+	db 37, DEWGONG
+	end_grass_wildmons
+
+	def_grass_wildmons SEAFOAM_ISLANDS_B4F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 31, SLOWPOKE
+	db 31, STARYU
+	db 33, SHELLDER
+	db 37, KINGLER
+	db 38, DEWGONG
+	db 40, JYNX
+	db 40, JYNX
+	; day
+	db 31, SLOWPOKE
+	db 31, STARYU
+	db 33, SHELLDER
+	db 37, KINGLER
+	db 38, DEWGONG
+	db 40, JYNX
+	db 40, JYNX
+	; nite
+	db 31, SLOWPOKE
+	db 31, STARYU
+	db 33, SHELLDER
+	db 37, KINGLER
+	db 38, DEWGONG
+	db 40, JYNX
+	db 40, JYNX
+	end_grass_wildmons
+
+	def_grass_wildmons POKEMON_TOWER_3F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 21, GASTLY
+	db 22, GASTLY
+	db 23, GASTLY
+	db 24, MISDREAVUS
+	db 20, CUBONE
+	db 22, CUBONE
+	db 25, HAUNTER
+	; day
+	db 21, GASTLY
+	db 22, GASTLY
+	db 23, GASTLY
+	db 24, MISDREAVUS
+	db 20, CUBONE
+	db 22, CUBONE
+	db 25, HAUNTER
+	; nite
+	db 21, GASTLY
+	db 22, GASTLY
+	db 23, GASTLY
+	db 24, MISDREAVUS
+	db 20, CUBONE
+	db 22, CUBONE
+	db 25, HAUNTER
+	end_grass_wildmons
+
+	def_grass_wildmons POKEMON_TOWER_4F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 22, GASTLY
+	db 23, GASTLY
+	db 24, GASTLY
+	db 25, MISDREAVUS
+	db 21, CUBONE
+	db 23, CUBONE
+	db 26, HAUNTER
+	; day
+	db 22, GASTLY
+	db 23, GASTLY
+	db 24, GASTLY
+	db 25, MISDREAVUS
+	db 21, CUBONE
+	db 23, CUBONE
+	db 26, HAUNTER
+	; nite
+	db 22, GASTLY
+	db 23, GASTLY
+	db 24, GASTLY
+	db 25, MISDREAVUS
+	db 21, CUBONE
+	db 23, CUBONE
+	db 26, HAUNTER
+	end_grass_wildmons
+
+	def_grass_wildmons POKEMON_TOWER_5F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 23, GASTLY
+	db 24, GASTLY
+	db 25, GASTLY
+	db 26, MISDREAVUS
+	db 22, CUBONE
+	db 24, CUBONE
+	db 27, HAUNTER
+	; day
+	db 23, GASTLY
+	db 24, GASTLY
+	db 25, GASTLY
+	db 26, MISDREAVUS
+	db 22, CUBONE
+	db 24, CUBONE
+	db 27, HAUNTER
+	; nite
+	db 23, GASTLY
+	db 24, GASTLY
+	db 25, GASTLY
+	db 26, MISDREAVUS
+	db 22, CUBONE
+	db 24, CUBONE
+	db 27, HAUNTER
+	end_grass_wildmons
+
+	def_grass_wildmons POKEMON_TOWER_6F
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 24, GASTLY
+	db 25, GASTLY
+	db 26, GASTLY
+	db 27, MISDREAVUS
+	db 23, CUBONE
+	db 25, CUBONE
+	db 28, HAUNTER
+	; day
+	db 24, GASTLY
+	db 25, GASTLY
+	db 26, GASTLY
+	db 27, MISDREAVUS
+	db 23, CUBONE
+	db 25, CUBONE
+	db 28, HAUNTER
+	; nite
+	db 24, GASTLY
+	db 25, GASTLY
+	db 26, GASTLY
+	db 27, MISDREAVUS
+	db 23, CUBONE
+	db 25, CUBONE
+	db 28, HAUNTER
+	end_grass_wildmons
+
+	def_grass_wildmons BILLS_GARDEN
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	db 12, ABRA
+	db 36, MARILL
+	db 36, PIKACHU
+	db 36, CLEFAIRY
+	db 52, JOLTEON
+	db 42, EEVEE
+	db 42, EEVEE
+	; day
+	db 12, ABRA
+	db 36, MARILL
+	db 36, PIKACHU
+	db 36, CLEFAIRY
+	db 52, FLAREON
+	db 52, ESPEON
+	db 52, ESPEON
+	; nite
+	db 12, ABRA
+	db 36, MARILL
+	db 36, PIKACHU
+	db 36, CLEFAIRY
+	db 36, NIDORINO
+	db 52, UMBREON
+	db 52, UMBREON
+	end_grass_wildmons
+
 	db -1 ; end
