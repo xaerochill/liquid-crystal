@@ -191,7 +191,6 @@ GetCaughtTime:
 	jr z, .none
 	
 	dec a
-	maskbits NUM_DAYTIMES
 	ld hl, .times
 	call GetNthString
 	ld d, h
@@ -209,7 +208,6 @@ GetCaughtTime:
 .times
 	db "Morning@"
 	db "Day@"
-	db "Evening@"
 	db "Night@"
 
 UnknownCaughtData:

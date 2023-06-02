@@ -676,8 +676,9 @@ StartTrainerBattle_LoadPokeBallGraphics:
 
 .cgb
 	ld hl, .pals
-	ld a, [wTimeOfDayPalset]
-	cp DARKNESS_PALSET
+	ld a, [wTimeOfDayPal]
+	maskbits NUM_DAYTIMES
+	cp DARKNESS_F
 	jr nz, .not_dark
 	ld hl, .darkpals
 .not_dark

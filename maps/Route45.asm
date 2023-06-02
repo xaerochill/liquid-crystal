@@ -51,7 +51,7 @@ TrainerBlackbeltKenji:
 	ifnotequal 1, Route45NumberAcceptedM
 	checktime MORN
 	iftrue .Morning
-	checktime EVE | NITE
+	checktime NITE
 	iftrue .Night
 	checkevent EVENT_KENJI_ON_BREAK
 	iffalse Route45NumberAcceptedM

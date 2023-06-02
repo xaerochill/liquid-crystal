@@ -150,7 +150,7 @@ Route29CooltrainerMScript:
 	opentext
 	checktime DAY
 	iftrue .day_morn
-	checktime EVE | NITE
+	checktime NITE
 	iftrue .nite
 .day_morn
 	writetext Route29CooltrainerMText_WaitingForNight
@@ -334,9 +334,8 @@ Route29CooltrainerMText_WaitingForNight:
 	text "I'm waiting for"
 	line "#MON that"
 
-	para "appear only in"
-	line "the evening or"
-	cont "at night."
+	para "appear only at"
+	line "night."
 	done
 
 Route29CooltrainerMText_WaitingForMorning:

@@ -1,7 +1,7 @@
 BillPhoneCalleeScript:
 	checktime DAY
 	iftrue .daygreet
-	checktime EVE | NITE
+	checktime NITE
 	iftrue .nitegreet
 	farwritetext BillPhoneMornGreetingText
 	promptbutton

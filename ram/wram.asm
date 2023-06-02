@@ -2747,7 +2747,6 @@ wTilesetDataAddress:: dw
 
 wMornEncounterRate::  db
 wDayEncounterRate::   db
-wEveEncounterRate::   db
 wNiteEncounterRate::  db
 wWaterEncounterRate:: db
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
@@ -2779,6 +2778,8 @@ wNumFleeAttempts:: db
 wMonTriedToEvolve:: db
 
 wTimeOfDay:: db
+
+	ds 1
 
 
 SECTION "Enemy Party", WRAMX
