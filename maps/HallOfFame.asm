@@ -41,6 +41,15 @@ HallOfFameEnterScript:
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
 	iftrue .SkipPhoneCall
 	specialphonecall SPECIALCALL_SSTICKET
+	clearevent EVENT_FOUGHT_ARTICUNO ; reset Articuno
+	clearevent EVENT_FOUGHT_ZAPDOS ; reset Zapdos
+	clearevent EVENT_FOUGHT_MOLTRES ; reset Moltres
+	clearevent EVENT_FOUGHT_MEWTWO ; reset Mewtwo
+	clearevent EVENT_FOUGHT_MEW ; reset Mew
+	clearevent EVENT_FOUGHT_LUGIA ; reset Lugia
+	clearevent EVENT_FOUGHT_HO_OH ; reset Ho-Oh
+	clearevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER ; reset Celebi
+	clearevent EVENT_GOT_ODD_EGG ; reset Odd Egg
 .SkipPhoneCall:
 	halloffame
 	end

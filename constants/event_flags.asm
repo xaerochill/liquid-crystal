@@ -65,8 +65,8 @@
 	const EVENT_LAKE_OF_RAGE_EXPLAINED_WEIRD_MAGIKARP
 	const EVENT_LAKE_OF_RAGE_ASKED_FOR_MAGIKARP
 	const EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
-	const_skip ; unused
-	const_skip ; unused
+	const EVENT_CERULEAN_CAVE_MEWTWO ; previously unused in Crystal
+	const EVENT_FOUGHT_MEWTWO ; previously unused in Crystal
 	const EVENT_HEALED_MOOMOO
 	const EVENT_GOT_TM13_SNORE_FROM_MOOMOO_FARM
 	const EVENT_TALKED_TO_FARMER_ABOUT_MOOMOO
@@ -136,8 +136,8 @@
 	const EVENT_TIN_TOWER_5F_HIDDEN_FULL_RESTORE
 	const EVENT_TIN_TOWER_5F_HIDDEN_CARBOS
 	const EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
-	const_skip ; unused in Crystal
-	const_skip ; unused in Crystal
+	const EVENT_VERMILION_PORT_MEW ; previously unused in Crystal
+	const EVENT_FOUGHT_MEW ; previously unused in Crystal
 	const_skip ; unused in Crystal
 	const EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 	const EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
@@ -202,7 +202,12 @@
 	const EVENT_GAVE_GS_BALL_TO_KURT
 	const EVENT_FOREST_IS_RESTLESS
 	const EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
-; Unused: next 6 events
+	const EVENT_SEAFOAM_ISLANDS_ARTICUNO ; previously unused in Crystal
+	const EVENT_FOUGHT_ARTICUNO ; previously unused in Crystal
+	const EVENT_POWER_PLANT_ZAPDOS ; previously unused in Crystal
+	const EVENT_FOUGHT_ZAPDOS ; previously unused in Crystal
+	const EVENT_VICTORY_ROAD_MOLTRES ; previously unused in Crystal
+	const EVENT_FOUGHT_MOLTRES ; previously unused in Crystal
 
 	const_next 200
 ; Kanto story events

@@ -114,7 +114,7 @@ KantoGrassWildMons:
 	db 15, GOLBAT
 	end_grass_wildmons
 
-	def_grass_wildmons VICTORY_ROAD
+	def_grass_wildmons VICTORY_ROAD_2F
 	db 6 percent, 6 percent, 6 percent ; encounter rates: morn/day/nite
 	; morn
 	db 34, GRAVELER

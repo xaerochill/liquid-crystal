@@ -151,37 +151,39 @@ ENDM
 	map_const UNDERGROUND_PATH,                             3, 14 ; 86
 	map_const ROCK_TUNNEL_1F,                              15, 18 ; 87
 	map_const ROCK_TUNNEL_B1F,                             15, 18 ; 88
-	map_const VICTORY_ROAD,                                10, 36 ; 89
-	map_const SAFARI_ZONE_HIDEOUT_1F,                      15, 14 ; 90
-	map_const SAFARI_ZONE_HIDEOUT_2F,                      15, 14 ; 91
-	map_const SAFARI_ZONE_HIDEOUT_3F,                      15, 14 ; 92
-	map_const SAFARI_ZONE_HIDEOUT_B1F,                     15, 14 ; 93
-	map_const POWER_PLANT_B1F,                             15, 15 ; 94
-	map_const POWER_PLANT_B2F,                             15, 15 ; 95
-	map_const POWER_PLANT_B3F,                             20, 18 ; 96
-	map_const POKEMON_MANSION_1F,                          15, 14 ; 97
-	map_const POKEMON_MANSION_2F,                          15, 14 ; 98
-	map_const POKEMON_MANSION_3F,                          15,  9 ; 99
-	map_const POKEMON_MANSION_B1F,                         15, 14 ; 100
-	map_const CERULEAN_CAVE_1F,                            17, 11 ; 101
-	map_const CERULEAN_CAVE_2F,                            17, 11 ; 102
-	map_const CERULEAN_CAVE_B1F,                           17, 11 ; 103
-	map_const ROCKET_HIDEOUT_B1F,                          15, 14 ; 104
-	map_const ROCKET_HIDEOUT_B2F,                          15, 14 ; 105
-	map_const ROCKET_HIDEOUT_B3F,                          15, 14 ; 106
-	map_const ROCKET_HIDEOUT_B4F,                          15, 14 ; 107
-	map_const ROCKET_HIDEOUT_ELEVATOR,                      4,  3 ; 108
-	map_const MINESHAFT_1F,                                16, 10 ; 109
-	map_const MINESHAFT_B1F,                               16, 10 ; 110
-	map_const MINESHAFT_B2F,                               16, 10 ; 111
-	map_const MINESHAFT_B3F,                               16, 10 ; 112
-	map_const MINESHAFT_B4F,                               16, 10 ; 113
-	map_const MINESHAFT_B5F,                               16, 10 ; 114
-	map_const SEAFOAM_ISLANDS_1F,                          15,  9 ; 115
-	map_const SEAFOAM_ISLANDS_B1F,                         15,  9 ; 116
-	map_const SEAFOAM_ISLANDS_B2F,                         15,  9 ; 117
-	map_const SEAFOAM_ISLANDS_B3F,                         15,  9 ; 118
-	map_const SEAFOAM_ISLANDS_B4F,                         15,  9 ; 119
+	map_const VICTORY_ROAD_1F,                             12, 11 ; 89
+	map_const VICTORY_ROAD_2F,                             17, 11 ; 90
+	map_const VICTORY_ROAD_3F,                             17, 11 ; 91
+	map_const SAFARI_ZONE_HIDEOUT_1F,                      15, 14 ; 92
+	map_const SAFARI_ZONE_HIDEOUT_2F,                      15, 14 ; 93
+	map_const SAFARI_ZONE_HIDEOUT_3F,                      15, 14 ; 94
+	map_const SAFARI_ZONE_HIDEOUT_B1F,                     15, 14 ; 95
+	map_const POWER_PLANT_B1F,                             15, 15 ; 96
+	map_const POWER_PLANT_B2F,                             15, 15 ; 97
+	map_const POWER_PLANT_B3F,                             20, 18 ; 98
+	map_const POKEMON_MANSION_1F,                          15, 14 ; 99
+	map_const POKEMON_MANSION_2F,                          15, 14 ; 100
+	map_const POKEMON_MANSION_3F,                          15,  9 ; 101
+	map_const POKEMON_MANSION_B1F,                         15, 14 ; 102
+	map_const CERULEAN_CAVE_1F,                            17, 11 ; 103
+	map_const CERULEAN_CAVE_2F,                            17, 11 ; 104
+	map_const CERULEAN_CAVE_B1F,                           17, 11 ; 105
+	map_const ROCKET_HIDEOUT_B1F,                          15, 14 ; 106
+	map_const ROCKET_HIDEOUT_B2F,                          15, 14 ; 107
+	map_const ROCKET_HIDEOUT_B3F,                          15, 14 ; 108
+	map_const ROCKET_HIDEOUT_B4F,                          15, 14 ; 109
+	map_const ROCKET_HIDEOUT_ELEVATOR,                      4,  3 ; 110
+	map_const MINESHAFT_1F,                                16, 10 ; 111
+	map_const MINESHAFT_B1F,                               16, 10 ; 112
+	map_const MINESHAFT_B2F,                               16, 10 ; 113
+	map_const MINESHAFT_B3F,                               16, 10 ; 114
+	map_const MINESHAFT_B4F,                               16, 10 ; 115
+	map_const MINESHAFT_B5F,                               16, 10 ; 116
+	map_const SEAFOAM_ISLANDS_1F,                          15,  9 ; 117
+	map_const SEAFOAM_ISLANDS_B1F,                         15,  9 ; 118
+	map_const SEAFOAM_ISLANDS_B2F,                         15,  9 ; 119
+	map_const SEAFOAM_ISLANDS_B3F,                         15,  9 ; 120
+	map_const SEAFOAM_ISLANDS_B4F,                         15,  9 ; 121
 	endgroup
 
 	newgroup ECRUTEAK                                             ;  4
@@ -307,6 +309,8 @@ ENDM
 	map_const ILEX_FOREST_AZALEA_GATE,                      5,  4 ; 22
 	map_const ROUTE_34_ILEX_FOREST_GATE,                    5,  4 ; 23
 	map_const DAY_CARE,                                     5,  4 ; 24
+	map_const GLOBAL_TERMINAL_OUTSIDE,                     10, 13 ; 25
+	map_const GLOBAL_TERMINAL_1F,                           9,  6 ; 26
 	endgroup
 
 	newgroup VERMILION                                            ; 12

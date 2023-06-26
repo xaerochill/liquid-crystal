@@ -303,6 +303,7 @@ FastShipGroupSprites:
 	; 6 of max 9 walking sprites
 	db SPRITE_HO_OH
 	db SPRITE_ROCK
+	db SPRITE_CLEFAIRY ; Mew
 	db 0 ; end
 
 CableClubGroupSprites:

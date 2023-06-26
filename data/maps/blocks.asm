@@ -848,8 +848,14 @@ UndergroundPath_Blocks:
 Route39Barn_Blocks:
 	INCBIN "maps/Route39Barn.ablk"
 
-VictoryRoad_Blocks:
-	INCBIN "maps/VictoryRoad.ablk"
+VictoryRoad1F_Blocks:
+	INCBIN "maps/VictoryRoad1F.ablk"
+
+VictoryRoad2F_Blocks:
+	INCBIN "maps/VictoryRoad2F.ablk"
+
+VictoryRoad3F_Blocks:
+	INCBIN "maps/VictoryRoad3F.ablk"
 
 Route23_Blocks:
 	INCBIN "maps/Route23.ablk"
@@ -932,6 +938,12 @@ BattleTowerOutside_Blocks:
 
 GoldenrodDeptStoreRoof_Blocks:
 	INCBIN "maps/GoldenrodDeptStoreRoof.ablk"
+
+GlobalTerminalOutside_Blocks:
+	INCBIN "maps/GlobalTerminalOutside.ablk"
+
+GlobalTerminal1F_Blocks:
+	INCBIN "maps/GlobalTerminal1F.ablk"
 
 
 SECTION "Map Blocks 4", ROMX
@@ -1061,7 +1073,6 @@ SeafoamIslandsB3F_Blocks:
 
 SeafoamIslandsB4F_Blocks:
 	INCBIN "maps/SeafoamIslandsB4F.ablk"
-
 
 SilphCo1F_Blocks:
 	INCBIN "maps/SilphCo1F.ablk"

@@ -117,9 +117,13 @@ ENDM
 	map_attributes CianwoodCity, CIANWOOD_CITY, $35, EAST
 	connection east, Route41, ROUTE_41, 0
 
-	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH
+	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | WEST
 	connection north, Route35, ROUTE_35, 5
 	connection south, Route34, ROUTE_34, 5
+	connection west, GlobalTerminalOutside, GLOBAL_TERMINAL_OUTSIDE, 2
+	
+	map_attributes GlobalTerminalOutside, GLOBAL_TERMINAL_OUTSIDE, $35, EAST
+	connection east, GoldenrodCity, GOLDENROD_CITY, -2
 
 	map_attributes OlivineCity, OLIVINE_CITY, $35, NORTH | WEST
 	connection north, Route39, ROUTE_39, 5
@@ -502,7 +506,9 @@ ENDM
 	connection south, SafariZoneWest, SAFARI_ZONE_WEST, 0
 	connection east, SafariZoneNorth, SAFARI_ZONE_NORTH, 0
 	
-	map_attributes VictoryRoad, VICTORY_ROAD, $1d, 0
+	map_attributes VictoryRoad1F, VICTORY_ROAD_1F, $09, 0
+	map_attributes VictoryRoad2F, VICTORY_ROAD_2F, $09, 0
+	map_attributes VictoryRoad3F, VICTORY_ROAD_3F, $09, 0
 	map_attributes SafariZoneHideout1F, SAFARI_ZONE_HIDEOUT_1F, $00, 0
 	map_attributes SafariZoneHideout2F, SAFARI_ZONE_HIDEOUT_2F, $00, 0
 	map_attributes SafariZoneHideout3F, SAFARI_ZONE_HIDEOUT_3F, $00, 0
@@ -759,6 +765,7 @@ ENDM
 	map_attributes Route30BerryHouse, ROUTE_30_BERRY_HOUSE, $00, 0
 	map_attributes MrPokemonsHouse, MR_POKEMONS_HOUSE, $00, 0
 	map_attributes Route31VioletGate, ROUTE_31_VIOLET_GATE, $00, 0
+	map_attributes GlobalTerminal1F, GLOBAL_TERMINAL_1F, $00, 0
 	map_attributes PokemonTower1F, POKEMON_TOWER_1F, $00, 0
 	map_attributes PokemonTower2F, POKEMON_TOWER_2F, $00, 0
 	map_attributes PokemonTower3F, POKEMON_TOWER_3F, $00, 0
