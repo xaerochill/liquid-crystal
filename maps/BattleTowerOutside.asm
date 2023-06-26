@@ -12,7 +12,7 @@ BattleTowerOutside_MapScripts:
 	callback MAPCALLBACK_OBJECTS, BattleTowerOutsideShowCiviliansCallback
 
 BattleTowerOutsideDoorsCallback:
-	special Mobile_DummyReturnFalse
+	checkevent ENGINE_UNLOCKED_UNOWNS_X_TO_Z
 	iftrue .doorsopen;$7CE6
 	changeblock 8, 8, $2C
 	endcallback
@@ -22,7 +22,7 @@ BattleTowerOutsideDoorsCallback:
 	endcallback
 
 BattleTowerOutsideShowCiviliansCallback:
-	special Mobile_DummyReturnFalse
+	checkevent ENGINE_UNLOCKED_UNOWNS_X_TO_Z
 	iffalse .nomobile
 	clearevent EVENT_BATTLE_TOWER_OPEN_CIVILIANS
 
@@ -30,7 +30,7 @@ BattleTowerOutsideShowCiviliansCallback:
 	endcallback
 
 BattleTowerOutsideYoungsterScript:
-	special Mobile_DummyReturnFalse
+	checkevent ENGINE_UNLOCKED_UNOWNS_X_TO_Z
 	iftrue .mobile
 	jumptextfaceplayer BattleTowerOutsideYoungsterText_NotYetOpen
 
@@ -38,7 +38,7 @@ BattleTowerOutsideYoungsterScript:
 	jumptextfaceplayer BattleTowerOutsideYoungsterText_Mobile
 
 BattleTowerOutsideBeautyScript:
-	special Mobile_DummyReturnFalse
+	checkevent ENGINE_UNLOCKED_UNOWNS_X_TO_Z
 	iftrue .mobile
 	jumptextfaceplayer BattleTowerOutsideBeautyText_NotYetOpen
 
@@ -49,7 +49,7 @@ BattleTowerOutsideSailorScript:
 	jumptextfaceplayer BattleTowerOutsideSailorText_Mobile
 
 BattleTowerOutsideSign:
-	special Mobile_DummyReturnFalse
+	checkevent ENGINE_UNLOCKED_UNOWNS_X_TO_Z
 	iftrue .mobile
 	jumptext BattleTowerOutsideSignText_NotYetOpen
 
@@ -57,14 +57,14 @@ BattleTowerOutsideSign:
 	jumptext BattleTowerOutsideSignText
 
 BattleTowerOutsideDoor:
-	special Mobile_DummyReturnFalse
+	checkevent ENGINE_UNLOCKED_UNOWNS_X_TO_Z
 	iftrue .mobile
 	jumptext BattleTowerOutsideText_DoorsClosed
 
 .mobile
 	jumptext BattleTowerOutsideText_DoorsOpen
 
-BattleTowerOutsideYoungsterText_NotYetOpen: ; unreferenced
+BattleTowerOutsideYoungsterText_NotYetOpen:
 	text "Wow, the BATTLE"
 	line "TOWER is huge! My"
 
@@ -72,7 +72,7 @@ BattleTowerOutsideYoungsterText_NotYetOpen: ; unreferenced
 	line "looking up at it."
 	done
 
-BattleTowerOutsideYoungsterText_Mobile: ; unreferenced
+BattleTowerOutsideYoungsterText_Mobile:
 	text "Wow, the BATTLE"
 	line "TOWER is huge!"
 
@@ -95,7 +95,7 @@ BattleTowerOutsideYoungsterText:
 	cont "in there!"
 	done
 
-BattleTowerOutsideBeautyText_NotYetOpen: ; unreferenced
+BattleTowerOutsideBeautyText_NotYetOpen:
 	text "What on earth do"
 	line "they do here?"
 
@@ -117,7 +117,7 @@ BattleTowerOutsideBeautyText:
 	line "battle…"
 	done
 
-BattleTowerOutsideSailorText_Mobile: ; unreferenced
+BattleTowerOutsideSailorText_Mobile:
 	text "Ehehehe…"
 	line "I sneaked out of"
 	cont "work to come here."
@@ -138,8 +138,7 @@ BattleTowerOutsideSailorText:
 	line "all. That I must!"
 	done
 
-BattleTowerOutsideSignText_NotYetOpen: ; unreferenced
-; originally shown when the Battle Tower was closed
+BattleTowerOutsideSignText_NotYetOpen:
 	text "BATTLE TOWER"
 	done
 
@@ -150,14 +149,12 @@ BattleTowerOutsideSignText:
 	line "Trainer Challenge!"
 	done
 
-BattleTowerOutsideText_DoorsClosed: ; unreferenced
-; originally shown when the Battle Tower was closed
+BattleTowerOutsideText_DoorsClosed:
 	text "The BATTLE TOWER's"
 	line "doors are closed…"
 	done
 
-BattleTowerOutsideText_DoorsOpen: ; unreferenced
-; originally shown after the Battle Tower opened
+BattleTowerOutsideText_DoorsOpen:
 	text "It's open!"
 	done
 

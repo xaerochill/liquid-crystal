@@ -9,7 +9,7 @@ Route40BattleTowerGate_MapScripts:
 	callback MAPCALLBACK_OBJECTS, RouteBattleTowerGateShowSailorCallback
 
 RouteBattleTowerGateShowSailorCallback:
-	special Mobile_DummyReturnFalse
+	checkevent ENGINE_UNLOCKED_UNOWNS_X_TO_Z
 	iffalse .nomobile
 	clearevent EVENT_BATTLE_TOWER_OPEN_CIVILIANS
 
@@ -17,17 +17,17 @@ RouteBattleTowerGateShowSailorCallback:
 	return
 
 Route40BattleTowerGateRockerScript:
-	jumptextfaceplayer Route40BattleTowerGateUnusedText3
+	jumptextfaceplayer Route40BattleTowerGateRockerText
 
 Route40BattleTowerGateTwinScript:
-	special Mobile_DummyReturnFalse
+	checkevent ENGINE_UNLOCKED_UNOWNS_X_TO_Z
 	iftrue .mobile
-	jumptextfaceplayer Route40BattleTowerGateUnusedText1
+	jumptextfaceplayer Route40BattleTowerGateTwinText
 
 .mobile
-	jumptextfaceplayer Route40BattleTowerGateUnusedText2
+	jumptextfaceplayer Route40BattleTowerGateTwinMobileText
 
-Route40BattleTowerGateUnusedText1:
+Route40BattleTowerGateTwinText:
 	text "Did you come to"
 	line "see the BATTLE"
 	cont "TOWER too?"
@@ -36,7 +36,7 @@ Route40BattleTowerGateUnusedText1:
 	line "can't go in yet."
 	done
 
-Route40BattleTowerGateUnusedText2:
+Route40BattleTowerGateTwinMobileText:
 	text "BATTLE TOWER has"
 	line "opened."
 
@@ -56,25 +56,6 @@ Route40BattleTowerGateRockerText:
 
 	para "whole lot, you can"
 	line "win special gifts."
-	done
-
-Route40BattleTowerGateUnusedText3:
-	text "I'm going to train"
-	line "my #MON so I'll"
-
-	para "be all ready for"
-	line "the BATTLE TOWER."
-	done
-
-Route40BattleTowerGateTwinText:
-	text "The levels of the"
-	line "#MON I want to"
-
-	para "use are all"
-	line "different."
-
-	para "I have to go train"
-	line "them now!"
 	done
 
 Route40BattleTowerGate_MapEvents:
