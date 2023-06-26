@@ -23,8 +23,6 @@ DayCareEggCheckCallback:
 DayCareManScript_Inside:
 	faceplayer
 	opentext
-	special Mobile_DummyReturnFalse
-	iffalse .AlreadyHaveOddEgg
 	checkevent EVENT_GOT_ODD_EGG
 	iftrue .AlreadyHaveOddEgg
 	setval EGG_TICKET
@@ -76,7 +74,7 @@ Text_GrampsLookingForYou:
 	line "for you."
 	done
 
-Text_DayCareManTalksAboutEggTicket: ; unreferenced
+Text_DayCareManTalksAboutEggTicket:
 	text "I'm the DAY-CARE"
 	line "MAN."
 
@@ -123,7 +121,7 @@ DayCareManText_GiveOddEgg:
 	line "yours to keep!"
 	done
 
-DayCareText_ComeAgain: ; unreferenced
+DayCareText_ComeAgain:
 	text "Come again."
 	done
 
