@@ -36,7 +36,7 @@ TrainerPicPointers::
 	dba GruntmPic
 	dba GentlemanPic
 	dba SkierPic
-	dba TeacherPic
+	dba TeacherFPic
 	dba SabrinaPic
 	dba BugCatcherPic
 	dba FisherPic
@@ -70,4 +70,14 @@ TrainerPicPointers::
 	dba OfficerPic
 	dba GruntfPic
 	dba MysticalmanPic
+	dba AgathaPic
+	dba EngineerPic
+	dba GiovanniPic
+	dba KurtPic
+	dba LoreleiPic
+	dba SoldierPic
+	dba SportsmanPic
+	dba TeacherMPic
+	dba GreenPic
+	dba YellowPic
 	assert_table_length NUM_TRAINER_CLASSES

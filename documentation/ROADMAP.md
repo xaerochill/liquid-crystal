@@ -23,7 +23,7 @@
 
 Liquid Crystal is a branch of pokecrystal with Mobile Adapter Features. In terms of gameplay, it floats somewhere between RBY and HGSS and takes select elements of each generation without breaking compatibility with vanilla GSC. Canon-wise, it takes plays after the [Gold, Silver & Crystal chapter](https://bulbapedia.bulbagarden.net/wiki/Gold,_Silver_%26_Crystal_chapter_(Adventures)).
 
-All Pokémon not pressent in vanilla Crystal are available:
+All Pokémon not present in vanilla Crystal are available:
 * Bulbasaur: Cerulean City Gift, Viridian Forest
 * Charmander: Route 24 Gift, Pokémon Mansion
 * Squirtle: Vermilion City Gift, Seafoam Islands
@@ -32,15 +32,28 @@ All Pokémon not pressent in vanilla Crystal are available:
 * Primeape: Cerulean Cave
 * Omanyte: Fossil
 * Kabuto: Fossil
-* Articuno: Seafoam Islands
-* Zapdos: Power Plant
-* Moltres: Victory Road
-* Mewtwo: Cerulean Cave
-* Mew: Harbour
+* Articuno: Seafoam Islands (after unlocking Unown A - K)
+* Zapdos: Power Plant (after unlocking Unown A - K)
+* Moltres: Victory Road (after unlocking Unown A - K)
+* Mewtwo: Cerulean Cave (after unlocking Unown S - W)
+* Mew: Vermilion Port Passage (after unlocking Unown X - Z)
 * Mareep: Routes 32, 42, 43
 * Flaaffy: Routes 42, 43
 * Girafarig: Route 43
 * Remoraid: Route 44
+* Celebi Event is active in Goldenrod Pokécom Center (after unlocking Unown X - Z)
+
+Beating the Elite 4 resets the following Events:
+* Articuno
+* Zapdos
+* Moltres
+* Mewtwo
+* Mew
+* Lugia
+* Ho-Oh
+* GS Ball
+* Master Ball
+* Odd Egg
 
 ## Game Changes
 - [ ] Scaling trainer parties with individual DVs, stat experience & nicknames
@@ -55,24 +68,26 @@ All Pokémon not pressent in vanilla Crystal are available:
 - [ ] Add music that changes at night
 - [ ] Decide on 7 mobile phone numbers that will be kept (Bill, Mum and Elm make 10) https://www.serebii.net/crystal/pokegear.shtml
 - [ ] Make grinding possible (VS. SEEKER)
-- [ ] Incorporate mobile features into gameplay and restore the GS Ball Celebi Event
 - [ ] Unify sine wave code and data
-- [ ] Customizable Pokédex Colour
 
 ## Map Changes
 
 - [x] Cerulean Cave is fully restored and accessible
-- [x] Cinnabar Island is resttored: The [Pokémon Lab](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Cinnabar_Pok%C3%A9mon_Lab) is revamped and accessible
+- [x] Cinnabar Island is restored: The [Pokémon Lab](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Cinnabar_Pok%C3%A9mon_Lab) is revamped and accessible
 - [x] Rocket Hideout under Celadon Game Corner is accessible and features the Gen 1 spinner tiles, and the prize room was changed to reflect the [1997 Spaceworld Beta map](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Celadon_Game_Corner) more closely
 - [x] Route 3 contains a dungeon based on the [1997 Spaceworld Beta Mineshaft](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Mineshaft)
 - [x] Route 20 includes a Kanto Lighthouse on the Seafoam Island as seen in [early designs of RBY](https://tcrf.net/Development:Pok%C3%A9mon_Red_and_Blue/Unused_Maps#Exteriors_2). It uses a [1997 Spaceworld Beta Hideout](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Hideout) as a map
 - [x] Silph Co. is fully restored and accessible
-- [x] Kanto Power Plant is restored and also contains the [three 1997 Spaceworld Beta lloors](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Power_Plant), Zapdos' Lair being in B3F
+- [x] Kanto Power Plant is restored and also contains the [three 1997 Spaceworld Beta floors](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Power_Plant), Zapdos' Lair being in B3F
 - [x] Kanto Radio Tower moved to Saffron City and expanded based on the [1997 Spaceworld Hideout maps](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Hideout)
 - [x] Lavender Town Pokémon Tower is fully restored and accessible
 - [x] [Pewter City Museum of Science](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Pewter_City_Museum) is revamped and accessible
 - [x] Safari Zone is available via the [unused gate](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Safari_Zone_Gate) and contains the [Safari Zone Beta Map](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Safari_Zone). As referenced in [unused Red & Blue text](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue/Unused_Text#Safari_Zone), a Silph Manager might be hiding here! The hideout uses the scrapped [Haunted House Map](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Haunted_House)
 - [x] [Bill's Garden](https://tcrf.net/Development:Pok%C3%A9mon_Red_and_Blue/Unused_Maps#Garden) is not a lie! Look around his house to access it.
+- [x] Victory Road uses the Gen 1 Layout and has Moltres back in it
+- [ ] Entei is available as a static encounter in [Burned Tower B2F](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Burned_Tower) after beating the E4
+- [ ] Raikou is available as a static encounter in [???] after beating the E4
+- [ ] Suicune is available as a static encounter in the [scrapped Seafoam Islands map](https://tcrf.net/Development:Pok%C3%A9mon_Red_and_Blue/Unused_Maps#Seafoam_Islands) after beating the E4
 - [ ] Make use of [Spaceworld 1997 Demo Pokémon Center](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Time_Capsule)
 - [ ] Make use of rubble sitting on water https://tcrf.net/Pok%C3%A9mon_Red_and_Blue/Unseen_Graphics#Tileset_0A
 - [ ] S.S. Anne sunk, Truck and unused [bollards from RB](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue/Unseen_Graphics#Tileset_04) in [Vermilion City Harbour](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue/Unseen_Graphics#Vermilion_City_Harbor)
@@ -82,12 +97,9 @@ All Pokémon not pressent in vanilla Crystal are available:
 - [ ] Fix Map Boundary Route 16/17 going from tree blocks to water blocks
 - [ ] Restore the [unused Olivine City house](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Olivine_House)
 - [ ] Restore the [Celadon Chief House](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Celadon_House)
-- [ ] Make ue of the [Unknown House](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Unknown_House)
-- [ ] Make ue of the [Unknown Office](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Unknown_Office)
-- [ ] Make use of [scrapped Seafoam Islands map](https://tcrf.net/Development:Pok%C3%A9mon_Red_and_Blue/Unused_Maps#Seafoam_Islands)
-- [ ] Make use of unused [Burned Tower B2F](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Burned_Tower
+- [ ] Make use of the [Unknown House](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Unknown_House)
+- [ ] Make use of the [Unknown Office](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Unknown_Office)
 - [ ] Make use of [Olivine Gym 2F](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Olivine_Gym_2F)
-- [ ] Use Victory Road Gen 1 Layout
 - [ ] Make use of [1997 Spaceworld Beta Slowpoke Well](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Slowpoke_Well)
 
 
@@ -123,6 +135,16 @@ All of the changes are taken from the [pokecrystal wiki](https://github.com/pret
   -- Snubbull: Route 38
   -- Quilfish: Route 32
   -- Remoraid: Route 44
+- Unlocking Unown X - Z unlocks dialogue related to mobile content in the following maps:
+  -- Battle Tower Outside
+  -- Cerulean Poké Center
+  -- Ecruteak Poké Center
+  -- Fast Ship
+  -- Goldenrod PokéCom Center
+  -- Route 40
+  -- Ruins of Alph Research Center
+  -- Saffron Poké Center
+  -- Violet Poké Center
 
 ### Difficulty Changes
 - Removed Gym Badges Boosts

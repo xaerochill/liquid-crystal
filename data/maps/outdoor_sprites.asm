@@ -43,7 +43,7 @@ PewterGroupSprites:
 ; Route3, PewterCity
 CinnabarGroupSprites:
 ; Route19, Route20, Route21, CinnabarIsland
-	db SPRITE_TEACHER
+	db SPRITE_TEACHER_F
 	db SPRITE_FISHER
 	db SPRITE_YOUNGSTER
 	db SPRITE_BLUE
@@ -81,7 +81,7 @@ VermilionGroupSprites:
 	db SPRITE_POKEFAN_M
 	db SPRITE_GRAMPS
 	db SPRITE_YOUNGSTER
-	db SPRITE_TEACHER
+	db SPRITE_TEACHER_F
 	db SPRITE_SUPER_NERD
 	; 5 of max 9 walking sprites
 	db SPRITE_BIG_SNORLAX
@@ -93,7 +93,7 @@ VermilionGroupSprites:
 CeladonGroupSprites:
 ; Route7, Route16, Route17, CeladonCity
 	db SPRITE_FISHER
-	db SPRITE_TEACHER
+	db SPRITE_TEACHER_F
 	db SPRITE_GRAMPS
 	db SPRITE_YOUNGSTER
 	db SPRITE_LASS
@@ -113,7 +113,7 @@ FuchsiaGroupSprites:
 	db SPRITE_GRAMPS
 	db SPRITE_YOUNGSTER
 	db SPRITE_FISHER
-	db SPRITE_TEACHER
+	db SPRITE_TEACHER_F
 	db SPRITE_SUPER_NERD
 	db SPRITE_BIKER
 	; 7 of max 9 walking sprites
@@ -138,7 +138,7 @@ NewBarkGroupSprites:
 CherrygroveGroupSprites:
 ; Route30, Route31, CherrygroveCity
 	db SPRITE_RIVAL
-	db SPRITE_TEACHER
+	db SPRITE_TEACHER_F
 	db SPRITE_FISHER
 	db SPRITE_COOLTRAINER_M
 	db SPRITE_YOUNGSTER
@@ -177,7 +177,7 @@ AzaleaGroupSprites:
 	db SPRITE_GRAMPS
 	db SPRITE_YOUNGSTER
 	db SPRITE_POKEFAN_M
-	db SPRITE_TEACHER
+	db SPRITE_TEACHER_F
 	db SPRITE_ROCKET
 	db SPRITE_RIVAL
 	db SPRITE_LASS
@@ -280,7 +280,7 @@ DungeonsGroupSprites:
 ; NationalPark, NationalParkBugContest, RuinsOfAlphOutside
 	db SPRITE_LASS
 	db SPRITE_POKEFAN_F
-	db SPRITE_TEACHER
+	db SPRITE_TEACHER_F
 	db SPRITE_YOUNGSTER
 	db SPRITE_POKEFAN_M
 	db SPRITE_ROCKER

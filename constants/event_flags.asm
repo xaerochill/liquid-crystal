@@ -138,7 +138,7 @@
 	const EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
 	const EVENT_VERMILION_PORT_MEW ; previously unused in Crystal
 	const EVENT_FOUGHT_MEW ; previously unused in Crystal
-	const_skip ; unused in Crystal
+	const EVENT_BEAT_OAK ; previously unused in Crystal
 	const EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 	const EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
 	const EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
@@ -286,11 +286,11 @@
 	const EVENT_GAVE_KURT_PNK_APRICORN
 ; Phone events
 	const EVENT_JACK_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_BEAT_AGATHA ; previously unused in Crystal
 	const EVENT_BEVERLY_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_BEAT_GIOVANNI ; previously unused in Crystal
 	const EVENT_HUEY_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_BEAT_KURT ; previously unused in Crystall
 	const EVENT_GOT_PROTEIN_FROM_HUEY
 	const EVENT_GOT_HP_UP_FROM_JOEY
 	const EVENT_GOT_CARBOS_FROM_VANCE
@@ -298,11 +298,11 @@
 	const EVENT_GOT_CALCIUM_FROM_ERIN
 	const EVENT_KENJI_ON_BREAK
 	const EVENT_GAVEN_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_BEAT_LORELEI ; previously unused in Crystal
 	const EVENT_BETH_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_BEAT_GREEN ; previously unused in Crystal
 	const EVENT_JOSE_ASKED_FOR_PHONE_NUMBER
-	const_skip ; unused in Crystal
+	const EVENT_BEAT_YELLOW ; previously unused in Crystal
 	const EVENT_REENA_ASKED_FOR_PHONE_NUMBER
 	const_skip ; unused in Crystal
 	const EVENT_JOEY_ASKED_FOR_PHONE_NUMBER

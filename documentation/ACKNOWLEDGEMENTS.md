@@ -1,9 +1,11 @@
-**Acknowledgements**
+**Gameplay**
 
 - GameFreak and Nintendo for creating this spectacular game in the first place
 - Everyone mentioned in the [README](/README.md) for their amazing work with the pokecrystal disassembly and restoring the mobile features
-- The [TCRF Team](https://tcrf.net/) for their documentation of unused or lost maps, tiles and game assets where I ave taken most inspiration from
+- [TCRF](https://tcrf.net/) for their documentation of unused or lost maps, tiles, trainers, text, and game assets where I have taken most material and inspiration from
 - The kind people on the pret Discord for their continued help on all kinds of issues <3
-  -- FrenchOrange for the [Tileset Atlas](https://www.deviantart.com/frenchorange/art/Pokemon-Generation-I-and-II-Tile-Atlas-948667086)
-  -- Rangi for the inspiring work with pokeorange
-  -- vulcandth for lots of cool code
+
+**Graphics**
+- FrenchOrange for the [Tileset Atlas](https://www.deviantart.com/frenchorange/art/Pokemon-Generation-I-and-II-Tile-Atlas-948667086)
+- Lou Lilie for the sprites of [Green and Yellow](https://www.deviantart.com/loulilie/gallery/38635722/pokemon-sprites)
+- Trainer Sprites for the added unused trainer classes from [TCRF](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1999_Demo/Graphic_Differences#Trainer_Sprites)
