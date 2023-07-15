@@ -135,9 +135,9 @@ ItemDescriptions:
 	dw StarPieceDesc
 	dw BasementKeyDesc
 	dw PassDesc
-	dw TeruSama9Desc
-	dw TeruSama10Desc
-	dw TeruSama11Desc
+	dw OldAmberDesc
+	dw DomeFossilDesc
+	dw HelixFossilDesc
 	dw CharcoalDesc
 	dw BerryJuiceDesc
 	dw ScopeLensDesc
@@ -784,14 +784,17 @@ PassDesc:
 	db   "A ticket for the"
 	next "MAGNET TRAIN.@"
 
-TeruSama9Desc:
-	db   "?@"
+OldAmberDesc:
+	db   "Prehistoric Fossi-"
+	next "lized tree resin.@"
 
-TeruSama10Desc:
-	db   "?@"
+DomeFossilDesc:
+	db   "#MON fossil of"
+	next "prehistoric times.@"
 
-TeruSama11Desc:
-	db   "?@"
+HelixFossilDesc:
+	db   "#MON fossil of"
+	next "prehistoric times.@"
 
 CharcoalDesc:
 	db   "Powers up fire-"

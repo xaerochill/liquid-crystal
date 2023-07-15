@@ -102,14 +102,14 @@ jr z, .done
 	ret
 	
 .RockItems:
-	db 2, STAR_PIECE
-	db 2, STARDUST
-	db 4, BIG_PEARL
-	db 8, THICK_CLUB
-	;db 16, OLD_AMBER
-	;db 16, DOME_FOSSIL
-	;db 16, HELIX_FOSSIL
-	db 32, BRICK_PIECE
-	db 32, PEARL
-	db 64, STICK
-	db -1
+	db 4, STAR_PIECE ; 1.56%
+	db 4, STARDUST ; 1.56%
+	db 16, BIG_PEARL ; 6.25%
+	db 20, THICK_CLUB ; 7.81%
+	db 20, STICK ; 7.81%
+	db 28, PEARL ; 10.94%
+	db 32, OLD_AMBER ; 12.50%
+	db 32, DOME_FOSSIL ; 12.50%
+	db 32, HELIX_FOSSIL ; 12.50%
+	db 36, BRICK_PIECE ; 14.06%
+	db -1 ; no item 12.50%

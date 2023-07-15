@@ -140,9 +140,9 @@
 	const STAR_PIECE   ; 84
 	const BASEMENT_KEY ; 85
 	const PASS         ; 86
-	const ITEM_87      ; 87
-	const ITEM_88      ; 88
-	const ITEM_89      ; 89
+	const OLD_AMBER    ; 87
+	const DOME_FOSSIL  ; 88
+	const HELIX_FOSSIL ; 89
 	const CHARCOAL     ; 8a
 	const BERRY_JUICE  ; 8b
 	const SCOPE_LENS   ; 8c
@@ -226,7 +226,7 @@ ENDM
 DEF TM01 EQU const_value
 	add_tm DYNAMICPUNCH ; c6
 	add_tm HEADBUTT     ; c7
-	add_tm CURSE        ; c9
+	add_tm CURSE        ; c8
 	add_tm ROLLOUT      ; c9
 	add_tm ROAR         ; ca
 	add_tm TOXIC        ; cb

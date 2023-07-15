@@ -30,8 +30,8 @@ All Pokémon not present in vanilla Crystal are available:
 * Vulpix: Pokémon Mansion
 * Mankey: Routes 3 - 9, 22, 23, 42
 * Primeape: Cerulean Cave
-* Omanyte: Fossil
-* Kabuto: Fossil
+* Omanyte: Helix Fossil
+* Kabuto: Dome Fossil
 * Articuno: Seafoam Islands (after unlocking Unown A - K)
 * Zapdos: Power Plant (after unlocking Unown A - K)
 * Moltres: Victory Road (after unlocking Unown A - K)
@@ -56,15 +56,15 @@ Beating the Elite 4 resets the following Events:
 * Odd Egg
 
 ## Game Changes
+- [x] All three fossils from Gen I can be found by smashing rocks and revived at the Cinnabar Pokémon Lab 
 - [ ] Scaling trainer parties with individual DVs, stat experience & nicknames
 - [ ] Wall-to-wall carpeting in your room
 - [ ] Items that act like HM field moves: Dive
 - [ ] Remove TM's from Game Corners and Marts
-- [ ] Add Old Amber, Dome Fossil & Helix Fossil and enable them in engine\events\checkforhiddenitems.asm
 - [ ] Move Pocket PC (mention LINK CABLE) to BILL's House in Goldenrod
 - [ ] Make [PCNY Event Moves](https://bulbapedia.bulbagarden.net/wiki/List_of_PCNY_event_Pok%C3%A9mon_distributions_(Generation_II)) available
 - [ ] Rework [Gift Pokémon](https://bulbapedia.bulbagarden.net/wiki/Gift_Pok%C3%A9mon#Generation_II) to make them more meaningful
-- [ ] Make use of the [unused Mew Trade](https://tcrf.net/Pok%C3%A9mon_Yellow/pl#Unused_Trade_Data) from Yellow to give  a Mew that can be transferred to Pokémon Bank (OT GF and ID 22796)
+- [ ] Make use of the [unused Mew Trade](https://tcrf.net/Pok%C3%A9mon_Yellow/pl#Unused_Trade_Data) from Yellow to give a Mew that can be transferred to Pokémon Bank (OT GF and ID 22796)
 - [ ] Add music that changes at night
 - [ ] Decide on 7 mobile phone numbers that will be kept (Bill, Mum and Elm make 10) https://www.serebii.net/crystal/pokegear.shtml
 - [ ] Make grinding possible (VS. SEEKER)
@@ -73,7 +73,7 @@ Beating the Elite 4 resets the following Events:
 ## Map Changes
 
 - [x] Cerulean Cave is fully restored and accessible
-- [x] Cinnabar Island is restored: The [Pokémon Lab](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Cinnabar_Pok%C3%A9mon_Lab) is revamped and accessible
+- [x] Cinnabar Island is fully restored and the [Pokémon Lab](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver/Unused_Maps#Cinnabar_Pok%C3%A9mon_Lab) is revamped and accessible
 - [x] Rocket Hideout under Celadon Game Corner is accessible and features the Gen 1 spinner tiles, and the prize room was changed to reflect the [1997 Spaceworld Beta map](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Celadon_Game_Corner) more closely
 - [x] Route 3 contains a dungeon based on the [1997 Spaceworld Beta Mineshaft](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Mineshaft)
 - [x] Route 20 includes a Kanto Lighthouse on the Seafoam Island as seen in [early designs of RBY](https://tcrf.net/Development:Pok%C3%A9mon_Red_and_Blue/Unused_Maps#Exteriors_2). It uses a [1997 Spaceworld Beta Hideout](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo/Maps#Hideout) as a map

@@ -1,26 +1,33 @@
 ; Pokémon traded from RBY do not have held items, so GSC usually interprets the
-; catch rate as an item. However, if the catch rate appears in this table, the
-; item associated with the table entry is used instead.
+; catch rate as an item. The following ites are carried over:
+; Brightpowder  (3)
+; Lucky Punch   (30)
+; Metal Powder  (35)
+; Silver Leaf   (60)
+; Gold Leaf     (75)
+; Twisted Spoon (96)
+; Mystery Berry (150)
+; Light Ball    (163)
+; Polkadot Bow  (170)
+; Brick Piece   (180)
+
+; However, if the catch rate (in parantheses) appears in this table, 
+; the item associated with the table entry is used instead.
 
 TimeCapsule_CatchRateItems:
-	db POCKET_PC, LEFTOVERS   ; 19
-	db ITEM_2D, BITTER_BERRY
-	db ITEM_32, GOLD_BERRY
-	db ITEM_5A, BERRY
-	db ITEM_64, BERRY
-	db ITEM_78, BERRY
-	db ITEM_87, BERRY
-	db ITEM_BE, BERRY
-	db ITEM_BF, BERRY
-	db ITEM_C0, BERRY
-	db ITEM_C1, BERRY
-	db ITEM_C2, BERRY
-	db ITEM_C3, BERRY
-	db ITEM_C4, BERRY
-	db ITEM_C5, BERRY
+	db ANTIDOTE, DRAGON_FANG  ; 09 (9)
+	db POCKET_PC, LEFTOVERS   ; 19 (25)
+	db PROTEIN, DRAGON_SCALE  ; 1b (27)
+	db ITEM_2D, BITTER_BERRY  ; 2d (45)
+	db ITEM_32, GOLD_BERRY    ; 32 (50)
+	db ITEM_5A, BERRY         ; 5a (90)
+	db ITEM_64, BERRY         ; 64 (100)
+	db ITEM_78, BERRY         ; 78 (120)
+	db ITEM_BE, BERRY         ; be (190)
+	db ITEM_C3, BERRY         ; c3
 	db TM_DYNAMICPUNCH, BERRY ; c6
 	db TM_HEADBUTT, BERRY     ; c7
-	db TM_CURSE, BERRY        ; c8
+	db TM_CURSE, BERRY        ; c8 (200)
 	db TM_ROLLOUT, BERRY      ; c9
 	db TM_ROAR, BERRY         ; ca
 	db TM_TOXIC, BERRY        ; cb
@@ -45,7 +52,7 @@ TimeCapsule_CatchRateItems:
 	db TM_THUNDER, BERRY      ; de
 	db TM_EARTHQUAKE, BERRY   ; df
 	db TM_RETURN, BERRY       ; e0
-	db TM_DIG, BERRY          ; e1
+	db TM_DIG, BERRY          ; e1 (225)
 	db TM_PSYCHIC_M, BERRY    ; e2
 	db TM_SHADOW_BALL, BERRY  ; e3
 	db TM_MUD_SLAP, BERRY     ; e4
@@ -55,7 +62,7 @@ TimeCapsule_CatchRateItems:
 	db TM_SLEEP_TALK, BERRY   ; e8
 	db TM_SLUDGE_BOMB, BERRY  ; e9
 	db TM_SANDSTORM, BERRY    ; ea
-	db TM_FIRE_BLAST, BERRY   ; eb
+	db TM_FIRE_BLAST, BERRY   ; eb (235)
 	db TM_SWIFT, BERRY        ; ec
 	db TM_DEFENSE_CURL, BERRY ; ed
 	db TM_THUNDERPUNCH, BERRY ; ee
@@ -70,7 +77,7 @@ TimeCapsule_CatchRateItems:
 	db TM_NIGHTMARE, BERRY    ; f7
 	db HM_CUT, BERRY          ; f8
 	db HM_FLY, BERRY          ; f9
-	db HM_SURF, BERRY         ; fa
+	db HM_SURF, BERRY         ; fa (250)
 	db HM_STRENGTH, BERRY     ; fb
 	db HM_FLASH, BERRY        ; fc
 	db HM_WHIRLPOOL, BERRY    ; fd

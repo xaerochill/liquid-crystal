@@ -305,3 +305,10 @@ DEF NUM_UNOWN_PUZZLES EQU const_value
 	const MOVETUTOR_FLAMETHROWER ; 1
 	const MOVETUTOR_THUNDERBOLT  ; 2
 	const MOVETUTOR_ICE_BEAM     ; 3
+
+; Fossils setval arguments
+	const_def 1
+	const CINNABAR_OLD_AMBER   ; 1
+	const CINNABAR_DOME_FOSSIL ; 2
+	const CINNABAR_LORD_HELIX  ; 3
+	
