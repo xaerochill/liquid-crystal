@@ -21,7 +21,7 @@
 
 ## What is Liquid Crystal?
 
-Liquid Crystal is a branch of pokecrystal with Mobile Adapter Features. In terms of gameplay, it floats somewhere between RBY and HGSS and takes select elements of each generation without breaking compatibility with vanilla GSC. Canon-wise, it takes plays after the [Gold, Silver & Crystal chapter](https://bulbapedia.bulbagarden.net/wiki/Gold,_Silver_%26_Crystal_chapter_(Adventures)).
+Liquid Crystal is a branch of pokecrystal with Mobile Adapter Features. In terms of gameplay, it floats somewhere between RBY and HGSS and takes select elements of each generation without breaking compatibility with vanilla GSC. Canon-wise, it takes place after the [Gold, Silver & Crystal chapter](https://bulbapedia.bulbagarden.net/wiki/Gold,_Silver_%26_Crystal_chapter_(Adventures)).
 
 All Pokémon not present in vanilla Crystal are available:
 * Bulbasaur: Cerulean City Gift, Viridian Forest
@@ -36,12 +36,12 @@ All Pokémon not present in vanilla Crystal are available:
 * Zapdos: Power Plant (after unlocking Unown A - K)
 * Moltres: Victory Road (after unlocking Unown A - K)
 * Mewtwo: Cerulean Cave (after unlocking Unown S - W)
-* Mew: Vermilion Port Passage (after unlocking Unown X - Z)
+* Mew: Vermilion Port (after unlocking Unown X - Z)
 * Mareep: Routes 32, 42, 43
 * Flaaffy: Routes 42, 43
 * Girafarig: Route 43
 * Remoraid: Route 44
-* Celebi Event is active in Goldenrod Pokécom Center (after unlocking Unown X - Z)
+* Celebi Event may be triggered in Goldenrod Pokécom Center (after unlocking Unown X - Z)
 
 Beating the Elite 4 resets the following Events:
 * Articuno
@@ -56,7 +56,8 @@ Beating the Elite 4 resets the following Events:
 * Odd Egg
 
 ## Game Changes
-- [x] All three fossils from Gen I can be found by smashing rocks and revived at the Cinnabar Pokémon Lab 
+- [x] All three fossils from Gen I can be found by smashing rocks and revived at the Cinnabar Pokémon Lab
+- [x] Fixed [Generation II off-model sprites](https://bulbapedia.bulbagarden.net/wiki/User:Vuvuzela2010/Sprite_Errors#Generation_II)
 - [ ] Scaling trainer parties with individual DVs, stat experience & nicknames
 - [ ] Wall-to-wall carpeting in your room
 - [ ] Items that act like HM field moves: Dive
