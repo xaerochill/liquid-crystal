@@ -6,141 +6,135 @@ CinnabarLabFossilRoom_MapScripts:
 
 	def_callbacks
 
-FossilScientist:
-	checkevent EVENT_GAVE_SCIENTIST_OLD_AMBER
-	iftrue .GiveAerodactyl
-	checkevent EVENT_GAVE_SCIENTIST_DOME_FOSSIL
-	iftrue .GiveKabuto
-	checkevent EVENT_GAVE_SCIENTIST_HELIX_FOSSIL
-	iftrue .GiveLordHelix
-	faceplayer
-	opentext
-	writetext FossilScientistIntroText
-	waitbutton
-	loadmenu .MoveMenuHeader
-	verticalmenu
-	closewindow
-	ifequal CINNABAR_OLD_AMBER, .OldAmber
-	ifequal CINNABAR_DOME_FOSSIL, .DomeFossil
-	ifequal CINNABAR_LORD_HELIX, .HelixFossil
-	sjump .No
+	FossilScientist:
+    faceplayer
+    opentext
+    checkevent EVENT_GAVE_SCIENTIST_OLD_AMBER
+    iftrue .GiveAerodactyl
+    checkevent EVENT_GAVE_SCIENTIST_DOME_FOSSIL
+    iftrue .GiveKabuto
+    checkevent EVENT_GAVE_SCIENTIST_HELIX_FOSSIL
+    iftrue .GiveOmanyte
+    writetext FossilScientistIntroText
+    waitbutton
+    loadmenu .MoveMenuHeader
+    verticalmenu
+    closewindow
+    ifequal REVIVE_OLD_AMBER, .OldAmber
+    ifequal REVIVE_DOME_FOSSIL, .DomeFossil
+    ifequal REVIVE_LORD_HELIX, .HelixFossil
+    sjump .No
+ 
 .OldAmber
-	checkitem OLD_AMBER
-	iffalse .No
-	setval CINNABAR_OLD_AMBER
-	opentext
-	writetext FossilScientistAmberText
-	waitbutton
-	closetext
-	setevent EVENT_GAVE_SCIENTIST_OLD_AMBER
-	takeitem OLD_AMBER
-	opentext
-	writetext FossilScientistGiveText
-	waitbutton
-	closetext
-	sjump .GaveScientistFossil
+    checkitem OLD_AMBER
+    iffalse .No
+    getmonname STRING_BUFFER_3, AERODACTYL
+    writetext FossilScientistMonText
+    promptbutton
+    setevent EVENT_GAVE_SCIENTIST_OLD_AMBER
+    takeitem OLD_AMBER
+    writetext FossilScientistGiveText
+    waitbutton
+    sjump .GaveScientistFossil
+ 
 .DomeFossil:
-	checkitem DOME_FOSSIL
-	iffalse .No
-	setval CINNABAR_DOME_FOSSIL
-	opentext
-	writetext FossilScientistDomeText
-	waitbutton
-	closetext
-	setevent EVENT_GAVE_SCIENTIST_DOME_FOSSIL
-	takeitem DOME_FOSSIL
-	opentext
-	writetext FossilScientistGiveText
-	waitbutton
-	closetext
-	sjump .GaveScientistFossil
+    checkitem DOME_FOSSIL
+    iffalse .No
+    getmonname STRING_BUFFER_3, KABUTO
+    writetext FossilScientistMonText
+    promptbutton
+    setevent EVENT_GAVE_SCIENTIST_DOME_FOSSIL
+    takeitem DOME_FOSSIL
+    writetext FossilScientistGiveText
+    waitbutton
+    sjump .GaveScientistFossil
+ 
 .HelixFossil:
-	checkitem HELIX_FOSSIL
-	iffalse .No
-	setval CINNABAR_LORD_HELIX
-	opentext
-	writetext FossilScientistHelixText
-	waitbutton
-	closetext
-	setevent EVENT_GAVE_SCIENTIST_HELIX_FOSSIL
-	takeitem HELIX_FOSSIL
-	opentext
-	writetext FossilScientistGiveText
-	waitbutton
-	closetext
-	sjump .GaveScientistFossil
+    checkitem HELIX_FOSSIL
+    iffalse .No
+    getmonname STRING_BUFFER_3, OMANYTE
+    writetext FossilScientistMonText
+    promptbutton
+    setevent EVENT_GAVE_SCIENTIST_HELIX_FOSSIL
+    takeitem HELIX_FOSSIL
+    writetext FossilScientistGiveText
+    waitbutton
+    sjump .GaveScientistFossil
+ 
 .No
-	opentext
-	writetext FossilScientistNoText
-	waitbutton
-	closetext
-	end
+    writetext FossilScientistNoText
+    waitbutton
+    closetext
+    end
+    
 .GaveScientistFossil:
-	faceplayer
-	opentext
-	writetext FossilScientistTimeText
-	waitbutton
-	closetext
+    writetext FossilScientistTimeText
+    waitbutton
+    closetext
 	special FadeBlackQuickly
 	special ReloadSpritesNoPalettes
 	playsound SFX_WARP_TO
 	waitsfx
 	pause 35
-	sjump FossilScientist
+    sjump FossilScientist
+ 
 .GiveAerodactyl:
-	faceplayer
-	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .NoRoom
-	clearevent EVENT_GAVE_SCIENTIST_OLD_AMBER
-	opentext
-	writetext FossilScientistDoneText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	givepoke AERODACTYL, 5
-	writetext FossilScientistAerodactylText
-	waitbutton
-	closetext
-	end
+    readvar VAR_PARTYCOUNT
+    ifequal PARTY_LENGTH, .NoRoom
+    clearevent EVENT_GAVE_SCIENTIST_OLD_AMBER
+    writetext FossilScientistDoneText
+    promptbutton
+    getmonname STRING_BUFFER_3, AERODACTYL
+    writetext FossilScientistReceiveText
+    playsound SFX_CAUGHT_MON
+    waitsfx
+    waitbutton
+    givepoke AERODACTYL, 5
+    closetext
+    end
+ 
 .GiveKabuto:
-	faceplayer
-	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .NoRoom
-	clearevent EVENT_GAVE_SCIENTIST_DOME_FOSSIL
-	opentext
-	writetext FossilScientistDoneText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	givepoke KABUTO, 5
-	writetext FossilScientistKabutoText
-	waitbutton
-	closetext
-	end
-.GiveLordHelix:
-	faceplayer
-	readvar VAR_PARTYCOUNT
-	ifequal PARTY_LENGTH, .NoRoom
-	clearevent EVENT_GAVE_SCIENTIST_HELIX_FOSSIL
-	opentext
-	writetext FossilScientistDoneText
-	playsound SFX_CAUGHT_MON
-	waitsfx
-	givepoke OMANYTE, 5
-	writetext FossilScientistOmanyteText
-	waitbutton
-	closetext
-	end
+    readvar VAR_PARTYCOUNT
+    ifequal PARTY_LENGTH, .NoRoom
+    clearevent EVENT_GAVE_SCIENTIST_DOME_FOSSIL
+    writetext FossilScientistDoneText
+    promptbutton
+    getmonname STRING_BUFFER_3, KABUTO
+    writetext FossilScientistReceiveText
+    playsound SFX_CAUGHT_MON
+    waitsfx
+    waitbutton
+    givepoke KABUTO, 5
+    closetext
+    end
+ 
+.GiveOmanyte:
+    readvar VAR_PARTYCOUNT
+    ifequal PARTY_LENGTH, .NoRoom
+    clearevent EVENT_GAVE_SCIENTIST_HELIX_FOSSIL
+    writetext FossilScientistDoneText
+    promptbutton
+    getmonname STRING_BUFFER_3, OMANYTE
+    writetext FossilScientistReceiveText
+    playsound SFX_CAUGHT_MON
+    waitsfx
+    waitbutton
+    givepoke OMANYTE, 5
+    closetext
+    end
+
 .NoRoom:
-	faceplayer
-	opentext
 	writetext FossilScientistPartyFullText
 	waitbutton
 	closetext
 	end
+
 .MoveMenuHeader:
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 0, 2, 15, TEXTBOX_Y - 1
 	dw .MenuData
 	db 1 ; default option
+
 .MenuData:
 	db STATICMENU_CURSOR ; flags
 	db 4 ; items
@@ -190,50 +184,24 @@ FossilScientistDoneText:
 	line "back to life!"
 	done
 
-FossilScientistAmberText:
-	text "Oh! That is"
-	line "a fossil!"
+FossilScientistMonText:
+    text "Oh! That is"
+    line "a fossil!"
+ 
+    para "It is fossil of"
+    line "@"
+    text_ram wStringBuffer3
+    text ", a"
 
-	para "It is fossil of"
-	line "AERODACTYL, a"
-	line "#MON that is"
-	cont "already extinct!"
-
-	para "My Resurrection"
-	line "Machine will make"
-	cont "that #MON live"
-	cont "again!"
-	done
-
-FossilScientistHelixText:
-	text "Oh! That is"
-	line "a fossil!"
-
-	para "It is fossil of"
-	line "OMANYTE, a"
-	line "#MON that is"
-	cont "already extinct!"
-
-	para "My Resurrection"
-	line "Machine will make"
-	cont "that #MON live"
-	cont "again!"
-	done
-
-FossilScientistDomeText:
-	text "Oh! That is"
-	line "a fossil!"
-
-	para "It is fossil of"
-	line "KABUTO, a"
-	line "#MON that is"
-	cont "already extinct!"
-
-	para "My Resurrection"
-	line "Machine will make"
-	cont "that #MON live"
-	cont "again!"
-	done
+	para "#MON that is"
+    line "already extinct!"
+ 
+    para "My Resurrection"
+    line "Machine will make"
+ 
+    para "that #MON live"
+    line "again!"
+    done
 
 FossilScientistGiveText:
 	text "So! You hurry and"
@@ -243,20 +211,12 @@ FossilScientistGiveText:
 	line "over the fossil."
 	done
 
-FossilScientistAerodactylText:
-	text "<PLAYER> received"
-	line "AERODACTYL!"
-	done
-
-FossilScientistOmanyteText:
-	text "<PLAYER> received"
-	line "OMANYTE!"
-	done
-
-FossilScientistKabutoText:
-	text "<PLAYER> received"
-	line "KABUTO!"
-	done
+FossilScientistReceiveText:
+    text "<PLAYER> received"
+    line "@"
+    text_ram wStringBuffer3
+    text "!"
+    done
 
 CinnabarLabFossilRoom_MapEvents:
 	db 0, 0 ; filler

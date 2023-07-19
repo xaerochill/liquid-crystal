@@ -1,5 +1,5 @@
 ; Pokémon traded from RBY do not have held items, so GSC usually interprets the
-; catch rate as an item. The following ites are carried over:
+; catch rate as an item. The following items are carried over:
 ; Brightpowder  (3)
 ; Lucky Punch   (30)
 ; Metal Powder  (35)

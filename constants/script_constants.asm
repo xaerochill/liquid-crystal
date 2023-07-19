@@ -308,7 +308,7 @@ DEF NUM_UNOWN_PUZZLES EQU const_value
 
 ; Fossils setval arguments
 	const_def 1
-	const CINNABAR_OLD_AMBER   ; 1
-	const CINNABAR_DOME_FOSSIL ; 2
-	const CINNABAR_LORD_HELIX  ; 3
+	const REVIVE_OLD_AMBER   ; 1
+	const REVIVE_DOME_FOSSIL ; 2
+	const REVIVE_LORD_HELIX  ; 3
 	
